@@ -210,6 +210,12 @@ button{font-family:inherit}
   object-fit: cover;
   display: block;
 }
+.hero-img-mobile{
+  display: none;
+}
+.hero-img-desktop{
+  display: block;
+}
 .hero-overlay{
   position: absolute;
   inset: 0;
@@ -366,6 +372,13 @@ button{font-family:inherit}
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .hero-img-mobile{
+    display: block;
+  }
+  .hero-img-desktop{
+    display: none;
   }
 
   .hero-overlay{
