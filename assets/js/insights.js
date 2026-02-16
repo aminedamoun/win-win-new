@@ -4,6 +4,8 @@
  * - For now: shows empty state (no posts). Later we will render posts into #insightsGrid.
  */
 
+import { initBurgerMenu } from './ui.js';
+
 function $(id) { return document.getElementById(id); }
 
 function setupScrollReveal() {
@@ -21,6 +23,7 @@ function main() {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
   setupScrollReveal();
+  initBurgerMenu();
 
   // Later: fetch/render posts into #insightsGrid and hide #insightsEmpty when posts exist.
 }

@@ -8,6 +8,7 @@
  */
 
 import { getAllJobs, getJobBySlug } from './jobs-db.js';
+import { initBurgerMenu } from './ui.js';
 
 /* =========================
    DATA (loaded from database)
@@ -443,6 +444,7 @@ async function renderJobsList() {
 
   setupScrollReveal();
   bindCookieBar();
+  initBurgerMenu();
   return true;
 }
 
@@ -488,6 +490,7 @@ export async function renderJobDetail({ applyPageHref } = {}) {
     if (applyBtn) applyBtn.href = applyPageHref || (lang === "sl" ? "apply-sl.html" : "apply.html");
     setupScrollReveal();
     bindCookieBar();
+    initBurgerMenu();
     return;
   }
 
@@ -511,6 +514,7 @@ export async function renderJobDetail({ applyPageHref } = {}) {
 
   setupScrollReveal();
   bindCookieBar();
+  initBurgerMenu();
 }
 
 /* =========================

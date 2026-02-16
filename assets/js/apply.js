@@ -6,6 +6,7 @@
  */
 
 import { submitApplication } from './jobs-db.js';
+import { initBurgerMenu } from './ui.js';
 
 function $(id) { return document.getElementById(id); }
 
@@ -216,6 +217,7 @@ function main() {
   renderNextSteps();
   setupForm();
   setupScrollReveal();
+  initBurgerMenu();
 }
 
 main();

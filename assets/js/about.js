@@ -4,6 +4,8 @@
  * Loads content from JSON file in content/en/about.json
  */
 
+import { initBurgerMenu } from './ui.js';
+
 let CONTENT = null;
 
 async function loadContent() {
@@ -293,6 +295,7 @@ async function main() {
   renderTeam();
   renderFaq();
   setupScrollReveal();
+  initBurgerMenu();
 }
 
 if (document.readyState === "loading") {

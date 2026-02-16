@@ -5,6 +5,8 @@
  * - Renders "Kaj sledi?" cards
  */
 
+import { initBurgerMenu } from './ui.js';
+
 function $(id) { return document.getElementById(id); }
 
 function setYear() {
@@ -172,6 +174,7 @@ function main() {
   renderNextSteps();
   setupForm();
   setupScrollReveal();
+  initBurgerMenu();
 }
 
 main();
