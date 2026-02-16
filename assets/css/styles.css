@@ -132,7 +132,12 @@ button{font-family:inherit}
   background: rgba(239,68,68,.12);
   border-color: rgba(239,68,68,.7);
 }
-.btn-lg{padding: 14px 22px; border-radius: 14px; font-weight:700}
+.btn-lg{padding: 16px 32px; border-radius: 12px; font-weight:600; font-size: 17px}
+.hero-actions .btn{
+  width: 100%;
+  max-width: 520px;
+  justify-content: center;
+}
 
 /* Typography */
 .h2{
@@ -201,42 +206,43 @@ button{font-family:inherit}
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 80px 0;
+  padding: 100px 24px;
 }
 .hero-right{
-  max-width: 900px;
+  max-width: 700px;
   width: 100%;
-  padding: 40px 48px 48px;
+  padding: 56px 56px 60px;
   background: rgba(255,255,255,.04);
-  border-radius: 24px;
+  border-radius: 32px;
   border: 1px solid rgba(255,255,255,.08);
   box-shadow: 0 8px 32px rgba(0,0,0,.3);
   text-align: center;
+  margin: 0 auto;
 }
 .hero-title{
-  font-size: clamp(32px, 4.5vw, 48px);
-  line-height: 1.15;
-  margin: 0 0 20px 0;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.2;
+  margin: 0 0 24px 0;
   letter-spacing: -0.5px;
   font-weight: 700;
 }
-.hero-accent{color: var(--red-500)}
+.hero-accent{
+  color: var(--red-500);
+  display: block;
+}
 .hero-desc{
   color: rgba(255,255,255,.88);
-  font-size: 16px;
-  line-height: 1.65;
-  margin: 0 0 32px 0;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0 0 40px 0;
+  max-width: 100%;
 }
 .hero-actions{
   display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  justify-content: center;
-  max-width: 600px;
-  margin: 0 auto;
+  flex-direction: column;
+  gap:16px;
+  align-items: center;
+  width: 100%;
 }
 /* Burger Menu */
 .burger-btn{
@@ -328,34 +334,35 @@ button{font-family:inherit}
     display:flex;
     align-items:center;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
   .hero-right{
     width: 100%;
-    padding: 32px 24px 36px;
+    padding: 44px 28px 48px;
     background: rgba(255,255,255,.04);
-    border-radius: 20px;
+    border-radius: 24px;
     border: 1px solid rgba(255,255,255,.08);
     text-align: center;
     box-shadow: 0 8px 32px rgba(0,0,0,.3);
   }
   .hero-title{
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 14px;
+    font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: 20px;
   }
   .hero-desc{
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0 0 24px 0;
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0 0 32px 0;
     color: rgba(255,255,255,.88);
   }
   .hero-actions{
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
   .hero-actions .btn{
     width: 100%;
+    max-width: 100%;
     justify-content: center;
     padding: 15px 28px;
     font-size: 15px;
