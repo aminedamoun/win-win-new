@@ -231,7 +231,8 @@ button{font-family:inherit}
   display:flex;
   align-items:center;
   justify-content:flex-end;
-  padding: 60px 64px;
+  padding: 60px 80px;
+  max-width: 100%;
 }
 .hero-right{
   max-width: 740px;
@@ -241,8 +242,9 @@ button{font-family:inherit}
   border-radius: 0;
   border: none;
   box-shadow: none;
-  text-align: left;
+  text-align: right;
   margin: 0;
+  margin-right: 0;
 }
 .hero-title{
   font-size: clamp(40px, 5vw, 56px);
@@ -268,6 +270,7 @@ button{font-family:inherit}
   gap:16px;
   align-items: center;
   width: auto;
+  justify-content: flex-end;
 }
 /* Burger Menu */
 .burger-btn{
