@@ -123,9 +123,10 @@ function fillText(d) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // ✅ HERO (matches your JSON: titleBase/titleEmphasis)
-  if ($("heroTitle")) $("heroTitle").textContent = d.hero?.titleBase || "";
-  if ($("heroSubtitle")) $("heroSubtitle").textContent = d.hero?.titleEmphasis || "";
+  // ✅ HERO
+  if ($("heroTitle")) $("heroTitle").textContent = d.hero?.titleLine1 || "";
+  if ($("heroSubtitle")) $("heroSubtitle").textContent = d.hero?.titleLine2 || "";
+  if ($("heroAccent")) $("heroAccent").textContent = "";
   if ($("heroDescription")) $("heroDescription").textContent = d.hero?.description || "";
 
   setLink($("heroBtn1"), d.hero?.primaryCta?.label, d.hero?.primaryCta?.href, true);

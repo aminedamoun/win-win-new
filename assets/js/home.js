@@ -106,6 +106,7 @@ function fillText(d) {
 
   if ($("heroTitle")) $("heroTitle").textContent = d.hero?.titleLine1 || "";
   if ($("heroSubtitle")) $("heroSubtitle").textContent = d.hero?.titleLine2 || "";
+  if ($("heroAccent")) $("heroAccent").textContent = "";
   if ($("heroDescription")) $("heroDescription").textContent = d.hero?.description || "";
 
   const heroBtn1 = $("heroBtn1");
