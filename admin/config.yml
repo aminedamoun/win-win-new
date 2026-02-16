@@ -389,3 +389,139 @@ collections:
             fields:
               - { label: "Summary Title", name: "summaryTitle", widget: "string" }
               - { label: "HTML Content", name: "html", widget: "text" }
+
+  - name: "about_en"
+    label: "About Page (EN)"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - file: "content/en/about.json"
+        label: "About Content"
+        name: "about"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Background Image URL", name: "backgroundImage", widget: "string" }
+
+          - label: "Vision"
+            name: "vision"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image URL", name: "image", widget: "string" }
+
+          - label: "Mission"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image URL", name: "image", widget: "string" }
+
+          - label: "Core Values"
+            name: "values"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Emoji icon" }
+              - { label: "Image URL", name: "image", widget: "string" }
+
+          - label: "Company Culture"
+            name: "culture"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Highlights"
+                name: "highlights"
+                widget: "list"
+                field: { label: "Highlight", name: "highlight", widget: "string" }
+
+          - label: "Statistics"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+  - name: "about_sl"
+    label: "About Page (SL)"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - file: "content/sl/about.json"
+        label: "About Content (Slovenian)"
+        name: "about"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Background Image URL", name: "backgroundImage", widget: "string" }
+
+          - label: "Vision"
+            name: "vision"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image URL", name: "image", widget: "string" }
+
+          - label: "Mission"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image URL", name: "image", widget: "string" }
+
+          - label: "Core Values"
+            name: "values"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Emoji icon" }
+              - { label: "Image URL", name: "image", widget: "string" }
+
+          - label: "Company Culture"
+            name: "culture"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Highlights"
+                name: "highlights"
+                widget: "list"
+                field: { label: "Highlight", name: "highlight", widget: "string" }
+
+          - label: "Statistics"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }

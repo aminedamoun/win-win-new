@@ -1,9 +1,11 @@
 /**
  * apply.js — EN Apply page (pure HTML/CSS/JS)
  * - File upload UI (PDF)
- * - Basic validation + success state (no backend yet)
+ * - Form validation and submission to Supabase
  * - Renders "What happens next" cards
  */
+
+import { submitApplication } from './jobs-db.js';
 
 function $(id) { return document.getElementById(id); }
 
@@ -137,24 +139,63 @@ function setupForm() {
     return ok;
   };
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
-    // success state (no backend)
-    if (submitBtn) submitBtn.disabled = true;
-    if (successBox) successBox.style.display = "block";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+    }
 
-    // optional: reset after a moment
-    setTimeout(() => {
-      form.reset();
-      clearAllErrs();
-      if (submitBtn) submitBtn.disabled = false;
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const jobSlug = urlParams.get('job');
 
-      // reset upload name
-      const name = $("cvFileName");
-      if (name) { name.style.display = "none"; name.textContent = ""; }
-    }, 900);
+      const applicationData = {
+        first_name: firstName.value.trim(),
+        last_name: lastName.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim(),
+        message: $("message")?.value?.trim() || '',
+        status: 'new'
+      };
+
+      if (jobSlug) {
+        const { getJobBySlug } = await import('./jobs-db.js');
+        const job = await getJobBySlug(jobSlug);
+        if (job) {
+          applicationData.job_id = job.id;
+        }
+      }
+
+      await submitApplication(applicationData);
+
+      if (successBox) successBox.style.display = "block";
+
+      setTimeout(() => {
+        form.reset();
+        clearAllErrs();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit Application";
+        }
+        if (successBox) successBox.style.display = "none";
+
+        const name = $("cvFileName");
+        if (name) {
+          name.style.display = "none";
+          name.textContent = "";
+        }
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      alert('There was an error submitting your application. Please try again.');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Application";
+      }
+    }
   });
 }
 

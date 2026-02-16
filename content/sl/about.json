@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "O Win-Win",
+    "subtitle": "Gradimo karierne zgodbe v prodaji, eno uspešno zgodbo naenkrat",
+    "backgroundImage": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920"
+  },
+  "vision": {
+    "title": "Naša Vizija",
+    "text": "Biti vodilni partner za prodajne talente v Sloveniji, prepoznan po spreminjanju ambicioznih posameznikov v vrhunske prodajne strokovnjake.",
+    "image": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  "mission": {
+    "title": "Naša Misija",
+    "text": "Zagotavljamo strukturirane karierne poti, profesionalno usposabljanje in kontinuirano podporo, ki pomaga prodajnim strokovnjakom doseči svoj potencial in zgraditi nagrajevalno kariero v telekomunikacijah in širše.",
+    "image": "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  "values": [
+    {
+      "title": "Kultura Uspešnosti",
+      "description": "Verjamemo v merljive rezultate, jasne KPI-je in nagrajevanje najboljših s karierno rastjo in finančnim uspehom.",
+      "icon": "📊",
+      "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "title": "Profesionalni Razvoj",
+      "description": "Kontinuirana usposabljanja, coaching in mentorski programi, zasnovani za razvoj prodajnih veščin in poslovnega razumevanja.",
+      "icon": "🎯",
+      "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "title": "Ekipna Podpora",
+      "description": "Sodelovalno okolje, kjer izkušeni strokovnjaki pomagajo novincem uspeti skozi deljeno znanje in najboljše prakse.",
+      "icon": "🤝",
+      "image": "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "title": "Pregledni Sistemi",
+      "description": "Jasne provizijske strukture, realna pričakovanja in odprta komunikacija o uspešnosti in priložnostih.",
+      "icon": "💡",
+      "image": "https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+  ],
+  "culture": {
+    "title": "Naša Kultura",
+    "description": "Win-Win temelji na strukturi uspešnosti. Združujemo dokazane prodajne metodologije z modernimi orodji in pristno podporo za ustvarjanje okolja, kjer talenti uspevajo.",
+    "highlights": [
+      "Odločanje na podlagi podatkov",
+      "Redne ocene uspešnosti",
+      "Napredovanja na podlagi zaslug",
+      "Možnosti kontinuiranega učenja",
+      "Sodelovalno ekipno okolje",
+      "Podpora ravnovesju delo-življenje"
+    ]
+  },
+  "stats": [
+    {
+      "number": "500+",
+      "label": "Usposobljenih Prodajnih Strokovnjakov"
+    },
+    {
+      "number": "15+",
+      "label": "Let Izkušenj"
+    },
+    {
+      "number": "95%",
+      "label": "Zadovoljstvo Strank"
+    },
+    {
+      "number": "3x",
+      "label": "Povprečna Rast Dohodka"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Kaj Win-Win loči od drugih prodajnih agencij?",
+      "answer": "Osredotočamo se na dolgoročni karierni razvoj, ne le kratkoročne zaposlitve. Naši strukturirani programi usposabljanja, jasni KPI sistemi in pristno mentorstvo pomagajo prodajnikom zgraditi trajnostne kariere z resničnim potencialom rasti."
+    },
+    {
+      "question": "Ali zagotavljate usposabljanje za začetnike v prodaji?",
+      "answer": "Da! Zagotavljamo celovito uvajanje, vključno z znanjem o produktih, prodajnimi skriptami, CRM usposabljanjem in kontinuiranim coachingom. Mnogi naši najboljši prodajalci so začeli brez predhodnih izkušenj v prodaji."
+    },
+    {
+      "question": "Kakšno podporo ponujate?",
+      "answer": "Zagotavljamo CRM orodja, dokazane skripte, back-office podporo, redne coaching seje, sledenje uspešnosti in podporno ekipno okolje. Nikoli niste sami na svoji prodajni poti."
+    },
+    {
+      "question": "Kako je strukturirano nadomestilo?",
+      "answer": "Naši modeli nadomestil se razlikujejo glede na vlogo, vendar vedno vključujejo zaslužek na podlagi uspešnosti. Ponujamo konkurenčne osnovne plače ali urne postavke plus privlačne provizijske strukture z neomejenim potencialom zaslužka."
+    },
+    {
+      "question": "Kakšne možnosti karierne rasti obstajajo?",
+      "answer": "Najboljši lahko napredujejo v višje prodajne vloge, vodstvene pozicije ali specializirano B2B svetovanje. Napredujemo od znotraj in nagrajujemo dosledno odličnost."
+    },
+    {
+      "question": "Ali delate z B2C in B2B strankami?",
+      "answer": "Da, delujemo na več kanalih: terenska prodaja (B2C), klicni center (B2C) in poslovno svetovanje (B2B). Ta raznolikost ponuja različne karierne poti za različne veščine in preference."
+    }
+  ]
+}

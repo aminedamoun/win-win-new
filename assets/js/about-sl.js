@@ -1,10 +1,23 @@
 /**
- * About-SL page renderer (pure HTML/CSS/JS) — same style approach as home.js
- * - Renders Vision/Mission, Values (with clean SVG icons), Culture, Team, FAQ, SEO.
- * - Uses SAME IDs/structure as your EN about.js (so it drops in easily).
+ * About-SL page renderer (pure HTML/CSS/JS)
+ * Renders: Hero, Vision/Mission, Values, Culture, Team stats, FAQ
+ * Loads content from JSON file in content/sl/about.json
  */
 
-const CONTENT = {
+let CONTENT = null;
+
+async function loadContent() {
+  try {
+    const response = await fetch('/content/sl/about.json');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error loading content:', error);
+    return null;
+  }
+}
+
+const OLD_CONTENT = {
   about: {
     hero: {
       title: "O Win Win",
@@ -220,9 +233,12 @@ const ICONS = {
 
 function renderVisionMission() {
   const root = $("aboutVM");
-  if (!root) return;
+  if (!root || !CONTENT) return;
 
-  const cards = [CONTENT.about.vision, CONTENT.about.mission];
+  const cards = [
+    { ...CONTENT.vision, icon: "target" },
+    { ...CONTENT.mission, icon: "heart" }
+  ];
 
   root.innerHTML = cards
     .map(
@@ -232,7 +248,7 @@ function renderVisionMission() {
         ${ICONS[c.icon] || ICONS.target}
       </div>
       <h3 class="h3" style="margin: 0 0 10px;">${escapeHtml(c.title)}</h3>
-      <p class="p-muted" style="margin:0;">${escapeHtml(c.description)}</p>
+      <p class="p-muted" style="margin:0;">${escapeHtml(c.text)}</p>
     </div>
   `
     )
@@ -241,9 +257,16 @@ function renderVisionMission() {
 
 function renderValues() {
   const root = $("aboutValuesGrid");
-  if (!root) return;
+  if (!root || !CONTENT || !CONTENT.values) return;
 
-  root.innerHTML = CONTENT.about.values.items
+  const iconMap = {
+    "Kultura Uspešnosti": "trendUp",
+    "Profesionalni Razvoj": "target",
+    "Ekipna Podpora": "users",
+    "Pregledni Sistemi": "shield"
+  };
+
+  root.innerHTML = CONTENT.values
     .map(
       (v) => `
     <div class="card glass" style="overflow:hidden;">
@@ -251,7 +274,7 @@ function renderValues() {
         <img src="${escapeHtml(v.image)}" alt="${escapeHtml(v.title)}" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
         <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,.8), transparent);"></div>
         <div class="card-ic" aria-hidden="true" style="position:absolute; left: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 12px; background: rgba(239,68,68,.16); display:flex; align-items:center; justify-content:center;">
-          ${ICONS[v.icon] || ICONS.award}
+          ${ICONS[iconMap[v.title]] || ICONS.award}
         </div>
       </div>
       <div style="padding: 18px;">
@@ -266,9 +289,9 @@ function renderValues() {
 
 function renderCulture() {
   const root = $("aboutCultureGrid");
-  if (!root) return;
+  if (!root || !CONTENT || !CONTENT.culture) return;
 
-  root.innerHTML = CONTENT.about.culture.items
+  root.innerHTML = CONTENT.culture.highlights
     .map(
       (text) => `
     <div class="card glass" style="display:flex; gap:12px; align-items:flex-start; padding: 18px;">
@@ -283,17 +306,19 @@ function renderCulture() {
 }
 
 function renderTeam() {
-  const root = $("aboutTeamStats"); // keep SAME id as your EN file
-  if (!root) return;
+  const root = $("aboutTeamStats");
+  if (!root || !CONTENT || !CONTENT.stats) return;
 
-  root.innerHTML = CONTENT.about.team.stats
+  const iconList = ["users", "award", "trendUp", "target"];
+
+  root.innerHTML = CONTENT.stats
     .map(
-      (s) => `
+      (s, idx) => `
     <div class="card glass" style="text-align:center; padding: 22px;">
       <div class="card-ic" aria-hidden="true" style="margin: 0 auto 12px;">
-        ${ICONS[s.icon] || ICONS.users}
+        ${ICONS[iconList[idx % iconList.length]]}
       </div>
-      <div style="font-weight: 900; font-size: 22px; margin-bottom: 6px;">${escapeHtml(s.value)}</div>
+      <div style="font-weight: 900; font-size: 22px; margin-bottom: 6px;">${escapeHtml(s.number)}</div>
       <div class="p-muted" style="font-weight: 700; margin-bottom: 4px;">${escapeHtml(s.label)}</div>
     </div>
   `
@@ -303,17 +328,17 @@ function renderTeam() {
 
 function renderFaq() {
   const root = $("faqList");
-  if (!root) return;
+  if (!root || !CONTENT || !CONTENT.faq) return;
 
-  root.innerHTML = CONTENT.about.faq.items
+  root.innerHTML = CONTENT.faq
     .map(
       (x) => `
       <details class="faq">
         <summary>
-          <span>${escapeHtml(x.q)}</span>
+          <span>${escapeHtml(x.question)}</span>
           <span class="chev" aria-hidden="true">⌄</span>
         </summary>
-        <div class="faq-body">${escapeHtml(x.a)}</div>
+        <div class="faq-body">${escapeHtml(x.answer)}</div>
       </details>
     `
     )
@@ -332,39 +357,44 @@ function setupScrollReveal() {
 }
 
 function fillText() {
+  if (!CONTENT) return;
+
   if ($("year")) $("year").textContent = String(new Date().getFullYear());
 
-  // hero
-  if ($("aboutHeroImg")) $("aboutHeroImg").src = CONTENT.about.hero.img;
-  if ($("aboutHeroTitle")) $("aboutHeroTitle").textContent = CONTENT.about.hero.title;
-  if ($("aboutHeroDesc")) $("aboutHeroDesc").textContent = CONTENT.about.hero.description;
-
-  // values header
-  if ($("aboutValuesTitle")) $("aboutValuesTitle").textContent = CONTENT.about.values.title;
-  if ($("aboutValuesDesc")) $("aboutValuesDesc").textContent = CONTENT.about.values.description;
-
-  // culture header
-  if ($("aboutCultureTitle")) $("aboutCultureTitle").textContent = CONTENT.about.culture.title;
-  if ($("aboutCultureDesc")) $("aboutCultureDesc").textContent = CONTENT.about.culture.description;
-
-  // team header
-  if ($("aboutTeamTitle")) $("aboutTeamTitle").textContent = CONTENT.about.team.title;
-  if ($("aboutTeamDesc")) $("aboutTeamDesc").textContent = CONTENT.about.team.description;
-
-  // FAQ header/buttons
-  if ($("faqTitle")) $("faqTitle").innerHTML = CONTENT.about.faq.titleHtml;
-  if ($("faqDesc")) $("faqDesc").textContent = CONTENT.about.faq.description;
-  if ($("faqStill")) $("faqStill").textContent = CONTENT.about.faq.still;
-  if ($("faqBtn") && $("faqBtn").childNodes && $("faqBtn").childNodes[0]) {
-    $("faqBtn").childNodes[0].textContent = CONTENT.about.faq.button + " ";
+  if (CONTENT.hero) {
+    if ($("aboutHeroImg")) $("aboutHeroImg").src = CONTENT.hero.backgroundImage;
+    if ($("aboutHeroTitle")) $("aboutHeroTitle").textContent = CONTENT.hero.title;
+    if ($("aboutHeroDesc")) $("aboutHeroDesc").textContent = CONTENT.hero.subtitle;
   }
 
-  // SEO accordion
-  if ($("seoSummaryTitle")) $("seoSummaryTitle").textContent = CONTENT.about.seo.summaryTitle;
-  if ($("seoHtml")) $("seoHtml").innerHTML = CONTENT.about.seo.html;
+  if ($("aboutValuesTitle")) $("aboutValuesTitle").textContent = "Naše Temeljne Vrednote";
+  if ($("aboutValuesDesc")) $("aboutValuesDesc").textContent = "Ti principi vodijo vse, kar počnemo";
+
+  if (CONTENT.culture) {
+    if ($("aboutCultureTitle")) $("aboutCultureTitle").textContent = CONTENT.culture.title;
+    if ($("aboutCultureDesc")) $("aboutCultureDesc").textContent = CONTENT.culture.description;
+  }
+
+  if ($("aboutTeamTitle")) $("aboutTeamTitle").textContent = "Naš Vpliv";
+  if ($("aboutTeamDesc")) $("aboutTeamDesc").textContent = "Merljivi rezultati, ki dokazujejo našo zavezanost";
+
+  if ($("faqTitle")) $("faqTitle").innerHTML = 'Pogosto Zastavljena <span class="text-red">Vprašanja</span>';
+  if ($("faqDesc")) $("faqDesc").textContent = "Vse kar morate vedeti o Win-Win";
+  if ($("faqStill")) $("faqStill").textContent = "Še vedno imate vprašanja?";
+
+  const btn = $("faqBtn");
+  if (btn) {
+    btn.innerHTML = `Stopite v Stik <span aria-hidden="true">→</span>`;
+  }
 }
 
-function main() {
+async function main() {
+  CONTENT = await loadContent();
+  if (!CONTENT) {
+    console.error('Failed to load content');
+    return;
+  }
+
   fillText();
   renderVisionMission();
   renderValues();
@@ -374,4 +404,8 @@ function main() {
   setupScrollReveal();
 }
 
-main();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", main);
+} else {
+  main();
+}
