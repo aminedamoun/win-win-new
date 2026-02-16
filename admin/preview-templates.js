@@ -1,234 +1,498 @@
-// Preview templates for Netlify CMS
-// This makes the CMS interface visual and user-friendly
-
-// Helper to safely get image URLs
-const getImageUrl = (path) => {
-  if (!path) return '';
-  if (path.startsWith('http')) return path;
-  return path.startsWith('/') ? path : `/${path}`;
-};
+// Preview templates for Netlify CMS using React
+const { h } = window.preactCompat || window.preact || {};
 
 const HomePreviewTemplate = ({ entry }) => {
   const data = entry.getIn(['data']).toJS();
 
-  return `
-    <div style="font-family: Inter, sans-serif; background: #000; color: #fff; padding: 40px; min-height: 100vh;">
+  const sections = [];
 
-      <!-- Preview Helper Banner -->
-      <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); padding: 16px; border-radius: 12px; margin-bottom: 40px; text-align: center;">
-        <strong style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">✓ LIVE PREVIEW - This is how your page will look</strong>
-      </div>
+  // Banner
+  sections.push(
+    h('div', {
+      key: 'banner',
+      style: {
+        background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+        padding: '16px',
+        borderRadius: '12px',
+        marginBottom: '40px',
+        textAlign: 'center'
+      }
+    }, h('strong', {
+      style: {
+        fontSize: '14px',
+        textTransform: 'uppercase',
+        letterSpacing: '1px'
+      }
+    }, '✓ LIVE PREVIEW - Changes appear in real-time'))
+  );
 
-      <!-- Hero Section -->
-      <section style="margin-bottom: 80px; text-align: center;">
-        <div style="max-width: 900px; margin: 0 auto;">
-          <h1 style="font-size: 56px; font-weight: 700; line-height: 1.1; margin: 0 0 24px 0; background: linear-gradient(135deg, #fff 0%, #999 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            ${data.hero?.titleLine1 || ''}<br>
-            ${data.hero?.titleLine2 || ''}
-          </h1>
-          <p style="font-size: 20px; color: #9ca3af; line-height: 1.6; margin-bottom: 32px;">
-            ${data.hero?.description || ''}
-          </p>
-          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <button style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 14px 32px; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 12px 28px rgba(220,38,38,.35);">
-              ${data.hero?.primaryCta?.label || 'Primary CTA'}
-            </button>
-            <button style="background: rgba(255,255,255,.06); color: white; padding: 14px 32px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;">
-              ${data.hero?.secondaryCta?.label || 'Secondary CTA'}
-            </button>
-          </div>
-        </div>
-      </section>
+  // Hero Section
+  if (data.hero) {
+    sections.push(
+      h('section', {
+        key: 'hero',
+        style: { marginBottom: '80px', textAlign: 'center' }
+      },
+        h('div', { style: { maxWidth: '900px', margin: '0 auto' } }, [
+          h('h1', {
+            key: 'title',
+            style: {
+              fontSize: '48px',
+              fontWeight: '700',
+              lineHeight: '1.1',
+              margin: '0 0 24px 0',
+              color: '#fff'
+            }
+          }, [
+            data.hero.titleLine1 || 'Title Line 1',
+            h('br', { key: 'br' }),
+            data.hero.titleLine2 || 'Title Line 2'
+          ]),
+          h('p', {
+            key: 'desc',
+            style: {
+              fontSize: '18px',
+              color: '#9ca3af',
+              lineHeight: '1.6',
+              marginBottom: '32px'
+            }
+          }, data.hero.description || 'Hero description goes here'),
+          h('div', {
+            key: 'ctas',
+            style: {
+              display: 'flex',
+              gap: '16px',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }
+          }, [
+            h('button', {
+              key: 'primary',
+              style: {
+                background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+                color: 'white',
+                padding: '12px 28px',
+                border: 'none',
+                borderRadius: '12px',
+                fontSize: '15px',
+                fontWeight: '600'
+              }
+            }, data.hero.primaryCta?.label || 'Primary Button'),
+            h('button', {
+              key: 'secondary',
+              style: {
+                background: 'rgba(255,255,255,.06)',
+                color: 'white',
+                padding: '12px 28px',
+                border: '1px solid rgba(255,255,255,.12)',
+                borderRadius: '12px',
+                fontSize: '15px',
+                fontWeight: '600'
+              }
+            }, data.hero.secondaryCta?.label || 'Secondary Button')
+          ])
+        ])
+      )
+    );
+  }
 
-      <!-- About Section -->
-      <section style="margin-bottom: 80px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 60px 40px;">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h2 style="font-size: 42px; font-weight: 700; margin: 0 0 20px 0;">
-            ${data.about?.title || 'About Title'}
-          </h2>
-          <p style="font-size: 18px; color: #d1d5db; line-height: 1.7; margin-bottom: 48px;">
-            ${data.about?.description || ''}
-          </p>
+  // About Section
+  if (data.about) {
+    sections.push(
+      h('section', {
+        key: 'about',
+        style: {
+          marginBottom: '60px',
+          background: 'rgba(255,255,255,.06)',
+          border: '1px solid rgba(255,255,255,.12)',
+          borderRadius: '18px',
+          padding: '48px 32px',
+          textAlign: 'center'
+        }
+      }, [
+        h('h2', {
+          key: 'title',
+          style: {
+            fontSize: '36px',
+            fontWeight: '700',
+            margin: '0 0 16px 0',
+            color: '#fff'
+          }
+        }, data.about.title || 'About Title'),
+        h('p', {
+          key: 'desc',
+          style: {
+            fontSize: '16px',
+            color: '#d1d5db',
+            lineHeight: '1.7',
+            maxWidth: '700px',
+            margin: '0 auto'
+          }
+        }, data.about.description || 'About description')
+      ])
+    );
+  }
 
-          ${data.about?.stats ? `
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 32px; margin-top: 48px;">
-              ${data.about.stats.map(stat => `
-                <div>
-                  <div style="font-size: 48px; font-weight: 700; color: #dc2626; margin-bottom: 8px;">
-                    ${stat.value || ''}
-                  </div>
-                  <div style="font-size: 14px; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px;">
-                    ${stat.label || ''}
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-        </div>
-      </section>
+  // Services Section
+  if (data.services) {
+    const serviceCards = [];
 
-      <!-- Services Section -->
-      ${data.services ? `
-        <section style="margin-bottom: 80px;">
-          <div style="max-width: 800px; margin: 0 auto 60px; text-align: center;">
-            <h2 style="font-size: 42px; font-weight: 700; margin: 0 0 20px 0;">
-              ${data.services.title || 'Services Title'}
-            </h2>
-            <p style="font-size: 18px; color: #d1d5db; line-height: 1.7;">
-              ${data.services.description || ''}
-            </p>
-          </div>
+    if (data.services.core && data.services.core.length > 0) {
+      serviceCards.push(
+        h('div', { key: 'core', style: { marginBottom: '32px' } }, [
+          h('h3', {
+            key: 'title',
+            style: {
+              fontSize: '22px',
+              fontWeight: '600',
+              marginBottom: '20px',
+              color: '#dc2626'
+            }
+          }, data.services.blocks?.core || 'Core Services'),
+          h('div', {
+            key: 'grid',
+            style: {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '20px'
+            }
+          }, data.services.core.map((service, idx) =>
+            h('div', {
+              key: idx,
+              style: {
+                background: 'rgba(255,255,255,.06)',
+                border: '1px solid rgba(255,255,255,.12)',
+                borderRadius: '14px',
+                padding: '24px',
+                textAlign: 'left'
+              }
+            }, [
+              h('h4', {
+                key: 'title',
+                style: {
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  margin: '0 0 10px 0',
+                  color: '#fff'
+                }
+              }, service.title || 'Service'),
+              h('p', {
+                key: 'desc',
+                style: {
+                  fontSize: '14px',
+                  color: '#9ca3af',
+                  lineHeight: '1.6',
+                  margin: 0
+                }
+              }, service.description || '')
+            ])
+          ))
+        ])
+      );
+    }
 
-          <!-- Core Services -->
-          ${data.services.core ? `
-            <div style="margin-bottom: 48px;">
-              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 24px; color: #dc2626;">
-                ${data.services.blocks?.core || 'Core Services'}
-              </h3>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                ${data.services.core.map(service => `
-                  <div style="background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 32px;">
-                    <div style="font-size: 40px; margin-bottom: 16px;">📦</div>
-                    <h4 style="font-size: 20px; font-weight: 600; margin: 0 0 12px 0;">
-                      ${service.title || ''}
-                    </h4>
-                    <p style="font-size: 15px; color: #9ca3af; line-height: 1.6; margin: 0;">
-                      ${service.description || ''}
-                    </p>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
+    if (serviceCards.length > 0) {
+      sections.push(
+        h('section', {
+          key: 'services',
+          style: { marginBottom: '60px' }
+        }, [
+          h('h2', {
+            key: 'title',
+            style: {
+              fontSize: '36px',
+              fontWeight: '700',
+              margin: '0 0 32px 0',
+              textAlign: 'center',
+              color: '#fff'
+            }
+          }, data.services.title || 'Services'),
+          ...serviceCards
+        ])
+      );
+    }
+  }
 
-          <!-- Support Services -->
-          ${data.services.support ? `
-            <div style="margin-bottom: 48px;">
-              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 24px; color: #dc2626;">
-                ${data.services.blocks?.support || 'Support Services'}
-              </h3>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                ${data.services.support.map(service => `
-                  <div style="background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 32px;">
-                    <div style="font-size: 40px; margin-bottom: 16px;">🎓</div>
-                    <h4 style="font-size: 20px; font-weight: 600; margin: 0 0 12px 0;">
-                      ${service.title || ''}
-                    </h4>
-                    <p style="font-size: 15px; color: #9ca3af; line-height: 1.6; margin: 0;">
-                      ${service.description || ''}
-                    </p>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
-        </section>
-      ` : ''}
+  // Benefits Section
+  if (data.benefits && data.benefits.items) {
+    sections.push(
+      h('section', {
+        key: 'benefits',
+        style: { marginBottom: '60px' }
+      }, [
+        h('h2', {
+          key: 'title',
+          style: {
+            fontSize: '36px',
+            fontWeight: '700',
+            margin: '0 0 32px 0',
+            textAlign: 'center',
+            color: '#fff'
+          }
+        }, data.benefits.title || 'Benefits'),
+        h('div', {
+          key: 'grid',
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '20px'
+          }
+        }, data.benefits.items.map((item, idx) =>
+          h('div', {
+            key: idx,
+            style: {
+              background: 'rgba(255,255,255,.06)',
+              border: '1px solid rgba(255,255,255,.12)',
+              borderRadius: '14px',
+              padding: '24px',
+              textAlign: 'center'
+            }
+          }, [
+            h('h4', {
+              key: 'title',
+              style: {
+                fontSize: '17px',
+                fontWeight: '600',
+                margin: '0 0 8px 0',
+                color: '#fff'
+              }
+            }, item.title || 'Benefit'),
+            h('p', {
+              key: 'desc',
+              style: {
+                fontSize: '13px',
+                color: '#9ca3af',
+                lineHeight: '1.6',
+                margin: 0
+              }
+            }, item.description || '')
+          ])
+        ))
+      ])
+    );
+  }
 
-      <!-- Benefits Section -->
-      ${data.benefits ? `
-        <section style="margin-bottom: 80px;">
-          <div style="max-width: 800px; margin: 0 auto 48px; text-align: center;">
-            <h2 style="font-size: 42px; font-weight: 700; margin: 0 0 20px 0;">
-              ${data.benefits.title || 'Benefits Title'}
-            </h2>
-            <p style="font-size: 18px; color: #d1d5db; line-height: 1.7;">
-              ${data.benefits.description || ''}
-            </p>
-          </div>
+  // CTA Section
+  if (data.cta) {
+    sections.push(
+      h('section', {
+        key: 'cta',
+        style: {
+          background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+          borderRadius: '18px',
+          padding: '48px 32px',
+          textAlign: 'center'
+        }
+      }, [
+        h('h2', {
+          key: 'title',
+          style: {
+            fontSize: '32px',
+            fontWeight: '700',
+            margin: '0 0 12px 0',
+            color: '#fff'
+          }
+        }, data.cta.title || 'CTA Title'),
+        h('p', {
+          key: 'desc',
+          style: {
+            fontSize: '16px',
+            color: 'rgba(255,255,255,.9)',
+            lineHeight: '1.6',
+            marginBottom: '24px'
+          }
+        }, data.cta.description || 'CTA description'),
+        h('button', {
+          key: 'btn',
+          style: {
+            background: 'white',
+            color: '#dc2626',
+            padding: '12px 28px',
+            border: 'none',
+            borderRadius: '12px',
+            fontSize: '15px',
+            fontWeight: '600'
+          }
+        }, data.cta.buttonLabel || 'Get Started')
+      ])
+    );
+  }
 
-          ${data.benefits.items ? `
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-              ${data.benefits.items.map(item => `
-                <div style="background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 28px; text-align: center;">
-                  <div style="font-size: 48px; margin-bottom: 16px;">✓</div>
-                  <h4 style="font-size: 18px; font-weight: 600; margin: 0 0 8px 0;">
-                    ${item.title || ''}
-                  </h4>
-                  <p style="font-size: 14px; color: #9ca3af; line-height: 1.6; margin: 0;">
-                    ${item.description || ''}
-                  </p>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-        </section>
-      ` : ''}
-
-      <!-- CTA Section -->
-      ${data.cta ? `
-        <section style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); border-radius: 18px; padding: 60px 40px; text-align: center; box-shadow: 0 12px 28px rgba(220,38,38,.35);">
-          <h2 style="font-size: 36px; font-weight: 700; margin: 0 0 16px 0;">
-            ${data.cta.title || 'CTA Title'}
-          </h2>
-          <p style="font-size: 18px; color: rgba(255,255,255,.9); line-height: 1.6; margin-bottom: 32px;">
-            ${data.cta.description || ''}
-          </p>
-          <button style="background: white; color: #dc2626; padding: 14px 32px; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;">
-            ${data.cta.buttonLabel || 'Get Started'}
-          </button>
-        </section>
-      ` : ''}
-
-    </div>
-  `;
+  return h('div', {
+    style: {
+      fontFamily: 'Inter, -apple-system, sans-serif',
+      background: '#000',
+      color: '#fff',
+      padding: '40px',
+      minHeight: '100vh'
+    }
+  }, sections);
 };
 
 const AboutPreviewTemplate = ({ entry }) => {
   const data = entry.getIn(['data']).toJS();
 
-  return `
-    <div style="font-family: Inter, sans-serif; background: #000; color: #fff; padding: 40px;">
+  const sections = [];
 
-      <!-- Preview Helper Banner -->
-      <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); padding: 16px; border-radius: 12px; margin-bottom: 40px; text-align: center;">
-        <strong style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">✓ LIVE PREVIEW - This is how your page will look</strong>
-      </div>
+  // Banner
+  sections.push(
+    h('div', {
+      key: 'banner',
+      style: {
+        background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+        padding: '16px',
+        borderRadius: '12px',
+        marginBottom: '40px',
+        textAlign: 'center'
+      }
+    }, h('strong', {
+      style: {
+        fontSize: '14px',
+        textTransform: 'uppercase',
+        letterSpacing: '1px'
+      }
+    }, '✓ LIVE PREVIEW - Changes appear in real-time'))
+  );
 
-      <section style="max-width: 900px; margin: 0 auto 60px; text-align: center;">
-        <h1 style="font-size: 52px; font-weight: 700; margin: 0 0 24px 0;">
-          ${data.hero?.title || 'About Title'}
-        </h1>
-        <p style="font-size: 20px; color: #9ca3af; line-height: 1.6;">
-          ${data.hero?.description || ''}
-        </p>
-      </section>
+  // Hero
+  if (data.hero) {
+    sections.push(
+      h('section', {
+        key: 'hero',
+        style: {
+          maxWidth: '900px',
+          margin: '0 auto 60px',
+          textAlign: 'center'
+        }
+      }, [
+        h('h1', {
+          key: 'title',
+          style: {
+            fontSize: '48px',
+            fontWeight: '700',
+            margin: '0 0 20px 0',
+            color: '#fff'
+          }
+        }, data.hero.title || 'About Title'),
+        h('p', {
+          key: 'desc',
+          style: {
+            fontSize: '18px',
+            color: '#9ca3af',
+            lineHeight: '1.6'
+          }
+        }, data.hero.description || 'About description')
+      ])
+    );
+  }
 
-      ${data.story ? `
-        <section style="max-width: 800px; margin: 0 auto 60px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 48px;">
-          <h2 style="font-size: 36px; font-weight: 700; margin: 0 0 20px 0;">
-            ${data.story.title || 'Story Title'}
-          </h2>
-          <p style="font-size: 17px; color: #d1d5db; line-height: 1.7;">
-            ${data.story.content || ''}
-          </p>
-        </section>
-      ` : ''}
+  // Story
+  if (data.story) {
+    sections.push(
+      h('section', {
+        key: 'story',
+        style: {
+          maxWidth: '800px',
+          margin: '0 auto 60px',
+          background: 'rgba(255,255,255,.06)',
+          border: '1px solid rgba(255,255,255,.12)',
+          borderRadius: '18px',
+          padding: '40px'
+        }
+      }, [
+        h('h2', {
+          key: 'title',
+          style: {
+            fontSize: '32px',
+            fontWeight: '700',
+            margin: '0 0 16px 0',
+            color: '#fff'
+          }
+        }, data.story.title || 'Our Story'),
+        h('p', {
+          key: 'content',
+          style: {
+            fontSize: '16px',
+            color: '#d1d5db',
+            lineHeight: '1.7'
+          }
+        }, data.story.content || 'Story content goes here')
+      ])
+    );
+  }
 
-      ${data.values?.items ? `
-        <section style="max-width: 1000px; margin: 0 auto 60px;">
-          <h2 style="font-size: 36px; font-weight: 700; margin: 0 0 40px 0; text-align: center;">
-            ${data.values.title || 'Values Title'}
-          </h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-            ${data.values.items.map(value => `
-              <div style="background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 32px;">
-                <h3 style="font-size: 22px; font-weight: 600; margin: 0 0 12px 0; color: #dc2626;">
-                  ${value.title || ''}
-                </h3>
-                <p style="font-size: 15px; color: #9ca3af; line-height: 1.6; margin: 0;">
-                  ${value.description || ''}
-                </p>
-              </div>
-            `).join('')}
-          </div>
-        </section>
-      ` : ''}
+  // Values
+  if (data.values && data.values.items) {
+    sections.push(
+      h('section', {
+        key: 'values',
+        style: {
+          maxWidth: '1000px',
+          margin: '0 auto'
+        }
+      }, [
+        h('h2', {
+          key: 'title',
+          style: {
+            fontSize: '32px',
+            fontWeight: '700',
+            margin: '0 0 32px 0',
+            textAlign: 'center',
+            color: '#fff'
+          }
+        }, data.values.title || 'Our Values'),
+        h('div', {
+          key: 'grid',
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '20px'
+          }
+        }, data.values.items.map((value, idx) =>
+          h('div', {
+            key: idx,
+            style: {
+              background: 'rgba(255,255,255,.06)',
+              border: '1px solid rgba(255,255,255,.12)',
+              borderRadius: '14px',
+              padding: '28px'
+            }
+          }, [
+            h('h3', {
+              key: 'title',
+              style: {
+                fontSize: '20px',
+                fontWeight: '600',
+                margin: '0 0 10px 0',
+                color: '#dc2626'
+              }
+            }, value.title || 'Value'),
+            h('p', {
+              key: 'desc',
+              style: {
+                fontSize: '14px',
+                color: '#9ca3af',
+                lineHeight: '1.6',
+                margin: 0
+              }
+            }, value.description || '')
+          ])
+        ))
+      ])
+    );
+  }
 
-    </div>
-  `;
+  return h('div', {
+    style: {
+      fontFamily: 'Inter, -apple-system, sans-serif',
+      background: '#000',
+      color: '#fff',
+      padding: '40px',
+      minHeight: '100vh'
+    }
+  }, sections);
 };
 
-// Register the templates
+// Register the preview templates
 CMS.registerPreviewTemplate('home', HomePreviewTemplate);
 CMS.registerPreviewTemplate('about', AboutPreviewTemplate);
