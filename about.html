@@ -16,6 +16,11 @@
         <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
       </a>
 
+      <!-- Language switch -->
+      <a class="lang-switch" href="about-sl.html" aria-label="Switch language to Slovenian" title="Slovenian">
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
+      </a>
+
       <nav class="nav" aria-label="Primary navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link is-active" href="about.html">About Us</a>
@@ -25,16 +30,31 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Language switch -->
-        <a class="lang-switch" href="about-sl.html" aria-label="Switch language to Slovenian" title="Slovenian">
-          <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
-        </a>
-
         <a class="btn btn-outline" href="jobs.html">View Positions</a>
         <a class="btn btn-primary" href="apply.html">Join the Team</a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link is-active" href="about.html">About Us</a>
+    <a class="nav-link" href="jobs.html">Careers</a>
+    <a class="nav-link" href="insights.html">Insights</a>
+    <a class="nav-link" href="apply.html">Apply</a>
+
+    <div class="mobile-actions">
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
+    </div>
+  </div>
 
   <main>
     <!-- HERO -->

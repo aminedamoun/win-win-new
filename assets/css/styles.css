@@ -547,16 +547,35 @@ button{font-family:inherit}
   .burger-btn{display:flex}
   .header-actions .btn{display:none}
 
-  .brand-logo{
-    height:40px;
+  .header-row{
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items:center;
+    gap:12px;
+    padding: 14px 0;
   }
 
-  .header-row{
-    padding: 16px 0;
+  .brand{
+    order:2;
+    justify-self:center;
+    grid-column: 2;
+  }
+
+  .brand-logo{
+    height:44px;
   }
 
   .header-actions{
-    gap:6px;
+    order:3;
+    justify-self:end;
+    grid-column: 3;
+    gap:0;
+  }
+
+  .lang-switch{
+    order:1;
+    justify-self:start;
+    grid-column: 1;
   }
 
   .hero{
@@ -697,6 +716,15 @@ button{font-family:inherit}
 
   .burger-btn span{
     width:18px;
+  }
+
+  .mobile-menu{
+    padding:80px 16px 20px;
+  }
+
+  .mobile-menu .nav-link{
+    padding:16px 18px;
+    font-size:16px;
   }
 }
 

@@ -10,6 +10,12 @@
   <header class="header">
     <div class="container header-row">
       <a class="brand" href="index.html"><span class="brand-dot"></span><span data-brand>Win Win</span></a>
+
+      <!-- Language switch -->
+      <a class="lang-switch" data-lang-switch href="article-sl.html" aria-label="Switch language to Slovenian" title="Slovenian">
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
+      </a>
+
       <nav class="nav" data-nav-container>
         <a data-nav href="index.html">Home</a>
         <a data-nav href="about.html">About</a>
@@ -17,12 +23,32 @@
         <a data-nav href="insights.html">Insights</a>
         <a data-nav href="apply.html">Apply</a>
       </nav>
-      <div class="nav-actions">
-        <a class="btn" data-lang-switch href="article-sl.html">SL</a>
+
+      <div class="header-actions">
+        <a class="btn btn-outline" href="jobs.html">View Positions</a>
         <a class="btn btn-primary" href="apply.html">Contact</a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-nav href="index.html">Home</a>
+    <a data-nav href="about.html">About</a>
+    <a data-nav href="jobs.html">Jobs</a>
+    <a data-nav href="insights.html">Insights</a>
+    <a data-nav href="apply.html">Apply</a>
+    <div class="mobile-actions">
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Contact</a>
+    </div>
+  </div>
 
   <main class="section">
     <div class="container">

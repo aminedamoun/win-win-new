@@ -10,6 +10,12 @@
   <header class="header">
     <div class="container header-row">
       <a class="brand" href="index-sl.html"><span class="brand-dot"></span><span data-brand>Win Win</span></a>
+
+      <!-- Language switch -->
+      <a class="lang-switch" data-lang-switch href="article.html" aria-label="Switch language to English" title="English">
+        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+      </a>
+
       <nav class="nav" data-nav-container>
         <a data-nav href="index-sl.html">Domov</a>
         <a data-nav href="about-sl.html">O nas</a>
@@ -17,12 +23,32 @@
         <a data-nav href="insights-sl.html">Vsebina</a>
         <a data-nav href="apply-sl.html">Prijava</a>
       </nav>
-      <div class="nav-actions">
-        <a class="btn" data-lang-switch href="article.html">EN</a>
+
+      <div class="header-actions">
+        <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
         <a class="btn btn-primary" href="apply-sl.html">Kontakt</a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-nav href="index-sl.html">Domov</a>
+    <a data-nav href="about-sl.html">O nas</a>
+    <a data-nav href="jobs-sl.html">Zaposlitve</a>
+    <a data-nav href="insights-sl.html">Vsebina</a>
+    <a data-nav href="apply-sl.html">Prijava</a>
+    <div class="mobile-actions">
+      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply-sl.html">Kontakt</a>
+    </div>
+  </div>
 
   <main class="section">
     <div class="container">
