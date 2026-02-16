@@ -58,6 +58,11 @@
         "icon": "building",
         "title": "B2B Profesionalna Prodaja",
         "description": "Telekomunikacije in napredne IKT storitve, ki podjetjem omogočajo učinkovite in merljive B2B prodajne rešitve, zanesljive korporativne telekomunikacijske sisteme ter celovite profesionalne podporne in svetovalne storitve."
+      },
+      {
+        "icon": "megaphone",
+        "title": "Promocijska Prodaja",
+        "description": "Direktne promocijske aktivnosti na strateških lokacijah z osebnim angažmanom strank ter krepitvijo prepoznavnosti blagovne znamke skozi ciljno usmerjene kampanje na dogodkih, sejmih in v trgovskih centrih."
       }
     ],
     "support": [

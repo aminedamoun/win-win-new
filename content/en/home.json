@@ -46,18 +46,23 @@
     "core": [
       {
         "icon": "shoppingBag",
-        "title": "Promotions in Shopping Centers",
-        "description": "On-site promotional activities and direct customer engagement in high-traffic retail locations across Slovenia."
+        "title": "B2C Field Sales",
+        "description": "On-site promotional activities with direct customer engagement at high-traffic retail locations across Slovenia, supported by pre-prepared territory and targeted promotions in shopping centers, fairs, and other current event locations."
       },
       {
         "icon": "phone",
         "title": "Call Center",
-        "description": "Professional outbound telemarketing with structured scripts, KPI-driven performance, and CRM-based customer management."
+        "description": "Professional outbound telemarketing for generating hot marketing leads, supported by structured sales scripts, KPI-driven performance, and CRM-based customer management."
       },
       {
         "icon": "building",
         "title": "B2B Professional Sales",
-        "description": "Business-to-business sales solutions, corporate telecommunications, and professional service offerings."
+        "description": "Telecommunications and advanced ICT services that enable companies to achieve effective and measurable B2B sales solutions, reliable corporate telecommunications systems, and comprehensive professional support and advisory services."
+      },
+      {
+        "icon": "megaphone",
+        "title": "Promotional Sales",
+        "description": "Direct promotional activities at strategic locations with personal customer engagement and brand awareness building through targeted campaigns at events, fairs, and shopping centers."
       }
     ],
     "support": [
