@@ -1,5 +1,5 @@
-// Preview templates for Netlify CMS using React
-const { h } = window.preactCompat || window.preact || {};
+// Preview templates for Netlify CMS
+const h = window.React.createElement;
 
 const HomePreviewTemplate = ({ entry }) => {
   const data = entry.getIn(['data']).toJS();
