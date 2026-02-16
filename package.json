@@ -1,0 +1,13 @@
+{
+  "name": "win-win-website",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "echo 'Static HTML site - no build needed'",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
