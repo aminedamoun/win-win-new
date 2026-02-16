@@ -234,28 +234,41 @@
             data.hero?.title || 'About Page Title'
           ),
           window.h('p', { style: styles.subtitle },
-            data.hero?.description || 'About description'
+            data.hero?.subtitle || 'About subtitle'
           )
         ),
 
-        // Story
-        data.story && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
-          window.h('h2', { style: Object.assign({}, styles.sectionTitle, { marginBottom: '16px' }) },
-            data.story.title || 'Our Story'
+        // Vision
+        data.vision && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.sectionTitle, { marginBottom: '16px', color: '#dc2626' }) },
+            data.vision.title || 'Our Vision'
           ),
           window.h('p', { style: styles.cardText },
-            data.story.content || 'Story content goes here'
+            data.vision.text || 'Vision text goes here'
+          )
+        ),
+
+        // Mission
+        data.mission && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.sectionTitle, { marginBottom: '16px', color: '#dc2626' }) },
+            data.mission.title || 'Our Mission'
+          ),
+          window.h('p', { style: styles.cardText },
+            data.mission.text || 'Mission text goes here'
           )
         ),
 
         // Values
-        data.values && data.values.items && data.values.items.length > 0 && window.h('div', { style: styles.section },
+        data.values && data.values.length > 0 && window.h('div', { style: styles.section },
           window.h('h2', { style: styles.sectionTitle },
-            data.values.title || 'Our Values'
+            'Core Values'
           ),
           window.h('div', { style: styles.grid },
-            data.values.items.map(function(value, i) {
+            data.values.map(function(value, i) {
               return window.h('div', { key: i, style: styles.card },
+                window.h('div', { style: { fontSize: '32px', marginBottom: '12px' } },
+                  value.icon || '⭐'
+                ),
                 window.h('h3', { style: Object.assign({}, styles.cardTitle, { color: '#dc2626' }) },
                   value.title || 'Value ' + (i + 1)
                 ),
@@ -263,6 +276,276 @@
                   value.description || 'Value description'
                 )
               );
+            })
+          )
+        ),
+
+        // Culture
+        data.culture && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.sectionTitle, { marginBottom: '16px' }) },
+            data.culture.title || 'Company Culture'
+          ),
+          window.h('p', { style: Object.assign({}, styles.cardText, { marginBottom: '20px' }) },
+            data.culture.description || 'Culture description'
+          ),
+          data.culture.highlights && data.culture.highlights.length > 0 && window.h('ul', {
+            style: { listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }
+          },
+            data.culture.highlights.map(function(highlight, i) {
+              return window.h('li', {
+                key: i,
+                style: {
+                  color: '#d1d5db',
+                  fontSize: '14px',
+                  padding: '12px 16px',
+                  background: 'rgba(220, 38, 38, 0.1)',
+                  borderRadius: '8px',
+                  borderLeft: '3px solid #dc2626'
+                }
+              }, '✓ ' + highlight);
+            })
+          )
+        ),
+
+        // Statistics
+        data.stats && data.stats.length > 0 && window.h('div', { style: styles.section },
+          window.h('h2', { style: styles.sectionTitle },
+            'Our Impact'
+          ),
+          window.h('div', { style: styles.grid },
+            data.stats.map(function(stat, i) {
+              return window.h('div', {
+                key: i,
+                style: Object.assign({}, styles.card, { textAlign: 'center' })
+              },
+                window.h('div', {
+                  style: {
+                    fontSize: '48px',
+                    fontWeight: '700',
+                    color: '#dc2626',
+                    marginBottom: '8px'
+                  }
+                }, stat.number || '0'),
+                window.h('div', { style: { color: '#9ca3af', fontSize: '14px' } },
+                  stat.label || 'Metric'
+                )
+              );
+            })
+          )
+        )
+      );
+    }
+  });
+
+  const JobPreviewTemplate = window.createClass({
+    render: function() {
+      const entry = this.props.entry;
+      const data = entry.toJS().data;
+      const styles = createPreviewStyles();
+      const enData = data.en || {};
+      const slData = data.sl || {};
+
+      return window.h('div', { style: styles.container },
+        // Banner
+        window.h('div', { style: styles.banner },
+          '✓ LIVE PREVIEW - See your changes instantly'
+        ),
+
+        // Job Header - English
+        window.h('div', { style: Object.assign({}, styles.hero, { marginBottom: '40px' }) },
+          window.h('div', {
+            style: {
+              display: 'inline-block',
+              background: '#dc2626',
+              color: 'white',
+              padding: '4px 12px',
+              borderRadius: '6px',
+              fontSize: '12px',
+              fontWeight: '600',
+              marginBottom: '16px'
+            }
+          }, 'ENGLISH VERSION'),
+          window.h('h1', { style: Object.assign({}, styles.title, { marginBottom: '12px' }) },
+            enData.title || 'Job Title (EN)'
+          ),
+          window.h('div', {
+            style: {
+              display: 'flex',
+              gap: '16px',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              fontSize: '14px',
+              color: '#9ca3af',
+              marginBottom: '16px'
+            }
+          },
+            window.h('span', null, '📍 ' + (enData.location || 'Location')),
+            window.h('span', null, '💼 ' + (enData.type || 'Full-time')),
+            enData.department && window.h('span', null, '🏢 ' + enData.department),
+            enData.salary && window.h('span', null, '💰 ' + enData.salary)
+          ),
+          window.h('p', { style: styles.subtitle },
+            enData.description || 'Job description goes here'
+          )
+        ),
+
+        // Responsibilities - English
+        enData.responsibilities && enData.responsibilities.length > 0 && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.cardTitle, { fontSize: '24px', marginBottom: '16px', color: '#dc2626' }) },
+            'Responsibilities'
+          ),
+          window.h('ul', { style: { listStyle: 'none', padding: 0, display: 'grid', gap: '8px' } },
+            enData.responsibilities.map(function(resp, i) {
+              return window.h('li', {
+                key: i,
+                style: { color: '#d1d5db', fontSize: '14px', paddingLeft: '20px', position: 'relative' }
+              }, [
+                window.h('span', { key: 'bullet', style: { position: 'absolute', left: 0, color: '#dc2626' } }, '▸'),
+                resp
+              ]);
+            })
+          )
+        ),
+
+        // Requirements - English
+        enData.requirements && enData.requirements.length > 0 && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.cardTitle, { fontSize: '24px', marginBottom: '16px', color: '#dc2626' }) },
+            'Requirements'
+          ),
+          window.h('ul', { style: { listStyle: 'none', padding: 0, display: 'grid', gap: '8px' } },
+            enData.requirements.map(function(req, i) {
+              return window.h('li', {
+                key: i,
+                style: { color: '#d1d5db', fontSize: '14px', paddingLeft: '20px', position: 'relative' }
+              }, [
+                window.h('span', { key: 'bullet', style: { position: 'absolute', left: 0, color: '#dc2626' } }, '▸'),
+                req
+              ]);
+            })
+          )
+        ),
+
+        // Benefits - English
+        enData.benefits && enData.benefits.length > 0 && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.cardTitle, { fontSize: '24px', marginBottom: '16px', color: '#dc2626' }) },
+            'Benefits'
+          ),
+          window.h('div', { style: styles.grid },
+            enData.benefits.map(function(benefit, i) {
+              return window.h('div', {
+                key: i,
+                style: {
+                  padding: '12px 16px',
+                  background: 'rgba(220, 38, 38, 0.1)',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  color: '#d1d5db'
+                }
+              }, '✓ ' + benefit);
+            })
+          )
+        ),
+
+        // Divider
+        window.h('div', {
+          style: {
+            borderTop: '2px solid rgba(255,255,255,.12)',
+            margin: '60px auto',
+            maxWidth: '1000px'
+          }
+        }),
+
+        // Job Header - Slovenian
+        window.h('div', { style: Object.assign({}, styles.hero, { marginBottom: '40px' }) },
+          window.h('div', {
+            style: {
+              display: 'inline-block',
+              background: '#dc2626',
+              color: 'white',
+              padding: '4px 12px',
+              borderRadius: '6px',
+              fontSize: '12px',
+              fontWeight: '600',
+              marginBottom: '16px'
+            }
+          }, 'SLOVENSKA RAZLIČICA'),
+          window.h('h1', { style: Object.assign({}, styles.title, { marginBottom: '12px' }) },
+            slData.title || 'Naslov delovnega mesta (SL)'
+          ),
+          window.h('div', {
+            style: {
+              display: 'flex',
+              gap: '16px',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              fontSize: '14px',
+              color: '#9ca3af',
+              marginBottom: '16px'
+            }
+          },
+            window.h('span', null, '📍 ' + (slData.location || 'Lokacija')),
+            window.h('span', null, '💼 ' + (slData.type || 'Polni delovni čas')),
+            slData.department && window.h('span', null, '🏢 ' + slData.department),
+            slData.salary && window.h('span', null, '💰 ' + slData.salary)
+          ),
+          window.h('p', { style: styles.subtitle },
+            slData.description || 'Opis delovnega mesta'
+          )
+        ),
+
+        // Responsibilities - Slovenian
+        slData.responsibilities && slData.responsibilities.length > 0 && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.cardTitle, { fontSize: '24px', marginBottom: '16px', color: '#dc2626' }) },
+            'Odgovornosti'
+          ),
+          window.h('ul', { style: { listStyle: 'none', padding: 0, display: 'grid', gap: '8px' } },
+            slData.responsibilities.map(function(resp, i) {
+              return window.h('li', {
+                key: i,
+                style: { color: '#d1d5db', fontSize: '14px', paddingLeft: '20px', position: 'relative' }
+              }, [
+                window.h('span', { key: 'bullet', style: { position: 'absolute', left: 0, color: '#dc2626' } }, '▸'),
+                resp
+              ]);
+            })
+          )
+        ),
+
+        // Requirements - Slovenian
+        slData.requirements && slData.requirements.length > 0 && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.cardTitle, { fontSize: '24px', marginBottom: '16px', color: '#dc2626' }) },
+            'Zahteve'
+          ),
+          window.h('ul', { style: { listStyle: 'none', padding: 0, display: 'grid', gap: '8px' } },
+            slData.requirements.map(function(req, i) {
+              return window.h('li', {
+                key: i,
+                style: { color: '#d1d5db', fontSize: '14px', paddingLeft: '20px', position: 'relative' }
+              }, [
+                window.h('span', { key: 'bullet', style: { position: 'absolute', left: 0, color: '#dc2626' } }, '▸'),
+                req
+              ]);
+            })
+          )
+        ),
+
+        // Benefits - Slovenian
+        slData.benefits && slData.benefits.length > 0 && window.h('div', { style: Object.assign({}, styles.section, styles.card) },
+          window.h('h2', { style: Object.assign({}, styles.cardTitle, { fontSize: '24px', marginBottom: '16px', color: '#dc2626' }) },
+            'Ugodnosti'
+          ),
+          window.h('div', { style: styles.grid },
+            slData.benefits.map(function(benefit, i) {
+              return window.h('div', {
+                key: i,
+                style: {
+                  padding: '12px 16px',
+                  background: 'rgba(220, 38, 38, 0.1)',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  color: '#d1d5db'
+                }
+              }, '✓ ' + benefit);
             })
           )
         )
@@ -274,5 +557,6 @@
   if (window.CMS) {
     window.CMS.registerPreviewTemplate('home', HomePreviewTemplate);
     window.CMS.registerPreviewTemplate('about', AboutPreviewTemplate);
+    window.CMS.registerPreviewTemplate('jobs', JobPreviewTemplate);
   }
 })();
