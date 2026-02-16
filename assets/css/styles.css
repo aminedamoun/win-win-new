@@ -196,30 +196,24 @@ button{font-family:inherit}
 /* Hero */
 .hero{
   position:relative;
-  min-height: 100vh;
-  background: #000000;
+  min-height: 85vh;
+  background: linear-gradient(135deg,
+    #000000 0%,
+    #0d0d0d 25%,
+    #1a0808 50%,
+    #0d0d0d 75%,
+    #000000 100%
+  );
   overflow: hidden;
-  display: flex;
 }
 
-/* Mobile: traditional full background layout */
-@media (max-width: 1023px) {
-  .hero {
-    min-height: 85vh;
-    background: linear-gradient(135deg,
-      #000000 0%,
-      #0d0d0d 25%,
-      #1a0808 50%,
-      #0d0d0d 75%,
-      #000000 100%
-    );
-  }
-}
-
-/* Desktop: 2-column split layout */
+/* Desktop: 2-column layout */
 @media (min-width: 1024px) {
   .hero {
+    min-height: 100vh;
+    display: flex;
     flex-direction: row;
+    background: #000000;
   }
 }
 
@@ -230,11 +224,13 @@ button{font-family:inherit}
   display: block;
 }
 
-/* Desktop: image only on left 55% */
+/* Desktop: convert to static positioned left column */
 @media (min-width: 1024px) {
   .hero-bg {
+    position: relative;
     width: 55%;
-    right: auto;
+    flex-shrink: 0;
+    inset: auto;
   }
 }
 
@@ -245,98 +241,62 @@ button{font-family:inherit}
   position: absolute;
   inset: 0;
 }
+
 .hero-img-mobile{
   display: none !important;
 }
 .hero-img-desktop{
   display: block !important;
 }
+
 .hero-overlay{
   position: absolute;
   inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
   z-index: 1;
   display: block;
 }
 
-/* Mobile: gradient overlay on full background */
-@media (max-width: 1023px) {
-  .hero-overlay {
-    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
-  }
-}
-
-/* Desktop: dark overlay on left 55% image + solid dark on right 45% */
+/* Desktop: darker overlay on image only */
 @media (min-width: 1024px) {
   .hero-overlay {
-    background: none;
-  }
-  .hero-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 55%;
-    height: 100%;
     background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.85) 100%);
-    z-index: 1;
-  }
-  .hero-overlay::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 1;
   }
 }
 
 .hero-inner{
   position:relative;
   z-index: 2;
-  width: 100%;
+  min-height: 85vh;
   display:flex;
   align-items:center;
+  justify-content:flex-end;
+  padding: 60px 24px;
 }
 
-/* Mobile: content aligned right */
-@media (max-width: 1023px) {
-  .hero-inner {
-    min-height: 85vh;
-    justify-content: flex-end;
-    padding: 60px 24px;
-  }
-}
-
-/* Desktop: content takes right 45%, aligned left within */
+/* Desktop: content section is now its own column */
 @media (min-width: 1024px) {
   .hero-inner {
+    position: relative;
+    width: 45%;
+    flex-shrink: 0;
     min-height: 100vh;
-    justify-content: flex-end;
-    padding: 0;
+    padding: 64px;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: flex-start;
   }
 }
 
 .hero-right{
   width: 100%;
-  background: transparent;
+  max-width: 740px;
+  text-align: right;
 }
 
-/* Mobile: max-width and right-aligned */
-@media (max-width: 1023px) {
-  .hero-right {
-    max-width: 740px;
-    text-align: right;
-  }
-}
-
-/* Desktop: takes 45% width, content left-aligned with padding */
+/* Desktop: left-aligned content */
 @media (min-width: 1024px) {
   .hero-right {
-    width: 45%;
     max-width: none;
-    padding: 64px;
     text-align: left;
     display: flex;
     align-items: center;
@@ -368,14 +328,15 @@ button{font-family:inherit}
     font-size: 64px;
     line-height: 1.05;
     font-weight: 800;
-    margin: 0;
+    margin: 0 0 24px 0;
   }
 }
 
 .hero-accent{
-  color: var(--red-500);
+  color: #E53935;
   display: block;
 }
+
 .hero-desc{
   color: rgba(255,255,255,0.85);
   font-size: 16px;
@@ -399,13 +360,7 @@ button{font-family:inherit}
   gap:16px;
   align-items: center;
   margin-top: 32px;
-}
-
-/* Mobile: buttons aligned right */
-@media (max-width: 1023px) {
-  .hero-actions {
-    justify-content: flex-end;
-  }
+  justify-content: flex-end;
 }
 
 /* Desktop: buttons aligned left */
