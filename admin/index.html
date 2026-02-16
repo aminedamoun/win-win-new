@@ -1,4 +1,3 @@
-<!-- admin/index.html -->
 <!doctype html>
 <html>
   <head>
@@ -7,14 +6,20 @@
     <title>Content Manager</title>
   </head>
   <body>
+    <!-- Netlify Identity widget (required for invite/recovery) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
     <script>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("login", () => {
-          // Use /admin/ (folder) so Netlify serves index.html with the rewrite above.
-          window.location.assign("/admin/");
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
         });
       }
     </script>

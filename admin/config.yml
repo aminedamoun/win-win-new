@@ -1,6 +1,3 @@
-# admin/config.yml
-# NOTE: This file must contain ONLY YAML. Do not paste HTML/JSON into it.
-
 backend:
   name: git-gateway
   branch: main
@@ -41,20 +38,19 @@ collections:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "Href", name: "href", widget: "string" }
 
-          # ... keep the rest of your EN fields as-is ...
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
 
-  - name: "home_sl"
-    label: "Homepage (SL)"
-    format: "json"
-    editor:
-      preview: false
-    files:
-      - file: "content/sl/home.json"
-        label: "Home"
-        name: "home"
-        fields:
-          # IMPORTANT: keep SAME field names as your JSON uses.
-          # Your SL config had iconKey, but your JSON uses "icon".
           - label: "Services"
             name: "services"
             widget: "object"
@@ -68,6 +64,7 @@ collections:
                   - { label: "Core label", name: "core", widget: "string" }
                   - { label: "Support label", name: "support", widget: "string" }
                   - { label: "Market label", name: "market", widget: "string" }
+
               - label: "Core cards"
                 name: "core"
                 widget: "list"
@@ -75,6 +72,7 @@ collections:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
+
               - label: "Support cards"
                 name: "support"
                 widget: "list"
@@ -82,6 +80,7 @@ collections:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
+
               - label: "Market cards"
                 name: "market"
                 widget: "list"
@@ -90,4 +89,174 @@ collections:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
 
-          # ... keep the rest of SL fields, but make sure names match JSON (button vs buttonLabel etc) ...
+          - label: "Benefits"
+            name: "benefits"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Join"
+            name: "join"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button 1"
+                name: "btn1"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "Button 2"
+                name: "btn2"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button 1"
+                name: "btn1"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "Button 2"
+                name: "btn2"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+
+          - label: "Process"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Step", name: "step", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+
+          - label: "App"
+            name: "app"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Button label", name: "buttonLabel", widget: "string", required: false }
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Title (HTML)", name: "titleHtml", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Still text", name: "still", widget: "string" }
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "q", widget: "string" }
+                  - { label: "Answer", name: "a", widget: "text" }
+
+          - label: "Blog"
+            name: "blog"
+            widget: "object"
+            fields:
+              - { label: "Empty text", name: "empty", widget: "string", required: false }
+
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Summary title", name: "summaryTitle", widget: "string" }
+              - { label: "HTML", name: "html", widget: "text", required: false }
+
+  - name: "home_sl"
+    label: "Homepage (SL)"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - file: "content/sl/home.json"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Hero", name: "hero", widget: "object", fields: [
+              { label: "Title base", name: "titleBase", widget: "string" },
+              { label: "Title emphasis", name: "titleEmphasis", widget: "string" },
+              { label: "Subtitle", name: "subtitle", widget: "string", required: false },
+              { label: "Description", name: "description", widget: "text" },
+              { label: "Primary CTA", name: "primaryCta", widget: "object", fields: [
+                { label: "Label", name: "label", widget: "string" },
+                { label: "Href", name: "href", widget: "string" }
+              ]},
+              { label: "Secondary CTA", name: "secondaryCta", widget: "object", fields: [
+                { label: "Label", name: "label", widget: "string" },
+                { label: "Href", name: "href", widget: "string" }
+              ]}
+            ]}
+
+          - { label: "About", name: "about", widget: "object", fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Description", name: "description", widget: "text" },
+              { label: "Stats", name: "stats", widget: "list", fields: [
+                { label: "Value", name: "value", widget: "string" },
+                { label: "Label", name: "label", widget: "string" }
+              ]}
+            ]}
+
+          - { label: "Services", name: "services", widget: "object", fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Description", name: "description", widget: "text" },
+              { label: "Blocks labels", name: "blocks", widget: "object", fields: [
+                { label: "Core", name: "core", widget: "string" },
+                { label: "Support", name: "support", widget: "string" },
+                { label: "Market", name: "market", widget: "string" }
+              ]},
+              { label: "Core", name: "core", widget: "list", fields: [
+                { label: "Icon key", name: "iconKey", widget: "string" },
+                { label: "Title", name: "title", widget: "string" },
+                { label: "Description", name: "description", widget: "text" }
+              ]},
+              { label: "Support", name: "support", widget: "list", fields: [
+                { label: "Icon key", name: "iconKey", widget: "string" },
+                { label: "Title", name: "title", widget: "string" },
+                { label: "Description", name: "description", widget: "text" }
+              ]},
+              { label: "Market", name: "market", widget: "list", fields: [
+                { label: "Icon key", name: "iconKey", widget: "string" },
+                { label: "Title", name: "title", widget: "string" },
+                { label: "Description", name: "description", widget: "text" }
+              ]}
+            ]}
