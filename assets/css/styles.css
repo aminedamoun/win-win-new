@@ -132,10 +132,10 @@ button{font-family:inherit}
   background: rgba(239,68,68,.12);
   border-color: rgba(239,68,68,.7);
 }
-.btn-lg{padding: 16px 32px; border-radius: 12px; font-weight:600; font-size: 17px}
+.btn-lg{padding: 12px 24px; border-radius: 10px; font-weight:600; font-size: 15px}
 .hero-actions .btn{
-  width: 100%;
-  max-width: 520px;
+  width: auto;
+  max-width: 280px;
   justify-content: center;
 }
 
@@ -259,8 +259,8 @@ button{font-family:inherit}
 }
 .hero-desc{
   color: rgba(255,255,255,.92);
-  font-size: clamp(18px, 1.4vw, 22px);
-  line-height: 1.65;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.7;
   margin: 0 0 40px 0;
   max-width: 100%;
 }
