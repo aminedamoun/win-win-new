@@ -145,8 +145,84 @@ function qp(name) {
   return url.searchParams.get(name);
 }
 
+async function loadJobsFromCMS() {
+  try {
+    // Load the jobs index
+    const indexResponse = await fetch('/content/jobs-index.json');
+    if (!indexResponse.ok) {
+      throw new Error('Failed to fetch jobs index');
+    }
+
+    const index = await indexResponse.json();
+    const jobSlugs = index.jobs || [];
+
+    const jobs = [];
+    for (const slug of jobSlugs) {
+      try {
+        const jobResponse = await fetch(`/content/jobs/${slug}.json`);
+        if (jobResponse.ok) {
+          const jobData = await jobResponse.json();
+          if (jobData.published) {
+            jobs.push({
+              ...jobData,
+              slug
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Error loading job file:', slug, err);
+      }
+    }
+
+    return jobs;
+  } catch (error) {
+    console.error('Error loading jobs from CMS:', error);
+    return [];
+  }
+}
+
 async function loadJobsFromDatabase() {
   try {
+    // Try loading from CMS files first
+    const cmsJobs = await loadJobsFromCMS();
+
+    // If CMS has jobs, use them
+    if (cmsJobs && cmsJobs.length > 0) {
+      JOBS = cmsJobs.map(job => {
+        const slug = job.slug || job.title.toLowerCase().replace(/\s+/g, '-');
+
+        // Format responsibilities and requirements as HTML list items
+        const responsibilitiesHtml = job.responsibilities
+          ? `<ul>${job.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>`
+          : '';
+        const requirementsHtml = job.requirements
+          ? `<ul>${job.requirements.map(r => `<li>${r}</li>`).join('')}</ul>`
+          : '';
+
+        const bodyHtml = `
+          <p>${job.description}</p>
+          ${responsibilitiesHtml ? '<h3>Responsibilities</h3>' + responsibilitiesHtml : ''}
+          ${requirementsHtml ? '<h3>Requirements</h3>' + requirementsHtml : ''}
+        `;
+
+        return {
+          id: slug,
+          title: { en: job.title, sl: job.title },
+          location: { en: job.location, sl: job.location },
+          type: { en: job.type, sl: job.type },
+          salary: { en: job.salary || 'Competitive', sl: job.salary || 'Konkurenčna plača' },
+          summary: { en: job.description, sl: job.description },
+          bodyHtml: { en: bodyHtml, sl: bodyHtml },
+          requirements: { en: job.requirements || [], sl: job.requirements || [] },
+          responsibilities: { en: job.responsibilities || [], sl: job.responsibilities || [] },
+          benefits: { en: job.benefits || [], sl: job.benefits || [] }
+        };
+      });
+
+      return JOBS;
+    }
+
+    // Fallback to database
     const dbJobs = await getAllJobs();
 
     JOBS = dbJobs.map(job => ({
