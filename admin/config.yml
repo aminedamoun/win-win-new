@@ -15,73 +15,377 @@ collections:
       preview: false
     files:
       - file: "content/en/home.json"
-        label: "Home"
+        label: "Home Content"
         name: "home"
         fields:
-          - label: "Hero"
+          - label: "Hero Section"
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Title line 1", name: "titleLine1", widget: "string" }
-              - { label: "Title line 2", name: "titleLine2", widget: "string" }
+              - { label: "Title Line 1", name: "titleLine1", widget: "string" }
+              - { label: "Title Line 2", name: "titleLine2", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - label: "Primary CTA"
                 name: "primaryCta"
                 widget: "object"
                 fields:
                   - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Href", name: "href", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
               - label: "Secondary CTA"
                 name: "secondaryCta"
                 widget: "object"
                 fields:
                   - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Href", name: "href", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
 
-          - label: "About"
+          - label: "About Section"
             name: "about"
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - label: "Stats"
+              - label: "Statistics"
                 name: "stats"
                 widget: "list"
                 fields:
                   - { label: "Value", name: "value", widget: "string" }
                   - { label: "Label", name: "label", widget: "string" }
 
-          - label: "Services"
+          - label: "Services Section"
             name: "services"
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - label: "Blocks"
+              - label: "Block Titles"
                 name: "blocks"
                 widget: "object"
                 fields:
-                  - { label: "Core", name: "core", widget: "string" }
-                  - { label: "Support", name: "support", widget: "string" }
-                  - { label: "Market", name: "market", widget: "string" }
-              - label: "Core cards"
+                  - { label: "Core Services Label", name: "core", widget: "string" }
+                  - { label: "Support Services Label", name: "support", widget: "string" }
+                  - { label: "Market Focus Label", name: "market", widget: "string" }
+              - label: "Core Services"
+                name: "core"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., shoppingBag, phone)" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Support Services"
+                name: "support"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., graduationCap, users)" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Market Focus"
+                name: "market"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., userCheck, briefcase)" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Benefits Section"
+            name: "benefits"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Benefits Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Join Section"
+            name: "join"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button 1"
+                name: "btn1"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Button 2"
+                name: "btn2"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+
+          - label: "CTA Section"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button 1"
+                name: "btn1"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Button 2"
+                name: "btn2"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+
+          - label: "Process Section"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Process Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Step Number", name: "step", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+
+          - label: "App Section"
+            name: "app"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+
+          - label: "FAQ Section"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Title HTML", name: "titleHtml", widget: "string", hint: "Can include HTML like <span>" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Still Have Questions Text", name: "still", widget: "string" }
+              - label: "Contact Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "FAQ Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "q", widget: "string" }
+                  - { label: "Answer", name: "a", widget: "text" }
+
+          - label: "Blog Section"
+            name: "blog"
+            widget: "object"
+            fields:
+              - { label: "Empty State Text", name: "empty", widget: "string" }
+
+          - label: "SEO Section"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Summary Title", name: "summaryTitle", widget: "string" }
+              - { label: "HTML Content", name: "html", widget: "text", hint: "Can include HTML paragraphs" }
+
+  - name: "home_sl"
+    label: "Homepage (SL)"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - file: "content/sl/home.json"
+        label: "Home Content (Slovenian)"
+        name: "home"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title Line 1", name: "titleLine1", widget: "string" }
+              - { label: "Title Line 2", name: "titleLine2", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Primary CTA"
+                name: "primaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Secondary CTA"
+                name: "secondaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Statistics"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Services Section"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Block Titles"
+                name: "blocks"
+                widget: "object"
+                fields:
+                  - { label: "Core Services Label", name: "core", widget: "string" }
+                  - { label: "Support Services Label", name: "support", widget: "string" }
+                  - { label: "Market Focus Label", name: "market", widget: "string" }
+              - label: "Core Services"
                 name: "core"
                 widget: "list"
                 fields:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
-              - label: "Support cards"
+              - label: "Support Services"
                 name: "support"
                 widget: "list"
                 fields:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
-              - label: "Market cards"
+              - label: "Market Focus"
                 name: "market"
                 widget: "list"
                 fields:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Benefits Section"
+            name: "benefits"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Benefits Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Join Section"
+            name: "join"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button 1"
+                name: "btn1"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Button 2"
+                name: "btn2"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+
+          - label: "CTA Section"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button 1"
+                name: "btn1"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Button 2"
+                name: "btn2"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+
+          - label: "Process Section"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Process Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Step Number", name: "step", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+
+          - label: "App Section"
+            name: "app"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+
+          - label: "FAQ Section"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Title HTML", name: "titleHtml", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Still Have Questions Text", name: "still", widget: "string" }
+              - label: "Contact Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "FAQ Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "q", widget: "string" }
+                  - { label: "Answer", name: "a", widget: "text" }
+
+          - label: "Blog Section"
+            name: "blog"
+            widget: "object"
+            fields:
+              - { label: "Empty State Text", name: "empty", widget: "string" }
+
+          - label: "SEO Section"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Summary Title", name: "summaryTitle", widget: "string" }
+              - { label: "HTML Content", name: "html", widget: "text" }
