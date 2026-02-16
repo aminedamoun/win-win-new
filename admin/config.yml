@@ -12,7 +12,7 @@ collections:
     label: "Homepage (EN)"
     format: "json"
     editor:
-      preview: false
+      preview: true
     files:
       - file: "content/en/home.json"
         label: "Home Content"
@@ -203,7 +203,7 @@ collections:
     label: "Homepage (SL)"
     format: "json"
     editor:
-      preview: false
+      preview: true
     files:
       - file: "content/sl/home.json"
         label: "Home Content (Slovenian)"
@@ -394,7 +394,7 @@ collections:
     label: "About Page (EN)"
     format: "json"
     editor:
-      preview: false
+      preview: true
     files:
       - file: "content/en/about.json"
         label: "About Content"
@@ -462,7 +462,7 @@ collections:
     label: "About Page (SL)"
     format: "json"
     editor:
-      preview: false
+      preview: true
     files:
       - file: "content/sl/about.json"
         label: "About Content (Slovenian)"
