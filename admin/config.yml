@@ -534,6 +534,7 @@ collections:
     format: "json"
     editor:
       preview: false
+    summary: "{{en.title}} / {{sl.title}}"
     fields:
       - label: "English Content"
         name: "en"
