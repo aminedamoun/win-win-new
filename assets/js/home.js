@@ -125,18 +125,8 @@ function fillText(d) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  if ($("heroTitle")) $("heroTitle").textContent = d.hero?.titleLine1 || "";
-  if ($("heroSubtitle")) $("heroSubtitle").textContent = d.hero?.titleLine2 || "";
-  if ($("heroAccent")) $("heroAccent").textContent = "";
+  // Hero title is now hardcoded in HTML
   if ($("heroDescription")) $("heroDescription").textContent = d.hero?.description || "";
-
-  const heroBtn1 = $("heroBtn1");
-  if (heroBtn1 && d.hero?.primaryCta?.label) heroBtn1.childNodes[0].textContent = d.hero.primaryCta.label + " ";
-  if (heroBtn1 && d.hero?.primaryCta?.href) heroBtn1.setAttribute("href", d.hero.primaryCta.href);
-
-  const heroBtn2 = $("heroBtn2");
-  if (heroBtn2 && d.hero?.secondaryCta?.label) heroBtn2.textContent = d.hero.secondaryCta.label;
-  if (heroBtn2 && d.hero?.secondaryCta?.href) heroBtn2.setAttribute("href", d.hero.secondaryCta.href);
 
   if ($("aboutTitle")) $("aboutTitle").textContent = d.about?.title || "";
   if ($("aboutDescription")) $("aboutDescription").textContent = d.about?.description || "";

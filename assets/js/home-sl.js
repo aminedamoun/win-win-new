@@ -144,18 +144,8 @@ function fillText(d) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // ✅ HERO
-  if ($("heroTitle")) $("heroTitle").textContent = d.hero?.titleLine1 || "";
-  if ($("heroSubtitle")) $("heroSubtitle").textContent = d.hero?.titleLine2 || "";
-  if ($("heroAccent")) $("heroAccent").textContent = "";
+  // ✅ HERO (title is now hardcoded in HTML)
   if ($("heroDescription")) $("heroDescription").textContent = d.hero?.description || "";
-
-  setLink($("heroBtn1"), d.hero?.primaryCta?.label, d.hero?.primaryCta?.href, true);
-  // heroBtn2 may not have arrow span, so normal
-  if ($("heroBtn2")) {
-    $("heroBtn2").textContent = d.hero?.secondaryCta?.label || "";
-    if (d.hero?.secondaryCta?.href) $("heroBtn2").setAttribute("href", d.hero.secondaryCta.href);
-  }
 
   // ✅ ABOUT
   if ($("aboutTitle")) $("aboutTitle").textContent = d.about?.title || "";
