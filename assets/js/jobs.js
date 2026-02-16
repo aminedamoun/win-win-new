@@ -4,14 +4,18 @@
  *   1) Jobs list page (jobs.html / jobs-sl.html)  -> renders cards into #jobsGrid
  *   2) Job detail page (job.html / job-sl.html)   -> renderJobDetail()
  *
- * NO API REQUIRED. Jobs are defined below in JOBS[].
+ * Loads jobs from Supabase database
  */
 
+import { getAllJobs, getJobBySlug } from './jobs-db.js';
+
 /* =========================
-   DATA (edit these jobs)
+   DATA (loaded from database)
 ========================= */
 
-const JOBS = [
+let JOBS = [];
+
+const OLD_JOBS = [
   {
     id: "field-sales-advisor",
     title: { en: "Field Sales Advisor (B2C)", sl: "Terenski prodajni svetovalec (B2C)" },
@@ -141,6 +145,57 @@ function qp(name) {
   return url.searchParams.get(name);
 }
 
+async function loadJobsFromDatabase() {
+  try {
+    const dbJobs = await getAllJobs();
+
+    JOBS = dbJobs.map(job => ({
+      id: job.slug,
+      title: {
+        en: job.title_en,
+        sl: job.title_sl
+      },
+      location: {
+        en: job.location_en,
+        sl: job.location_sl
+      },
+      type: {
+        en: job.type_en,
+        sl: job.type_sl
+      },
+      salary: {
+        en: job.salary_en,
+        sl: job.salary_sl
+      },
+      summary: {
+        en: job.summary_en,
+        sl: job.summary_sl
+      },
+      bodyHtml: {
+        en: job.description_en,
+        sl: job.description_sl
+      },
+      requirements: {
+        en: job.requirements_en || [],
+        sl: job.requirements_sl || []
+      },
+      responsibilities: {
+        en: job.responsibilities_en || [],
+        sl: job.responsibilities_sl || []
+      },
+      benefits: {
+        en: job.benefits_en || [],
+        sl: job.benefits_sl || []
+      }
+    }));
+
+    return JOBS;
+  } catch (error) {
+    console.error('Error loading jobs from database:', error);
+    return [];
+  }
+}
+
 function setupScrollReveal() {
   const nodes = Array.from(document.querySelectorAll("[data-animate]"));
   if (!nodes.length || !("IntersectionObserver" in window)) return;
@@ -231,13 +286,14 @@ function jobCardHtml(job, lang) {
   `;
 }
 
-function renderJobsList() {
+async function renderJobsList() {
   const jobsGrid = $("jobsGrid");
-  if (!jobsGrid) return false; // not on list page
+  if (!jobsGrid) return false;
+
+  await loadJobsFromDatabase();
 
   const lang = getLang();
 
-  // year in footer (safe)
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -304,6 +360,8 @@ function renderJobsList() {
 ========================= */
 
 export async function renderJobDetail({ applyPageHref } = {}) {
+  await loadJobsFromDatabase();
+
   const lang = getLang();
 
   const id = qp("id") || qp("job") || qp("slug");
@@ -368,6 +426,6 @@ export async function renderJobDetail({ applyPageHref } = {}) {
    AUTO RUN
 ========================= */
 
-// If we're on jobs.html / jobs-sl.html, render list.
-// If we're on job.html / job-sl.html and the page imported renderJobDetail(), it will run there.
-renderJobsList();
+(async function() {
+  await renderJobsList();
+})();
