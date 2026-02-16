@@ -14,32 +14,32 @@
   "values": {
     "title": "Naše temeljne vrednote",
     "description": "Ti principi vodijo vse, kar počnemo, in določajo, kdo smo kot podjetje",
-    "items": [
-      {
+    "items": {
+      "integrity": {
         "title": "Integriteta in poštenost",
         "description": "Gradimo zaupanje skozi transparentno komunikacijo in etične poslovne prakse"
       },
-      {
+      "reliability": {
         "title": "Zanesljivost",
         "description": "Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez"
       },
-      {
+      "communication": {
         "title": "Profesionalna komunikacija",
         "description": "Jasna, spoštljiva in učinkovita komunikacija v vsaki interakciji"
       },
-      {
+      "performance": {
         "title": "Uspešnost in rast",
         "description": "Nenehno izboljševanje in merljivi rezultati poganjajo naš uspeh"
       },
-      {
+      "support": {
         "title": "Ekipna podpora",
         "description": "Skupaj uspemo skozi sodelovanje in medsebojno podporo"
       },
-      {
+      "excellence": {
         "title": "Odličnost",
         "description": "Stremimo k najvišjim standardom v vsem, kar počnemo"
       }
-    ]
+    }
   },
   "culture": {
     "title": "Podjetniška kultura",
@@ -65,31 +65,5 @@
     "fieldText": "Teren",
     "callCenterText": "Klicni center",
     "locationsText": "Trzin, Kranj in teren"
-  },
-  "faq": [
-    {
-      "question": "Kaj naredi Win Win drugačen od drugih prodajnih agencij?",
-      "answer": "Združujemo jasno strukturo, pošteno komunikacijo, močno coaching kulturo, dolgoročne karierne priložnosti in rezultatno usmerjeno, a podporno okolje. Pri Win Win uspeh ni sreča — je sistem."
-    },
-    {
-      "question": "Ali zagotavljate usposabljanje za začetnike v prodaji?",
-      "answer": "Da! Zagotavljamo celovito uvajanje, vključno z znanjem o produktih, prodajnimi skriptami, CRM usposabljanjem in kontinuiranim coachingom. Mnogi naši najboljši prodajalci so začeli brez predhodnih izkušenj v prodaji."
-    },
-    {
-      "question": "Kakšno podporo ponujate?",
-      "answer": "Zagotavljamo CRM orodja, dokazane skripte, back-office podporo, redne coaching seje, sledenje uspešnosti in podporno ekipno okolje. Nikoli niste sami na svoji prodajni poti."
-    },
-    {
-      "question": "Kako je strukturirano nadomestilo?",
-      "answer": "Naši modeli nadomestil se razlikujejo glede na vlogo, vendar vedno vključujejo zaslužek na podlagi uspešnosti. Ponujamo konkurenčne osnovne plače ali urne postavke plus privlačne provizijske strukture z neomejenim potencialom zaslužka."
-    },
-    {
-      "question": "Kakšne možnosti karierne rasti obstajajo?",
-      "answer": "Najboljši lahko napredujejo v višje prodajne vloge, vodstvene pozicije ali specializirano B2B svetovanje. Napredujemo od znotraj in nagrajujemo dosledno odličnost."
-    },
-    {
-      "question": "Ali delate z B2C in B2B strankami?",
-      "answer": "Da, delujemo na več kanalih: terenska prodaja (B2C), klicni center (B2C) in poslovno svetovanje (B2B). Ta raznolikost ponuja različne karierne poti za različne veščine in preference."
-    }
-  ]
+  }
 }

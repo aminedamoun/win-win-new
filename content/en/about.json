@@ -14,32 +14,32 @@
   "values": {
     "title": "Our Core Values",
     "description": "These principles guide everything we do and define who we are as a company",
-    "items": [
-      {
+    "items": {
+      "integrity": {
         "title": "Integrity & Honesty",
         "description": "We build trust through transparent communication and ethical business practices"
       },
-      {
+      "reliability": {
         "title": "Reliability",
         "description": "Our clients and team members can count on us to deliver on our commitments"
       },
-      {
+      "communication": {
         "title": "Professional Communication",
         "description": "Clear, respectful, and effective communication in every interaction"
       },
-      {
+      "performance": {
         "title": "Performance & Growth",
         "description": "Continuous improvement and measurable results drive our success"
       },
-      {
+      "support": {
         "title": "Team Support",
         "description": "We succeed together through collaboration and mutual support"
       },
-      {
+      "excellence": {
         "title": "Excellence",
         "description": "We strive for the highest standards in everything we do"
       }
-    ]
+    }
   },
   "culture": {
     "title": "Company Culture",
@@ -65,31 +65,5 @@
     "fieldText": "Field",
     "callCenterText": "Call Center",
     "locationsText": "Trzin, Kranj & Field"
-  },
-  "faq": [
-    {
-      "question": "What makes Win Win different from other sales agencies?",
-      "answer": "We combine clear structure, honest communication, strong coaching culture, long-term career opportunities, and a results-driven but supportive environment. At Win Win, success is not luck — it is a system."
-    },
-    {
-      "question": "Do you provide training for newcomers to sales?",
-      "answer": "Yes! We provide comprehensive onboarding including product knowledge, sales scripts, CRM training, and ongoing coaching. Many of our top performers started with no prior sales experience."
-    },
-    {
-      "question": "What kind of support do you offer?",
-      "answer": "We provide CRM tools, proven scripts, back-office support, regular coaching sessions, performance tracking, and a supportive team environment. You're never alone in your sales journey."
-    },
-    {
-      "question": "How is compensation structured?",
-      "answer": "Our compensation models vary by role but always include performance-based earnings. We offer competitive base salaries or hourly rates plus attractive commission structures with uncapped earning potential."
-    },
-    {
-      "question": "What career progression opportunities exist?",
-      "answer": "Top performers can advance to senior sales roles, team leadership positions, or specialized B2B consultancy. We promote from within and reward consistent excellence."
-    },
-    {
-      "question": "Do you work with both B2C and B2B clients?",
-      "answer": "Yes, we operate across multiple channels: field sales (B2C), call center operations (B2C), and business consulting (B2B). This diversity offers varied career paths for different skill sets and preferences."
-    }
-  ]
+  }
 }
