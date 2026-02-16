@@ -486,7 +486,7 @@ button{font-family:inherit}
   z-index:55;
   display:none;
   flex-direction:column;
-  padding:90px 28px 28px 28px;
+  padding:90px 16px 24px 16px;
   overflow-y:auto;
   opacity:0;
   transition: opacity .3s ease;
@@ -536,6 +536,12 @@ button{font-family:inherit}
   padding:16px;
   font-size:16px;
   font-weight:600;
+}
+
+@media (min-width: 640px){
+  .mobile-menu{
+    padding:90px 20px 24px 20px;
+  }
 }
 
 @media (max-width: 1024px){
@@ -724,12 +730,8 @@ button{font-family:inherit}
     width:18px;
   }
 
-  .mobile-menu{
-    padding:85px 24px 24px 24px;
-  }
-
   .mobile-menu .nav-link{
-    padding:16px 20px;
+    padding:16px 18px;
     font-size:16px;
     margin-bottom:10px;
   }
