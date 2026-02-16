@@ -1,50 +1,53 @@
 {
   "hero": {
+    "backgroundImage": "https://6949b72b30e1aa8ca4b7eef2.imgix.net/slomap.png?auto=compress&cs=tinysrgb&w=2200",
     "title": "About Win Win",
-    "description": "We are a team that lives sales. Win Win d.o.o. was built on the belief that sales can be done differently — honestly, ethically, and with a long-term mindset."
+    "subtitle": "We are a team that lives sales. Win Win d.o.o. was built on the belief that sales can be done differently — honestly, ethically, and with a long-term mindset."
   },
   "vision": {
     "title": "Our Vision",
-    "description": "To become the most effective and respected sales company in Slovenia, known for our integrity, results, and commitment to both clients and team members."
+    "text": "To become the most effective and respected sales company in Slovenia, known for our integrity, results, and commitment to both clients and team members."
   },
   "mission": {
     "title": "Our Mission",
-    "description": "To deliver more value to customers than they expect, through trust, structure, and top-level sales expertise. We build long-term relationships that benefit everyone involved."
+    "text": "To deliver more value to customers than they expect, through trust, structure, and top-level sales expertise. We build long-term relationships that benefit everyone involved."
   },
-  "values": {
-    "title": "Our Core Values",
-    "description": "These principles guide everything we do and define who we are as a company",
-    "items": {
-      "integrity": {
-        "title": "Integrity & Honesty",
-        "description": "We build trust through transparent communication and ethical business practices"
-      },
-      "reliability": {
-        "title": "Reliability",
-        "description": "Our clients and team members can count on us to deliver on our commitments"
-      },
-      "communication": {
-        "title": "Professional Communication",
-        "description": "Clear, respectful, and effective communication in every interaction"
-      },
-      "performance": {
-        "title": "Performance & Growth",
-        "description": "Continuous improvement and measurable results drive our success"
-      },
-      "support": {
-        "title": "Team Support",
-        "description": "We succeed together through collaboration and mutual support"
-      },
-      "excellence": {
-        "title": "Excellence",
-        "description": "We strive for the highest standards in everything we do"
-      }
+  "values": [
+    {
+      "title": "Integrity & Honesty",
+      "description": "We build trust through transparent communication and ethical business practices",
+      "image": "https://images.pexels.com/photos/5668838/pexels-photo-5668838.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Reliability",
+      "description": "Our clients and team members can count on us to deliver on our commitments",
+      "image": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Professional Communication",
+      "description": "Clear, respectful, and effective communication in every interaction",
+      "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Performance & Growth",
+      "description": "Continuous improvement and measurable results drive our success",
+      "image": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Team Support",
+      "description": "We succeed together through collaboration and mutual support",
+      "image": "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Excellence",
+      "description": "We strive for the highest standards in everything we do",
+      "image": "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
     }
-  },
+  ],
   "culture": {
     "title": "Company Culture",
     "description": "We've built an environment where talented professionals can thrive",
-    "items": [
+    "highlights": [
       "Results-driven mindset with clear KPIs",
       "Team collaboration and knowledge sharing",
       "Continuous learning and skill development",
@@ -53,17 +56,48 @@
       "Work-life balance and flexibility"
     ]
   },
-  "team": {
-    "title": "Our Team",
-    "description": "We operate from multiple locations across Slovenia with a growing team of dedicated sales professionals",
-    "stats": {
-      "members": "Active Team Members",
-      "field": "Field Sales",
-      "callCenter": "Call Center",
-      "locations": "Multiple Locations"
+  "stats": [
+    {
+      "number": "50+",
+      "label": "Active Team Members"
     },
-    "fieldText": "Field",
-    "callCenterText": "Call Center",
-    "locationsText": "Trzin, Kranj & Field"
-  }
+    {
+      "number": "5,000+",
+      "label": "Completed Deals"
+    },
+    {
+      "number": "3",
+      "label": "Locations"
+    },
+    {
+      "number": "5+",
+      "label": "Years Experience"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What makes Win Win different from other sales agencies?",
+      "answer": "We combine clear structure, honest communication, strong coaching culture, long-term career opportunities, and a results-driven but supportive environment. At Win Win, success is not luck — it is a system."
+    },
+    {
+      "question": "Do you provide training for newcomers to sales?",
+      "answer": "Yes! We provide comprehensive onboarding including product knowledge, sales scripts, CRM training, and ongoing coaching. Many of our top performers started with no prior sales experience."
+    },
+    {
+      "question": "What kind of support do you offer?",
+      "answer": "We provide CRM tools, proven scripts, back-office support, regular coaching sessions, performance tracking, and a supportive team environment. You're never alone in your sales journey."
+    },
+    {
+      "question": "How is compensation structured?",
+      "answer": "Our compensation models vary by role but always include performance-based earnings. We offer competitive base salaries or hourly rates plus attractive commission structures with uncapped earning potential."
+    },
+    {
+      "question": "What career progression opportunities exist?",
+      "answer": "Top performers can advance to senior sales roles, team leadership positions, or specialized B2B consultancy. We promote from within and reward consistent excellence."
+    },
+    {
+      "question": "Do you work with both B2C and B2B clients?",
+      "answer": "Yes, we operate across multiple channels: field sales (B2C), call center operations (B2C), and business consulting (B2B). This diversity offers varied career paths for different skill sets and preferences."
+    }
+  ]
 }

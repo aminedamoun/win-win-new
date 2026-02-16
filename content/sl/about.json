@@ -1,50 +1,53 @@
 {
   "hero": {
+    "backgroundImage": "https://6949b72b30e1aa8ca4b7eef2.imgix.net/slomap.png?auto=compress&cs=tinysrgb&w=2200",
     "title": "O Win Win",
-    "description": "Smo ekipa, ki živi prodajo. Win Win d.o.o. je bil zgrajen na prepričanju, da se lahko prodaja izvaja drugače — pošteno, etično in z dolgoročnim razmišljanjem."
+    "subtitle": "Smo ekipa, ki živi prodajo. Win Win d.o.o. je bil zgrajen na prepričanju, da se lahko prodaja izvaja drugače — pošteno, etično in z dolgoročnim razmišljanjem."
   },
   "vision": {
     "title": "Naša vizija",
-    "description": "Postati najbolj učinkovito in spoštovano prodajno podjetje v Sloveniji, znano po naši integriteti, rezultatih in zavezanosti tako strankam kot članom ekipe."
+    "text": "Postati najbolj učinkovito in spoštovano prodajno podjetje v Sloveniji, znano po naši integriteti, rezultatih in zavezanosti tako strankam kot članom ekipe."
   },
   "mission": {
     "title": "Naša misija",
-    "description": "Zagotavljati več vrednosti strankam, kot pričakujejo, skozi zaupanje, strukturo in vrhunsko prodajno strokovnost. Gradimo dolgoročne odnose, ki koristijo vsem vključenim."
+    "text": "Zagotavljati več vrednosti strankam, kot pričakujejo, skozi zaupanje, strukturo in vrhunsko prodajno strokovnost. Gradimo dolgoročne odnose, ki koristijo vsem vključenim."
   },
-  "values": {
-    "title": "Naše temeljne vrednote",
-    "description": "Ti principi vodijo vse, kar počnemo, in določajo, kdo smo kot podjetje",
-    "items": {
-      "integrity": {
-        "title": "Integriteta in poštenost",
-        "description": "Gradimo zaupanje skozi transparentno komunikacijo in etične poslovne prakse"
-      },
-      "reliability": {
-        "title": "Zanesljivost",
-        "description": "Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez"
-      },
-      "communication": {
-        "title": "Profesionalna komunikacija",
-        "description": "Jasna, spoštljiva in učinkovita komunikacija v vsaki interakciji"
-      },
-      "performance": {
-        "title": "Uspešnost in rast",
-        "description": "Nenehno izboljševanje in merljivi rezultati poganjajo naš uspeh"
-      },
-      "support": {
-        "title": "Ekipna podpora",
-        "description": "Skupaj uspemo skozi sodelovanje in medsebojno podporo"
-      },
-      "excellence": {
-        "title": "Odličnost",
-        "description": "Stremimo k najvišjim standardom v vsem, kar počnemo"
-      }
+  "values": [
+    {
+      "title": "Integriteta in poštenost",
+      "description": "Gradimo zaupanje skozi transparentno komunikacijo in etične poslovne prakse",
+      "image": "https://images.pexels.com/photos/5668838/pexels-photo-5668838.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Zanesljivost",
+      "description": "Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez",
+      "image": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Profesionalna komunikacija",
+      "description": "Jasna, spoštljiva in učinkovita komunikacija v vsaki interakciji",
+      "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Uspešnost in rast",
+      "description": "Nenehno izboljševanje in merljivi rezultati poganjajo naš uspeh",
+      "image": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Ekipna podpora",
+      "description": "Skupaj uspemo skozi sodelovanje in medsebojno podporo",
+      "image": "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      "title": "Odličnost",
+      "description": "Stremimo k najvišjim standardom v vsem, kar počnemo",
+      "image": "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
     }
-  },
+  ],
   "culture": {
     "title": "Podjetniška kultura",
     "description": "Zgradili smo okolje, kjer lahko nadarjeni strokovnjaki uspevajo",
-    "items": [
+    "highlights": [
       "Rezultatno usmerjen način razmišljanja z jasnimi KPI-ji",
       "Ekipno sodelovanje in deljenje znanja",
       "Nenehno učenje in razvoj veščin",
@@ -53,17 +56,48 @@
       "Ravnovesje med delom in zasebnim življenjem ter fleksibilnost"
     ]
   },
-  "team": {
-    "title": "Naša ekipa",
-    "description": "Delujemo z več lokacij po Sloveniji z rastočo ekipo predanih prodajnih strokovnjakov",
-    "stats": {
-      "members": "Aktivnih članov ekipe",
-      "field": "Terenska prodaja",
-      "callCenter": "Podpora",
-      "locations": "Več lokacij"
+  "stats": [
+    {
+      "number": "50+",
+      "label": "Aktivnih članov ekipe"
     },
-    "fieldText": "Teren",
-    "callCenterText": "Klicni center",
-    "locationsText": "Trzin, Kranj in teren"
-  }
+    {
+      "number": "5,000+",
+      "label": "Zaključenih poslov"
+    },
+    {
+      "number": "3",
+      "label": "Lokacije"
+    },
+    {
+      "number": "5+",
+      "label": "Let izkušenj"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Ali potrebujem prejšnje prodajne izkušnje?",
+      "answer": "Ne. Prejšnje prodajne izkušnje so prednost, vendar niso obvezne. Zagotavljamo strukturirano uvajanje, skripte in nenehni coaching. Najpomembnejši sta motivacija, disciplina in pripravljenost za učenje."
+    },
+    {
+      "question": "Kakšne vrste prodaje bom opravljal?",
+      "answer": "Delal boš v B2C prodaji, bodisi terenski prodaji od vrat do vrat ali prodaji v klicnem centru. Prodajal boš telekomunikacijske storitve, vključno s pogodbami za internet, TV in mobilne storitve za končne stranke."
+    },
+    {
+      "question": "Ali gre za redno zaposlitev ali delo preko avtorske pogodbe?",
+      "answer": "Možni sta obe možnosti. Odvisno od tvojega profila in dogovora lahko delaš kot redno zaposlen ali kot samostojni podjetnik (s.p. / sodelovanje s podjetjem)."
+    },
+    {
+      "question": "Kakšni so delovni časi?",
+      "answer": "Delovni časi so strukturirani in jasno določeni. Urniki za teren in klicni center so organizirani tako, da podpirajo produktivnost in ravnovesje med delom in zasebnim življenjem. Specifični urniki se razpravljajo med razgovorom."
+    },
+    {
+      "question": "Kako deluje plačilo?",
+      "answer": "Prejmeš osnovno plačo ali urno postavko plus provizijo, odvisno od uspešnosti. Tvoj zaslužek je neposredno odvisen od tvojih rezultatov. Visoko uspešni posamezniki lahko dosežejo nadpovprečen mesečni dohodek."
+    },
+    {
+      "question": "Kako hitro lahko napredujem znotraj podjetja?",
+      "answer": "Napredovanje v karieri je odvisno od uspešnosti. Uspešni prodajni svetovalci lahko napredujejo v višje prodajne svetovalce, voditelje prodajnih ekip ali prodajne managerje. Aktivno promovuramo od znotraj."
+    }
+  ]
 }
