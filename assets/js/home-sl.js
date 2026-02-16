@@ -98,6 +98,27 @@ function bindCookieBar() {
   decline.addEventListener("click", () => close("declined"));
 }
 
+function initBurgerMenu() {
+  const burgerBtn = $("burgerBtn");
+  const mobileMenu = $("mobileMenu");
+
+  if (!burgerBtn || !mobileMenu) return;
+
+  burgerBtn.addEventListener("click", () => {
+    burgerBtn.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+    document.body.style.overflow = mobileMenu.classList.contains("active") ? "hidden" : "";
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      burgerBtn.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  });
+}
+
 function setupScrollReveal() {
   const nodes = Array.from(document.querySelectorAll("[data-animate]"));
   const io = new IntersectionObserver((entries) => {
@@ -211,6 +232,7 @@ async function main() {
 
   bindCookieBar();
   setupScrollReveal();
+  initBurgerMenu();
 }
 
 document.addEventListener("DOMContentLoaded", () => {

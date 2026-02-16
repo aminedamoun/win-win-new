@@ -100,6 +100,27 @@ function setupScrollReveal() {
   nodes.forEach((n) => io.observe(n));
 }
 
+function initBurgerMenu() {
+  const burgerBtn = $("burgerBtn");
+  const mobileMenu = $("mobileMenu");
+
+  if (!burgerBtn || !mobileMenu) return;
+
+  burgerBtn.addEventListener("click", () => {
+    burgerBtn.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+    document.body.style.overflow = mobileMenu.classList.contains("active") ? "hidden" : "";
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      burgerBtn.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  });
+}
+
 function fillText(d) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -185,6 +206,7 @@ async function main() {
   renderFaq(data.faq?.items);
   bindCookieBar();
   setupScrollReveal();
+  initBurgerMenu();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
