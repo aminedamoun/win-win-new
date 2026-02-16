@@ -243,6 +243,7 @@ button{font-family:inherit}
   box-shadow: none;
   text-align: left;
   margin: 0;
+  margin-right: 120px;
 }
 .hero-title{
   font-size: clamp(40px, 5vw, 56px);
@@ -343,6 +344,7 @@ button{font-family:inherit}
   }
   .hero-right{
     max-width: 620px;
+    margin-right: 0;
   }
 }
 
