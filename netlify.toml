@@ -1,9 +1,9 @@
 [[redirects]]
-  from = "/admin/config.yml"
-  to = "/admin/config.yml"
-  status = 200
+  from = "/admin"
+  to = "/admin/"
+  status = 301
 
 [[redirects]]
-  from = "/admin/*"
+  from = "/admin/"
   to = "/admin/index.html"
   status = 200

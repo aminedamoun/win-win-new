@@ -6,27 +6,18 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Netlify Identity widget (load ONCE) -->
+    <!-- Netlify Identity (load ONCE) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
     <script>
+      // Keep it simple: only redirect AFTER a successful login
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          // If user came from invite/recovery email, open the widget automatically
-          const h = window.location.hash || "";
-          if (h.includes("invite_token") || h.includes("recovery_token")) {
-            window.netlifyIdentity.open();
-          }
-
-          // After successful login, always return to /admin/
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
+        window.netlifyIdentity.on("login", () => {
+          window.location.replace("/admin/");
         });
-
         window.netlifyIdentity.init();
       }
     </script>
