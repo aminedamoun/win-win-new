@@ -181,18 +181,20 @@ button{font-family:inherit}
 .glass{transition: transform .18s ease, background .18s ease, border-color .18s ease}
 
 /* Hero */
-.hero{position:relative; min-height: 100vh}
-.hero-bg{position:absolute; inset:0; overflow:hidden}
-.hero-bg img{width:100%; height:100%; object-fit:cover}
-.hero-overlay{
-  position:absolute; inset:0;
-  background: linear-gradient(180deg,
-    rgba(0,0,0,.15) 0%,
-    rgba(0,0,0,.25) 40%,
-    rgba(0,0,0,.65) 82%,
-    rgba(0,0,0,.85) 100%
+.hero{
+  position:relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg,
+    #000000 0%,
+    #0d0d0d 25%,
+    #1a0808 50%,
+    #0d0d0d 75%,
+    #000000 100%
   );
 }
+.hero-bg{display:none}
+.hero-bg img{display:none}
+.hero-overlay{display:none}
 .hero-inner{
   position:relative;
   min-height: 100vh;
@@ -205,12 +207,10 @@ button{font-family:inherit}
   max-width: 900px;
   width: 100%;
   padding: 40px 48px 48px;
-  background: rgba(0,0,0,.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255,255,255,.04);
   border-radius: 24px;
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
   text-align: center;
 }
 .hero-title{
@@ -323,17 +323,6 @@ button{font-family:inherit}
   .hero{
     min-height: 100vh;
   }
-  .hero-bg img{
-    content: url('../img/image copy copy.png');
-  }
-  .hero-overlay{
-    background: linear-gradient(180deg,
-      rgba(0,0,0,.1) 0%,
-      rgba(0,0,0,.2) 30%,
-      rgba(0,0,0,.6) 75%,
-      rgba(0,0,0,.85) 100%
-    );
-  }
   .hero-inner{
     min-height: 100vh;
     display:flex;
@@ -344,13 +333,11 @@ button{font-family:inherit}
   .hero-right{
     width: 100%;
     padding: 32px 24px 36px;
-    background: rgba(0,0,0,.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,.04);
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.08);
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,.3);
   }
   .hero-title{
     font-size: 28px;
