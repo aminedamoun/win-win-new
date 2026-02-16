@@ -5,77 +5,59 @@ backend:
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
+publish_mode: simple
+
 collections:
   - name: "home_en"
-    label: "Homepage (EN)"
+    label: "Home (EN)"
+    format: "json"
+    extension: "json"
+    delete: false
+    editor:
+      preview: false
     files:
       - file: "content/en/home.json"
-        label: "Home Content"
-        name: "home"
+        label: "Home Page (EN)"
+        name: "home_en_file"
         fields:
-          - label: Hero
-            name: hero
-            widget: object
-            fields:
-              - { label: "Title (base)", name: titleBase, widget: string }
-              - { label: "Title (emphasis)", name: titleEmphasis, widget: string }
-              - { label: "Subtitle", name: subtitle, widget: string }
-              - { label: "Description", name: description, widget: text }
-              - label: Primary CTA
-                name: primaryCta
-                widget: object
-                fields:
-                  - { label: "Label", name: label, widget: string }
-                  - { label: "Href", name: href, widget: string }
-              - label: Secondary CTA
-                name: secondaryCta
-                widget: object
-                fields:
-                  - { label: "Label", name: label, widget: string }
-                  - { label: "Href", name: href, widget: string }
-
-  - name: "seo_en"
-    label: "SEO (EN)"
-    files:
-      - file: "content/en/seo.md"
-        label: "SEO Content"
-        name: "seo"
-        fields:
-          - { label: "Body", name: body, widget: markdown }
+          - { label: "Hero", name: "hero", widget: "object", fields: [
+              { label: "Title Base", name: "titleBase", widget: "string" },
+              { label: "Title Emphasis", name: "titleEmphasis", widget: "string" },
+              { label: "Subtitle", name: "subtitle", widget: "string" },
+              { label: "Description", name: "description", widget: "text" },
+              { label: "Primary CTA", name: "primaryCta", widget: "object", fields: [
+                  { label: "Label", name: "label", widget: "string" },
+                  { label: "Href", name: "href", widget: "string" }
+                ]},
+              { label: "Secondary CTA", name: "secondaryCta", widget: "object", fields: [
+                  { label: "Label", name: "label", widget: "string" },
+                  { label: "Href", name: "href", widget: "string" }
+                ]}
+            ]}
 
   - name: "home_sl"
-    label: "Homepage (SL)"
+    label: "Home (SL)"
+    format: "json"
+    extension: "json"
+    delete: false
+    editor:
+      preview: false
     files:
       - file: "content/sl/home.json"
-        label: "Home Content"
-        name: "home"
+        label: "Home Page (SL)"
+        name: "home_sl_file"
         fields:
-          - label: Hero
-            name: hero
-            widget: object
-            fields:
-              - { label: "Title (base)", name: titleBase, widget: string }
-              - { label: "Title (emphasis)", name: titleEmphasis, widget: string }
-              - { label: "Subtitle", name: subtitle, widget: string }
-              - { label: "Description", name: description, widget: text }
-              - label: Primary CTA
-                name: primaryCta
-                widget: object
-                fields:
-                  - { label: "Label", name: label, widget: string }
-                  - { label: "Href", name: href, widget: string }
-              - label: Secondary CTA
-                name: secondaryCta
-                widget: object
-                fields:
-                  - { label: "Label", name: label, widget: string }
-                  - { label: "Href", name: href, widget: string }
-
-  - name: "seo_sl"
-    label: "SEO (SL)"
-    files:
-      - file: "content/sl/seo.md"
-        label: "SEO Content"
-        name: "seo"
-        fields:
-          - { label: "Body", name: body, widget: markdown }
+          - { label: "Hero", name: "hero", widget: "object", fields: [
+              { label: "Title Base", name: "titleBase", widget: "string" },
+              { label: "Title Emphasis", name: "titleEmphasis", widget: "string" },
+              { label: "Subtitle", name: "subtitle", widget: "string" },
+              { label: "Description", name: "description", widget: "text" },
+              { label: "Primary CTA", name: "primaryCta", widget: "object", fields: [
+                  { label: "Label", name: "label", widget: "string" },
+                  { label: "Href", name: "href", widget: "string" }
+                ]},
+              { label: "Secondary CTA", name: "secondaryCta", widget: "object", fields: [
+                  { label: "Label", name: "label", widget: "string" },
+                  { label: "Href", name: "href", widget: "string" }
+                ]}
+            ]}
