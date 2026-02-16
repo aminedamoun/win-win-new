@@ -68,9 +68,18 @@ button{font-family:inherit}
   align-items:center;
   justify-content:space-between;
   gap:18px;
-  padding: 16px 0;
+  padding: 14px 0;
 }
-.brand{display:flex; align-items:center; gap:12px}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+}
+.brand-logo{
+  width:auto;
+  height:48px;
+}
 .logo-mark{
   width:38px; height:38px;
   display:inline-flex; align-items:center; justify-content:center;
@@ -100,7 +109,32 @@ button{font-family:inherit}
   background: var(--red-500);
   border-radius:999px;
 }
-.header-actions{display:flex; align-items:center; gap:12px}
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.lang-switch{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: all .2s ease;
+}
+.lang-switch:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.14);
+}
+.lang-flag{
+  width:24px;
+  height:24px;
+  border-radius:4px;
+  object-fit:cover;
+}
 .icon-btn{
   width:38px;height:38px;
   border-radius: 12px;
@@ -397,22 +431,34 @@ button{font-family:inherit}
 .burger-btn{
   display:none;
   flex-direction:column;
+  justify-content:center;
+  align-items:center;
   gap:5px;
-  width:44px;
-  height:44px;
-  padding:10px;
-  background:transparent;
-  border:none;
+  width:42px;
+  height:42px;
+  padding:0;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius:10px;
   cursor:pointer;
   z-index:60;
+  transition: all .2s ease;
+}
+.burger-btn:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.14);
 }
 .burger-btn span{
   display:block;
-  width:100%;
+  width:20px;
   height:2px;
   background:var(--white);
   border-radius:2px;
   transition: all 0.3s ease;
+}
+.burger-btn.active{
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.2);
 }
 .burger-btn.active span:nth-child(1){
   transform: translateY(7px) rotate(45deg);
@@ -427,38 +473,63 @@ button{font-family:inherit}
 /* Mobile Menu */
 .mobile-menu{
   position:fixed;
-  top:70px;
+  top:0;
   left:0;
   right:0;
   bottom:0;
-  background: rgba(0,0,0,.98);
+  background: rgba(0,0,0,.96);
   backdrop-filter: blur(20px);
   z-index:55;
   display:none;
   flex-direction:column;
-  gap:8px;
-  padding:24px;
+  padding:85px 20px 24px;
   overflow-y:auto;
+  opacity:0;
+  transition: opacity .3s ease;
 }
 .mobile-menu.active{
   display:flex;
+  animation: fadeIn .3s ease forwards;
+}
+@keyframes fadeIn{
+  to{ opacity:1; }
 }
 .mobile-menu .nav-link{
-  display:block;
-  padding:16px;
-  font-size:18px;
-  border-radius:12px;
+  display:flex;
+  align-items:center;
+  padding:18px 20px;
+  font-size:17px;
+  font-weight:500;
+  color: var(--gray-200);
+  border-radius:14px;
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
+  margin-bottom:10px;
+  transition: all .2s ease;
 }
 .mobile-menu .nav-link:hover{
   background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.12);
+  color:#fff;
+  transform: translateX(4px);
+}
+.mobile-menu .nav-link.is-active{
+  background: rgba(239,68,68,.08);
+  border-color: rgba(239,68,68,.2);
+  color: var(--red-500);
 }
 .mobile-menu .mobile-actions{
   display:flex;
   flex-direction:column;
   gap:12px;
-  margin-top:24px;
+  margin-top:auto;
+  padding-top:24px;
+}
+.mobile-menu .btn{
+  width:100%;
+  padding:16px;
+  font-size:16px;
+  font-weight:600;
 }
 
 @media (max-width: 1024px){
@@ -476,11 +547,16 @@ button{font-family:inherit}
   .burger-btn{display:flex}
   .header-actions .btn{display:none}
 
-  .container{
-    padding: 0 20px;
+  .brand-logo{
+    height:40px;
   }
+
   .header-row{
-    padding: 18px 0;
+    padding: 16px 0;
+  }
+
+  .header-actions{
+    gap:6px;
   }
 
   .hero{
@@ -601,6 +677,26 @@ button{font-family:inherit}
     display: block;
     text-align: center;
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px){
+  .brand-logo{
+    height:36px;
+  }
+
+  .lang-switch, .burger-btn{
+    width:40px;
+    height:40px;
+  }
+
+  .lang-flag{
+    width:22px;
+    height:22px;
+  }
+
+  .burger-btn span{
+    width:18px;
   }
 }
 
