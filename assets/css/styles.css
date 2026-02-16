@@ -199,9 +199,9 @@ button{font-family:inherit}
   position:relative;
   min-height: 100vh;
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content:center;
-  padding-bottom: 60px;
+  padding: 80px 0;
 }
 .hero-right{
   max-width: 900px;
@@ -326,9 +326,9 @@ button{font-family:inherit}
   .hero-inner{
     min-height: 100vh;
     display:flex;
-    align-items:flex-end;
+    align-items:center;
     justify-content: center;
-    padding: 20px 20px 40px;
+    padding: 60px 20px;
   }
   .hero-right{
     width: 100%;
