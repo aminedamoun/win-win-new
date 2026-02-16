@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Win Win — Careers</title>
+  <meta name="description" content="Explore open sales positions at Win Win across Slovenia. Apply online in minutes." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="Win Win Home">
+        <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+      </a>
+
+     <nav class="nav" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About Us</a>
+        <a class="nav-link is-active" href="jobs.html">Careers</a>
+        <a class="nav-link" href="insights.html">Insights</a>
+        <a class="nav-link" href="apply.html">Apply</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language switch -->
+        <a class="lang-switch" href="jobs-sl.html" aria-label="Switch language to Slovenian" title="Slovenian">
+          <span class="lang-globe" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z"></path>
+              <path d="M2 12h20"></path>
+              <path d="M12 2c2.6 2.7 4 6.2 4 10s-1.4 7.3-4 10c-2.6-2.7-4-6.2-4-10s1.4-7.3 4-10Z"></path>
+            </svg>
+          </span>
+          <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenija" />
+        </a>
+
+        <a class="btn btn-outline" href="jobs.html">View Positions</a>
+        <a class="btn btn-primary" href="apply.html">Join the Team</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+<section class="section section-gradient-a">
+  <div class="container">
+    <div class="center" style="padding-top: 28px;">
+      <h1 class="h1" id="jobsTitle">Open Positions</h1>
+      <p class="p-muted" id="jobsDesc">
+        Join our team of high-performing sales professionals. We offer competitive compensation,
+        comprehensive training, and clear career progression.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- FILTERS + LIST -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <div class="jobs-toolbar glass">
+          <div class="jobs-filters">
+            <label class="sr-only" for="filterLocation">Location</label>
+            <select class="select" id="filterLocation" aria-label="Filter by location"></select>
+
+            <label class="sr-only" for="filterType">Type</label>
+            <select class="select" id="filterType" aria-label="Filter by type"></select>
+          </div>
+
+          <div class="jobs-search">
+            <label class="sr-only" for="jobsSearch">Search</label>
+            <input class="input" id="jobsSearch" type="search" placeholder="Search positions..." autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="mt-24">
+          <div class="p-muted" id="jobsLoading">Loading positions...</div>
+          <div class="p-muted" id="jobsNoJobs" style="display:none;">No open positions right now. Check back soon!</div>
+
+          <div class="grid grid-1" id="jobsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GENERAL APPLICATION CTA -->
+    <section class="section section-gradient-b" data-animate>
+      <div class="container">
+        <div class="glass center jobs-cta">
+          <h2 class="h2" id="jobsNoPositionTitle">Don't See the Right Position?</h2>
+          <p class="p-muted" id="jobsNoPositionDesc">
+            We're always looking for talented sales professionals. Send us your application and we'll keep you in mind for future opportunities.
+          </p>
+          <a class="btn btn-primary btn-lg mt-12" href="apply.html" id="jobsGeneralBtn">
+            Submit General Application <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO ACCORDION -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <details class="seo-accordion glass" id="seoDetails">
+          <summary class="seo-summary">
+            <span id="seoSummaryTitle">Open Sales Positions Throughout Slovenia</span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="seo-body">
+            <div class="rich" id="seoHtml"></div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand brand-footer" aria-label="Win Win">
+          <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+        </div>
+        <p class="p-muted small" id="footerDesc">
+          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
+        </p>
+        <div class="socials" aria-label="Social links">
+          <a class="social" href="#" aria-label="Facebook" title="Facebook">f</a>
+          <a class="social" href="#" aria-label="Instagram" title="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Company</div>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="jobs.html">Careers</a>
+        <a class="footer-link" href="apply.html">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Legal</div>
+        <a class="footer-link" href="privacy.html">Privacy Policy</a>
+        <a class="footer-link" href="cookies.html">Cookie Policy</a>
+        <a class="footer-link" href="terms.html">Terms of Service</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Contact</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenia</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> +386 31 678 732</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> office@win-win.si</div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/jobs.js"></script>
+</body>
+</html>

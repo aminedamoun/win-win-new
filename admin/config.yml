@@ -1,0 +1,81 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "home_en"
+    label: "Homepage (EN)"
+    files:
+      - file: "content/en/home.json"
+        label: "Home Content"
+        name: "home"
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: "Title (base)", name: titleBase, widget: string }
+              - { label: "Title (emphasis)", name: titleEmphasis, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+              - { label: "Description", name: description, widget: text }
+              - label: Primary CTA
+                name: primaryCta
+                widget: object
+                fields:
+                  - { label: "Label", name: label, widget: string }
+                  - { label: "Href", name: href, widget: string }
+              - label: Secondary CTA
+                name: secondaryCta
+                widget: object
+                fields:
+                  - { label: "Label", name: label, widget: string }
+                  - { label: "Href", name: href, widget: string }
+
+  - name: "seo_en"
+    label: "SEO (EN)"
+    files:
+      - file: "content/en/seo.md"
+        label: "SEO Content"
+        name: "seo"
+        fields:
+          - { label: "Body", name: body, widget: markdown }
+
+  - name: "home_sl"
+    label: "Homepage (SL)"
+    files:
+      - file: "content/sl/home.json"
+        label: "Home Content"
+        name: "home"
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: "Title (base)", name: titleBase, widget: string }
+              - { label: "Title (emphasis)", name: titleEmphasis, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+              - { label: "Description", name: description, widget: text }
+              - label: Primary CTA
+                name: primaryCta
+                widget: object
+                fields:
+                  - { label: "Label", name: label, widget: string }
+                  - { label: "Href", name: href, widget: string }
+              - label: Secondary CTA
+                name: secondaryCta
+                widget: object
+                fields:
+                  - { label: "Label", name: label, widget: string }
+                  - { label: "Href", name: href, widget: string }
+
+  - name: "seo_sl"
+    label: "SEO (SL)"
+    files:
+      - file: "content/sl/seo.md"
+        label: "SEO Content"
+        name: "seo"
+        fields:
+          - { label: "Body", name: body, widget: markdown }

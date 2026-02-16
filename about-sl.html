@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Win Win — O nas</title>
+  <meta name="description" content="Spoznajte Win Win — vizija, poslanstvo, vrednote, kultura in ekipa po Sloveniji." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+        <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+      </a>
+
+      <nav class="nav" aria-label="Glavna navigacija">
+        <a class="nav-link" href="index-sl.html">Domov</a>
+        <a class="nav-link is-active" href="about-sl.html">O nas</a>
+        <a class="nav-link" href="jobs-sl.html">Kariera</a>
+        <a class="nav-link" href="insights-sl.html">Vpogledi</a>
+        <a class="nav-link" href="apply-sl.html">Prijava</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language switch -->
+        <a class="lang-switch" href="about.html" aria-label="Switch language to English" title="English">
+          <span class="lang-globe" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z"></path>
+              <path d="M2 12h20"></path>
+              <path d="M12 2c2.6 2.7 4 6.2 4 10s-1.4 7.3-4 10c-2.6-2.7-4-6.2-4-10s1.4-7.3 4-10Z"></path>
+            </svg>
+          </span>
+          <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenija" />
+        </a>
+
+         <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+        <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO (same structure as about.html) -->
+    <section class="hero hero-about">
+      <div class="hero-bg">
+        <img
+          id="aboutHeroImg"
+          src="https://6949b72b30e1aa8ca4b7eef2.imgix.net/slomap.png?auto=compress&cs=tinysrgb&w=2200"
+          alt="Win Win — Slovenija"
+          fetchpriority="high"
+          width="2200"
+          height="1200"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-inner hero-inner-center">
+        <div class="hero-card glass">
+          <h1 class="hero-title center" id="aboutHeroTitle">O Win Win</h1>
+          <p class="hero-desc center" id="aboutHeroDesc">
+            Smo ekipa, ki živi prodajo. Win Win d.o.o. je bil zgrajen na prepričanju, da se lahko prodaja izvaja drugače — pošteno, etično in z dolgoročnim razmišljanjem.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISION / MISSION -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <div class="grid grid-2 grid-2-wide" id="aboutVM"></div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="section section-gradient-b" data-animate>
+      <div class="container">
+        <div class="center">
+          <h2 class="h2" id="aboutValuesTitle">Naše temeljne vrednote</h2>
+          <p class="p-muted" id="aboutValuesDesc">
+            Ta načela vodijo vse, kar počnemo, in določajo, kdo smo kot podjetje
+          </p>
+        </div>
+
+        <div class="grid grid-3" id="aboutValuesGrid"></div>
+      </div>
+    </section>
+
+    <!-- CULTURE -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <div class="center">
+          <h2 class="h2" id="aboutCultureTitle">Podjetniška kultura</h2>
+          <p class="p-muted" id="aboutCultureDesc">Zgradili smo okolje, kjer lahko nadarjeni strokovnjaki uspevajo</p>
+        </div>
+
+        <div class="grid grid-2 grid-2-wide" id="aboutCultureGrid"></div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section section-gradient-b" data-animate>
+      <div class="container">
+        <div class="center">
+          <h2 class="h2" id="aboutTeamTitle">Naša ekipa</h2>
+          <p class="p-muted" id="aboutTeamDesc">
+            Delujemo iz več lokacij po Sloveniji z rastočo ekipo predanih prodajnih strokovnjakov
+          </p>
+        </div>
+
+        <div class="grid grid-4" id="aboutTeamStats"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <div class="center">
+          <div class="faq-bubble" aria-hidden="true">?</div>
+          <h2 class="h2" id="faqTitle">Pogosto zastavljena <span class="text-red">vprašanja</span></h2>
+          <p class="p-muted" id="faqDesc">Vse, kar moraš vedeti o pridružitvi Win Win</p>
+        </div>
+
+        <div class="faq-wrap" id="faqList"></div>
+
+        <div class="center mt-24">
+          <div class="p-muted" id="faqStill">Imaš še vprašanje?</div>
+          <a class="btn btn-primary btn-lg mt-12" href="apply-sl.html" id="faqBtn">Kontakt <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO ACCORDION -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <details class="seo-accordion glass" id="seoDetails">
+          <summary class="seo-summary">
+            <span id="seoSummaryTitle">O Win Win prodajni ekipi — vodilno prodajno podjetje v Sloveniji</span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="seo-body">
+            <div class="rich" id="seoHtml"></div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (same as about.html) -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand brand-footer" aria-label="Win Win">
+          <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+        </div>
+        <p class="p-muted small" id="footerDesc">
+          Gradimo kariere v prodaji. Smo prodajno podjetje, usmerjeno v rezultate, specializirano za B2C terensko prodajo in telekomunikacije.
+        </p>
+        <div class="socials" aria-label="Družabna omrežja">
+          <a class="social" href="#" aria-label="Facebook" title="Facebook">f</a>
+          <a class="social" href="#" aria-label="Instagram" title="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Podjetje</div>
+        <a class="footer-link" href="about-sl.html">O nas</a>
+        <a class="footer-link" href="jobs-sl.html">Kariera</a>
+        <a class="footer-link" href="apply-sl.html">Kontakt</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Pravno</div>
+        <a class="footer-link" href="privacy-sl.html">Politika zasebnosti</a>
+        <a class="footer-link" href="cookies-sl.html">Politika piškotkov</a>
+        <a class="footer-link" href="terms-sl.html">Pogoji uporabe</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Kontakt</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> +386 31 678 732</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> office@win-win.si</div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+    </div>
+  </footer>
+
+  <!-- IMPORTANT: use Slovenian renderer -->
+  <script type="module" src="assets/js/about-sl.js"></script>
+</body>
+</html>

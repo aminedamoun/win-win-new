@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pozicija — Win Win</title>
+  <meta name="description" content="Podrobnosti delovnega mesta pri Win Win." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+        <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+      </a>
+
+      <nav class="nav" aria-label="Glavna navigacija">
+        <a class="nav-link" href="index-sl.html">Domov</a>
+        <a class="nav-link" href="about-sl.html">O nas</a>
+        <a class="nav-link is-active" href="jobs-sl.html">Zaposlitve</a>
+        <a class="nav-link" href="insights-sl.html">Vsebina</a>
+        <a class="nav-link" href="apply-sl.html">Prijava</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language switch -->
+        <a class="lang-switch" id="langSwitch" href="job.html" aria-label="Zamenjaj jezik na angleščino" title="English">
+          <span class="lang-globe" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z"></path>
+              <path d="M2 12h20"></path>
+              <path d="M12 2c2.6 2.7 4 6.2 4 10s-1.4 7.3-4 10c-2.6-2.7-4-6.2-4-10s1.4-7.3 4-10Z"></path>
+            </svg>
+          </span>
+          <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        </a>
+
+         <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+        <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- JOB DETAIL -->
+  <main class="section section-gradient-a job-page">
+    <div class="container">
+      <!-- back -->
+      <a class="job-back" id="backToJobs" href="jobs-sl.html">← Nazaj na vse pozicije</a>
+
+      <!-- top card -->
+      <div class="job-hero">
+        <div class="job-hero-head">
+          <div class="job-icon" aria-hidden="true">🧳</div>
+
+          <div style="min-width:0;">
+            <h1 class="job-title" id="jobTitle">Pozicija</h1>
+
+            <!-- jobs.js fills this -->
+            <div class="job-meta" id="jobMeta"></div>
+
+            <!-- short intro -->
+            <div class="job-body" id="jobIntro" style="margin-top:12px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- apply button -->
+      <div class="job-actions">
+        <a class="job-apply" id="applyForJob" href="apply-sl.html">
+          Prijava na pozicijo <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- full details -->
+      <section class="job-card">
+        <h2>Celoten opis</h2>
+
+        <div class="job-comp-label">Plačilo</div>
+        <div class="job-comp-value" id="jobSalary"></div>
+
+        <hr class="job-divider" />
+
+        <div class="job-body" id="jobBody"></div>
+
+        <div class="job-cols">
+          <div class="job-col">
+            <div class="job-col-title">Zahteve</div>
+            <ul class="job-list" id="reqList"></ul>
+          </div>
+
+          <div class="job-col">
+            <div class="job-col-title">Naloge</div>
+            <ul class="job-list" id="respList"></ul>
+          </div>
+
+          <div class="job-col">
+            <div class="job-col-title">Ugodnosti</div>
+            <ul class="job-list" id="benefitsList"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand brand-footer" aria-label="Win Win">
+          <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+        </div>
+        <p class="p-muted small">
+          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { renderJobDetail } from "./assets/js/jobs.js";
+    document.getElementById("year").textContent = new Date().getFullYear();
+    await renderJobDetail({ applyPageHref: "apply-sl.html", backPageHref: "jobs-sl.html" });
+  </script>
+</body>
+</html>

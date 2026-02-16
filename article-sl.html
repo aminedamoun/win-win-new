@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Članek — Win Win</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="index-sl.html"><span class="brand-dot"></span><span data-brand>Win Win</span></a>
+      <nav class="nav" data-nav-container>
+        <a data-nav href="index-sl.html">Domov</a>
+        <a data-nav href="about-sl.html">O nas</a>
+        <a data-nav href="jobs-sl.html">Zaposlitve</a>
+        <a data-nav href="insights-sl.html">Vsebina</a>
+        <a data-nav href="apply-sl.html">Prijava</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn" data-lang-switch href="article.html">EN</a>
+        <a class="btn btn-primary" href="apply-sl.html">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <a class="badge" href="insights-sl.html">← Nazaj</a>
+      <h1 class="section-title fade-up" id="articleTitle">Članek</h1>
+      <div class="muted fade-up" id="articleMeta"></div>
+
+      <div class="glass-card glass-pad fade-up" style="margin-top:18px">
+        <div class="article-content" id="articleBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="brand-dot"></span><span data-brand>Win Win</span></div>
+        <div class="small">© <span id="y"></span> <span data-brand>Win Win</span>.</div>
+      </div>
+      <div data-footer-links></div>
+      <div data-footer-socials></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { renderSiteChrome } from "./assets/js/common.js";
+    import { renderArticleDetail } from "./assets/js/insights.js";
+
+    document.getElementById("y").textContent = new Date().getFullYear();
+    await renderSiteChrome({ currentPath:"article-sl.html", langSwitchHref:"article.html" });
+    await renderArticleDetail();
+  </script>
+</body>
+</html>

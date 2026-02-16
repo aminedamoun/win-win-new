@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "titleBase": "Zgradi svojo kariero",
+    "titleEmphasis": "z Win Win",
+    "subtitle": "Sales Team",
+    "description": "Smo prodajno podjetje, usmerjeno k doseganju rezultatov, ki je specializirano za prodajo telekomnikacijskih rešitev za b2c in b2b preko prodaje na terenu, klicnega centra in preko direktnih promocij na strateških lokacijah z višjimi provizijami kot ostali ponudniki.",
+    "primaryCta": { "label": "Pridruži se ekipi", "href": "/apply-sl.html" },
+    "secondaryCta": { "label": "Poglej odprte pozicije", "href": "/jobs-sl.html" }
+  },
+
+  "about": {
+    "title": "Kdo smo",
+    "description": "Win Win d.o.o. je ekipa izkušenih prodajnih vodij in strokovnjakov, ki se specializira za neposredno trženje in dolgoročne odnose s strankami. Delujemo z več lokacij po Sloveniji in gradimo okolje, kjer se nagrajujejo strokovnost, trud, disciplina in vztrajnost.",
+    "stats": [
+      { "value": "60,000+", "label": "Zaključenih poslov" },
+      { "value": "3", "label": "Lokacije" },
+      { "value": "24", "label": "Članov ekipe" },
+      { "value": "12", "label": "Let izkušenj" }
+    ]
+  },
+
+  "services": {
+    "title": "Naše storitve",
+    "description": "Celovite prodajne rešitve in podporni sistemi, ki prinašajo rezultate",
+    "blocks": {
+      "core": "NAŠE STORITVE",
+      "support": "Interne podporne storitve",
+      "market": "Tržna usmeritev"
+    },
+    "core": [
+      {
+        "iconKey": "shoppingBag",
+        "title": "B2C Terenska Prodaja",
+        "description": "Promocijske aktivnosti na licu mesta z neposrednim angažiranjem strank na prometnih trgovskih lokacijah po Sloveniji, podprte z vnaprej pripravljenim terenom ter ciljno usmerjenimi promocijami v trgovskih centrih, na sejmih in drugih aktualnih dogodkovnih lokacijah."
+      },
+      {
+        "iconKey": "megaphone",
+        "title": "Promocijska Prodaja",
+        "description": "Direktne promocijske aktivnosti na strateških lokacijah z osebnim angažmanom strank ter krepitvijo prepoznavnosti blagovne znamke skozi ciljno usmerjene kampanje na dogodkih, sejmih in v trgovskih centrih."
+      },
+      {
+        "iconKey": "headset",
+        "title": "Klicni Center",
+        "description": "Profesionalna odhodna telefonska prodaja za generiranje vročih marketing leadov, podprta s strukturiranimi prodajnimi skriptami, KPI-usmerjeno uspešnostjo in CRM-osnovanim upravljanjem strank."
+      },
+      {
+        "iconKey": "building",
+        "title": "B2B Profesionalna Prodaja",
+        "description": "Telekomunikacije in napredne IKT storitve, ki podjetjem omogočajo učinkovite in merljive B2B prodajne rešitve, zanesljive korporativne telekomunikacijske sisteme ter celovite profesionalne podporne in svetovalne storitve."
+      }
+    ],
+    "support": [
+      { "iconKey": "graduation", "title": "Prodajno usposabljanje in coaching", "description": "Mesečni programi, mentorstvo, simulacije vlog in delavnice za razvoj veščin." },
+      { "iconKey": "users", "title": "Razvoj ekipe", "description": "14-dnevno uvajanje, selekcijski programi, izboljšanje uspešnosti in načrtovanje karierne poti." },
+      { "iconKey": "chartUp", "title": "Vodenje in management", "description": "Spremljanje KPI-jev, nadzor uspešnosti, optimizacija procesov in coaching za voditelje ekip." },
+      { "iconKey": "settings", "title": "CRM in optimizacija procesov", "description": "Sodobni CRM sistemi, optimizacija skriptov, upravljanje z zadevami in strukturirani dnevni cilji." }
+    ],
+    "market": [
+      { "iconKey": "home", "title": "B2C tržna specializacija", "description": "Primarni fokus na stanovanjske stranke, gospodinjstva in posamezne končne uporabnike." },
+      { "iconKey": "briefcase", "title": "B2B Prodaja", "description": "Sekundarni fokus na poslovne telekomunikacijske rešitve in ponudbe povezane z IKT." }
+    ]
+  },
+
+  "benefits": {
+    "title": "Zakaj izbrati Win Win",
+    "description": "Zagotavljamo vse, kar potrebujete za uspešno kariero v prodaji",
+    "items": [
+      { "iconKey": "users", "title": "Mesečno usposabljanje in mentorstvo", "description": "Nenehno coaching in razvoj veščin s strani izkušenih prodajnih strokovnjakov" },
+      { "iconKey": "chartUp", "title": "Jasne karierne poti", "description": "Strukturiran napredek od prodajnega svetovalca do voditelja ekipe in naprej" },
+      { "iconKey": "award", "title": "Visok potencial zaslužka", "description": "Konkurenčna osnovna plača plus provizijska struktura, odvisna od uspešnosti" },
+      { "iconKey": "briefcase", "title": "Moderna orodja in skripti", "description": "Dostop do preverjenih prodajnih skriptov, CRM sistemov in kvalificiranih potencialnih strank" },
+      { "iconKey": "pin", "title": "Več lokacij", "description": "Pisarne v Trzinu in Kranju z operacijami na terenu po vsej državi" },
+      { "iconKey": "target", "title": "Usmerjenost k rezultatom", "description": "Jasni KPI-ji in transparentne metrike za spremljanje vašega uspeha" }
+    ]
+  },
+
+  "join": {
+    "title": "Pridruži se vodilni prodajni ekipi v Sloveniji",
+    "description": "Gradimo najbolj učinkovito in spoštovano prodajno organizacijo v Sloveniji. Naši člani ekipe uživajo v vodilnem industrijskem usposabljanju, konkurenčnih plačilih in kulturi, ki praznuje uspeh.",
+    "btn1": "Začni svojo pot",
+    "btn2": "Več o nas"
+  },
+
+  "cta": {
+    "title": "Pripravljen začeti svojo prodajno kariero?",
+    "description": "Pridruži se ekipi predanih strokovnjakov, ki so zavezani odličnosti, rasti in rezultatom. Iščemo motivirane posameznike, pripravljene dvigniti svojo kariero na novo raven.",
+    "btn1": "Razišči priložnosti",
+    "btn2": "Več o nas"
+  },
+
+  "process": {
+    "title": "Naš proces",
+    "description": "Preprosta, transparentna pot do pridružitve naši ekipi",
+    "button": "Začni svojo prijavo",
+    "steps": [
+      { "step": "01", "title": "Prijava online", "desc": "Oddaj svojo prijavo preko našega portala" },
+      { "step": "02", "title": "Razgovor", "desc": "Srečaj se z našo ekipo in razpravljaj o priložnostih" },
+      { "step": "03", "title": "Selekcijski program", "desc": "14-dnevno obdobje usposabljanja in evalvacije" },
+      { "step": "04", "title": "Začni delati", "desc": "Podpiši pogodbo in začni svojo kariero" }
+    ]
+  },
+
+  "app": {
+    "title": "Prijavi se na poti",
+    "description": "Spremljaj svojo prijavo, prejemaj takojšnje posodobitve in ostani povezan z našo mobilno aplikacijo",
+    "button": "Kmalu na voljo"
+  },
+
+  "faq": {
+    "titleHtml": "Pogosto zastavljena <span class=\"text-red\">vprašanja</span>",
+    "description": "Vse, kar moraš vedeti o pridružitvi Win Win",
+    "still": "Še vedno imaš vprašanja?",
+    "button": "Kontaktiraj nas",
+    "items": [
+      { "q": "Ali potrebujem prejšnje prodajne izkušnje?", "a": "Ne. Prejšnje prodajne izkušnje so prednost, vendar niso obvezne. Zagotavljamo strukturirano uvajanje, skripte in nenehni coaching. Najpomembnejši sta motivacija, disciplina in pripravljenost za učenje." },
+      { "q": "Kakšne vrste prodaje bom opravljal?", "a": "Delal boš v B2C prodaji, bodisi terenski prodaji od vrat do vrat ali prodaji v klicnem centru. Prodajal boš telekomunikacijske storitve, vključno s pogodbami za internet, TV in mobilne storitve za končne stranke." },
+      { "q": "Ali gre za redno zaposlitev ali delo preko avtorske pogodbe?", "a": "Možni sta obe možnosti. Odvisno od tvojega profila in dogovora lahko delaš kot redno zaposlen ali kot samostojni podjetnik (s.p. / sodelovanje s podjetjem)." }
+    ]
+  },
+
+  "blog": {
+    "desc": "Prodajne strategije, karierni nasveti in zgodbe iz Win Win ekipe",
+    "empty": "Članki še niso na voljo. Preverite kmalu!"
+  },
+
+  "seo": {
+    "summaryTitle": "Služba v prodaji v Sloveniji - Pridruži se Win Win Sales Team",
+    "html": ""
+  }
+}

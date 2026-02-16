@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Article — Win Win</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="index.html"><span class="brand-dot"></span><span data-brand>Win Win</span></a>
+      <nav class="nav" data-nav-container>
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="jobs.html">Jobs</a>
+        <a data-nav href="insights.html">Insights</a>
+        <a data-nav href="apply.html">Apply</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn" data-lang-switch href="article-sl.html">SL</a>
+        <a class="btn btn-primary" href="apply.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <a class="badge" href="insights.html">← Back</a>
+      <h1 class="section-title fade-up" id="articleTitle">Article</h1>
+      <div class="muted fade-up" id="articleMeta"></div>
+
+      <div class="glass-card glass-pad fade-up" style="margin-top:18px">
+        <div class="article-content" id="articleBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="brand-dot"></span><span data-brand>Win Win</span></div>
+        <div class="small">© <span id="y"></span> <span data-brand>Win Win</span>.</div>
+      </div>
+      <div data-footer-links></div>
+      <div data-footer-socials></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { renderSiteChrome } from "./assets/js/common.js";
+    import { renderArticleDetail } from "./assets/js/insights.js";
+
+    document.getElementById("y").textContent = new Date().getFullYear();
+    await renderSiteChrome({ currentPath:"article.html", langSwitchHref:"article-sl.html" });
+    await renderArticleDetail();
+  </script>
+</body>
+</html>
