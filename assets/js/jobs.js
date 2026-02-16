@@ -162,7 +162,8 @@ async function loadJobsFromCMS() {
         const jobResponse = await fetch(`/content/jobs/${slug}.json`);
         if (jobResponse.ok) {
           const jobData = await jobResponse.json();
-          if (jobData.published) {
+          const isPublished = jobData.settings?.published !== false;
+          if (isPublished) {
             jobs.push({
               ...jobData,
               slug
@@ -189,33 +190,47 @@ async function loadJobsFromDatabase() {
     // If CMS has jobs, use them
     if (cmsJobs && cmsJobs.length > 0) {
       JOBS = cmsJobs.map(job => {
-        const slug = job.slug || job.title.toLowerCase().replace(/\s+/g, '-');
+        const slug = job.slug;
+        const enData = job.en || {};
+        const slData = job.sl || {};
 
-        // Format responsibilities and requirements as HTML list items
-        const responsibilitiesHtml = job.responsibilities
-          ? `<ul>${job.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>`
+        // Format English content
+        const responsibilitiesHtmlEn = enData.responsibilities
+          ? `<ul>${enData.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>`
           : '';
-        const requirementsHtml = job.requirements
-          ? `<ul>${job.requirements.map(r => `<li>${r}</li>`).join('')}</ul>`
+        const requirementsHtmlEn = enData.requirements
+          ? `<ul>${enData.requirements.map(r => `<li>${r}</li>`).join('')}</ul>`
           : '';
+        const bodyHtmlEn = `
+          <p>${enData.description || ''}</p>
+          ${responsibilitiesHtmlEn ? '<h3>Responsibilities</h3>' + responsibilitiesHtmlEn : ''}
+          ${requirementsHtmlEn ? '<h3>Requirements</h3>' + requirementsHtmlEn : ''}
+        `;
 
-        const bodyHtml = `
-          <p>${job.description}</p>
-          ${responsibilitiesHtml ? '<h3>Responsibilities</h3>' + responsibilitiesHtml : ''}
-          ${requirementsHtml ? '<h3>Requirements</h3>' + requirementsHtml : ''}
+        // Format Slovenian content
+        const responsibilitiesHtmlSl = slData.responsibilities
+          ? `<ul>${slData.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>`
+          : '';
+        const requirementsHtmlSl = slData.requirements
+          ? `<ul>${slData.requirements.map(r => `<li>${r}</li>`).join('')}</ul>`
+          : '';
+        const bodyHtmlSl = `
+          <p>${slData.description || ''}</p>
+          ${responsibilitiesHtmlSl ? '<h3>Odgovornosti</h3>' + responsibilitiesHtmlSl : ''}
+          ${requirementsHtmlSl ? '<h3>Zahteve</h3>' + requirementsHtmlSl : ''}
         `;
 
         return {
           id: slug,
-          title: { en: job.title, sl: job.title },
-          location: { en: job.location, sl: job.location },
-          type: { en: job.type, sl: job.type },
-          salary: { en: job.salary || 'Competitive', sl: job.salary || 'Konkurenčna plača' },
-          summary: { en: job.description, sl: job.description },
-          bodyHtml: { en: bodyHtml, sl: bodyHtml },
-          requirements: { en: job.requirements || [], sl: job.requirements || [] },
-          responsibilities: { en: job.responsibilities || [], sl: job.responsibilities || [] },
-          benefits: { en: job.benefits || [], sl: job.benefits || [] }
+          title: { en: enData.title || '', sl: slData.title || '' },
+          location: { en: enData.location || '', sl: slData.location || '' },
+          type: { en: enData.type || '', sl: slData.type || '' },
+          salary: { en: enData.salary || 'Competitive', sl: slData.salary || 'Konkurenčna plača' },
+          summary: { en: enData.description || '', sl: slData.description || '' },
+          bodyHtml: { en: bodyHtmlEn, sl: bodyHtmlSl },
+          requirements: { en: enData.requirements || [], sl: slData.requirements || [] },
+          responsibilities: { en: enData.responsibilities || [], sl: slData.responsibilities || [] },
+          benefits: { en: enData.benefits || [], sl: slData.benefits || [] }
         };
       });
 

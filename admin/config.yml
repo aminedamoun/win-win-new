@@ -535,16 +535,42 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Job Title", name: "title", widget: "string" }
-      - { label: "Location", name: "location", widget: "string" }
-      - { label: "Employment Type", name: "type", widget: "select", options: ["Full-time", "Part-time", "Contract", "Temporary"] }
-      - { label: "Department", name: "department", widget: "string", required: false }
-      - { label: "Salary Range", name: "salary", widget: "string", required: false, hint: "e.g., €35,000 - €45,000" }
-      - { label: "Short Description", name: "description", widget: "text" }
-      - { label: "Responsibilities", name: "responsibilities", widget: "list", field: { label: "Responsibility", name: "responsibility", widget: "string" } }
-      - { label: "Requirements", name: "requirements", widget: "list", field: { label: "Requirement", name: "requirement", widget: "string" } }
-      - { label: "Benefits", name: "benefits", widget: "list", field: { label: "Benefit", name: "benefit", widget: "string" }, required: false }
-      - { label: "Application Deadline", name: "deadline", widget: "datetime", required: false }
-      - { label: "Published", name: "published", widget: "boolean", default: true }
-      - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
-      - { label: "Posted Date", name: "posted", widget: "datetime", default: "" }
+      - label: "English Content"
+        name: "en"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Job Title (EN)", name: "title", widget: "string" }
+          - { label: "Location (EN)", name: "location", widget: "string" }
+          - { label: "Employment Type (EN)", name: "type", widget: "string", hint: "e.g., Full-time, Part-time" }
+          - { label: "Department (EN)", name: "department", widget: "string", required: false }
+          - { label: "Salary Range (EN)", name: "salary", widget: "string", required: false, hint: "e.g., €35,000 - €45,000" }
+          - { label: "Short Description (EN)", name: "description", widget: "text" }
+          - { label: "Responsibilities (EN)", name: "responsibilities", widget: "list", field: { label: "Responsibility", name: "responsibility", widget: "string" } }
+          - { label: "Requirements (EN)", name: "requirements", widget: "list", field: { label: "Requirement", name: "requirement", widget: "string" } }
+          - { label: "Benefits (EN)", name: "benefits", widget: "list", field: { label: "Benefit", name: "benefit", widget: "string" }, required: false }
+
+      - label: "Slovenian Content"
+        name: "sl"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Job Title (SL)", name: "title", widget: "string" }
+          - { label: "Location (SL)", name: "location", widget: "string" }
+          - { label: "Employment Type (SL)", name: "type", widget: "string", hint: "e.g., Polni delovni čas" }
+          - { label: "Department (SL)", name: "department", widget: "string", required: false }
+          - { label: "Salary Range (SL)", name: "salary", widget: "string", required: false }
+          - { label: "Short Description (SL)", name: "description", widget: "text" }
+          - { label: "Responsibilities (SL)", name: "responsibilities", widget: "list", field: { label: "Responsibility", name: "responsibility", widget: "string" } }
+          - { label: "Requirements (SL)", name: "requirements", widget: "list", field: { label: "Requirement", name: "requirement", widget: "string" } }
+          - { label: "Benefits (SL)", name: "benefits", widget: "list", field: { label: "Benefit", name: "benefit", widget: "string" }, required: false }
+
+      - label: "Settings"
+        name: "settings"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Application Deadline", name: "deadline", widget: "datetime", required: false }
+          - { label: "Published", name: "published", widget: "boolean", default: true }
+          - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
+          - { label: "Posted Date", name: "posted", widget: "datetime", default: "" }

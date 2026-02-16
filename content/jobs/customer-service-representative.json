@@ -1,34 +1,69 @@
 {
-  "title": "Customer Service Representative",
-  "location": "Maribor",
-  "type": "Full-time",
-  "department": "Customer Support",
-  "salary": "€1,400 - €1,800 per month",
-  "description": "We're looking for an enthusiastic Customer Service Representative to join our team. You'll be the first point of contact for our clients and candidates, providing exceptional service and support.",
-  "responsibilities": [
-    "Respond to customer inquiries via phone, email, and chat",
-    "Resolve customer complaints and issues professionally",
-    "Maintain detailed records of customer interactions",
-    "Coordinate with other departments to resolve issues",
-    "Provide information about our services and job opportunities",
-    "Follow up with customers to ensure satisfaction"
-  ],
-  "requirements": [
-    "Excellent communication skills in Slovenian and English",
-    "Previous customer service experience required",
-    "Strong problem-solving abilities",
-    "Patient and empathetic personality",
-    "Proficiency with MS Office and CRM software",
-    "Ability to work in a fast-paced environment"
-  ],
-  "benefits": [
-    "Competitive salary package",
-    "Health and dental insurance",
-    "Professional development opportunities",
-    "Modern office environment",
-    "Performance bonuses"
-  ],
-  "published": true,
-  "featured": false,
-  "posted": "2024-02-15T09:00:00.000Z"
+  "en": {
+    "title": "Customer Service Representative",
+    "location": "Maribor",
+    "type": "Full-time",
+    "department": "Customer Support",
+    "salary": "€1,400 - €1,800 per month",
+    "description": "We're looking for an enthusiastic Customer Service Representative to join our team. You'll be the first point of contact for our clients and candidates, providing exceptional service and support.",
+    "responsibilities": [
+      "Respond to customer inquiries via phone, email, and chat",
+      "Resolve customer complaints and issues professionally",
+      "Maintain detailed records of customer interactions",
+      "Coordinate with other departments to resolve issues",
+      "Provide information about our services and job opportunities",
+      "Follow up with customers to ensure satisfaction"
+    ],
+    "requirements": [
+      "Excellent communication skills in Slovenian and English",
+      "Previous customer service experience required",
+      "Strong problem-solving abilities",
+      "Patient and empathetic personality",
+      "Proficiency with MS Office and CRM software",
+      "Ability to work in a fast-paced environment"
+    ],
+    "benefits": [
+      "Competitive salary package",
+      "Health and dental insurance",
+      "Professional development opportunities",
+      "Modern office environment",
+      "Performance bonuses"
+    ]
+  },
+  "sl": {
+    "title": "Predstavnik za storitve strankam",
+    "location": "Maribor",
+    "type": "Polni delovni čas",
+    "department": "Podpora strankam",
+    "salary": "€1,400 - €1,800 na mesec",
+    "description": "Iščemo navdušenega predstavnika za storitve strankam, ki se bo pridružil naši ekipi. Boste prva kontaktna točka za naše stranke in kandidate ter zagotavljali izjemno storitev in podporo.",
+    "responsibilities": [
+      "Odzivanje na povpraševanja strank po telefonu, e-pošti in klepetu",
+      "Profesionalno reševanje pritožb in težav strank",
+      "Vodenje podrobnih evidenc o interakcijah s strankami",
+      "Koordinacija z drugimi oddelki za reševanje težav",
+      "Zagotavljanje informacij o naših storitvah in delovnih priložnostih",
+      "Nadaljnje spremljanje strank za zagotovitev zadovoljstva"
+    ],
+    "requirements": [
+      "Odlične komunikacijske veščine v slovenščini in angleščini",
+      "Zahtevane so predhodne izkušnje s storitvami za stranke",
+      "Močne sposobnosti reševanja problemov",
+      "Potrpežljiva in empatična osebnost",
+      "Obvladovanje MS Office in CRM programske opreme",
+      "Sposobnost dela v hitrem tempu"
+    ],
+    "benefits": [
+      "Konkurenčen plačni paket",
+      "Zdravstveno in zobozdravstveno zavarovanje",
+      "Priložnosti za strokovni razvoj",
+      "Sodobno pisarniško okolje",
+      "Bonusi za uspešnost"
+    ]
+  },
+  "settings": {
+    "published": true,
+    "featured": false,
+    "posted": "2024-02-15T09:00:00.000Z"
+  }
 }

@@ -1,34 +1,69 @@
 {
-  "title": "Warehouse Worker",
-  "location": "Ljubljana",
-  "type": "Full-time",
-  "department": "Warehouse Operations",
-  "salary": "€1,200 - €1,500 per month",
-  "description": "Join our dynamic warehouse team as a Warehouse Worker. This role involves various warehouse operations including receiving, storing, and distributing materials, equipment, and products.",
-  "responsibilities": [
-    "Receive and process warehouse stock products",
-    "Perform inventory controls and keep quality standards high",
-    "Keep a clean and safe working environment",
-    "Operate forklift and other warehouse equipment",
-    "Pack and prepare orders for shipment",
-    "Maintain accurate records of warehouse activities"
-  ],
-  "requirements": [
-    "Previous warehouse experience preferred",
-    "Forklift certification is a plus",
-    "Good physical condition",
-    "Ability to work in shifts",
-    "Team player with good communication skills",
-    "Basic computer skills"
-  ],
-  "benefits": [
-    "Competitive salary",
-    "Health insurance",
-    "Paid training",
-    "Career advancement opportunities",
-    "Friendly work environment"
-  ],
-  "published": true,
-  "featured": true,
-  "posted": "2024-02-16T10:00:00.000Z"
+  "en": {
+    "title": "Warehouse Worker",
+    "location": "Ljubljana",
+    "type": "Full-time",
+    "department": "Warehouse Operations",
+    "salary": "€1,200 - €1,500 per month",
+    "description": "Join our dynamic warehouse team as a Warehouse Worker. This role involves various warehouse operations including receiving, storing, and distributing materials, equipment, and products.",
+    "responsibilities": [
+      "Receive and process warehouse stock products",
+      "Perform inventory controls and keep quality standards high",
+      "Keep a clean and safe working environment",
+      "Operate forklift and other warehouse equipment",
+      "Pack and prepare orders for shipment",
+      "Maintain accurate records of warehouse activities"
+    ],
+    "requirements": [
+      "Previous warehouse experience preferred",
+      "Forklift certification is a plus",
+      "Good physical condition",
+      "Ability to work in shifts",
+      "Team player with good communication skills",
+      "Basic computer skills"
+    ],
+    "benefits": [
+      "Competitive salary",
+      "Health insurance",
+      "Paid training",
+      "Career advancement opportunities",
+      "Friendly work environment"
+    ]
+  },
+  "sl": {
+    "title": "Skladiščnik",
+    "location": "Ljubljana",
+    "type": "Polni delovni čas",
+    "department": "Skladiščne operacije",
+    "salary": "€1,200 - €1,500 na mesec",
+    "description": "Pridružite se naši dinamični skladiščni ekipi kot skladiščnik. Vloga vključuje različne skladiščne operacije, vključno s sprejemanjem, skladiščenjem in distribucijo materialov, opreme in izdelkov.",
+    "responsibilities": [
+      "Sprejem in obdelava skladiščne zaloge",
+      "Izvajanje kontrol inventarja in vzdrževanje visokih standardov kakovosti",
+      "Vzdrževanje čistega in varnega delovnega okolja",
+      "Upravljanje viličarja in druge skladiščne opreme",
+      "Pakiranje in priprava naročil za pošiljanje",
+      "Vzdrževanje natančnih evidenc skladiščnih aktivnosti"
+    ],
+    "requirements": [
+      "Predhodne skladiščne izkušnje so prednost",
+      "Certifikat za viličar je plus",
+      "Dobra telesna kondicija",
+      "Sposobnost dela v izmenah",
+      "Ekipni igralec z dobrimi komunikacijskimi veščinami",
+      "Osnovno računalniško znanje"
+    ],
+    "benefits": [
+      "Konkurenčna plača",
+      "Zdravstveno zavarovanje",
+      "Plačano usposabljanje",
+      "Možnosti napredovanja",
+      "Prijazno delovno okolje"
+    ]
+  },
+  "settings": {
+    "published": true,
+    "featured": true,
+    "posted": "2024-02-16T10:00:00.000Z"
+  }
 }
