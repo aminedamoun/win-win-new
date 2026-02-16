@@ -1,20 +1,171 @@
 {
-  "hero": {
-    "titleLine1": "Build Your Career",
-    "titleLine2": "with Win Win",
-    "description": "We are a results-driven sales company specialized in selling telecommunications solutions for B2C and B2B through field sales, call center, and direct promotions at strategic locations with higher commissions than other providers.",
-    "primaryCta": { "label": "Join the Team", "href": "apply.html" },
-    "secondaryCta": { "label": "View Open Positions", "href": "jobs.html" }
+  "app": {
+    "title": "Apply On The Go",
+    "description": "Track your application, get instant updates, and stay connected with our mobile app",
+    "buttonLabel": "Coming Soon"
+  },
+  "blog": {
+    "empty": "No articles available yet. Check back soon!"
+  },
+  "join": {
+    "title": "Join Slovenia's Leading Sales Team",
+    "description": "We're building the most effective and respected sales organization in Slovenia. Our team members benefit from industry-leading training, competitive compensation, and a culture that celebrates success.",
+    "btn1": {
+      "label": "Start Your Journey",
+      "href": "apply.html"
+    },
+    "btn2": {
+      "label": "Learn More",
+      "href": "about.html"
+    }
   },
   "about": {
     "title": "Who We Are",
     "description": "Win Win d.o.o. is a team of experienced sales managers and professionals specializing in direct marketing and long-term customer relationships. We operate from multiple locations across Slovenia and build an environment where professionalism, effort, discipline, and persistence are rewarded.",
     "stats": [
-      { "value": "60,000", "label": "Completed Deals" },
-      { "value": "3", "label": "Locations" },
-      { "value": "24", "label": "Team Members" },
-      { "value": "12", "label": "Years Experience" }
+      {
+        "value": "60,000",
+        "label": "Completed Deals"
+      },
+      {
+        "value": "3",
+        "label": "Locations"
+      },
+      {
+        "value": "24",
+        "label": "Team Members"
+      },
+      {
+        "value": "12",
+        "label": "Years Experience"
+      }
     ]
+  },
+  "process": {
+    "title": "Our Process",
+    "description": "A simple, transparent path to joining our team",
+    "button": {
+      "label": "Start Your Application",
+      "href": "apply.html"
+    },
+    "steps": [
+      {
+        "step": "01",
+        "title": "Apply Online",
+        "desc": "Submit your application through our portal"
+      },
+      {
+        "step": "02",
+        "title": "Interview",
+        "desc": "Meet with our team and discuss opportunities"
+      },
+      {
+        "step": "03",
+        "title": "Selection Program",
+        "desc": "14-day training and evaluation period"
+      },
+      {
+        "step": "04",
+        "title": "Start Working",
+        "desc": "Sign contract and begin your career"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Start Your Sales Career?",
+    "description": "Join a team of dedicated professionals who are committed to excellence, growth, and results. We're looking for motivated individuals ready to take their career to the next level.",
+    "btn1": {
+      "label": "Explore Opportunities",
+      "href": "jobs.html"
+    },
+    "btn2": {
+      "label": "Learn More About Us",
+      "href": "about.html"
+    }
+  },
+  "faq": {
+    "titleHtml": "Frequently Asked <span class=\"text-red\">Questions</span>",
+    "description": "Everything you need to know about joining Win Win",
+    "still": "Still have questions?",
+    "button": {
+      "label": "Get in Touch",
+      "href": "apply.html"
+    },
+    "items": [
+      {
+        "q": "Do I need previous sales experience?",
+        "a": "No. Previous sales experience is an advantage, but it is not mandatory. We provide structured onboarding, scripts, and continuous coaching. What matters most is motivation, discipline, and the willingness to learn."
+      },
+      {
+        "q": "What type of sales will I be doing?",
+        "a": "You will work in B2C sales, either door-to-door field sales or call center sales. You will sell telecommunications services, including Internet, TV, and Mobile contracts for end customers."
+      },
+      {
+        "q": "Is this a full-time position or freelance work?",
+        "a": "Both options are possible. Depending on your profile and agreement, you can work as a full-time employee or as a freelancer (s.p. / company collaboration)."
+      },
+      {
+        "q": "What are the working hours?",
+        "a": "Working hours are structured and clearly defined. Field and call center schedules are organized to support productivity and work-life balance. Specific schedules are discussed during the interview."
+      },
+      {
+        "q": "How does payment work?",
+        "a": "You receive a base salary or hourly rate plus performance-based commission. Your earnings depend directly on your results. High performers can achieve above-average monthly income."
+      }
+    ]
+  },
+  "hero": {
+    "titleLine1": "Build Your Career2",
+    "titleLine2": "with Win Win",
+    "description": "We are a results-driven sales company specialized in selling telecommunications solutions for B2C and B2B through field sales, call center, and direct promotions at strategic locations with higher commissions than other providers.",
+    "primaryCta": {
+      "label": "Join the Team",
+      "href": "apply.html"
+    },
+    "secondaryCta": {
+      "label": "View Open Positions",
+      "href": "jobs.html"
+    }
+  },
+  "benefits": {
+    "title": "Why Choose Win Win",
+    "description": "We provide everything you need to build a successful career in sales",
+    "items": [
+      {
+        "icon": "users",
+        "title": "Monthly Training & Mentoring",
+        "description": "Continuous coaching and skill development from experienced sales professionals"
+      },
+      {
+        "icon": "chart",
+        "title": "Clear Career Paths",
+        "description": "Structured progression from Sales Advisor to Team Leader and beyond"
+      },
+      {
+        "icon": "award",
+        "title": "High Earning Potential",
+        "description": "Competitive base salary plus performance-based commission structure"
+      },
+      {
+        "icon": "toolbox",
+        "title": "Modern Tools & Scripts",
+        "description": "Access to proven sales scripts, CRM systems, and qualified leads"
+      },
+      {
+        "icon": "mapPin",
+        "title": "Multiple Locations",
+        "description": "Offices in Trzin and Kranj with nationwide field operations"
+      },
+      {
+        "icon": "target",
+        "title": "Performance-Driven",
+        "description": "Clear KPIs and transparent metrics to track your success"
+      }
+    ]
+  },
+  "seo": {
+    "summaryTitle": "Sales Jobs in Slovenia - Join Win Win Sales Team",
+    "html": "<p><strong>Win Win Sales Team – Your Opportunity for a Successful Sales Career in Slovenia</strong></p><p>Looking for a sales job in Ljubljana, Maribor, or other cities across Slovenia? Win Win Sales Team is a leading Slovenian direct sales company offering exceptional opportunities for sales employment, career development, and personal growth.</p>"
   },
   "services": {
     "title": "Our Services",
@@ -25,78 +176,60 @@
       "market": "Market Focus"
     },
     "core": [
-      { "icon": "shoppingBag", "title": "Promotions in Shopping Centers", "description": "On-site promotional activities and direct customer engagement in high-traffic retail locations across Slovenia." },
-      { "icon": "megaphone", "title": "Promotional Sales", "description": "Direct promotional activities at strategic locations with personal customer engagement and brand awareness building through targeted campaigns at events, fairs, and shopping centers." },
-      { "icon": "phone", "title": "Call Center", "description": "Professional outbound telemarketing with structured scripts, KPI-driven performance, and CRM-based customer management." },
-      { "icon": "building", "title": "B2B Professional Sales", "description": "Business-to-business sales solutions, corporate telecommunications, and professional service offerings." }
+      {
+        "icon": "shoppingBag",
+        "title": "Promotions in Shopping Centers",
+        "description": "On-site promotional activities and direct customer engagement in high-traffic retail locations across Slovenia."
+      },
+      {
+        "icon": "megaphone",
+        "title": "Promotional Sales",
+        "description": "Direct promotional activities at strategic locations with personal customer engagement and brand awareness building through targeted campaigns at events, fairs, and shopping centers."
+      },
+      {
+        "icon": "phone",
+        "title": "Call Center",
+        "description": "Professional outbound telemarketing with structured scripts, KPI-driven performance, and CRM-based customer management."
+      },
+      {
+        "icon": "building",
+        "title": "B2B Professional Sales",
+        "description": "Business-to-business sales solutions, corporate telecommunications, and professional service offerings."
+      }
     ],
     "support": [
-      { "icon": "graduationCap", "title": "Sales Training & Coaching", "description": "Monthly programs, mentoring, role-play simulations, and skill development workshops." },
-      { "icon": "users", "title": "Team Development", "description": "14-day onboarding, selection programs, performance improvement, and career path planning." },
-      { "icon": "trendUp", "title": "Leadership & Management", "description": "KPI tracking, performance monitoring, process optimization, and coaching for team leaders." },
-      { "icon": "settings", "title": "CRM & Process Optimization", "description": "Modern CRM systems, script optimization, lead management, and structured daily targets." }
+      {
+        "icon": "graduationCap",
+        "title": "Sales Training & Coaching",
+        "description": "Monthly programs, mentoring, role-play simulations, and skill development workshops."
+      },
+      {
+        "icon": "users",
+        "title": "Team Development",
+        "description": "14-day onboarding, selection programs, performance improvement, and career path planning."
+      },
+      {
+        "icon": "trendUp",
+        "title": "Leadership & Management",
+        "description": "KPI tracking, performance monitoring, process optimization, and coaching for team leaders."
+      },
+      {
+        "icon": "settings",
+        "title": "CRM & Process Optimization",
+        "description": "Modern CRM systems, script optimization, lead management, and structured daily targets."
+      }
     ],
     "market": [
-      { "icon": "userCheck", "title": "B2C Market Specialization", "description": "Primary focus on residential customers, households, and individual end users." },
-      { "icon": "briefcase", "title": "B2B Sales Support", "description": "Secondary focus on business telecom solutions and ICT-related offers." }
+      {
+        "icon": "userCheck",
+        "title": "B2C Market Specialization",
+        "description": "Primary focus on residential customers, households, and individual end users."
+      },
+      {
+        "icon": "briefcase",
+        "title": "B2B Sales Support",
+        "description": "Secondary focus on business telecom solutions and ICT-related offers."
+      }
     ]
-  },
-  "benefits": {
-    "title": "Why Choose Win Win",
-    "description": "We provide everything you need to build a successful career in sales",
-    "items": [
-      { "icon": "users", "title": "Monthly Training & Mentoring", "description": "Continuous coaching and skill development from experienced sales professionals" },
-      { "icon": "chart", "title": "Clear Career Paths", "description": "Structured progression from Sales Advisor to Team Leader and beyond" },
-      { "icon": "award", "title": "High Earning Potential", "description": "Competitive base salary plus performance-based commission structure" },
-      { "icon": "toolbox", "title": "Modern Tools & Scripts", "description": "Access to proven sales scripts, CRM systems, and qualified leads" },
-      { "icon": "mapPin", "title": "Multiple Locations", "description": "Offices in Trzin and Kranj with nationwide field operations" },
-      { "icon": "target", "title": "Performance-Driven", "description": "Clear KPIs and transparent metrics to track your success" }
-    ]
-  },
-  "join": {
-    "title": "Join Slovenia's Leading Sales Team",
-    "description": "We're building the most effective and respected sales organization in Slovenia. Our team members benefit from industry-leading training, competitive compensation, and a culture that celebrates success.",
-    "btn1": { "label": "Start Your Journey", "href": "apply.html" },
-    "btn2": { "label": "Learn More", "href": "about.html" }
-  },
-  "cta": {
-    "title": "Ready to Start Your Sales Career?",
-    "description": "Join a team of dedicated professionals who are committed to excellence, growth, and results. We're looking for motivated individuals ready to take their career to the next level.",
-    "btn1": { "label": "Explore Opportunities", "href": "jobs.html" },
-    "btn2": { "label": "Learn More About Us", "href": "about.html" }
-  },
-  "process": {
-    "title": "Our Process",
-    "description": "A simple, transparent path to joining our team",
-    "button": { "label": "Start Your Application", "href": "apply.html" },
-    "steps": [
-      { "step": "01", "title": "Apply Online", "desc": "Submit your application through our portal" },
-      { "step": "02", "title": "Interview", "desc": "Meet with our team and discuss opportunities" },
-      { "step": "03", "title": "Selection Program", "desc": "14-day training and evaluation period" },
-      { "step": "04", "title": "Start Working", "desc": "Sign contract and begin your career" }
-    ]
-  },
-  "app": {
-    "title": "Apply On The Go",
-    "description": "Track your application, get instant updates, and stay connected with our mobile app",
-    "buttonLabel": "Coming Soon"
-  },
-  "faq": {
-    "titleHtml": "Frequently Asked <span class=\"text-red\">Questions</span>",
-    "description": "Everything you need to know about joining Win Win",
-    "still": "Still have questions?",
-    "button": { "label": "Get in Touch", "href": "apply.html" },
-    "items": [
-      { "q": "Do I need previous sales experience?", "a": "No. Previous sales experience is an advantage, but it is not mandatory. We provide structured onboarding, scripts, and continuous coaching. What matters most is motivation, discipline, and the willingness to learn." },
-      { "q": "What type of sales will I be doing?", "a": "You will work in B2C sales, either door-to-door field sales or call center sales. You will sell telecommunications services, including Internet, TV, and Mobile contracts for end customers." },
-      { "q": "Is this a full-time position or freelance work?", "a": "Both options are possible. Depending on your profile and agreement, you can work as a full-time employee or as a freelancer (s.p. / company collaboration)." },
-      { "q": "What are the working hours?", "a": "Working hours are structured and clearly defined. Field and call center schedules are organized to support productivity and work-life balance. Specific schedules are discussed during the interview." },
-      { "q": "How does payment work?", "a": "You receive a base salary or hourly rate plus performance-based commission. Your earnings depend directly on your results. High performers can achieve above-average monthly income." }
-    ]
-  },
-  "blog": { "empty": "No articles available yet. Check back soon!" },
-  "seo": {
-    "summaryTitle": "Sales Jobs in Slovenia - Join Win Win Sales Team",
-    "html": "<p><strong>Win Win Sales Team – Your Opportunity for a Successful Sales Career in Slovenia</strong></p><p>Looking for a sales job in Ljubljana, Maribor, or other cities across Slovenia? Win Win Sales Team is a leading Slovenian direct sales company offering exceptional opportunities for sales employment, career development, and personal growth.</p>"
   }
 }
