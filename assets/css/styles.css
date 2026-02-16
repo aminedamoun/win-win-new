@@ -289,7 +289,7 @@ button{font-family:inherit}
     flex-direction: column;
   }
   .hero-bg img{
-    content: url('https://6949b72b30e1aa8ca4b7eef2.imgix.net/winwin.jpg?auto=compress&cs=tinysrgb&w=1200');
+    content: url('../img/image copy copy.png');
   }
   .hero-bg{
     position: relative;
