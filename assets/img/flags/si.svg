@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <rect fill="#FFF" width="1200" height="600"/>
+  <rect fill="#0000FF" y="200" width="1200" height="200"/>
+  <rect fill="#FF0000" y="400" width="1200" height="200"/>
+  <g id="shield">
+    <path fill="#FFF" d="M200,150 h200 v240 q-100,60 -100,60 -100,-60 -100,-60 z"/>
+    <path fill="#0000FF" d="M220,170 h160 v200 q-80,48 -80,48 -80,-48 -80,-48 z"/>
+    <g fill="#FFF">
+      <path d="M260,240 h40 l-20,-30 z"/>
+      <path d="M320,240 h40 l-20,-30 z"/>
+      <path d="M290,280 h40 l-20,-30 z"/>
+    </g>
+    <path fill="#FFD700" stroke="#FFD700" stroke-width="2" d="M240,320 q0,-20 20,-20 20,0 20,20 M340,320 q0,-20 20,-20 20,0 20,20"/>
+  </g>
+</svg>
