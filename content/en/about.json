@@ -1,79 +1,75 @@
 {
   "hero": {
-    "title": "About Win-Win",
-    "subtitle": "Building careers in sales, one success story at a time",
-    "backgroundImage": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920"
+    "title": "About Win Win",
+    "description": "We are a team that lives sales. Win Win d.o.o. was built on the belief that sales can be done differently — honestly, ethically, and with a long-term mindset."
   },
   "vision": {
     "title": "Our Vision",
-    "text": "To be the leading sales talent partner in Slovenia, recognized for transforming ambitious individuals into top-performing sales professionals.",
-    "image": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
+    "description": "To become the most effective and respected sales company in Slovenia, known for our integrity, results, and commitment to both clients and team members."
   },
   "mission": {
     "title": "Our Mission",
-    "text": "We provide structured career paths, professional training, and ongoing support to help sales professionals achieve their potential and build rewarding careers in telecommunications and beyond.",
-    "image": "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
+    "description": "To deliver more value to customers than they expect, through trust, structure, and top-level sales expertise. We build long-term relationships that benefit everyone involved."
   },
-  "values": [
-    {
-      "title": "Performance Culture",
-      "description": "We believe in measurable results, clear KPIs, and rewarding high achievers with career growth and financial success.",
-      "icon": "📊",
-      "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Professional Development",
-      "description": "Continuous training, coaching, and mentorship programs designed to develop sales skills and business acumen.",
-      "icon": "🎯",
-      "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Team Support",
-      "description": "A collaborative environment where experienced professionals help newcomers succeed through shared knowledge and best practices.",
-      "icon": "🤝",
-      "image": "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Transparent Systems",
-      "description": "Clear commission structures, honest expectations, and open communication about performance and opportunities.",
-      "icon": "💡",
-      "image": "https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg?auto=compress&cs=tinysrgb&w=600"
-    }
-  ],
-  "culture": {
-    "title": "Our Culture",
-    "description": "Win-Win is built on a foundation of structured success. We combine proven sales methodologies with modern tools and genuine support to create an environment where talent thrives.",
-    "highlights": [
-      "Data-driven decision making",
-      "Regular performance reviews",
-      "Merit-based promotions",
-      "Continuous learning opportunities",
-      "Collaborative team environment",
-      "Work-life balance support"
+  "values": {
+    "title": "Our Core Values",
+    "description": "These principles guide everything we do and define who we are as a company",
+    "items": [
+      {
+        "title": "Integrity & Honesty",
+        "description": "We build trust through transparent communication and ethical business practices"
+      },
+      {
+        "title": "Reliability",
+        "description": "Our clients and team members can count on us to deliver on our commitments"
+      },
+      {
+        "title": "Professional Communication",
+        "description": "Clear, respectful, and effective communication in every interaction"
+      },
+      {
+        "title": "Performance & Growth",
+        "description": "Continuous improvement and measurable results drive our success"
+      },
+      {
+        "title": "Team Support",
+        "description": "We succeed together through collaboration and mutual support"
+      },
+      {
+        "title": "Excellence",
+        "description": "We strive for the highest standards in everything we do"
+      }
     ]
   },
-  "stats": [
-    {
-      "number": "500+",
-      "label": "Sales Professionals Trained"
+  "culture": {
+    "title": "Company Culture",
+    "description": "We've built an environment where talented professionals can thrive",
+    "items": [
+      "Results-driven mindset with clear KPIs",
+      "Team collaboration and knowledge sharing",
+      "Continuous learning and skill development",
+      "Coaching and mentoring programs",
+      "Recognition and rewards for excellence",
+      "Work-life balance and flexibility"
+    ]
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "We operate from multiple locations across Slovenia with a growing team of dedicated sales professionals",
+    "stats": {
+      "members": "Active Team Members",
+      "field": "Field Sales",
+      "callCenter": "Call Center",
+      "locations": "Multiple Locations"
     },
-    {
-      "number": "15+",
-      "label": "Years of Experience"
-    },
-    {
-      "number": "95%",
-      "label": "Client Satisfaction Rate"
-    },
-    {
-      "number": "3x",
-      "label": "Average Income Growth"
-    }
-  ],
+    "fieldText": "Field",
+    "callCenterText": "Call Center",
+    "locationsText": "Trzin, Kranj & Field"
+  },
   "faq": [
     {
-      "question": "What makes Win-Win different from other sales agencies?",
-      "answer": "We focus on long-term career development, not just short-term placements. Our structured training programs, clear KPI systems, and genuine mentorship help salespeople build sustainable careers with real growth potential."
+      "question": "What makes Win Win different from other sales agencies?",
+      "answer": "We combine clear structure, honest communication, strong coaching culture, long-term career opportunities, and a results-driven but supportive environment. At Win Win, success is not luck — it is a system."
     },
     {
       "question": "Do you provide training for newcomers to sales?",

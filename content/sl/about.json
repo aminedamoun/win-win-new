@@ -1,79 +1,75 @@
 {
   "hero": {
-    "title": "O Win-Win",
-    "subtitle": "Gradimo karierne zgodbe v prodaji, eno uspešno zgodbo naenkrat",
-    "backgroundImage": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920"
+    "title": "O Win Win",
+    "description": "Smo ekipa, ki živi prodajo. Win Win d.o.o. je bil zgrajen na prepričanju, da se lahko prodaja izvaja drugače — pošteno, etično in z dolgoročnim razmišljanjem."
   },
   "vision": {
-    "title": "Naša Vizija",
-    "text": "Biti vodilni partner za prodajne talente v Sloveniji, prepoznan po spreminjanju ambicioznih posameznikov v vrhunske prodajne strokovnjake.",
-    "image": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
+    "title": "Naša vizija",
+    "description": "Postati najbolj učinkovito in spoštovano prodajno podjetje v Sloveniji, znano po naši integriteti, rezultatih in zavezanosti tako strankam kot članom ekipe."
   },
   "mission": {
-    "title": "Naša Misija",
-    "text": "Zagotavljamo strukturirane karierne poti, profesionalno usposabljanje in kontinuirano podporo, ki pomaga prodajnim strokovnjakom doseči svoj potencial in zgraditi nagrajevalno kariero v telekomunikacijah in širše.",
-    "image": "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
+    "title": "Naša misija",
+    "description": "Zagotavljati več vrednosti strankam, kot pričakujejo, skozi zaupanje, strukturo in vrhunsko prodajno strokovnost. Gradimo dolgoročne odnose, ki koristijo vsem vključenim."
   },
-  "values": [
-    {
-      "title": "Kultura Uspešnosti",
-      "description": "Verjamemo v merljive rezultate, jasne KPI-je in nagrajevanje najboljših s karierno rastjo in finančnim uspehom.",
-      "icon": "📊",
-      "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Profesionalni Razvoj",
-      "description": "Kontinuirana usposabljanja, coaching in mentorski programi, zasnovani za razvoj prodajnih veščin in poslovnega razumevanja.",
-      "icon": "🎯",
-      "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Ekipna Podpora",
-      "description": "Sodelovalno okolje, kjer izkušeni strokovnjaki pomagajo novincem uspeti skozi deljeno znanje in najboljše prakse.",
-      "icon": "🤝",
-      "image": "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Pregledni Sistemi",
-      "description": "Jasne provizijske strukture, realna pričakovanja in odprta komunikacija o uspešnosti in priložnostih.",
-      "icon": "💡",
-      "image": "https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg?auto=compress&cs=tinysrgb&w=600"
-    }
-  ],
-  "culture": {
-    "title": "Naša Kultura",
-    "description": "Win-Win temelji na strukturi uspešnosti. Združujemo dokazane prodajne metodologije z modernimi orodji in pristno podporo za ustvarjanje okolja, kjer talenti uspevajo.",
-    "highlights": [
-      "Odločanje na podlagi podatkov",
-      "Redne ocene uspešnosti",
-      "Napredovanja na podlagi zaslug",
-      "Možnosti kontinuiranega učenja",
-      "Sodelovalno ekipno okolje",
-      "Podpora ravnovesju delo-življenje"
+  "values": {
+    "title": "Naše temeljne vrednote",
+    "description": "Ti principi vodijo vse, kar počnemo, in določajo, kdo smo kot podjetje",
+    "items": [
+      {
+        "title": "Integriteta in poštenost",
+        "description": "Gradimo zaupanje skozi transparentno komunikacijo in etične poslovne prakse"
+      },
+      {
+        "title": "Zanesljivost",
+        "description": "Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez"
+      },
+      {
+        "title": "Profesionalna komunikacija",
+        "description": "Jasna, spoštljiva in učinkovita komunikacija v vsaki interakciji"
+      },
+      {
+        "title": "Uspešnost in rast",
+        "description": "Nenehno izboljševanje in merljivi rezultati poganjajo naš uspeh"
+      },
+      {
+        "title": "Ekipna podpora",
+        "description": "Skupaj uspemo skozi sodelovanje in medsebojno podporo"
+      },
+      {
+        "title": "Odličnost",
+        "description": "Stremimo k najvišjim standardom v vsem, kar počnemo"
+      }
     ]
   },
-  "stats": [
-    {
-      "number": "500+",
-      "label": "Usposobljenih Prodajnih Strokovnjakov"
+  "culture": {
+    "title": "Podjetniška kultura",
+    "description": "Zgradili smo okolje, kjer lahko nadarjeni strokovnjaki uspevajo",
+    "items": [
+      "Rezultatno usmerjen način razmišljanja z jasnimi KPI-ji",
+      "Ekipno sodelovanje in deljenje znanja",
+      "Nenehno učenje in razvoj veščin",
+      "Programi coachinga in mentorstva",
+      "Priznanje in nagrade za odličnost",
+      "Ravnovesje med delom in zasebnim življenjem ter fleksibilnost"
+    ]
+  },
+  "team": {
+    "title": "Naša ekipa",
+    "description": "Delujemo z več lokacij po Sloveniji z rastočo ekipo predanih prodajnih strokovnjakov",
+    "stats": {
+      "members": "Aktivnih članov ekipe",
+      "field": "Terenska prodaja",
+      "callCenter": "Podpora",
+      "locations": "Več lokacij"
     },
-    {
-      "number": "15+",
-      "label": "Let Izkušenj"
-    },
-    {
-      "number": "95%",
-      "label": "Zadovoljstvo Strank"
-    },
-    {
-      "number": "3x",
-      "label": "Povprečna Rast Dohodka"
-    }
-  ],
+    "fieldText": "Teren",
+    "callCenterText": "Klicni center",
+    "locationsText": "Trzin, Kranj in teren"
+  },
   "faq": [
     {
-      "question": "Kaj Win-Win loči od drugih prodajnih agencij?",
-      "answer": "Osredotočamo se na dolgoročni karierni razvoj, ne le kratkoročne zaposlitve. Naši strukturirani programi usposabljanja, jasni KPI sistemi in pristno mentorstvo pomagajo prodajnikom zgraditi trajnostne kariere z resničnim potencialom rasti."
+      "question": "Kaj naredi Win Win drugačen od drugih prodajnih agencij?",
+      "answer": "Združujemo jasno strukturo, pošteno komunikacijo, močno coaching kulturo, dolgoročne karierne priložnosti in rezultatno usmerjeno, a podporno okolje. Pri Win Win uspeh ni sreča — je sistem."
     },
     {
       "question": "Ali zagotavljate usposabljanje za začetnike v prodaji?",
