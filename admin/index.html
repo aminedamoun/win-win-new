@@ -6,19 +6,17 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Netlify Identity (load ONCE) -->
+    <!-- Netlify Identity widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
     <script>
-      // Keep it simple: only redirect AFTER a successful login
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("login", () => {
-          window.location.replace("/admin/");
+          document.location.href = "/admin/";
         });
-        window.netlifyIdentity.init();
       }
     </script>
   </body>
