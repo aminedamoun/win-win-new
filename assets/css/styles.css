@@ -1931,3 +1931,249 @@ button{font-family:inherit}
   line-height: 1.6;
   opacity: 0.85;
 }
+/* assets/css/styles.css */
+
+/* 1) Remove the dark overlay ONLY on the About hero */
+.hero.hero-about::before,
+.hero-about::before {
+  content: none !important;
+}
+
+/* If your overlay is implemented via background on the hero itself */
+.hero.hero-about,
+.hero-about {
+  background-color: transparent !important;
+  background-image: inherit; /* keeps your inline background-image */
+}
+
+/* 2) Ensure the glass card is the only readable layer */
+.hero-card.glass {
+  background: rgba(0, 0, 0, 0.25); /* tweak: 0.15–0.30 depending on readability */
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Optional: tighten card look like your reference */
+.hero-card.glass {
+  border-radius: 18px;
+  padding: 48px 56px;
+}
+
+/* Optional: if text is too dim without the big overlay */
+.hero-title,
+.hero-desc {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+.hero.hero-about .hero-inner,
+.hero-about .hero-inner {
+  background: transparent !important;
+}
+/* assets/css/styles.css */
+
+/* INSIGHTS: make the image a true full-background */
+.hero.hero-insights {
+  position: relative;
+  min-height: 100vh; /* or 80vh if you prefer */
+  overflow: hidden;
+}
+
+/* background layer covers the whole hero */
+.hero.hero-insights .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+}
+
+/* image fills background */
+.hero.hero-insights .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* disable the big dark overlay (you said you don't want it) */
+.hero.hero-insights .hero-overlay {
+  display: none !important;
+}
+
+/* put content above the background */
+.hero.hero-insights .hero-inner {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;           /* match hero height */
+  display: flex;
+  align-items: center;
+}
+
+/* optional: use a glass card like About */
+.hero.hero-insights .hero-inner > .hero-card.glass {
+  max-width: 720px;
+}
+/* ===== DESKTOP HEADER BYPASS (wins over old flex styles) ===== */
+@media (min-width: 1024px) {
+  header.header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    width: 100% !important;
+    background: rgba(0,0,0,0.82) !important;
+    backdrop-filter: blur(14px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  }
+
+  /* Grid layout: brand | centered nav | right actions */
+  header.header .header-row {
+    display: grid !important;
+    grid-template-columns: 220px 1fr auto !important;
+    align-items: center !important;
+    gap: 18px !important;
+    padding: 16px 0 !important;
+  }
+
+  header.header .brand {
+    justify-self: start !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  header.header .brand-logo {
+    height: 44px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Centered nav */
+  header.header nav.nav {
+    justify-self: center !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 28px !important;
+  }
+
+  header.header nav.nav a.nav-link {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 48px !important;
+    padding: 0 6px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
+    color: rgba(255,255,255,0.82) !important;
+    text-decoration: none !important;
+    background: transparent !important;
+  }
+
+  header.header nav.nav a.nav-link:hover {
+    color: #fff !important;
+  }
+
+  /* Active underline like your reference */
+  header.header nav.nav a.nav-link::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 8px !important;
+    width: 22px !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: rgba(229,57,53,0) !important;
+    transform: translateX(-50%) scaleX(0) !important;
+    transform-origin: center !important;
+    transition: transform 160ms ease, background 160ms ease !important;
+  }
+
+  header.header nav.nav a.nav-link:hover::after {
+    background: rgba(229,57,53,0.95) !important;
+    transform: translateX(-50%) scaleX(1) !important;
+  }
+
+  header.header nav.nav a.nav-link.is-active {
+    color: #fff !important;
+  }
+
+  header.header nav.nav a.nav-link.is-active::after {
+    background: rgba(229,57,53,1) !important;
+    transform: translateX(-50%) scaleX(1) !important;
+  }
+
+  /* Right cluster */
+  header.header .header-actions {
+    justify-self: end !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  /* Hide burger on desktop */
+  header.header .burger-btn {
+    display: none !important;
+  }
+
+  /* Flag button clean circle */
+  header.header a.lang-switch {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.10) !important;
+    padding: 0 !important;
+  }
+
+  header.header a.lang-switch:hover {
+    background: rgba(255,255,255,0.10) !important;
+    border-color: rgba(255,255,255,0.16) !important;
+  }
+
+  header.header img.lang-flag {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 999px !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* Buttons: match clean pill look */
+  header.header .btn {
+    height: 42px !important;
+    padding: 0 18px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 42px !important;
+    text-decoration: none !important;
+    transform: none !important; /* kill old hover translate */
+  }
+
+  header.header .btn.btn-outline {
+    background: transparent !important;
+    color: #E53935 !important;
+    border: 1.5px solid #E53935 !important;
+  }
+
+  header.header .btn.btn-outline:hover {
+    background: rgba(229,57,53,0.10) !important;
+  }
+
+  header.header .btn.btn-primary {
+    background: #E53935 !important;
+    border: 1px solid #E53935 !important;
+    color: #fff !important;
+    box-shadow: 0 12px 28px rgba(229,57,53,0.18) !important;
+  }
+
+  header.header .btn.btn-primary:hover {
+    filter: brightness(0.96) !important;
+  }
+}

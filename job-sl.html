@@ -10,37 +10,42 @@
 
 <body>
   <!-- HEADER -->
-  <header class="header">
-    <div class="container header-row">
-      <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
-        <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
-      </a>
+ <!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
+<header class="header">
+  <div class="container header-row">
+    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+      <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+    </a>
 
-      <!-- Language switch -->
-      <a class="lang-switch" id="langSwitch" href="job.html" aria-label="Zamenjaj jezik na angleščino" title="English">
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a class="nav-link" href="index-sl.html">Domov</a>
+      <a class="nav-link" href="about-sl.html">O nas</a>
+      <a class="nav-link is-active" href="jobs-sl.html">Kariera</a>
+      <a class="nav-link" href="insights-sl.html">Vpogledi</a>
+      <a class="nav-link" href="apply-sl.html">Prijava</a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Language switch (SL -> EN) -->
+      <a
+        class="lang-switch"
+        href="apply.html"
+        aria-label="Switch language to English"
+        title="English"
+      >
         <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
       </a>
 
-      <nav class="nav" aria-label="Glavna navigacija">
-        <a class="nav-link" href="index-sl.html">Domov</a>
-        <a class="nav-link" href="about-sl.html">O nas</a>
-        <a class="nav-link is-active" href="jobs-sl.html">Zaposlitve</a>
-        <a class="nav-link" href="insights-sl.html">Vsebina</a>
-        <a class="nav-link" href="apply-sl.html">Prijava</a>
-      </nav>
+      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
 
-      <div class="header-actions">
-        <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-        <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
-
-        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
+>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">

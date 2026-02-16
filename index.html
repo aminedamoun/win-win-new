@@ -85,47 +85,40 @@
   </svg>
 
   <!-- HEADER -->
-  <header class="header">
-    <div class="container header-row">
-      <a class="brand" href="index.html" aria-label="Win Win Home">
-  <img
-    class="brand-logo"
-    src="assets/img/win-win-logo.webp"
-    alt="Win Win"
-    width="120"
-    height="64"
-    loading="eager"
-    decoding="async"
-  />
-</a>
+ <header class="header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Win Win Home">
+      <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+    </a>
 
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link is-active" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link" href="jobs.html">Careers</a>
+      <a class="nav-link" href="insights.html">Insights</a>
+      <a class="nav-link" href="apply.html">Apply</a>
+    </nav>
 
+    <div class="header-actions">
       <!-- Language switch (EN -> SL) -->
-      <a class="lang-switch" href="index-sl.html" aria-label="Switch language to Slovenian" title="Slovenščina">
+      <a
+        class="lang-switch"
+        href="index-sl.html"
+        aria-label="Switch language to Slovenian"
+        title="Slovenščina"
+      >
         <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
       </a>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav-link is-active" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About Us</a>
-        <a class="nav-link" href="jobs.html">Careers</a>
-        <a class="nav-link" href="insights.html">Insights</a>
-        <a class="nav-link" href="apply.html">Apply</a>
-      </nav>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
 
-      <div class="header-actions">
-        <a class="btn btn-outline" href="jobs.html">View Positions</a>
-        <a class="btn btn-primary" href="apply.html">Join the Team</a>
-
-        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
-
+  </div>
+</header>
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a class="nav-link is-active" href="index.html">Home</a>

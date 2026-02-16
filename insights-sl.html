@@ -10,37 +10,42 @@
 
 <body>
   <!-- HEADER -->
-  <header class="header">
-    <div class="container header-row">
-      <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
-        <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
-      </a>
+<!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
+<header class="header">
+  <div class="container header-row">
+    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+      <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+    </a>
 
-      <!-- Language switch -->
-      <a class="lang-switch" href="insights.html" aria-label="Switch language to English" title="English">
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a class="nav-link" href="index-sl.html">Domov</a>
+      <a class="nav-link" href="about-sl.html">O nas</a>
+      <a class="nav-link" href="jobs-sl.html">Kariera</a>
+      <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
+      <a class="nav-link" href="apply-sl.html">Prijava</a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Language switch (SL -> EN) -->
+      <a
+        class="lang-switch"
+        href="apply.html"
+        aria-label="Switch language to English"
+        title="English"
+      >
         <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
       </a>
 
-      <nav class="nav" aria-label="Glavna navigacija">
-        <a class="nav-link" href="index-sl.html">Domov</a>
-        <a class="nav-link" href="about-sl.html">O nas</a>
-        <a class="nav-link" href="jobs-sl.html">Kariera</a>
-        <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
-        <a class="nav-link" href="apply-sl.html">Prijava</a>
-      </nav>
+      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
 
-      <div class="header-actions">
-        <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-        <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
-
-        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
@@ -57,27 +62,195 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero hero-insights">
-      <div class="hero-bg">
-        <img
-          id="insightsHeroImg"
-          src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=2200"
-          alt="Vsebina"
-          fetchpriority="high"
-          width="2200"
-          height="1200"
-        />
-        <div class="hero-overlay"></div>
+    <!-- FILE: insights.html OR insights-sl.html -->
+<!-- Replace ONLY the HERO section with this -->
+
+<!-- FILE: insights-sl.html (or insights.html)
+     REPLACE your entire HERO section with this (full corrected section) -->
+
+<!-- FULL FIXED HERO SECTION (copy/paste as-is)
+     - Valid HTML (adds missing "<" on section)
+     - Overlay works (darkens image, NOT a black text panel)
+     - Text stays clean/organized
+-->
+
+<section class="hero hero-insights hero-insights--force" aria-label="Insights hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img
+      id="insightsHeroImg"
+      src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=2200"
+      alt=""
+      fetchpriority="high"
+      width="2200"
+      height="1200"
+    />
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="container hero-inner hero-inner--insights">
+    <div class="hero-content hero-content--insights">
+      <div class="hero-left">
+        <div class="hero-badge" id="insightsBadge">Središče znanja</div>
+
+        <h1 class="hero-title hero-title--insights" id="insightsTitle">
+          Vpogledi<br />
+          iz sveta<br />
+          prodaje
+        </h1>
       </div>
 
-      <div class="container hero-inner">
-        <div class="hero-badge" id="insightsBadge">Središče znanja</div>
-        <h1 class="hero-title" id="insightsTitle">Vpogledi iz sveta<br/>prodaje</h1>
-        <p class="hero-desc" id="insightsDesc">
+      <div class="hero-right">
+        <p class="hero-desc hero-desc--insights" id="insightsDesc">
           Prodajne strategije, kultura ekipe, karierna rast in resnične zgodbe ekipe Win Win.
         </p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===== FORCE OVERRIDE: Insights hero (bypasses old CSS) ===== */
+
+.hero.hero-insights.hero-insights--force{
+  position: relative !important;
+  min-height: 100vh !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+/* Kill any pseudo overlays from old CSS */
+.hero.hero-insights.hero-insights--force::before,
+.hero.hero-insights.hero-insights--force::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* Full-bleed background */
+.hero.hero-insights.hero-insights--force .hero-bg{
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  display: block !important;
+  background: transparent !important;
+}
+
+.hero.hero-insights.hero-insights--force .hero-bg img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* ✅ Darken image (overlay ABOVE image, BELOW text) */
+.hero.hero-insights.hero-insights--force .hero-overlay{
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.50) 0%,
+    rgba(0,0,0,0.30) 45%,
+    rgba(0,0,0,0.50) 100%
+  ) !important;
+}
+
+/* Foreground content */
+.hero.hero-insights.hero-insights--force .hero-inner--insights{
+  position: relative !important;
+  z-index: 2 !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 96px !important;  /* header clearance */
+  padding-bottom: 64px !important;
+  background: transparent !important;
+}
+
+/* Organized layout */
+.hero.hero-insights.hero-insights--force .hero-content--insights{
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 1.2fr 0.9fr !important;
+  gap: 56px !important;
+  align-items: center !important;
+}
+
+.hero.hero-insights.hero-insights--force .hero-left{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.hero.hero-insights.hero-insights--force .hero-badge{
+  margin: 0 0 18px 0 !important;
+}
+
+/* Clean typography (no black background) */
+.hero.hero-insights.hero-insights--force .hero-title--insights{
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.03 !important;
+  font-size: clamp(44px, 5vw, 74px) !important;
+  color: #fff !important;
+}
+
+.hero.hero-insights.hero-insights--force .hero-right{
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+.hero.hero-insights.hero-insights--force .hero-desc--insights{
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  max-width: 440px !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  color: rgba(255,255,255,0.88) !important;
+}
+
+/* Readability without panels */
+.hero.hero-insights.hero-insights--force .hero-title--insights,
+.hero.hero-insights.hero-insights--force .hero-desc--insights{
+  text-shadow: 0 10px 30px rgba(0,0,0,0.35) !important;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .hero.hero-insights.hero-insights--force .hero-inner--insights{
+    padding-top: 88px !important;
+    padding-bottom: 44px !important;
+  }
+
+  .hero.hero-insights.hero-insights--force .hero-content--insights{
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .hero.hero-insights.hero-insights--force .hero-desc--insights{
+    max-width: 560px !important;
+  }
+
+  .hero.hero-insights.hero-insights--force .hero-title--insights{
+    font-size: clamp(34px, 8vw, 52px) !important;
+  }
+}
+</style>
+
 
     <!-- NAJNOVEJŠE -->
     <section class="section section-gradient-a" data-animate>
