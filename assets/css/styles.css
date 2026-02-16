@@ -344,6 +344,10 @@ button{font-family:inherit}
   .burger-btn{display:flex}
   .header-actions .btn{display:none}
 
+  .brand{
+    margin-left: 12px;
+  }
+
   .container{
     padding: 0 20px;
   }
