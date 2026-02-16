@@ -57,28 +57,31 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - label: "Blocks"
+              - label: "Blocks labels"
                 name: "blocks"
                 widget: "object"
                 fields:
-                  - { label: "Core", name: "core", widget: "string" }
-                  - { label: "Support", name: "support", widget: "string" }
-                  - { label: "Market", name: "market", widget: "string" }
-              - label: "Core items"
+                  - { label: "Core label", name: "core", widget: "string" }
+                  - { label: "Support label", name: "support", widget: "string" }
+                  - { label: "Market label", name: "market", widget: "string" }
+
+              - label: "Core cards"
                 name: "core"
                 widget: "list"
                 fields:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
-              - label: "Support items"
+
+              - label: "Support cards"
                 name: "support"
                 widget: "list"
                 fields:
                   - { label: "Icon", name: "icon", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
-              - label: "Market items"
+
+              - label: "Market cards"
                 name: "market"
                 widget: "list"
                 fields:
@@ -164,7 +167,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - { label: "Button label", name: "buttonLabel", widget: "string", required: false }
+              - { label: "Button label", name: "buttonLabel", widget: "string" }
 
           - label: "FAQ"
             name: "faq"
@@ -197,7 +200,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Summary title", name: "summaryTitle", widget: "string" }
-              - { label: "HTML", name: "html", widget: "text", required: false }
+              - { label: "HTML", name: "html", widget: "text" }
 
   - name: "home_sl"
     label: "Homepage (SL)"
@@ -206,16 +209,15 @@ collections:
       preview: false
     files:
       - file: "content/sl/home.json"
-        label: "Home"
+        label: "Domov"
         name: "home"
-        fields:
+        fields: # SAME schema as EN so your JS keeps working
           - label: "Hero"
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Title base", name: "titleBase", widget: "string" }
-              - { label: "Title emphasis", name: "titleEmphasis", widget: "string" }
-              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "Title line 1", name: "titleLine1", widget: "string" }
+              - { label: "Title line 2", name: "titleLine2", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - label: "Primary CTA"
                 name: "primaryCta"
@@ -230,7 +232,7 @@ collections:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "Href", name: "href", widget: "string" }
 
-          # Reuse same structure as EN for the rest:
+          # (repeat same sections as EN)
           - { label: "About", name: "about", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
@@ -243,79 +245,99 @@ collections:
                 }
               ]
             }
-
           - { label: "Services", name: "services", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
-                { label: "Blocks", name: "blocks", widget: "object",
+                { label: "Blocks labels", name: "blocks", widget: "object",
                   fields: [
-                    { label: "Core", name: "core", widget: "string" },
-                    { label: "Support", name: "support", widget: "string" },
-                    { label: "Market", name: "market", widget: "string" }
+                    { label: "Core label", name: "core", widget: "string" },
+                    { label: "Support label", name: "support", widget: "string" },
+                    { label: "Market label", name: "market", widget: "string" }
                   ]
                 },
-                { label: "Core items", name: "core", widget: "list",
+                { label: "Core cards", name: "core", widget: "list",
                   fields: [
-                    { label: "Icon", name: "iconKey", widget: "string" },
+                    { label: "Icon", name: "icon", widget: "string" },
                     { label: "Title", name: "title", widget: "string" },
                     { label: "Description", name: "description", widget: "text" }
                   ]
                 },
-                { label: "Support items", name: "support", widget: "list",
+                { label: "Support cards", name: "support", widget: "list",
                   fields: [
-                    { label: "Icon", name: "iconKey", widget: "string" },
+                    { label: "Icon", name: "icon", widget: "string" },
                     { label: "Title", name: "title", widget: "string" },
                     { label: "Description", name: "description", widget: "text" }
                   ]
                 },
-                { label: "Market items", name: "market", widget: "list",
+                { label: "Market cards", name: "market", widget: "list",
                   fields: [
-                    { label: "Icon", name: "iconKey", widget: "string" },
+                    { label: "Icon", name: "icon", widget: "string" },
                     { label: "Title", name: "title", widget: "string" },
                     { label: "Description", name: "description", widget: "text" }
                   ]
                 }
               ]
             }
-
           - { label: "Benefits", name: "benefits", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
                 { label: "Items", name: "items", widget: "list",
                   fields: [
-                    { label: "Icon", name: "iconKey", widget: "string" },
+                    { label: "Icon", name: "icon", widget: "string" },
                     { label: "Title", name: "title", widget: "string" },
                     { label: "Description", name: "description", widget: "text" }
                   ]
                 }
               ]
             }
-
           - { label: "Join", name: "join", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
-                { label: "Button 1", name: "btn1", widget: "string" },
-                { label: "Button 2", name: "btn2", widget: "string" }
+                { label: "Button 1", name: "btn1", widget: "object",
+                  fields: [
+                    { label: "Label", name: "label", widget: "string" },
+                    { label: "Href", name: "href", widget: "string" }
+                  ]
+                },
+                { label: "Button 2", name: "btn2", widget: "object",
+                  fields: [
+                    { label: "Label", name: "label", widget: "string" },
+                    { label: "Href", name: "href", widget: "string" }
+                  ]
+                }
               ]
             }
-
           - { label: "CTA", name: "cta", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
-                { label: "Button 1", name: "btn1", widget: "string" },
-                { label: "Button 2", name: "btn2", widget: "string" }
+                { label: "Button 1", name: "btn1", widget: "object",
+                  fields: [
+                    { label: "Label", name: "label", widget: "string" },
+                    { label: "Href", name: "href", widget: "string" }
+                  ]
+                },
+                { label: "Button 2", name: "btn2", widget: "object",
+                  fields: [
+                    { label: "Label", name: "label", widget: "string" },
+                    { label: "Href", name: "href", widget: "string" }
+                  ]
+                }
               ]
             }
-
           - { label: "Process", name: "process", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
-                { label: "Button", name: "button", widget: "string" },
+                { label: "Button", name: "button", widget: "object",
+                  fields: [
+                    { label: "Label", name: "label", widget: "string" },
+                    { label: "Href", name: "href", widget: "string" }
+                  ]
+                },
                 { label: "Steps", name: "steps", widget: "list",
                   fields: [
                     { label: "Step", name: "step", widget: "string" },
@@ -325,21 +347,24 @@ collections:
                 }
               ]
             }
-
           - { label: "App", name: "app", widget: "object",
               fields: [
                 { label: "Title", name: "title", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
-                { label: "Button", name: "button", widget: "string", required: false }
+                { label: "Button label", name: "buttonLabel", widget: "string" }
               ]
             }
-
           - { label: "FAQ", name: "faq", widget: "object",
               fields: [
                 { label: "Title (HTML)", name: "titleHtml", widget: "string" },
                 { label: "Description", name: "description", widget: "text" },
-                { label: "Still", name: "still", widget: "string" },
-                { label: "Button", name: "button", widget: "string" },
+                { label: "Still text", name: "still", widget: "string" },
+                { label: "Button", name: "button", widget: "object",
+                  fields: [
+                    { label: "Label", name: "label", widget: "string" },
+                    { label: "Href", name: "href", widget: "string" }
+                  ]
+                },
                 { label: "Items", name: "items", widget: "list",
                   fields: [
                     { label: "Question", name: "q", widget: "string" },
@@ -348,17 +373,14 @@ collections:
                 }
               ]
             }
-
           - { label: "Blog", name: "blog", widget: "object",
               fields: [
-                { label: "Description", name: "desc", widget: "string", required: false },
                 { label: "Empty text", name: "empty", widget: "string" }
               ]
             }
-
           - { label: "SEO", name: "seo", widget: "object",
               fields: [
                 { label: "Summary title", name: "summaryTitle", widget: "string" },
-                { label: "HTML", name: "html", widget: "text", required: false }
+                { label: "HTML", name: "html", widget: "text" }
               ]
             }
