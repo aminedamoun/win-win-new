@@ -40,7 +40,19 @@ body{
 img{max-width:100%; display:block}
 a{color:inherit; text-decoration:none}
 button{font-family:inherit}
-.container{max-width:var(--max); margin:0 auto; padding:0 24px}
+.container{max-width:var(--max); margin:0 auto; padding:0 16px}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
 
 /* Header */
 .header{
@@ -271,7 +283,19 @@ button{font-family:inherit}
   display:flex;
   align-items:center;
   justify-content:flex-end;
-  padding: 60px 24px;
+  padding: 60px 16px;
+}
+
+@media (min-width: 640px) {
+  .hero-inner {
+    padding: 60px 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-inner {
+    padding: 60px 24px;
+  }
 }
 
 /* Desktop: content section is now its own column */
