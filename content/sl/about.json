@@ -58,20 +58,24 @@
   },
   "stats": [
     {
-      "number": "50+",
+      "icon": "users",
+      "value": "50+",
       "label": "Aktivnih članov ekipe"
     },
     {
-      "number": "5,000+",
-      "label": "Zaključenih poslov"
+      "icon": "mapPin",
+      "value": "Teren",
+      "label": "Terenska prodaja"
     },
     {
-      "number": "3",
-      "label": "Lokacije"
+      "icon": "headset",
+      "value": "Klicni center",
+      "label": "Podpora"
     },
     {
-      "number": "5+",
-      "label": "Let izkušenj"
+      "icon": "award",
+      "value": "Več lokacij",
+      "label": "Trzin, Kranj in teren"
     }
   ],
   "faq": [

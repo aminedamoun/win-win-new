@@ -58,20 +58,24 @@
   },
   "stats": [
     {
-      "number": "50+",
+      "icon": "users",
+      "value": "50+",
       "label": "Active Team Members"
     },
     {
-      "number": "5,000+",
-      "label": "Completed Deals"
+      "icon": "mapPin",
+      "value": "Field",
+      "label": "Field Sales"
     },
     {
-      "number": "3",
-      "label": "Locations"
+      "icon": "headset",
+      "value": "Call Center",
+      "label": "Support"
     },
     {
-      "number": "5+",
-      "label": "Years Experience"
+      "icon": "award",
+      "value": "Multiple Locations",
+      "label": "Trzin, Kranj & Field"
     }
   ],
   "faq": [

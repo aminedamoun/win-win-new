@@ -200,16 +200,14 @@ function renderTeam() {
   const root = $("aboutTeamStats");
   if (!root || !CONTENT || !CONTENT.stats) return;
 
-  const iconList = ["users", "award", "trendUp", "target"];
-
   root.innerHTML = CONTENT.stats
     .map(
-      (s, idx) => `
+      (s) => `
       <div class="card glass" style="text-align:center; padding:22px;">
         <div class="card-ic" aria-hidden="true" style="margin:0 auto 12px;">
-          ${ICONS[iconList[idx % iconList.length]]}
+          ${ICONS[s.icon] || ICONS.award}
         </div>
-        <div style="font-weight:900; font-size:22px; margin-bottom:6px;">${escapeHtml(s.number)}</div>
+        <div style="font-weight:900; font-size:22px; margin-bottom:6px;">${escapeHtml(s.value || s.number)}</div>
         <div class="p-muted" style="font-weight:700; margin:0;">${escapeHtml(s.label)}</div>
       </div>
     `
@@ -283,8 +281,8 @@ function fillText() {
     setText("aboutCultureDesc", CONTENT.culture.description);
   }
 
-  setText("aboutTeamTitle", "Our Impact");
-  setText("aboutTeamDesc", "Measurable results that demonstrate our commitment");
+  setText("aboutTeamTitle", "Our Team");
+  setText("aboutTeamDesc", "Operating from multiple locations across Slovenia with a growing team of dedicated sales professionals");
 
   setHTML("faqTitle", 'Frequently Asked <span class="text-red">Questions</span>');
   setText("faqDesc", "Everything you need to know about Win-Win");

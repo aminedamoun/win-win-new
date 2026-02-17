@@ -311,16 +311,14 @@ function renderTeam() {
   const root = $("aboutTeamStats");
   if (!root || !CONTENT || !CONTENT.stats) return;
 
-  const iconList = ["users", "award", "trendUp", "target"];
-
   root.innerHTML = CONTENT.stats
     .map(
-      (s, idx) => `
+      (s) => `
     <div class="card glass" style="text-align:center; padding: 22px;">
       <div class="card-ic" aria-hidden="true" style="margin: 0 auto 12px;">
-        ${ICONS[iconList[idx % iconList.length]]}
+        ${ICONS[s.icon] || ICONS.award}
       </div>
-      <div style="font-weight: 900; font-size: 22px; margin-bottom: 6px;">${escapeHtml(s.number)}</div>
+      <div style="font-weight: 900; font-size: 22px; margin-bottom: 6px;">${escapeHtml(s.value || s.number)}</div>
       <div class="p-muted" style="font-weight: 700; margin-bottom: 4px;">${escapeHtml(s.label)}</div>
     </div>
   `
@@ -392,8 +390,8 @@ function fillText() {
     if ($("aboutCultureDesc")) $("aboutCultureDesc").textContent = CONTENT.culture.description;
   }
 
-  if ($("aboutTeamTitle")) $("aboutTeamTitle").textContent = "Naš Vpliv";
-  if ($("aboutTeamDesc")) $("aboutTeamDesc").textContent = "Merljivi rezultati, ki dokazujejo našo zavezanost";
+  if ($("aboutTeamTitle")) $("aboutTeamTitle").textContent = "Naša ekipa";
+  if ($("aboutTeamDesc")) $("aboutTeamDesc").textContent = "Delujemo z več lokacij po Sloveniji z rastočo ekipo predanih prodajnih strokovnjakov";
 
   if ($("faqTitle")) $("faqTitle").innerHTML = 'Pogosto Zastavljena <span class="text-red">Vprašanja</span>';
   if ($("faqDesc")) $("faqDesc").textContent = "Vse kar morate vedeti o Win-Win";
