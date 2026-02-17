@@ -1023,6 +1023,7 @@ button{font-family:inherit}
   gap: 12px;
   font-weight: 900;
   font-size: 18px;
+  color: #fff;
 }
 .seo-summary::-webkit-details-marker{display:none}
 .seo-accordion .chev{color: var(--gray-400); transition: transform .18s ease}
