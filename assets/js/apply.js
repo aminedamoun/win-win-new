@@ -180,20 +180,18 @@ function setupForm() {
       const cvFileInput = cvFile?.files?.[0] || null;
       const result = await submitApplication(applicationData, cvFileInput);
 
-      try {
-        await sendApplicationEmail({
-          firstName: firstName.value.trim(),
-          lastName: lastName.value.trim(),
-          email: email.value.trim(),
-          phone: phone.value.trim(),
-          jobTitle: jobTitle,
-          preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
-          message: $("message")?.value?.trim() || '',
-          cvUrl: result.cvUrl || 'No CV uploaded'
-        });
-      } catch (emailError) {
-        console.error('Error sending email notification:', emailError);
-      }
+      sendApplicationEmail({
+        firstName: firstName.value.trim(),
+        lastName: lastName.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim(),
+        jobTitle: jobTitle,
+        preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
+        message: $("message")?.value?.trim() || '',
+        cvUrl: result.cvUrl || 'No CV uploaded'
+      }).catch(emailError => {
+        console.log('Email notification not sent (optional feature):', emailError);
+      });
 
       if (successBox) {
         successBox.style.display = "block";
