@@ -1,41 +1,40 @@
 <!doctype html>
-<html lang="sl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Članek — Win Win</title>
-  <meta name="description" content="Preberite vpoglede in zgodbe ekipe Win Win o prodajnih strategijah, karierni rasti in kulturi ekipe." />
+  <title>Article — Win Win</title>
+  <meta name="description" content="Read insights and stories from Win Win team members about sales strategies, career growth, and team culture." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-<!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
 <header class="header">
   <div class="container header-row">
-    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+    <a class="brand" href="index.html" aria-label="Win Win Home">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a class="nav-link" href="index-sl.html">Domov</a>
-      <a class="nav-link" href="about-sl.html">O nas</a>
-      <a class="nav-link" href="jobs-sl.html">Kariera</a>
-      <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
-      <a class="nav-link" href="apply-sl.html">Prijava</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link" href="jobs.html">Careers</a>
+      <a class="nav-link is-active" href="insights.html">Insights</a>
+      <a class="nav-link" href="apply.html">Apply</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (SL -> EN) -->
+      <!-- Language switch (EN -> SL) -->
       <a
         class="lang-switch"
-        href="article.html"
-        aria-label="Switch language to English"
-        title="English"
+        href="article-sl.html"
+        aria-label="Switch language to Slovenian"
+        title="Slovenščina"
       >
-        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
       </a>
 
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -43,25 +42,25 @@
     </div>
   </div>
 </header>
-
+  </header>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a data-nav href="index-sl.html">Domov</a>
-    <a data-nav href="about-sl.html">O nas</a>
-    <a data-nav href="jobs-sl.html">Zaposlitve</a>
-    <a data-nav href="insights-sl.html">Vsebina</a>
-    <a data-nav href="apply-sl.html">Prijava</a>
+    <a data-nav href="index.html">Home</a>
+    <a data-nav href="about.html">About</a>
+    <a data-nav href="jobs.html">Jobs</a>
+    <a data-nav href="insights.html">Insights</a>
+    <a data-nav href="apply.html">Apply</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Kontakt</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Contact</a>
     </div>
   </div>
 
   <main class="section">
     <div class="container">
-      <a class="badge" href="insights-sl.html">← Nazaj</a>
-      <h1 class="section-title fade-up" id="articleTitle">Članek</h1>
+      <a class="badge" href="insights.html">← Back</a>
+      <h1 class="section-title fade-up" id="articleTitle">Article</h1>
       <div class="muted fade-up" id="articleMeta"></div>
 
       <div class="glass-card glass-pad fade-up" style="margin-top:18px">
@@ -82,9 +81,9 @@
   </footer>
 
   <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
-    <span aria-hidden="true">💬</span>
-    <span class="chat-fab-text">Klepetajte z nami</span>
+  <button class="chat-fab" type="button" aria-label="Chat with us">
+    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
+    <span class="chat-fab-text">Chat with us</span>
   </button>
 
   <script type="module">
@@ -92,7 +91,7 @@
     import { renderArticleDetail } from "./assets/js/insights.js";
 
     document.getElementById("y").textContent = new Date().getFullYear();
-    await renderSiteChrome({ currentPath:"article-sl.html", langSwitchHref:"article.html" });
+    await renderSiteChrome({ currentPath:"article.html", langSwitchHref:"article-sl.html" });
     await renderArticleDetail();
   </script>
 </body>

@@ -1,43 +1,42 @@
 <!doctype html>
-<html lang="sl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Win Win — Vsebina</title>
-  <meta name="description" content="Prodajne strategije, kultura ekipe, karierna rast in zgodbe ekipe Win Win." />
+  <title>Win Win — Insights</title>
+  <meta name="description" content="Sales strategies, team culture, career growth, and stories from the Win Win team." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <!-- HEADER -->
-<!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
-<header class="header">
+ <header class="header">
   <div class="container header-row">
-    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+    <a class="brand" href="index.html" aria-label="Win Win Home">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a class="nav-link" href="index-sl.html">Domov</a>
-      <a class="nav-link" href="about-sl.html">O nas</a>
-      <a class="nav-link" href="jobs-sl.html">Kariera</a>
-      <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
-      <a class="nav-link" href="apply-sl.html">Prijava</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link" href="jobs.html">Careers</a>
+      <a class="nav-link is-active" href="insights.html">Insights</a>
+      <a class="nav-link" href="apply.html">Apply</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (SL -> EN) -->
+      <!-- Language switch (EN -> SL) -->
       <a
         class="lang-switch"
-        href="insights.html"
-        aria-label="Switch language to English"
-        title="English"
+        href="insights-sl.html"
+        aria-label="Switch language to Slovenian"
+        title="Slovenščina"
       >
-        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
       </a>
 
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -46,40 +45,29 @@
   </div>
 </header>
 
-
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="nav-link" href="index-sl.html">Domov</a>
-    <a class="nav-link" href="about-sl.html">O nas</a>
-    <a class="nav-link" href="jobs-sl.html">Kariera</a>
-    <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
-    <a class="nav-link" href="apply-sl.html">Prijava</a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="about.html">About Us</a>
+    <a class="nav-link" href="jobs.html">Careers</a>
+    <a class="nav-link is-active" href="insights.html">Insights</a>
+    <a class="nav-link" href="apply.html">Apply</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
     </div>
   </div>
 
   <main>
-    <!-- HERO -->
-    <!-- FILE: insights.html OR insights-sl.html -->
-<!-- Replace ONLY the HERO section with this -->
-
-<!-- FILE: insights-sl.html (or insights.html)
-     REPLACE your entire HERO section with this (full corrected section) -->
-
-<!-- FULL FIXED HERO SECTION (copy/paste as-is)
-     - Valid HTML (adds missing "<" on section)
-     - Overlay works (darkens image, NOT a black text panel)
-     - Text stays clean/organized
--->
+    <!-- HERO (like screenshot) -->
+    <!-- FULL FIXED HERO SECTION (ENGLISH) — copy/paste as-is -->
 
 <section class="hero hero-insights hero-insights--force" aria-label="Insights hero">
   <div class="hero-bg" aria-hidden="true">
     <img
       id="insightsHeroImg"
       src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=2200"
-      alt="Ekipno sodelovanje in vpogledi"
+      alt="Team collaboration and insights"
       fetchpriority="high"
       width="2200"
       height="1200"
@@ -90,18 +78,19 @@
   <div class="container hero-inner hero-inner--insights">
     <div class="hero-content hero-content--insights">
       <div class="hero-left">
-        <div class="hero-badge" id="insightsBadge">Središče znanja</div>
+        <div class="hero-badge" id="insightsBadge">Knowledge Hub</div>
 
         <h1 class="hero-title hero-title--insights" id="insightsTitle">
-          Vpogledi<br />
-          iz sveta<br />
-          prodaje
+          Insights<br />
+          from the<br />
+          world of<br />
+          sales
         </h1>
       </div>
 
       <div class="hero-right">
         <p class="hero-desc hero-desc--insights" id="insightsDesc">
-          Prodajne strategije, kultura ekipe, karierna rast in resnične zgodbe ekipe Win Win.
+          Sales strategies, team culture, career growth, and real stories from the Win Win team.
         </p>
       </div>
     </div>
@@ -118,14 +107,12 @@
   background: transparent !important;
 }
 
-/* Kill any pseudo overlays from old CSS */
 .hero.hero-insights.hero-insights--force::before,
 .hero.hero-insights.hero-insights--force::after{
   content: none !important;
   display: none !important;
 }
 
-/* Full-bleed background */
 .hero.hero-insights.hero-insights--force .hero-bg{
   position: absolute !important;
   inset: 0 !important;
@@ -146,7 +133,7 @@
   filter: none !important;
 }
 
-/* ✅ Darken image (overlay ABOVE image, BELOW text) */
+/* Darken image (overlay ABOVE image, BELOW text) */
 .hero.hero-insights.hero-insights--force .hero-overlay{
   display: block !important;
   position: absolute !important;
@@ -161,19 +148,17 @@
   ) !important;
 }
 
-/* Foreground content */
 .hero.hero-insights.hero-insights--force .hero-inner--insights{
   position: relative !important;
   z-index: 2 !important;
   min-height: 100vh !important;
   display: flex !important;
   align-items: center !important;
-  padding-top: 96px !important;  /* header clearance */
+  padding-top: 96px !important;
   padding-bottom: 64px !important;
   background: transparent !important;
 }
 
-/* Organized layout */
 .hero.hero-insights.hero-insights--force .hero-content--insights{
   width: 100% !important;
   max-width: 1120px !important;
@@ -194,7 +179,6 @@
   margin: 0 0 18px 0 !important;
 }
 
-/* Clean typography (no black background) */
 .hero.hero-insights.hero-insights--force .hero-title--insights{
   margin: 0 !important;
   padding: 0 !important;
@@ -223,13 +207,11 @@
   color: rgba(255,255,255,0.88) !important;
 }
 
-/* Readability without panels */
 .hero.hero-insights.hero-insights--force .hero-title--insights,
 .hero.hero-insights.hero-insights--force .hero-desc--insights{
   text-shadow: 0 10px 30px rgba(0,0,0,0.35) !important;
 }
 
-/* Mobile */
 @media (max-width: 900px){
   .hero.hero-insights.hero-insights--force .hero-inner--insights{
     padding-top: 88px !important;
@@ -252,17 +234,17 @@
 </style>
 
 
-    <!-- NAJNOVEJŠE -->
+    <!-- LATEST -->
     <section class="section section-gradient-a" data-animate>
       <div class="container">
-        <h2 class="h2" id="latestTitle">Najnovejše vsebine</h2>
+        <h2 class="h2" id="latestTitle">Latest Insights</h2>
 
-        <!-- later: cards go here -->
+        <!-- later we will render cards into this grid -->
         <div class="grid grid-3 mt-24" id="insightsGrid"></div>
 
         <!-- empty state now -->
         <div class="center mt-24 p-muted" id="insightsEmpty">
-          Trenutno še ni objav. Kmalu spet preveri!
+          No articles available yet. Check back soon!
         </div>
       </div>
     </section>
@@ -272,7 +254,7 @@
       <div class="container">
         <details class="seo-details">
           <summary class="seo-summary">
-            <span id="seoSummaryTitle">Prodajni nasveti, strategije in vpogledi za uspeh v prodaji</span>
+            <span id="seoSummaryTitle">Sales Tips, Strategies and Insights for Sales Success</span>
             <span class="chev" aria-hidden="true">⌄</span>
           </summary>
           <div class="seo-body">
@@ -291,7 +273,7 @@
           <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
         </div>
         <p class="p-muted small" id="footerDesc">
-          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
+          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
         </p>
         <div class="socials" aria-label="Social links">
           <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
@@ -300,38 +282,38 @@
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Podjetje</div>
-        <a class="footer-link" href="about-sl.html">O nas</a>
-        <a class="footer-link" href="jobs-sl.html">Zaposlitve</a>
-        <a class="footer-link" href="apply-sl.html">Kontakt</a>
+        <div class="footer-title">Company</div>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="jobs.html">Careers</a>
+        <a class="footer-link" href="apply.html">Contact</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Pravno</div>
-        <a class="footer-link" href="privacy-sl.html">Politika zasebnosti</a>
-        <a class="footer-link" href="cookies-sl.html">Politika piškotkov</a>
-        <a class="footer-link" href="terms-sl.html">Pogoji uporabe</a>
+        <div class="footer-title">Legal</div>
+        <a class="footer-link" href="privacy.html">Privacy Policy</a>
+        <a class="footer-link" href="cookies.html">Cookie Policy</a>
+        <a class="footer-link" href="terms.html">Terms of Service</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Kontakt</div>
-        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
+        <div class="footer-title">Contact</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenia</div>
         <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> <a href="tel:+38631678732">+386 31 678 732</a></div>
         <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> <a href="mailto:office@win-win.si">office@win-win.si</a></div>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
     </div>
   </footer>
 
   <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
-    <span aria-hidden="true">💬</span>
-    <span class="chat-fab-text">Klepetajte z nami</span>
+  <button class="chat-fab" type="button" aria-label="Chat with us">
+    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
+    <span class="chat-fab-text">Chat with us</span>
   </button>
 
-  <script type="module" src="assets/js/insights-sl.js"></script>
+  <script type="module" src="assets/js/insights.js"></script>
 </body>
 </html>

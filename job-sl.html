@@ -1,43 +1,42 @@
 <!doctype html>
-<html lang="sl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pozicija — Win Win</title>
-  <meta name="description" content="Podrobnosti delovnega mesta pri Win Win." />
+  <title>Position — Win Win</title>
+  <meta name="description" content="Job details at Win Win." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <!-- HEADER -->
- <!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
-<header class="header">
+ <header class="header">
   <div class="container header-row">
-    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+    <a class="brand" href="index.html" aria-label="Win Win Home">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a class="nav-link" href="index-sl.html">Domov</a>
-      <a class="nav-link" href="about-sl.html">O nas</a>
-      <a class="nav-link is-active" href="jobs-sl.html">Kariera</a>
-      <a class="nav-link" href="insights-sl.html">Vpogledi</a>
-      <a class="nav-link" href="apply-sl.html">Prijava</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link is-active" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link is-active" href="jobs.html">Careers</a>
+      <a class="nav-link" href="insights.html">Insights</a>
+      <a class="nav-link" href="apply.html">Apply</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (SL -> EN) -->
+      <!-- Language switch (EN -> SL) -->
       <a
         class="lang-switch"
-        href="job.html"
-        aria-label="Switch language to English"
-        title="English"
+        href="job-sl.html"
+        aria-label="Switch language to Slovenian"
+        title="Slovenščina"
       >
-        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
       </a>
 
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -45,18 +44,17 @@
     </div>
   </div>
 </header>
->
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="nav-link" href="index-sl.html">Domov</a>
-    <a class="nav-link" href="about-sl.html">O nas</a>
-    <a class="nav-link is-active" href="jobs-sl.html">Zaposlitve</a>
-    <a class="nav-link" href="insights-sl.html">Vsebina</a>
-    <a class="nav-link" href="apply-sl.html">Prijava</a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="about.html">About Us</a>
+    <a class="nav-link is-active" href="jobs.html">Careers</a>
+    <a class="nav-link" href="insights.html">Insights</a>
+    <a class="nav-link" href="apply.html">Apply</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
     </div>
   </div>
 
@@ -64,20 +62,20 @@
   <main class="section section-gradient-a job-page">
     <div class="container">
       <!-- back -->
-      <a class="job-back" id="backToJobs" href="jobs-sl.html">← Nazaj na vse pozicije</a>
+      <a class="job-back" id="backToJobs" href="jobs.html">← Back to All Positions</a>
 
       <!-- top card -->
       <div class="job-hero">
         <div class="job-hero-head">
-          <div class="job-icon" aria-hidden="true">🧳</div>
+          <div class="job-icon" aria-hidden="true"></div>
 
           <div style="min-width:0;">
-            <h1 class="job-title" id="jobTitle">Pozicija</h1>
+            <h1 class="job-title" id="jobTitle">Position</h1>
 
             <!-- jobs.js fills this -->
             <div class="job-meta" id="jobMeta"></div>
 
-            <!-- short intro -->
+            <!-- short intro (optional, keep id for your JS) -->
             <div class="job-body" id="jobIntro" style="margin-top:12px;"></div>
           </div>
         </div>
@@ -85,16 +83,16 @@
 
       <!-- apply button -->
       <div class="job-actions">
-        <a class="job-apply" id="applyForJob" href="apply-sl.html">
-          Prijava na pozicijo <span aria-hidden="true">→</span>
+        <a class="job-apply" id="applyForJob" href="apply.html">
+          Apply for This Position <span aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- full details -->
       <section class="job-card">
-        <h2>Celoten opis</h2>
+        <h2>Full Description</h2>
 
-        <div class="job-comp-label">Plačilo</div>
+        <div class="job-comp-label">Compensation</div>
         <div class="job-comp-value" id="jobSalary"></div>
 
         <hr class="job-divider" />
@@ -103,17 +101,17 @@
 
         <div class="job-cols">
           <div class="job-col">
-            <div class="job-col-title">Zahteve</div>
+            <div class="job-col-title">Requirements</div>
             <ul class="job-list" id="reqList"></ul>
           </div>
 
           <div class="job-col">
-            <div class="job-col-title">Naloge</div>
+            <div class="job-col-title">Responsibilities</div>
             <ul class="job-list" id="respList"></ul>
           </div>
 
           <div class="job-col">
-            <div class="job-col-title">Ugodnosti</div>
+            <div class="job-col-title">Benefits</div>
             <ul class="job-list" id="benefitsList"></ul>
           </div>
         </div>
@@ -129,26 +127,26 @@
           <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
         </div>
         <p class="p-muted small">
-          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
+          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
         </p>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
     </div>
   </footer>
 
   <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
-    <span aria-hidden="true">💬</span>
-    <span class="chat-fab-text">Klepetajte z nami</span>
+  <button class="chat-fab" type="button" aria-label="Chat with us">
+    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
+    <span class="chat-fab-text">Chat with us</span>
   </button>
 
   <script type="module">
     import { renderJobDetail } from "./assets/js/jobs.js";
     document.getElementById("year").textContent = new Date().getFullYear();
-    await renderJobDetail({ applyPageHref: "apply-sl.html", backPageHref: "jobs-sl.html" });
+    await renderJobDetail({ applyPageHref: "apply.html", backPageHref: "jobs.html" });
   </script>
 </body>
 </html>

@@ -1,43 +1,42 @@
 <!doctype html>
-<html lang="sl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Win Win — Prijava</title>
-  <meta name="description" content="Prijavite se na Win Win v nekaj minutah. Izpolnite obrazec in kontaktiramo vas v 24 urah." />
+  <title>Win Win — Apply</title>
+  <meta name="description" content="Apply to Win Win in minutes. Send your details and we’ll contact you within 24 hours." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <!-- HEADER -->
-  <!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
-<header class="header">
+ <header class="header">
   <div class="container header-row">
-    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+    <a class="brand" href="index.html" aria-label="Win Win Home">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a class="nav-link" href="index-sl.html">Domov</a>
-      <a class="nav-link" href="about-sl.html">O nas</a>
-      <a class="nav-link" href="jobs-sl.html">Kariera</a>
-      <a class="nav-link" href="insights-sl.html">Vpogledi</a>
-      <a class="nav-link is-active" href="apply-sl.html">Prijava</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link" href="jobs.html">Careers</a>
+      <a class="nav-link" href="insights.html">Insights</a>
+      <a class="nav-link is-active" href="apply.html">Apply</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (SL -> EN) -->
+      <!-- Language switch (EN -> SL) -->
       <a
         class="lang-switch"
-        href="apply.html"
-        aria-label="Switch language to English"
-        title="English"
+        href="apply-sl.html"
+        aria-label="Switch language to Slovenian"
+        title="Slovenščina"
       >
-        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
       </a>
 
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -46,32 +45,32 @@
   </div>
 </header>
 
-
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="nav-link" href="index-sl.html">Domov</a>
-    <a class="nav-link" href="about-sl.html">O nas</a>
-    <a class="nav-link" href="jobs-sl.html">Kariera</a>
-    <a class="nav-link" href="insights-sl.html">Vpogledi</a>
-    <a class="nav-link is-active" href="apply-sl.html">Prijava</a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="about.html">About Us</a>
+    <a class="nav-link" href="jobs.html">Careers</a>
+    <a class="nav-link" href="insights.html">Insights</a>
+    <a class="nav-link is-active" href="apply.html">Apply</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
     </div>
   </div>
 
   <main>
-    <!-- HERO -->
+<!-- HERO -->
 <section class="section section-gradient-a page-hero">
   <div class="container">
-    <div class="center" style="padding-top: 28px;">
-      <h1 class="h1" id="applyTitle">Prijava na Win Win</h1>
+    <div class="center">
+      <h1 class="h1" id="applyTitle">Apply to Win Win</h1>
       <p class="p-muted" id="applyDesc">
-        Naredite prvi korak k prodajni karieri. Izpolnite spodnji obrazec in kontaktirali vas bomo v 24 urah.
+        Take the first step towards building your sales career. Fill out the form below and we'll get back to you within 24 hours.
       </p>
     </div>
   </div>
 </section>
+
 
     <!-- FORM -->
     <section class="section">
@@ -79,46 +78,46 @@
         <div class="glass-card glass apply-wrap apply-card">
           <form class="apply-form" id="applyForm">
             <div class="apply-field">
-              <label class="apply-label">Ime *</label>
+              <label class="apply-label">First Name *</label>
               <input class="apply-input" type="text" id="firstName" required>
               <div class="err" data-err-for="firstName"></div>
             </div>
 
             <div class="apply-field">
-              <label class="apply-label">Priimek *</label>
+              <label class="apply-label">Last Name *</label>
               <input class="apply-input" type="text" id="lastName" required>
               <div class="err" data-err-for="lastName"></div>
             </div>
 
             <div class="apply-field full">
-              <label class="apply-label">E-poštni naslov *</label>
+              <label class="apply-label">Email Address *</label>
               <input class="apply-input" type="email" id="email" required>
               <div class="err" data-err-for="email"></div>
             </div>
 
             <div class="apply-field full">
-              <label class="apply-label">Telefonska številka *</label>
+              <label class="apply-label">Phone Number *</label>
               <input class="apply-input" type="tel" id="phone" required>
               <div class="err" data-err-for="phone"></div>
             </div>
 
             <div class="apply-field full">
-              <label class="apply-label">Želeni termin razgovora</label>
-              <input class="apply-input" type="text" id="interviewTime" placeholder="npr. dopoldne med tednom, popoldne">
+              <label class="apply-label">Preferred Interview Time</label>
+              <input class="apply-input" type="text" id="interviewTime">
             </div>
 
             <div class="apply-field full">
-              <label class="apply-label">Dodatno sporočilo</label>
-              <textarea class="apply-textarea" id="message" placeholder="Povejte nam nekaj o sebi, svojih izkušnjah in zakaj se želite pridružiti Win Win..."></textarea>
+              <label class="apply-label">Additional Message</label>
+              <textarea class="apply-textarea" id="message"></textarea>
             </div>
 
             <div class="apply-field full" style="position:relative;">
-              <label class="apply-label">Življenjepis / CV (PDF, max 5MB)</label>
+              <label class="apply-label">Resume / CV (PDF, max 5MB)</label>
               <div class="apply-upload" id="cvDrop">
                 <input type="file" accept="application/pdf" id="cvFile" style="display:none;">
                 <div>
-                  <strong>Kliknite za nalaganje življenjepisa</strong>
-                  <span>Samo PDF, max 5MB</span>
+                  <strong>Click to upload your resume</strong>
+                  <span>PDF only, max 5MB</span>
                 </div>
               </div>
               <div id="cvFileName" style="display:none; margin-top: 8px; color: #10b981; font-size: 14px; font-weight: 600;"></div>
@@ -127,19 +126,17 @@
 
             <div class="apply-consent">
               <input type="checkbox" id="agree" required>
-              <label>
-                Strinjam se z obdelavo osebnih podatkov v skladu s Politiko zasebnosti in Politiko piškotkov. *
-              </label>
+              <label>I agree to the processing of my personal data in accordance with the Privacy Policy and Cookie Policy. *</label>
               <div class="err" data-err-for="agree"></div>
             </div>
 
             <div class="apply-actions">
-              <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Oddaj prijavo →</button>
+              <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Submit Application →</button>
             </div>
 
             <div class="glass" id="successBox" style="display:none; margin-top: 16px; padding: 14px; border-radius: 14px; background: #d1fae5; color: #065f46;">
-              <div style="font-weight:900;" id="successTitle">✓ Prijava prejeta!</div>
-              <div class="small" id="successDesc" style="margin-top: 4px;">Hvala — kmalu vas kontaktiramo.</div>
+              <div style="font-weight:900;" id="successTitle">✓ Application received!</div>
+              <div class="small" id="successDesc" style="margin-top: 4px;">Thanks — our team will contact you shortly.</div>
             </div>
           </form>
         </div>
@@ -150,7 +147,7 @@
     <section class="section section-gradient-b" data-animate>
       <div class="container">
         <div class="center">
-          <h2 class="h2" id="nextTitle">Kaj sledi?</h2>
+          <h2 class="h2" id="nextTitle">What Happens Next?</h2>
         </div>
 
         <div class="grid grid-3" id="nextGrid" style="max-width: 980px; margin: 18px auto 0;"></div>
@@ -166,22 +163,22 @@
           <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
         </div>
         <p class="p-muted small" id="footerDesc">
-          Gradimo prodajne kariere. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
+          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
         </p>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
     </div>
   </footer>
 
   <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
-    <span aria-hidden="true">💬</span>
-    <span class="chat-fab-text">Klepetajte z nami</span>
+  <button class="chat-fab" type="button" aria-label="Chat with us">
+    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
+    <span class="chat-fab-text">Chat with us</span>
   </button>
 
-  <script type="module" src="assets/js/apply-sl.js"></script>
+  <script type="module" src="assets/js/apply.js"></script>
 </body>
 </html>

@@ -1,42 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="sl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Win Win — Careers</title>
-  <meta name="description" content="Explore open sales positions at Win Win across Slovenia. Apply online in minutes." />
+  <title>Win Win — Zaposlitve</title>
+  <meta name="description" content="Oglejte si odprta prodajna delovna mesta pri Win Win po Sloveniji. Prijavite se hitro in enostavno." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <!-- HEADER -->
+<!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
 <header class="header">
   <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="Win Win Home">
+    <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="about.html">About Us</a>
-      <a class="nav-link is-active" href="jobs.html">Careers</a>
-      <a class="nav-link" href="insights.html">Insights</a>
-      <a class="nav-link" href="apply.html">Apply</a>
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a class="nav-link" href="index-sl.html">Domov</a>
+      <a class="nav-link" href="about-sl.html">O nas</a>
+      <a class="nav-link is-active" href="jobs-sl.html">Kariera</a>
+      <a class="nav-link" href="insights-sl.html">Vpogledi</a>
+      <a class="nav-link" href="apply-sl.html">Prijava</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (EN -> SL) -->
+      <!-- Language switch (SL -> EN) -->
       <a
         class="lang-switch"
-        href="jobs-sl.html"
-        aria-label="Switch language to Slovenian"
-        title="Slovenščina"
+        href="jobs.html"
+        aria-label="Switch language to English"
+        title="English"
       >
-        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
+        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
       </a>
 
-      <a class="btn btn-outline" href="jobs.html">View Positions</a>
-      <a class="btn btn-primary" href="apply.html">Join the Team</a>
+      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -45,55 +46,55 @@
   </div>
 </header>
 
+
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="about.html">About Us</a>
-    <a class="nav-link is-active" href="jobs.html">Careers</a>
-    <a class="nav-link" href="insights.html">Insights</a>
-    <a class="nav-link" href="apply.html">Apply</a>
+    <a class="nav-link" href="index-sl.html">Domov</a>
+    <a class="nav-link" href="about-sl.html">O nas</a>
+    <a class="nav-link is-active" href="jobs-sl.html">Kariera</a>
+    <a class="nav-link" href="insights-sl.html">Vpogledi</a>
+    <a class="nav-link" href="apply-sl.html">Prijava</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs.html">View Positions</a>
-      <a class="btn btn-primary" href="apply.html">Join the Team</a>
+      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
     </div>
   </div>
 
   <main>
-    <!-- HERO -->
-<section class="section section-gradient-a">
-  <div class="container">
-    <div class="center" style="padding-top: 28px;">
-      <h1 class="h1" id="jobsTitle">Open Positions</h1>
-      <p class="p-muted" id="jobsDesc">
-        Join our team of high-performing sales professionals. We offer competitive compensation,
-        comprehensive training, and clear career progression.
-      </p>
-    </div>
-  </div>
-</section>
-
+    <!-- HERO (same as EN, just translated) -->
+    <section class="section section-gradient-a">
+      <div class="container">
+        <div class="center" style="padding-top: 28px;">
+          <h1 class="h1" id="jobsTitle">Odprta delovna mesta</h1>
+          <p class="p-muted" id="jobsDesc">
+            Pridruži se ekipi vrhunskih prodajnih profesionalcev. Ponujamo konkurenčno plačilo,
+            celovito usposabljanje in jasen karierni napredek.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- FILTERS + LIST -->
     <section class="section section-gradient-a" data-animate>
       <div class="container">
         <div class="jobs-toolbar glass">
           <div class="jobs-filters">
-            <label class="sr-only" for="filterLocation">Location</label>
+            <label class="sr-only" for="filterLocation">Lokacija</label>
             <select class="select" id="filterLocation" aria-label="Filter by location"></select>
 
-            <label class="sr-only" for="filterType">Type</label>
+            <label class="sr-only" for="filterType">Tip</label>
             <select class="select" id="filterType" aria-label="Filter by type"></select>
           </div>
 
           <div class="jobs-search">
-            <label class="sr-only" for="jobsSearch">Search</label>
-            <input class="input" id="jobsSearch" type="search" placeholder="Search positions..." autocomplete="off" />
+            <label class="sr-only" for="jobsSearch">Iskanje</label>
+            <input class="input" id="jobsSearch" type="search" placeholder="Išči delovna mesta..." autocomplete="off" />
           </div>
         </div>
 
         <div class="mt-24">
-          <div class="p-muted" id="jobsLoading">Loading positions...</div>
-          <div class="p-muted" id="jobsNoJobs" style="display:none;">No open positions right now. Check back soon!</div>
+          <div class="p-muted" id="jobsLoading">Nalaganje delovnih mest...</div>
+          <div class="p-muted" id="jobsNoJobs" style="display:none;">Trenutno ni odprtih delovnih mest. Preveri ponovno kmalu!</div>
 
           <div class="grid grid-1" id="jobsGrid"></div>
         </div>
@@ -104,12 +105,12 @@
     <section class="section section-gradient-b" data-animate>
       <div class="container">
         <div class="glass center jobs-cta">
-          <h2 class="h2" id="jobsNoPositionTitle">Don't See the Right Position?</h2>
+          <h2 class="h2" id="jobsNoPositionTitle">Ne najdeš prave pozicije?</h2>
           <p class="p-muted" id="jobsNoPositionDesc">
-            We're always looking for talented sales professionals. Send us your application and we'll keep you in mind for future opportunities.
+            Vedno iščemo talentirane prodajne sodelavce. Pošlji prijavo in te bomo upoštevali za prihodnje priložnosti.
           </p>
-          <a class="btn btn-primary btn-lg mt-12" href="apply.html" id="jobsGeneralBtn">
-            Submit General Application <span aria-hidden="true">→</span>
+          <a class="btn btn-primary btn-lg mt-12" href="apply-sl.html" id="jobsGeneralBtn">
+            Oddaj splošno prijavo <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -120,7 +121,7 @@
       <div class="container">
         <details class="seo-accordion glass" id="seoDetails">
           <summary class="seo-summary">
-            <span id="seoSummaryTitle">Open Sales Positions Throughout Slovenia</span>
+            <span id="seoSummaryTitle">Odprta prodajna delovna mesta po Sloveniji</span>
             <span class="chev" aria-hidden="true">⌄</span>
           </summary>
           <div class="seo-body">
@@ -139,45 +140,45 @@
           <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
         </div>
         <p class="p-muted small" id="footerDesc">
-          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
+          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
         </p>
-        <div class="socials" aria-label="Social links">
+        <div class="socials" aria-label="Povezave do družbenih omrežij">
           <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
           <a class="social" href="https://www.instagram.com/winwin.si/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">◎</a>
         </div>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Company</div>
-        <a class="footer-link" href="about.html">About Us</a>
-        <a class="footer-link" href="jobs.html">Careers</a>
-        <a class="footer-link" href="apply.html">Contact</a>
+        <div class="footer-title">Podjetje</div>
+        <a class="footer-link" href="about-sl.html">O nas</a>
+        <a class="footer-link" href="jobs-sl.html">Zaposlitve</a>
+        <a class="footer-link" href="apply-sl.html">Kontakt</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Legal</div>
-        <a class="footer-link" href="privacy.html">Privacy Policy</a>
-        <a class="footer-link" href="cookies.html">Cookie Policy</a>
-        <a class="footer-link" href="terms.html">Terms of Service</a>
+        <div class="footer-title">Pravno</div>
+        <a class="footer-link" href="privacy-sl.html">Politika zasebnosti</a>
+        <a class="footer-link" href="cookies-sl.html">Politika piškotkov</a>
+        <a class="footer-link" href="terms-sl.html">Pogoji uporabe</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Contact</div>
-        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenia</div>
+        <div class="footer-title">Kontakt</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
         <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> <a href="tel:+38631678732">+386 31 678 732</a></div>
         <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> <a href="mailto:office@win-win.si">office@win-win.si</a></div>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
     </div>
   </footer>
 
   <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Chat with us">
-    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
-    <span class="chat-fab-text">Chat with us</span>
+  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
+    <span aria-hidden="true">💬</span>
+    <span class="chat-fab-text">Klepetajte z nami</span>
   </button>
 
   <script type="module" src="assets/js/jobs.js"></script>
