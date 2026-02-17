@@ -1,11 +1,6 @@
 {
   "en": {
-    "title": "Customer Service Representative",
-    "location": "Maribor",
-    "type": "Full-time",
-    "department": "Customer Support",
-    "salary": "€1,400 - €1,800 per month",
-    "description": "We're looking for an enthusiastic Customer Service Representative to join our team. You'll be the first point of contact for our clients and candidates, providing exceptional service and support.",
+    "salary": "€3,500+",
     "responsibilities": [
       "Respond to customer inquiries via phone, email, and chat",
       "Resolve customer complaints and issues professionally",
@@ -15,28 +10,28 @@
       "Follow up with customers to ensure satisfaction"
     ],
     "requirements": [
-      "Excellent communication skills in Slovenian and English",
+      "Communicative, ambitious, and results-driven individual",
       "Previous customer service experience required",
       "Strong problem-solving abilities",
       "Patient and empathetic personality",
       "Proficiency with MS Office and CRM software",
       "Ability to work in a fast-paced environment"
     ],
+    "department": "Customer Support",
+    "location": "Entire Slovenia",
+    "title": "Sales Consultant – Field Sales",
+    "type": "Full-time",
     "benefits": [
       "Competitive salary package",
       "Health and dental insurance",
       "Professional development opportunities",
       "Modern office environment",
       "Performance bonuses"
-    ]
+    ],
+    "description": "The role includes direct sales of telecommunications services in the field, where we advise customers and help them choose a better and more cost-effective solution. The focus is on active selling, a professional approach, and achieving results."
   },
   "sl": {
-    "title": "Predstavnik za storitve strankam",
-    "location": "Maribor",
-    "type": "Polni delovni čas",
-    "department": "Podpora strankam",
-    "salary": "€1,400 - €1,800 na mesec",
-    "description": "Iščemo navdušenega predstavnika za storitve strankam, ki se bo pridružil naši ekipi. Boste prva kontaktna točka za naše stranke in kandidate ter zagotavljali izjemno storitev in podporo.",
+    "salary": "3.500 €+",
     "responsibilities": [
       "Odzivanje na povpraševanja strank po telefonu, e-pošti in klepetu",
       "Profesionalno reševanje pritožb in težav strank",
@@ -46,20 +41,26 @@
       "Nadaljnje spremljanje strank za zagotovitev zadovoljstva"
     ],
     "requirements": [
-      "Odlične komunikacijske veščine v slovenščini in angleščini",
-      "Zahtevane so predhodne izkušnje s storitvami za stranke",
-      "Močne sposobnosti reševanja problemov",
-      "Potrpežljiva in empatična osebnost",
-      "Obvladovanje MS Office in CRM programske opreme",
-      "Sposobnost dela v hitrem tempu"
+      "Komunikativna, ambiciozna in rezultatsko usmerjena oseba",
+      "Močna želja po nadpovprečnem zaslužku in karierni rasti",
+      "Disciplina, vztrajnost in odgovoren odnos do dela in strank",
+      "Pripravljenost delati po prodajnih procesih in ciljih",
+      "Pogum, samozavest in tekmovalna miselnost",
+      "Želja po učenju prodajnih veščin in osebnem razvoju",
+      "Izkušnje v prodaji so prednost, niso pa pogoj"
     ],
+    "department": "Podpora strankam",
+    "location": "Cela Slovenija",
+    "title": "Prodajni svetovalec – Terenska prodaja",
+    "type": "Polni delovni čas",
     "benefits": [
       "Konkurenčen plačni paket",
       "Zdravstveno in zobozdravstveno zavarovanje",
       "Priložnosti za strokovni razvoj",
       "Sodobno pisarniško okolje",
       "Bonusi za uspešnost"
-    ]
+    ],
+    "description": "Delo obsega neposredno prodajo telekomunikacijskih storitev na terenu, kjer strankam svetujemo in jim pomagamo izbrati boljšo ter stroškovno učinkovitejšo rešitev. Poudarek je na aktivni prodaji, profesionalnem pristopu in doseganju rezultatov."
   },
   "settings": {
     "published": true,
