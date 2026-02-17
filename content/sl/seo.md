@@ -1,33 +1,89 @@
-# Služba v prodaji v Sloveniji - Pridruži se Win Win Sales Team
+# Poslovna priložnost v prodaji – Pridruži se Win Win prodajni ekipi
 
-**Win Win Sales Team – Vaša priložnost za uspešno kariero v prodaji v Sloveniji**
+**Win Win d.o.o. – Vaša priložnost za uspešno kariero v prodaji**
 
-Iščete službo v prodaji v Ljubljani, Mariboru ali drugih mestih po Sloveniji? Win Win Sales Team je vodilno slovensko podjetje za neposredno prodajo, ki ponuja izjemne možnosti za zaposlitev v prodaji, razvoj kariere in osebno rast. Naša prodajna ekipa deluje na območju celotne Slovenije in ponuja konkurenčne pogoje zaposlitve za vse, ki želijo graditi uspešno kariero v prodaji.
+Iščete službo v prodaji v Ljubljani, Kranju ali drugih mestih po Sloveniji? Win Win d.o.o. je eno izmed najbolj učinkovitih slovenskih podjetij za direktno prodajo, ki ponuja izjemne možnosti za zaposlitev v prodaji, razvoj kariere in osebno rast. Naša prodajna ekipa deluje na območju celotne Slovenije in ponuja konkurenčne pogoje za vse, ki želijo graditi uspešno kariero v prodaji.
 
 ## Zaposlitev v prodaji – najboljše priložnosti za delo v Sloveniji
 
-Zaposlitev v prodajni ekipi Win Win pomeni več kot le službo – pomeni vstop v dinamično okolje, kjer se cenijo rezultati, vztrajnost in ambicioznost. Nudimo službe v prodaji za začetnike brez izkušenj, kot tudi za izkušene prodajne strokovnjake, ki želijo napredovati v vodstvene pozicije. Naše prodajno podjetje deluje v različnih segmentih: neposredna prodaja na terenu (B2C prodaja), prodaja v klicnem centru, telekomunikacijske storitve ter B2B poslovna prodaja.
+Zaposlitev v prodajni ekipi Win Win pomeni več kot le službo – pomeni vstop v dinamično okolje, kjer se cenijo rezultati, vztrajnost in ambicioznost. Nudimo poslovno priložnost v prodaji za začetnike brez izkušenj, kot tudi za izkušene prodajne strokovnjake, ki želijo napredovati v vodstvene pozicije. Naše prodajno podjetje deluje v različnih segmentih: neposredna prodaja na terenu (B2C prodaja), promocijska prodaja v trgovskih centrih, prodaja v klicnem centru, ter B2B poslovna prodaja telekomunikacijskih storitev za končne uporabnike.
 
-Če iščete zaposlitev v Ljubljani, Mariboru, Celju, Kranju ali katerem koli drugem mestu v Sloveniji, smo prava izbira. Win Win Sales Team zaposluje prodajnike, vodje ekip, team leaderje, managerje prodaje in druge prodajne strokovnjake na različnih lokacijah po Sloveniji. Naše pisarne se nahajajo v največjih slovenskih mestih, kar omogoča zaposlitev blizu vašega doma.
+Če iščete zaposlitev v Ljubljani, Mariboru, Celju, Kranju ali katerem koli drugem mestu v Sloveniji, smo prava izbira. Win Win d.o.o. zaposluje prodajnike, vodje ekip, team leaderje, managerje prodaje in druge prodajne strokovnjake na različnih lokacijah po Sloveniji. Naše pisarne se nahajajo v največjih slovenskih mestih.
 
-## Služba prodajalca – priložnosti za vse generacije
+## Delovno mesto prodajalca – priložnosti za vse generacije
 
-Služba prodajalca pri Win Win je primerna za študente, ki iščejo študentsko delo v prodaji, za mlade brez delovnih izkušenj, ki želijo pridobiti izkušnje v prodaji, kot tudi za izkušene prodajne strokovnjake, ki želijo nadgraditi svoje znanje in zaslužek. Nudimo fleksibilne oblike zaposlitve: polni delovni čas, skrajšani delovni čas, študentsko delo ter možnost dela od doma za nekatere pozicije v klicnem centru.
+Delovno mesto prodajalca pri Win Win je primerna za študente, ki iščejo študentsko delo v prodaji, za mlade brez delovnih izkušenj, ki želijo pridobiti izkušnje v prodaji, kot tudi za izkušene prodajne strokovnjake, ki želijo nadgraditi svoje znanje in zaslužek. Nudimo fleksibilne oblike zaposlitve: polni delovni čas, sodelovanje preko podjetja (s.p., d.o.o.) študentsko delo ter možnost dela od doma za nekatere pozicije v klicnem centru.
 
-Zaposlitev kot prodajalec pri Win Win Sales Team vam omogoča visok zaslužek, ki je odvisen od vaših rezultatov. Naš provizijski sistem nagrajevanja pomeni, da več kot prodajate, več zaslužite. Najboljši prodajniki v naši ekipi dosegajo mesečne zaslužke, ki presegajo slovensko povprečje, kar dokazuje, da je služba v prodaji lahko izjemno dobičkonosna za tiste, ki so pripravljeni vložiti trud in energijo.
+Zaposlitev kot prodajalec pri Win Win d.o.o. vam omogoča visok zaslužek, ki je odvisen od vaših rezultatov. Naš provizijski sistem nagrajevanja pomeni, da več kot prodajate, več zaslužite. Najboljši prodajniki v naši ekipi dosegajo mesečne zaslužke, ki presegajo slovensko povprečje, kar dokazuje, da je delovno mesto v prodaji lahko izjemno dobičkonosna za tiste, ki so pripravljeni vložiti trud in energijo.
 
 ## Kariera v prodaji – od prodajalca do managerja
 
-Win Win Sales Team ponuja jasno kariero pot za vse zaposlene v prodaji. Začnete lahko kot prodajni svetovalec na terenu ali v klicnem centru, nato pa napredujete v vodjo prodajne ekipe, team leaderja, managerja prodaje ali celo regionalnega direktorja. Naše podjetje aktivno vlaga v izobraževanje in usposabljanje zaposlenih, kar pomeni, da boste pri nas pridobili prodajna znanja, veščine komunikacije, tehnike prodaje, pogajalske spretnosti in vodstvene kompetence.
+Win Win d.o.o. ponuja jasno kariero pot za vse posameznike v prodaji. Začnete lahko kot prodajni svetovalec na terenu ali v klicnem centru, nato pa napredujete v vodjo prodajne ekipe, team leaderja, managerja prodaje ali celo regionalnega direktorja. Naše podjetje aktivno vlaga v izobraževanje in usposabljanje, kar pomeni, da boste pri nas pridobili prodajna znanja, veščine komunikacije, tehnike prodaje, pogajalske spretnosti in vodstvene kompetence.
 
-Redna prodajna izobraževanja, delavnice, seminarji in coaching seje so del naše kulture razvoja zaposlenih. Zaposleni v Win Win Sales Team imajo možnost osvojiti certifikate s področja prodaje, telekomunikacij, vodenja in managementa, kar krepi njihovo konkurenčnost na trgu dela.
+Redna prodajna izobraževanja, delavnice, seminarji in coaching seje so del naše kulture razvoja zaposlenih. Zaposleni v Win Win d.o.o. imajo možnost osvojiti certifikate s področja prodaje telekomunikacij, vodenja in managementa, kar krepi njihovo konkurenčnost na trgu dela.
 
 ## Prodajna ekipa Win Win – kultura uspešnosti in timskega dela
 
-Naša prodajna ekipa je sestavljena iz ambicioznih posameznikov, ki delijo skupne vrednote: vztrajnost, poštenost, rezultate in timski duh. Delujemo v dinamičnem in motivirajočem okolju, kjer se vsak uspeh praznuje, vsaka prodaja šteje in vsak član ekipe prispeva k skupnemu cilju. Win Win Sales Team organizira redna teambuildinge, motivacijske dogodke, nagrade za najboljše prodajnike in letna srečanja, kjer praznujemo skupne uspehe.
+Naša prodajna ekipa je sestavljena iz ambicioznih posameznikov, ki delijo skupne vrednote: vztrajnost, poštenost, rezultate in timski duh. Delujemo v dinamičnem in motivirajočem okolju, kjer se vsak uspeh praznuje, vsaka prodaja šteje in vsak član ekipe prispeva k skupnemu cilju. Win Win d.o.o. organizira redna teambuildinge, motivacijske dogodke, nagrade za najboljše prodajnike in letna srečanja, kjer praznujemo skupne uspehe.
 
-Služba v prodajni ekipi Win Win ni le zaposlitev – je življenjski slog, priložnost za osebnostno rast, finančno neodvisnost in dolgoročno kariero v enem najhitreje rastočih sektorjev v Sloveniji.
+Delovno mesto v prodajni ekipi Win Win ni le zaposlitev – je življenjski slog, priložnost za osebnostno rast, finančno neodvisnost in dolgoročno kariero v enem najhitreje rastočih sektorjev v Sloveniji.
 
-## Prijavi se danes
+## Delovno mesto v klicnem centru – delo v pisarni ali od doma
 
-Pripravljen začeti svojo prodajno kariero? Obišči našo stran za karierne priložnosti in si oglej odprte pozicije. Postani del zmagovalne ekipe Win Win Sales Team in odkrij, kako daleč te lahko pripelje kariera v prodaji!
+Win Win d.o.o. išče tudi prodajnike v klicnem centru, kjer opravljajo odhodne klice strankam po Sloveniji. Delovno mesto v klicnem centru je primerno za vse, ki radi komunicirajo po telefonu, imajo dobre govorne sposobnosti in so usmerjeni k rezultatom. Ponujamo možnost dela v pisarni kot tudi delo od doma za izkušene posameznike v klicnem centru.
+
+Delo v klicnem centru Win Win vključuje urejeno delovno okolje, sodobno CRM programsko opremo, prodajne skripte, redna izobraževanja in nadpovprečne provizije od prodaje. Najboljši klicni operaterji dosegajo visoke zaslužke in imajo možnost napredovanja v supervizorje klicnega centra ali vodje prodajne ekipe.
+
+## Telekomunikacije in prodaja mobilnih storitev v Sloveniji
+
+Win Win d.o.o. je specialist za prodajo telekomunikacijskih storitev v Sloveniji. Sodelujemo z enim od največjih telekom operaterjev in ponujamo prodajo mobilnih paketov, internetnih povezav, poslovnih telekom rešitev ter dodatnih storitev. Naši prodajniki delujejo na terenu, na promocijskih dogodkih v nakupovalnih centrih, ter v klicnem centru.
+
+Če vas zanima delo v telekomunikacijah, smo prava izbira. Ponujamo temeljito usposabljanje s področja telekom storitev, tehnično podporo, prodajne materiale in visoke provizije za vsako sklenjeno pogodbo. Prodaja mobilnih storitev je eden najbolj dinamičnih segmentov našega poslovanja in ponuja odlične zaslužke za uspešne prodajnike.
+
+## Promocije v nakupovalnih centrih – neposredna prodaja strankam
+
+Ena od naših ključnih dejavnosti je organizacija promocij v nakupovalnih centrih po Sloveniji. Naši promotorji in prodajniki delujejo v največjih nakupovalnih. Delovno mesto promotorja vključuje neposreden stik s strankami, predstavitev telekom ponudb, svetovanje strankam in sklepanje pogodb.
+
+Delo v nakupovalnem centru je dinamično, družabno in primerno za vse, ki uživajo v komunikaciji z ljudmi. Zaposleni na promocijah imajo fleksibilne delovne urnike, možnost dela ob vikendih za višje provizije in priložnost za hiter zaslužek.
+
+## B2B prodaja – poslovna prodaja za izkušene strokovnjake
+
+Win Win d.o.o. se ukvarja tudi s poslovno prodajo (B2B), kjer naši prodajni svetovalci sodelujejo s slovenskimi podjetji, ponujajo telekom rešitve za podjetja, poslovne pakete, korporativne storitve in večje poslovne projekte. Delovno mesto v B2B prodaji zahteva izkušnje, profesionalen nastop, pogajalske sposobnosti in razumevanje poslovnih procesov.
+
+Če ste izkušen prodajnik in iščete izziv v poslovni prodaji, vas vabimo k prijavi. B2B pozicije pri Win Win nudijo visoke provizije, dostop do večjih projektov, možnost gradnje dolgoročnih poslovnih odnosov in napredovanje v vodstvene pozicije.
+
+## Študentsko delo v prodaji – prva zaposlitev za študente
+
+Win Win d.o.o. redno zaposluje študente, ki želijo ob študiju opravljati študentsko delo v prodaji. Delovno mesto za študente vključuje fleksibilne urnike, delo v popoldanskem času ali ob vikendih, možnost dela v nakupovalnih centrih ali klicnem centru ter privabljive zaslužke. Študenti pri nas pridobijo dragocene delovne izkušnje, razvijejo komunikacijske veščine in spoznajo svet prodaje.
+
+Za študente, ki izkažejo dobre rezultate, ponujamo možnost zaposlitve po končanem študiju, napredovanje v vodstvene pozicije in dolgoročno kariero v našem podjetju. Študentsko delo pri Win Win je odlična popotnica za uspešno kariero v prodaji ali marketingu.
+
+## Delovno mesto brez izkušenj – dobrodošli so vsi začetniki
+
+Pri Win Win d.o.o. verjamemo, da lahko vsak uspe v prodaji, če ima pravo miselnost, motivacijo in voljo do dela. Zato ponujamo delo v prodaji brez predhodnih izkušenj. Zagotavljamo celovito usposabljanje za vse nove posameznike, kjer se naučite prodajnih tehnik, pristopov do strank, uporabe CRM orodij, telefonske prodaje in dela na terenu.
+
+Sodelovanje brez izkušenj pri Win Win je priložnost za vstop v svet prodaje, kjer lahko gradite kariero od temeljev. Naši trenerji in mentorji vas bodo vodili skozi prve tedne in mesece dela ter vam pomagali razviti potrebne veščine za uspeh v prodaji.
+
+## Visoki zaslužki v prodaji – koliko lahko zaslužite?
+
+Win Win d.o.o. ponuja enega najboljših sistemov plačevanja v prodajni branži telekomunikacij v Sloveniji. Naš provizijski sistem omogoča, da najboljši prodajniki dosegajo mesečne dohodke od 1.500 EUR do preko 5.000 EUR neto, odvisno od rezultatov. Poleg provizij nudimo tudi bonuse, nagrade za dosežene cilje, tekmovanja z nagradami ter redna motivacijska priznanja.
+
+Visoki zaslužki v prodaji niso dostopni le izbrancem – vsak, ki je pripravljen trdo delati, biti vztrajen in slediti prodajnim procesom, lahko doseže nadpovprečne zaslužke pri Win Win d.o.o.. Naše podjetje transparentno nagrajuje rezultate in zagotavlja, da so najboljši prodajniki finančno najbolj nagrajeni.
+
+## Lokacije po Sloveniji – kjer želite delati
+
+Win Win d.o.o. ima pisarne in operativne točke v Trzinu in Kranju, teren in promocije obdelujemo po celi Sloveniji. To pomeni, da lahko najdete službo v prodaji blizu svojega doma.
+
+Naše prodajne ekipe delujejo tudi v manjših mestih in krajih, kjer organiziramo promocijske dogodke, terensko prodajo in klicno prodajo. Ne glede na to, kje v Sloveniji živite, ima Win Win d.o.o. verjetno priložnost za vas.
+
+## Kako se prijaviti za sodelovanje z Win Win d.o.o.?
+
+Prijava na prosto delovno mesto pri Win Win d.o.o. je hitra in preprosta. Obiščite našo spletno stran, izberite pozicijo, ki vas zanima (prodajalec na terenu, klicni operater, team leader, B2B svetovalec itd.) in izpolnite prijavni obrazec. Priložite kratek življenjepis in motivacijsko pismo ter odgovorite na nekaj osnovnih vprašanj.
+
+Naš HR oddelek bo pregledal vašo prijavo in vas v primeru ustreznosti povabil na razgovor. Razgovor poteka v sproščenem vzdušju, kjer boste spoznali našo ekipo, organizacijo dela in možnosti razvoja kariere. Po uspešnem razgovoru sledi krajše usposabljanje in nato začetek dela v prodajni ekipi.
+
+## Zaključek – Vaša prihodnost v prodaji se začne tukaj
+
+Win Win d.o.o. je pravo podjetje za vse, ki želijo graditi uspešno kariero v prodaji v Sloveniji. Ne glede na to, ali ste začetnik brez izkušenj, študent, izkušen prodajnik ali vodstveni kader – pri nas boste našli priložnost, ki ustreza vašim ambicijam. Ponujamo zaposlitev v prodaji z visokimi zaslužki, jasno karierno potjo, sodobno delovno okolje, redna izobraževanja in podporo izkušenih mentorjev.
+
+Pridružite se uspešni prodajni ekipi, ki deluje po vsej Sloveniji in dosega izjemne rezultate. Postanite del Win Win d.o.o. in odkrijte, kako daleč vas lahko pripelje kariera v prodaji. Vabimo vas, da si ogledate naša prosta delovna mesta, se prijavite in začnete svojo pot do uspeha še danes!
