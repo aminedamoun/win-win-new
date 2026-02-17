@@ -513,34 +513,50 @@
   <!-- Chat widget -->
   <div class="chat-widget" id="chatWidget">
     <div class="chat-header">
-      <div class="chat-header-title">Contact Us</div>
-      <button class="chat-close" type="button" aria-label="Close chat" id="chatClose">×</button>
+      <div class="chat-header-left">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+          </svg>
+        </div>
+        <div class="chat-header-info">
+          <div class="chat-header-title">Win Win Asistent</div>
+          <div class="chat-status">
+            <span class="chat-status-dot"></span>
+            <span>Available</span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="chat-expand" type="button" aria-label="Expand chat" id="chatExpand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+        <button class="chat-close" type="button" aria-label="Close chat" id="chatClose">×</button>
+      </div>
     </div>
     <div class="chat-body">
       <div class="chat-message">
         <div class="chat-bubble">
-          Hello! How can we help you today? Feel free to reach out to us through any of the following channels:
+          Hello! I'm here to help you with information about Win Win programs, career opportunities and meeting arrangements. How can I help you?
         </div>
+        <div class="chat-message-time">08:29 PM</div>
       </div>
     </div>
     <div class="chat-footer">
-      <div class="chat-info">
-        <div class="chat-info-item">
-          <span class="chat-info-icon">📍</span>
-          <span>Trzin, Kranj, Slovenia</span>
-        </div>
-        <div class="chat-info-item">
-          <span class="chat-info-icon">📞</span>
-          <a href="tel:+38631678732" style="color: inherit; text-decoration: none;">+386 31 678 732</a>
-        </div>
-        <div class="chat-info-item">
-          <span class="chat-info-icon">✉️</span>
-          <a href="mailto:office@win-win.si" style="color: inherit; text-decoration: none;">office@win-win.si</a>
-        </div>
+      <div class="chat-input-wrapper">
+        <input type="text" class="chat-input" placeholder="Write a message..." id="chatInput">
+        <button class="chat-send-btn" type="button" aria-label="Send message" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
       </div>
-      <button class="chat-contact-btn" type="button" onclick="window.location.href='mailto:office@win-win.si'">
-        Send Email
-      </button>
+      <div class="chat-powered">Powered by Win Win AI</div>
     </div>
   </div>
 
