@@ -19,7 +19,7 @@
       "image": "https://images.pexels.com/photos/5668838/pexels-photo-5668838.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
-      "title": "Zanesljivost",
+      "title": "Odgovornost",
       "description": "Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez",
       "image": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
@@ -46,7 +46,7 @@
   ],
   "culture": {
     "title": "Podjetniška kultura",
-    "description": "Zgradili smo okolje, kjer lahko nadarjeni strokovnjaki uspevajo",
+    "description": "Gradimo okolje, kjer uspevajo ljudje, ki hočejo rezultat.",
     "highlights": [
       "Rezultatno usmerjen način razmišljanja z jasnimi KPI-ji",
       "Ekipno sodelovanje in deljenje znanja",
@@ -59,7 +59,7 @@
   "stats": [
     {
       "icon": "users",
-      "value": "50+",
+      "value": "25+",
       "label": "Aktivnih članov ekipe"
     },
     {
@@ -70,12 +70,12 @@
     {
       "icon": "headset",
       "value": "Klicni center",
-      "label": "Podpora"
+      "label": "Telefonska prodaja"
     },
     {
       "icon": "award",
       "value": "Več lokacij",
-      "label": "Trzin, Kranj in teren"
+      "label": "Trzin, Kranj in teren cela Slovenija"
     }
   ],
   "faq": [
