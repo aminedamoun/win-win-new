@@ -236,6 +236,21 @@ function renderFaq() {
     .join("");
 }
 
+function renderSeo() {
+  if (!CONTENT || !CONTENT.seo) return;
+
+  const titleEl = $("seoSummaryTitle");
+  const htmlEl = $("seoHtml");
+
+  if (titleEl && CONTENT.seo.summaryTitle) {
+    titleEl.textContent = CONTENT.seo.summaryTitle;
+  }
+
+  if (htmlEl && CONTENT.seo.html) {
+    htmlEl.innerHTML = CONTENT.seo.html;
+  }
+}
+
 function setupScrollReveal() {
   const nodes = Array.from(document.querySelectorAll("[data-animate]"));
   if (!nodes.length) return;
@@ -294,6 +309,7 @@ async function main() {
   renderCulture();
   renderTeam();
   renderFaq();
+  renderSeo();
   setupScrollReveal();
   initBurgerMenu();
 }
