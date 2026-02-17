@@ -215,7 +215,8 @@ function setupForm() {
       }, 3000);
     } catch (error) {
       console.error('Error submitting application:', error);
-      alert('Prišlo je do napake pri oddaji prijave. Prosim poskusite znova.');
+      const errorMsg = error?.message || 'Unknown error';
+      alert(`Pri oddaji prijave je prišlo do napake: ${errorMsg}\n\nProsimo, preverite konzolo za več podrobnosti.`);
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.textContent = "Oddaj prijavo";

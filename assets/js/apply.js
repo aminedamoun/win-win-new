@@ -215,7 +215,8 @@ function setupForm() {
       }, 3000);
     } catch (error) {
       console.error('Error submitting application:', error);
-      alert('There was an error submitting your application. Please try again.');
+      const errorMsg = error?.message || 'Unknown error';
+      alert(`There was an error submitting your application: ${errorMsg}\n\nPlease check the console for more details.`);
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.textContent = "Submit Application";
