@@ -46,28 +46,23 @@ async function loadJson(path) {
 function renderCards(targetId, items) {
   const root = $(targetId);
   if (!root) return;
-
-  root.innerHTML = (items || []).map(x => {
-    const iconKey = x.icon || x.iconKey; // ✅ support both
-    return `
-      <div class="card">
-        <div class="card-ic" aria-hidden="true">${ICONS[iconKey] || ICONS.briefcase}</div>
-        <h4 class="card-h">${escapeHtml(x.title || "")}</h4>
-        <p class="card-p">${escapeHtml(x.description || "")}</p>
-      </div>
-    `;
-  }).join("");
+  root.innerHTML = (items || []).map(x => `
+    <div class="card">
+      <div class="card-ic" aria-hidden="true">${ICONS[x.icon] || ICONS.briefcase}</div>
+      <h4 class="card-h">${escapeHtml(x.title || "")}</h4>
+      <p class="card-p">${escapeHtml(x.description || "")}</p>
+    </div>
+  `).join("");
 }
 
 function renderProcess(steps) {
   const root = $("processGrid");
   if (!root) return;
-
   root.innerHTML = (steps || []).map(s => `
     <div class="card" style="text-align:center; min-height:185px">
-      <div style="font-weight:900; font-size:46px; color: rgba(156,163,175,.18); margin-bottom:10px">${escapeHtml(s.step || "")}</div>
-      <h4 class="card-h" style="font-size:15px">${escapeHtml(s.title || "")}</h4>
-      <p class="card-p">${escapeHtml(s.desc || s.description || "")}</p>
+      <div style="font-weight:900; font-size:46px; color: rgba(156,163,175,.18); margin-bottom:10px">${escapeHtml(s.step)}</div>
+      <h4 class="card-h" style="font-size:15px">${escapeHtml(s.title)}</h4>
+      <p class="card-p">${escapeHtml(s.desc)}</p>
     </div>
   `).join("");
 }
@@ -75,11 +70,10 @@ function renderProcess(steps) {
 function renderFaq(items) {
   const root = $("faqList");
   if (!root) return;
-
   root.innerHTML = (items || []).map(x => `
     <details class="faq">
-      <summary><span>${escapeHtml(x.q || "")}</span><span class="chev" aria-hidden="true">⌄</span></summary>
-      <div class="faq-body">${escapeHtml(x.a || "")}</div>
+      <summary><span>${escapeHtml(x.q)}</span><span class="chev" aria-hidden="true">⌄</span></summary>
+      <div class="faq-body">${escapeHtml(x.a)}</div>
     </details>
   `).join("");
 }
@@ -96,6 +90,14 @@ function bindCookieBar() {
   const close = (v) => { localStorage.setItem(key, v); bar.style.display = "none"; };
   accept.addEventListener("click", () => close("accepted"));
   decline.addEventListener("click", () => close("declined"));
+}
+
+function setupScrollReveal() {
+  const nodes = Array.from(document.querySelectorAll("[data-animate]"));
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) e.target.classList.add("in");
+  }, { threshold: 0.12 });
+  nodes.forEach((n) => io.observe(n));
 }
 
 function initBurgerMenu() {
@@ -119,89 +121,65 @@ function initBurgerMenu() {
   });
 }
 
-function setupScrollReveal() {
-  const nodes = Array.from(document.querySelectorAll("[data-animate]"));
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) e.target.classList.add("in");
-  }, { threshold: 0.12 });
-  nodes.forEach((n) => io.observe(n));
-}
-
-function setLink(el, label, href, addArrowSpace = false) {
-  if (!el) return;
-  if (label != null) {
-    // some buttons are like: <a><span>TEXT</span><span>→</span></a>
-    if (el.childNodes && el.childNodes.length) {
-      el.childNodes[0].textContent = addArrowSpace ? (label + " ") : label;
-    } else {
-      el.textContent = label;
-    }
-  }
-  if (href) el.setAttribute("href", href);
-}
-
 function fillText(d) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // ✅ HERO (title is now hardcoded in HTML)
+  // Hero title is now hardcoded in HTML
   if ($("heroDescription")) $("heroDescription").textContent = d.hero?.description || "";
 
-  // ✅ ABOUT
   if ($("aboutTitle")) $("aboutTitle").textContent = d.about?.title || "";
   if ($("aboutDescription")) $("aboutDescription").textContent = d.about?.description || "";
 
-  // ✅ STATS (robust: works with your HTML even if IDs missing)
-  // Expecting d.about.stats = [{value,label}, ...]
   const stats = d.about?.stats || [];
-  const statBoxes = document.querySelectorAll(".stat");
-  statBoxes.forEach((box, i) => {
-    const valueEl = box.querySelector(".stat-value") || box.querySelector(".value");
-    const labelEl = box.querySelector(".stat-label") || box.querySelector(".label");
-    if (stats[i]?.value != null && valueEl) valueEl.textContent = String(stats[i].value);
-    if (stats[i]?.label != null && labelEl) labelEl.textContent = String(stats[i].label);
-  });
+  const statIds = ["statDeals", "statLocations", "statTeam", "statYears"];
+  statIds.forEach((id, i) => { const el = $(id); if (el) el.textContent = stats[i]?.value ?? ""; });
+  const statLabels = document.querySelectorAll(".stat .stat-label");
+  statLabels.forEach((el, i) => { if (stats[i]?.label) el.textContent = stats[i].label; });
 
-  // ✅ SERVICES
   if ($("servicesTitle")) $("servicesTitle").textContent = d.services?.title || "";
   if ($("servicesDesc")) $("servicesDesc").textContent = d.services?.description || "";
   if ($("servicesBlock1")) $("servicesBlock1").textContent = d.services?.blocks?.core || "";
   if ($("servicesBlock2")) $("servicesBlock2").textContent = d.services?.blocks?.support || "";
   if ($("servicesBlock3")) $("servicesBlock3").textContent = d.services?.blocks?.market || "";
 
-  // ✅ BENEFITS
   if ($("benefitsTitle")) $("benefitsTitle").textContent = d.benefits?.title || "";
   if ($("benefitsDesc")) $("benefitsDesc").textContent = d.benefits?.description || "";
 
-  // ✅ JOIN (your JSON has strings btn1/btn2, not objects)
   if ($("joinTitle")) $("joinTitle").textContent = d.join?.title || "";
   if ($("joinDesc")) $("joinDesc").textContent = d.join?.description || "";
-  if ($("joinBtn1")) $("joinBtn1").childNodes[0].textContent = (d.join?.btn1 || "") + " ";
-  if ($("joinBtn2")) $("joinBtn2").textContent = d.join?.btn2 || "";
+  const joinBtn1 = $("joinBtn1");
+  if (joinBtn1 && d.join?.btn1?.label) joinBtn1.childNodes[0].textContent = d.join.btn1.label + " ";
+  if (joinBtn1 && d.join?.btn1?.href) joinBtn1.setAttribute("href", d.join.btn1.href);
+  const joinBtn2 = $("joinBtn2");
+  if (joinBtn2 && d.join?.btn2?.label) joinBtn2.textContent = d.join.btn2.label;
+  if (joinBtn2 && d.join?.btn2?.href) joinBtn2.setAttribute("href", d.join.btn2.href);
 
-  // ✅ CTA
   if ($("ctaTitle")) $("ctaTitle").textContent = d.cta?.title || "";
   if ($("ctaDesc")) $("ctaDesc").textContent = d.cta?.description || "";
-  if ($("ctaBtn1")) $("ctaBtn1").childNodes[0].textContent = (d.cta?.btn1 || "") + " ";
-  if ($("ctaBtn2")) $("ctaBtn2").textContent = d.cta?.btn2 || "";
+  const ctaBtn1 = $("ctaBtn1");
+  if (ctaBtn1 && d.cta?.btn1?.label) ctaBtn1.childNodes[0].textContent = d.cta.btn1.label + " ";
+  if (ctaBtn1 && d.cta?.btn1?.href) ctaBtn1.setAttribute("href", d.cta.btn1.href);
+  const ctaBtn2 = $("ctaBtn2");
+  if (ctaBtn2 && d.cta?.btn2?.label) ctaBtn2.textContent = d.cta.btn2.label;
+  if (ctaBtn2 && d.cta?.btn2?.href) ctaBtn2.setAttribute("href", d.cta.btn2.href);
 
-  // ✅ PROCESS
   if ($("processTitle")) $("processTitle").textContent = d.process?.title || "";
   if ($("processDesc")) $("processDesc").textContent = d.process?.description || "";
-  if ($("processBtn")) $("processBtn").childNodes[0].textContent = (d.process?.button || "") + " ";
+  const processBtn = $("processBtn");
+  if (processBtn && d.process?.button?.label) processBtn.childNodes[0].textContent = d.process.button.label + " ";
+  if (processBtn && d.process?.button?.href) processBtn.setAttribute("href", d.process.button.href);
 
-  // ✅ APP
   if ($("appTitle")) $("appTitle").textContent = d.app?.title || "";
   if ($("appDesc")) $("appDesc").textContent = d.app?.description || "";
+  if ($("blogEmpty")) $("blogEmpty").textContent = d.blog?.empty || "";
 
-  // ✅ FAQ
   if ($("faqTitle")) $("faqTitle").innerHTML = d.faq?.titleHtml || "";
   if ($("faqDesc")) $("faqDesc").textContent = d.faq?.description || "";
   if ($("faqStill")) $("faqStill").textContent = d.faq?.still || "";
-  if ($("faqBtn")) $("faqBtn").childNodes[0].textContent = (d.faq?.button || "") + " ";
-
-  // ✅ BLOG
-  if ($("blogEmpty")) $("blogEmpty").textContent = d.blog?.empty || "";
+  const faqBtn = $("faqBtn");
+  if (faqBtn && d.faq?.button?.label) faqBtn.childNodes[0].textContent = d.faq.button.label + " ";
+  if (faqBtn && d.faq?.button?.href) faqBtn.setAttribute("href", d.faq.button.href);
 }
 
 function renderSeo(seo) {
@@ -223,23 +201,20 @@ function renderSeo(seo) {
 }
 
 async function main() {
-  const data = await loadJson("content/sl/home.json");
+  const data = await loadJson("content/en/home.json");
   fillText(data);
-
   renderCards("servicesCore", data.services?.core);
   renderCards("servicesSupport", data.services?.support);
   renderCards("servicesMarket", data.services?.market);
   renderCards("benefitsGrid", data.benefits?.items);
-
   renderProcess(data.process?.steps);
   renderFaq(data.faq?.items);
   renderSeo(data.seo);
-
   bindCookieBar();
   setupScrollReveal();
   initBurgerMenu();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  main().catch((e) => console.error("home-sl.js error:", e));
+  main().catch((e) => console.error("home.js error:", e));
 });
