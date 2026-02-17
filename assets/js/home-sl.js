@@ -202,10 +202,24 @@ function fillText(d) {
 
   // ✅ BLOG
   if ($("blogEmpty")) $("blogEmpty").textContent = d.blog?.empty || "";
+}
 
-  // ✅ SEO
-  if ($("seoSummaryTitle")) $("seoSummaryTitle").textContent = d.seo?.summaryTitle || "";
-  if ($("seoHtml")) $("seoHtml").innerHTML = d.seo?.html || "";
+function renderSeo(seo) {
+  const details = $("seoDetails");
+  const titleEl = $("seoSummaryTitle");
+  const htmlEl = $("seoHtml");
+  if (!details || !titleEl || !htmlEl) return;
+
+  const summaryTitle = (seo?.summaryTitle || "").trim();
+  const html = (seo?.html || "").trim();
+
+  if (!summaryTitle && !html) {
+    details.style.display = "none";
+    return;
+  }
+
+  titleEl.textContent = summaryTitle || "More information";
+  htmlEl.innerHTML = html;
 }
 
 async function main() {
@@ -219,6 +233,7 @@ async function main() {
 
   renderProcess(data.process?.steps);
   renderFaq(data.faq?.items);
+  renderSeo(data.seo);
 
   bindCookieBar();
   setupScrollReveal();

@@ -1028,10 +1028,27 @@ button{font-family:inherit}
 .seo-summary::-webkit-details-marker{display:none}
 .seo-accordion .chev{color: var(--gray-400); transition: transform .18s ease}
 .seo-accordion[open] .chev{transform: rotate(180deg)}
-.seo-body{
+
+details.seo-accordion .seo-body {
+  display: none;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  overflow: hidden;
+  transition: max-height 220ms ease, opacity 180ms ease, padding 180ms ease;
+}
+
+details.seo-accordion[open] .seo-body {
+  display: block;
+  max-height: 2000px;
+  opacity: 1;
+  padding-top: 14px;
   border-top: 1px solid rgba(255,255,255,.06);
   padding: 18px;
 }
+
+details.seo-accordion .rich { color: rgba(255,255,255,0.88); }
+details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7; }
 .rich p{margin: 0 0 14px 0; color: var(--gray-300); line-height: 1.75}
 .rich strong{color:#fff}
 .rich h3{

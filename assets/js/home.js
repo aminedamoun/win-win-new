@@ -180,9 +180,24 @@ function fillText(d) {
   const faqBtn = $("faqBtn");
   if (faqBtn && d.faq?.button?.label) faqBtn.childNodes[0].textContent = d.faq.button.label + " ";
   if (faqBtn && d.faq?.button?.href) faqBtn.setAttribute("href", d.faq.button.href);
+}
 
-  if ($("seoSummaryTitle")) $("seoSummaryTitle").textContent = d.seo?.summaryTitle || "";
-  if ($("seoHtml")) $("seoHtml").innerHTML = d.seo?.html || "";
+function renderSeo(seo) {
+  const details = $("seoDetails");
+  const titleEl = $("seoSummaryTitle");
+  const htmlEl = $("seoHtml");
+  if (!details || !titleEl || !htmlEl) return;
+
+  const summaryTitle = (seo?.summaryTitle || "").trim();
+  const html = (seo?.html || "").trim();
+
+  if (!summaryTitle && !html) {
+    details.style.display = "none";
+    return;
+  }
+
+  titleEl.textContent = summaryTitle || "More information";
+  htmlEl.innerHTML = html;
 }
 
 async function main() {
@@ -194,6 +209,7 @@ async function main() {
   renderCards("benefitsGrid", data.benefits?.items);
   renderProcess(data.process?.steps);
   renderFaq(data.faq?.items);
+  renderSeo(data.seo);
   bindCookieBar();
   setupScrollReveal();
   initBurgerMenu();
