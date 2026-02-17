@@ -294,11 +294,13 @@
   </div>
 
   <script type="module">
-    const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
-    const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+    import { CONFIG } from '../assets/js/config.js';
 
-    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-      document.getElementById('error').innerHTML = '<div class="error">⚠️ Supabase configuration missing. Please check your environment variables.</div>';
+    const SUPABASE_URL = CONFIG.supabase.url;
+    const SUPABASE_ANON_KEY = CONFIG.supabase.anonKey;
+
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !CONFIG.supabase.enabled) {
+      document.getElementById('error').innerHTML = '<div class="error">⚠️ Supabase configuration missing. Please check your configuration.</div>';
     }
 
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
