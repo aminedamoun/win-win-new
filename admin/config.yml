@@ -448,7 +448,9 @@ collections:
             name: "stats"
             widget: "list"
             fields:
-              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (users, mapPin, headset, award)" }
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Number (fallback)", name: "number", widget: "string", required: false }
               - { label: "Label", name: "label", widget: "string" }
 
           - label: "FAQ"
@@ -457,6 +459,13 @@ collections:
             fields:
               - { label: "Question", name: "question", widget: "string" }
               - { label: "Answer", name: "answer", widget: "text" }
+
+          - label: "SEO Section"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Summary Title", name: "summaryTitle", widget: "string" }
+              - { label: "HTML Content", name: "html", widget: "text" }
 
   - name: "about_sl"
     label: "About Page (SL)"
@@ -516,7 +525,9 @@ collections:
             name: "stats"
             widget: "list"
             fields:
-              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (users, mapPin, headset, award)" }
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Number (fallback)", name: "number", widget: "string", required: false }
               - { label: "Label", name: "label", widget: "string" }
 
           - label: "FAQ"
@@ -525,6 +536,13 @@ collections:
             fields:
               - { label: "Question", name: "question", widget: "string" }
               - { label: "Answer", name: "answer", widget: "text" }
+
+          - label: "SEO Section"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Summary Title", name: "summaryTitle", widget: "string" }
+              - { label: "HTML Content", name: "html", widget: "text" }
 
   - name: "jobs"
     label: "Job Listings"
