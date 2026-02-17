@@ -5,6 +5,7 @@
  * - Renders "Kaj sledi?" cards
  */
 
+import { submitApplication, sendApplicationEmail } from './jobs-db.js';
 import { initBurgerMenu } from './ui.js';
 
 function $(id) { return document.getElementById(id); }
@@ -139,21 +140,82 @@ function setupForm() {
     return ok;
   };
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
-    if (submitBtn) submitBtn.disabled = true;
-    if (successBox) successBox.style.display = "block";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Pošiljanje...";
+    }
 
-    setTimeout(() => {
-      form.reset();
-      clearAllErrs();
-      if (submitBtn) submitBtn.disabled = false;
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const jobSlug = urlParams.get('job');
 
-      const name = $("cvFileName");
-      if (name) { name.style.display = "none"; name.textContent = ""; }
-    }, 900);
+      const applicationData = {
+        first_name: firstName.value.trim(),
+        last_name: lastName.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim(),
+        preferred_interview_time: $("interviewTime")?.value?.trim() || '',
+        message: $("message")?.value?.trim() || '',
+        status: 'new'
+      };
+
+      let jobTitle = 'Splošna prijava';
+      if (jobSlug) {
+        const { getJobBySlug } = await import('./jobs-db.js');
+        const job = await getJobBySlug(jobSlug);
+        if (job) {
+          applicationData.job_id = job.id;
+          jobTitle = job.title_sl || jobTitle;
+        }
+      }
+
+      const cvFileInput = cvFile?.files?.[0] || null;
+      const result = await submitApplication(applicationData, cvFileInput);
+
+      try {
+        await sendApplicationEmail({
+          firstName: firstName.value.trim(),
+          lastName: lastName.value.trim(),
+          email: email.value.trim(),
+          phone: phone.value.trim(),
+          jobTitle: jobTitle,
+          preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
+          message: $("message")?.value?.trim() || '',
+          cvUrl: result.cvUrl || 'Ni naložen CV'
+        });
+      } catch (emailError) {
+        console.error('Error sending email notification:', emailError);
+      }
+
+      if (successBox) successBox.style.display = "block";
+
+      setTimeout(() => {
+        form.reset();
+        clearAllErrs();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Oddaj prijavo";
+        }
+        if (successBox) successBox.style.display = "none";
+
+        const name = $("cvFileName");
+        if (name) {
+          name.style.display = "none";
+          name.textContent = "";
+        }
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      alert('Prišlo je do napake pri oddaji prijave. Prosim poskusite znova.');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Oddaj prijavo";
+      }
+    }
   });
 }
 

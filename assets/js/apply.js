@@ -5,7 +5,7 @@
  * - Renders "What happens next" cards
  */
 
-import { submitApplication } from './jobs-db.js';
+import { submitApplication, sendApplicationEmail } from './jobs-db.js';
 import { initBurgerMenu } from './ui.js';
 
 function $(id) { return document.getElementById(id); }
@@ -158,19 +158,38 @@ function setupForm() {
         last_name: lastName.value.trim(),
         email: email.value.trim(),
         phone: phone.value.trim(),
+        preferred_interview_time: $("interviewTime")?.value?.trim() || '',
         message: $("message")?.value?.trim() || '',
         status: 'new'
       };
 
+      let jobTitle = 'General Application';
       if (jobSlug) {
         const { getJobBySlug } = await import('./jobs-db.js');
         const job = await getJobBySlug(jobSlug);
         if (job) {
           applicationData.job_id = job.id;
+          jobTitle = job.title_en || jobTitle;
         }
       }
 
-      await submitApplication(applicationData);
+      const cvFileInput = cvFile?.files?.[0] || null;
+      const result = await submitApplication(applicationData, cvFileInput);
+
+      try {
+        await sendApplicationEmail({
+          firstName: firstName.value.trim(),
+          lastName: lastName.value.trim(),
+          email: email.value.trim(),
+          phone: phone.value.trim(),
+          jobTitle: jobTitle,
+          preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
+          message: $("message")?.value?.trim() || '',
+          cvUrl: result.cvUrl || 'No CV uploaded'
+        });
+      } catch (emailError) {
+        console.error('Error sending email notification:', emailError);
+      }
 
       if (successBox) successBox.style.display = "block";
 
