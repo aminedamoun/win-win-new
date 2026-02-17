@@ -1,8 +1,12 @@
 import { sanityQuery } from "./sanity.js";
 import { initCookieConsent, initScrollAnimations, setActiveNav } from "./ui.js";
+import { initLanguageSwitcher } from "./language-switcher.js";
 
 export async function renderSiteChrome({ currentPath, langSwitchHref }) {
   setActiveNav(currentPath);
+
+  // Initialize language switcher to preserve current page
+  initLanguageSwitcher();
 
   const langSwitch = document.querySelector("[data-lang-switch]");
   if (langSwitch && langSwitchHref) langSwitch.setAttribute("href", langSwitchHref);
