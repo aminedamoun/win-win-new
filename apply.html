@@ -73,66 +73,70 @@
 
 
     <!-- FORM -->
-<div class="glass-card glass apply-wrap apply-card">
-  <form class="apply-form">
-    <div class="apply-field">
-      <label class="apply-label">First Name *</label>
-      <input class="apply-input" type="text" required>
-    </div>
+    <section class="section">
+      <div class="container">
+        <div class="glass-card glass apply-wrap apply-card">
+          <form class="apply-form" id="applyForm">
+            <div class="apply-field">
+              <label class="apply-label">First Name *</label>
+              <input class="apply-input" type="text" id="firstName" required>
+              <div class="err" data-err-for="firstName"></div>
+            </div>
 
-    <div class="apply-field">
-      <label class="apply-label">Last Name *</label>
-      <input class="apply-input" type="text" required>
-    </div>
+            <div class="apply-field">
+              <label class="apply-label">Last Name *</label>
+              <input class="apply-input" type="text" id="lastName" required>
+              <div class="err" data-err-for="lastName"></div>
+            </div>
 
-    <div class="apply-field full">
-      <label class="apply-label">Email Address *</label>
-      <input class="apply-input" type="email" required>
-    </div>
+            <div class="apply-field full">
+              <label class="apply-label">Email Address *</label>
+              <input class="apply-input" type="email" id="email" required>
+              <div class="err" data-err-for="email"></div>
+            </div>
 
-    <div class="apply-field full">
-      <label class="apply-label">Phone Number *</label>
-      <input class="apply-input" type="tel" required>
-    </div>
+            <div class="apply-field full">
+              <label class="apply-label">Phone Number *</label>
+              <input class="apply-input" type="tel" id="phone" required>
+              <div class="err" data-err-for="phone"></div>
+            </div>
 
-    <div class="apply-field full">
-      <label class="apply-label">Preferred Interview Time</label>
-      <input class="apply-input" type="text">
-    </div>
+            <div class="apply-field full">
+              <label class="apply-label">Preferred Interview Time</label>
+              <input class="apply-input" type="text" id="interviewTime">
+            </div>
 
-    <div class="apply-field full">
-      <label class="apply-label">Additional Message</label>
-      <textarea class="apply-textarea"></textarea>
-    </div>
+            <div class="apply-field full">
+              <label class="apply-label">Additional Message</label>
+              <textarea class="apply-textarea" id="message"></textarea>
+            </div>
 
-    <div class="apply-field full" style="position:relative;">
-      <label class="apply-label">Resume / CV (PDF, max 5MB)</label>
-      <div class="apply-upload">
-        <input type="file" accept="application/pdf">
-        <div>
-          <strong>Click to upload your resume</strong>
-          <span>PDF only, max 5MB</span>
-        </div>
-      </div>
-    </div>
+            <div class="apply-field full" style="position:relative;">
+              <label class="apply-label">Resume / CV (PDF, max 5MB)</label>
+              <div class="apply-upload" id="cvDrop">
+                <input type="file" accept="application/pdf" id="cvFile" style="display:none;">
+                <div>
+                  <strong>Click to upload your resume</strong>
+                  <span>PDF only, max 5MB</span>
+                </div>
+              </div>
+              <div id="cvFileName" style="display:none; margin-top: 8px; color: #10b981; font-size: 14px; font-weight: 600;"></div>
+              <div class="err" data-err-for="cvFile"></div>
+            </div>
 
-    <div class="apply-consent">
-      <input type="checkbox" required>
-      <label>I agree to the processing of my personal data in accordance with the Privacy Policy and Cookie Policy. *</label>
-    </div>
+            <div class="apply-consent">
+              <input type="checkbox" id="agree" required>
+              <label>I agree to the processing of my personal data in accordance with the Privacy Policy and Cookie Policy. *</label>
+              <div class="err" data-err-for="agree"></div>
+            </div>
 
-    <div class="apply-actions">
-      <button class="btn btn-primary btn-lg" type="submit">Submit Application →</button>
-    </div>
-  </form>
-</div>
+            <div class="apply-actions">
+              <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Submit Application →</button>
+            </div>
 
-
-            
-
-            <div class="glass" id="successBox" style="display:none; margin-top: 16px; padding: 14px; border-radius: 14px;">
-              <div style="font-weight:900;" id="successTitle">Application received!</div>
-              <div class="small muted" id="successDesc">Thanks — our team will contact you shortly.</div>
+            <div class="glass" id="successBox" style="display:none; margin-top: 16px; padding: 14px; border-radius: 14px; background: #d1fae5; color: #065f46;">
+              <div style="font-weight:900;" id="successTitle">✓ Application received!</div>
+              <div class="small" id="successDesc" style="margin-top: 4px;">Thanks — our team will contact you shortly.</div>
             </div>
           </form>
         </div>

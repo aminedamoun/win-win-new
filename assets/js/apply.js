@@ -49,10 +49,14 @@ function setupUpload() {
     if (!f) {
       name.style.display = "none";
       name.textContent = "";
+      drop.style.borderColor = "";
+      drop.style.background = "";
       return;
     }
     name.style.display = "block";
-    name.textContent = `Selected: ${f.name}`;
+    name.textContent = `✓ File uploaded: ${f.name}`;
+    drop.style.borderColor = "#10b981";
+    drop.style.background = "#ecfdf5";
   };
 
   drop.addEventListener("click", () => input.click());
@@ -191,7 +195,10 @@ function setupForm() {
         console.error('Error sending email notification:', emailError);
       }
 
-      if (successBox) successBox.style.display = "block";
+      if (successBox) {
+        successBox.style.display = "block";
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
       setTimeout(() => {
         form.reset();
