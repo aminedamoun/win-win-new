@@ -1033,6 +1033,14 @@ button{font-family:inherit}
 }
 .rich p{margin: 0 0 14px 0; color: var(--gray-300); line-height: 1.75}
 .rich strong{color:#fff}
+.rich h3{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+  line-height: 1.4;
+}
+.rich h3:first-child{margin-top: 0}
 
 /* Footer */
 .footer{
