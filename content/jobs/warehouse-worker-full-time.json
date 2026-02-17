@@ -1,49 +1,38 @@
 {
   "en": {
-    "title": "Warehouse Worker",
-    "location": "Ljubljana",
-    "type": "Full-time",
-    "department": "Warehouse Operations",
     "salary": "€1,200 - €1,500 per month",
-    "description": "Join our dynamic warehouse team as a Warehouse Worker. This role involves various warehouse operations including receiving, storing, and distributing materials, equipment, and products.",
-    "responsibilities": [
-      "Receive and process warehouse stock products",
-      "Perform inventory controls and keep quality standards high",
-      "Keep a clean and safe working environment",
-      "Operate forklift and other warehouse equipment",
-      "Pack and prepare orders for shipment",
-      "Maintain accurate records of warehouse activities"
-    ],
+    "responsibilities": [],
     "requirements": [
-      "Previous warehouse experience preferred",
+      "Communicative, ambitious, and results-driven individual",
       "Forklift certification is a plus",
-      "Good physical condition",
-      "Ability to work in shifts",
+      "Discipline, persistence, and a responsible attitude toward work and clients",
+      "Willingness to work according to sales processes and targets",
       "Team player with good communication skills",
       "Basic computer skills"
     ],
+    "department": "Sales Consultant ",
+    "location": "Slovenia",
+    "title": "Sales Consultant – Telecommunications Package Sales in Shopping Centers",
+    "type": "Full-time",
     "benefits": [
       "Competitive salary",
       "Health insurance",
       "Paid training",
       "Career advancement opportunities",
       "Friendly work environment"
-    ]
+    ],
+    "description": "The role involves direct sales of telecommunications packages in shopping centers, where we help customers obtain better services at lower costs. The focus is on active selling, professional consulting, and achieving results."
   },
   "sl": {
-    "title": "Skladiščnik",
-    "location": "Ljubljana",
-    "type": "Polni delovni čas",
-    "department": "Skladiščne operacije",
-    "salary": "€1,200 - €1,500 na mesec",
-    "description": "Pridružite se naši dinamični skladiščni ekipi kot skladiščnik. Vloga vključuje različne skladiščne operacije, vključno s sprejemanjem, skladiščenjem in distribucijo materialov, opreme in izdelkov.",
+    "salary": " 2.500 €+",
     "responsibilities": [
-      "Sprejem in obdelava skladiščne zaloge",
-      "Izvajanje kontrol inventarja in vzdrževanje visokih standardov kakovosti",
-      "Vzdrževanje čistega in varnega delovnega okolja",
-      "Upravljanje viličarja in druge skladiščne opreme",
-      "Pakiranje in priprava naročil za pošiljanje",
-      "Vzdrževanje natančnih evidenc skladiščnih aktivnosti"
+      "Komunikativna, ambiciozna in rezultatsko usmerjena oseba",
+      "Močna želja po nadpovprečnem zaslužku in karierni rasti",
+      "Disciplina, vztrajnost in odgovoren odnos do dela in strank",
+      "Pripravljenost delati po prodajnih procesih in ciljih",
+      "Pogum, samozavest in tekmovalna miselnost",
+      "Želja po učenju prodajnih veščin in osebnem razvoju",
+      "Izkušnje v prodaji so prednost, niso pa pogoj."
     ],
     "requirements": [
       "Predhodne skladiščne izkušnje so prednost",
@@ -53,13 +42,18 @@
       "Ekipni igralec z dobrimi komunikacijskimi veščinami",
       "Osnovno računalniško znanje"
     ],
+    "department": "Skladiščne operacije",
+    "location": "Slovenija",
+    "title": "Prodajni svetovalec – Prodaja telekomunikacijskih paketov v nakupovalnih centrih",
+    "type": "Prodajni svetovalec",
     "benefits": [
       "Konkurenčna plača",
       "Zdravstveno zavarovanje",
       "Plačano usposabljanje",
       "Možnosti napredovanja",
       "Prijazno delovno okolje"
-    ]
+    ],
+    "description": "Delo obsega neposredno prodajo telekomunikacijskih paketov v nakupovalnih centrih, kjer strankam pomagamo do boljših storitev in nižjih stroškov. Poudarek je na aktivni prodaji, strokovnem svetovanju in rezultatih."
   },
   "settings": {
     "published": true,
