@@ -15,6 +15,7 @@ import { initBurgerMenu } from './ui.js';
 ========================= */
 
 let JOBS = [];
+let CONTENT = null;
 
 const OLD_JOBS = [
   {
@@ -135,6 +136,34 @@ function getLang() {
   const htmlLang = document.documentElement.getAttribute("lang") || "";
   // treat "sl" as sl, everything else as en
   return htmlLang.toLowerCase().startsWith("sl") ? "sl" : "en";
+}
+
+async function loadContent() {
+  const lang = getLang();
+  const path = lang === "sl" ? "/content/sl/jobs.json" : "/content/en/jobs.json";
+  try {
+    const response = await fetch(path);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error loading jobs content:', error);
+    return null;
+  }
+}
+
+function renderSeo() {
+  if (!CONTENT || !CONTENT.seo) return;
+
+  const titleEl = $("seoSummaryTitle");
+  const htmlEl = $("seoHtml");
+
+  if (titleEl && CONTENT.seo.summaryTitle) {
+    titleEl.textContent = CONTENT.seo.summaryTitle;
+  }
+
+  if (htmlEl && CONTENT.seo.html) {
+    htmlEl.innerHTML = CONTENT.seo.html;
+  }
 }
 
 function uniq(arr) {
@@ -433,14 +462,9 @@ async function renderJobsList() {
   // initial render
   applyFilters();
 
-  // SEO (optional, safe)
-  const seoHtml = $("seoHtml");
-  if (seoHtml) {
-    seoHtml.innerHTML =
-      lang === "sl"
-        ? "<p>Odkrijte odprta delovna mesta v prodaji po Sloveniji. Prijava je hitra in enostavna.</p>"
-        : "<p>Explore open sales positions across Slovenia. Applying takes only a few minutes.</p>";
-  }
+  // Load and render SEO content
+  CONTENT = await loadContent();
+  renderSeo();
 
   setupScrollReveal();
   bindCookieBar();
