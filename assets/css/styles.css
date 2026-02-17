@@ -1092,6 +1092,8 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
   color: var(--gray-200);
 }
 .contact-row{color: var(--gray-400); display:flex; align-items:center; gap:10px; padding: 6px 0}
+.contact-row a{color: var(--gray-400); transition: color 0.2s ease}
+.contact-row a:hover{color: var(--white)}
 .dot-ic{color: var(--red-500)}
 
 /* Cookie bar */
