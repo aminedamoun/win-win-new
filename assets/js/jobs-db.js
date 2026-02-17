@@ -1,4 +1,5 @@
 import { supabase } from './supabase-client.js';
+import { CONFIG } from './config.js';
 
 export async function getAllJobs() {
   const { data, error } = await supabase
@@ -82,8 +83,8 @@ export async function submitApplication(applicationData, cvFile) {
 }
 
 export async function sendApplicationEmail(emailData) {
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  const supabaseUrl = CONFIG.supabase.url;
+  const supabaseAnonKey = CONFIG.supabase.anonKey;
 
   const response = await fetch(`${supabaseUrl}/functions/v1/send-application-email`, {
     method: 'POST',
