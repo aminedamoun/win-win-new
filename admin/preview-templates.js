@@ -1,5 +1,5 @@
 (function() {
-  var h = window.h;
+  var h = window.h || (window.React && window.React.createElement.bind(window.React));
 
   var BASE_STYLES = [
     '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");',
@@ -581,15 +581,20 @@
     }
   });
 
-  /* ── Register ── */
-  if (window.CMS) {
+  /* ── Register — wait for CMS to be ready ── */
+  function registerTemplates() {
+    if (!window.CMS) return;
     window.CMS.registerPreviewTemplate('jobs', JobPreviewTemplate);
     window.CMS.registerPreviewTemplate('home', HomePreviewTemplate);
     window.CMS.registerPreviewTemplate('about', AboutPreviewTemplate);
-
-    /* Try to register article preview under common collection names */
     try { window.CMS.registerPreviewTemplate('articles', ArticlePreviewTemplate); } catch(e) {}
     try { window.CMS.registerPreviewTemplate('blog', ArticlePreviewTemplate); } catch(e) {}
     try { window.CMS.registerPreviewTemplate('insights', ArticlePreviewTemplate); } catch(e) {}
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', registerTemplates);
+  } else {
+    registerTemplates();
   }
 })();
