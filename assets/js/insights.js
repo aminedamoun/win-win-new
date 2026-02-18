@@ -57,6 +57,7 @@ function renderFeatured(article, lang) {
   if (!wrap || !article) return;
 
   const content = article[lang] || article.en;
+  const image = content.image || (article.en && article.en.image) || '';
   const date = formatDate(article.settings.date, lang);
   const url = getArticleUrl(article.slug, lang);
   const featuredLabel = lang === "sl" ? "Izpostavljeno" : "Featured";
@@ -65,7 +66,7 @@ function renderFeatured(article, lang) {
   wrap.innerHTML = `
     <div class="ib-featured__img-wrap">
       <img
-        src="${content.image || ''}"
+        src="${image}"
         alt="${content.imageAlt || content.title}"
         class="ib-featured__img"
         loading="eager"
@@ -101,13 +102,14 @@ function renderCards(articles, lang) {
 
   grid.innerHTML = nonFeatured.map((article) => {
     const content = article[lang] || article.en;
+    const image = content.image || (article.en && article.en.image) || '';
     const date = formatDate(article.settings.date, lang);
     const url = getArticleUrl(article.slug, lang);
     return `
       <article class="ib-card">
         <div class="ib-card__img-wrap">
           <img
-            src="${content.image || ''}"
+            src="${image}"
             alt="${content.imageAlt || content.title}"
             class="ib-card__img"
             loading="lazy"
@@ -182,8 +184,9 @@ export async function renderArticleDetail() {
     }
 
     const heroImg = document.getElementById("articleHeroImg");
-    if (heroImg && content.image) {
-      heroImg.src = content.image;
+    const heroImage = content.image || (article.en && article.en.image) || '';
+    if (heroImg && heroImage) {
+      heroImg.src = heroImage;
       heroImg.alt = content.imageAlt || content.title;
     }
 
