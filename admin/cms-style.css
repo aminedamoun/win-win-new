@@ -116,13 +116,60 @@ div[class*="css-"][role="button"] {
   box-shadow: 0 4px 20px rgba(249,115,22,0.15) !important;
 }
 
-/* ── Editor — overall container ──────────────────────────── */
-[class*="EditorContainer"],
+/* ── Editor — overall split-pane layout ──────────────────── */
+
+/* Root editor interface: full width, flex row */
 [class*="EditorInterface"],
 [class*="Editor__"] {
   background: var(--bg) !important;
-  max-width: 1000px !important;
-  margin: 0 auto !important;
+  display: flex !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Left control pane (form fields) — fixed width, scrollable */
+[class*="ControlPaneContainer"],
+[class*="ControlPane"],
+[class*="EditorControlPane"] {
+  width: 480px !important;
+  min-width: 480px !important;
+  max-width: 480px !important;
+  flex-shrink: 0 !important;
+  overflow-y: auto !important;
+  padding: 24px 20px !important;
+  background: var(--bg) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+/* Right preview pane — takes all remaining space */
+[class*="PreviewPaneContainer"],
+[class*="PreviewPane"],
+[class*="EditorPreviewPane"] {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow-y: auto !important;
+  background: #ffffff !important;
+}
+
+/* Scrollable wrapper inside preview */
+[class*="PreviewPaneContainer"] > *,
+[class*="PreviewPane"] > * {
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+
+/* Outer EditorContainer: full viewport height below toolbar */
+[class*="EditorContainer"] {
+  background: var(--bg) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  height: calc(100vh - 56px) !important;
+  overflow: hidden !important;
 }
 
 /* Editor toolbar */
@@ -152,10 +199,11 @@ div[class*="css-"][role="button"] {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
-  padding: 28px 32px !important;
-  margin-bottom: 28px !important;
+  padding: 20px 18px !important;
+  margin-bottom: 20px !important;
   box-shadow: var(--shadow) !important;
   position: relative !important;
+  overflow: visible !important;
 }
 
 /* Accent left stripe on object cards */
@@ -191,8 +239,8 @@ div[class*="css-"][role="button"] {
   background: var(--surface2) !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius-sm) !important;
-  padding: 16px 18px !important;
-  margin-bottom: 16px !important;
+  padding: 12px 14px !important;
+  margin-bottom: 12px !important;
   transition: border-color var(--transition), box-shadow var(--transition) !important;
 }
 
