@@ -6,6 +6,7 @@
   <title>WIN WIN D.O.0— Zgradi svojo kariero</title>
   <meta name="description" content="Win Win je prodajno podjetje, usmerjeno k rezultatom, specializirano za telekomunikacijske rešitve B2C in B2B po Sloveniji." />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -539,6 +540,17 @@
   <script type="module">
     import { initChat } from './assets/js/chat.js';
     initChat();
+  </script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>
