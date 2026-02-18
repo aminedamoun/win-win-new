@@ -74,180 +74,90 @@
      - Text stays clean/organized
 -->
 
-<section class="hero hero-insights hero-insights--force" aria-label="Insights hero">
-  <div class="hero-bg" aria-hidden="true">
+<section class="insights-hero" aria-label="Insights hero">
+  <div class="insights-hero__bg" aria-hidden="true">
     <img
       id="insightsHeroImg"
-      src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=2200"
+      src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600&h=600&fit=crop"
       alt="Ekipno sodelovanje in vpogledi"
       fetchpriority="high"
-      width="2200"
-      height="1200"
     />
-    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="insights-hero__overlay" aria-hidden="true"></div>
   </div>
 
-  <div class="container hero-inner hero-inner--insights">
-    <div class="hero-content hero-content--insights">
-      <div class="hero-left">
-        <div class="hero-badge" id="insightsBadge">Središče znanja</div>
-
-        <h1 class="hero-title hero-title--insights" id="insightsTitle">
-          Vpogledi<br />
-          iz sveta<br />
-          prodaje
-        </h1>
-      </div>
-
-      <div class="hero-right">
-        <p class="hero-desc hero-desc--insights" id="insightsDesc">
-          Prodajne strategije, kultura ekipe, karierna rast in resnične zgodbe ekipe Win Win.
-        </p>
-      </div>
-    </div>
+  <div class="container insights-hero__inner">
+    <div class="hero-badge" id="insightsBadge">Središče znanja</div>
+    <h1 class="insights-hero__title" id="insightsTitle">Vpogledi iz sveta prodaje</h1>
+    <p class="insights-hero__desc" id="insightsDesc">
+      Prodajne strategije, kultura ekipe, karierna rast in resnične zgodbe ekipe Win Win.
+    </p>
   </div>
 </section>
 
 <style>
-/* ===== FORCE OVERRIDE: Insights hero (bypasses old CSS) ===== */
-
-.hero.hero-insights.hero-insights--force{
-  position: relative !important;
-  min-height: 100vh !important;
-  overflow: hidden !important;
-  background: transparent !important;
+.insights-hero {
+  position: relative;
+  overflow: hidden;
+  height: 360px;
 }
 
-/* Kill any pseudo overlays from old CSS */
-.hero.hero-insights.hero-insights--force::before,
-.hero.hero-insights.hero-insights--force::after{
-  content: none !important;
-  display: none !important;
+@media (max-width: 768px) {
+  .insights-hero { height: 280px; }
 }
 
-/* Full-bleed background */
-.hero.hero-insights.hero-insights--force .hero-bg{
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 0 !important;
-  display: block !important;
-  background: transparent !important;
+.insights-hero__bg {
+  position: absolute;
+  inset: 0;
 }
 
-.hero.hero-insights.hero-insights--force .hero-bg img{
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  display: block !important;
-  opacity: 1 !important;
-  filter: none !important;
+.insights-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
 }
 
-/* ✅ Darken image (overlay ABOVE image, BELOW text) */
-.hero.hero-insights.hero-insights--force .hero-overlay{
-  display: block !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 1 !important;
-  pointer-events: none !important;
+.insights-hero__overlay {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
-    90deg,
-    rgba(0,0,0,0.50) 0%,
-    rgba(0,0,0,0.30) 45%,
-    rgba(0,0,0,0.50) 100%
-  ) !important;
+    to right,
+    rgba(10, 20, 40, 0.72) 0%,
+    rgba(10, 20, 40, 0.50) 60%,
+    rgba(10, 20, 40, 0.40) 100%
+  );
 }
 
-/* Foreground content */
-.hero.hero-insights.hero-insights--force .hero-inner--insights{
-  position: relative !important;
-  z-index: 2 !important;
-  min-height: 100vh !important;
-  display: flex !important;
-  align-items: center !important;
-  padding-top: 96px !important;  /* header clearance */
-  padding-bottom: 64px !important;
-  background: transparent !important;
+.insights-hero__inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  gap: 12px;
 }
 
-/* Organized layout */
-.hero.hero-insights.hero-insights--force .hero-content--insights{
-  width: 100% !important;
-  max-width: 1120px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: 1.2fr 0.9fr !important;
-  gap: 56px !important;
-  align-items: center !important;
+.insights-hero__title {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  max-width: 600px;
 }
 
-.hero.hero-insights.hero-insights--force .hero-left{
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-}
-
-.hero.hero-insights.hero-insights--force .hero-badge{
-  margin: 0 0 18px 0 !important;
-}
-
-/* Clean typography (no black background) */
-.hero.hero-insights.hero-insights--force .hero-title--insights{
-  margin: 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.02em !important;
-  line-height: 1.03 !important;
-  font-size: clamp(44px, 5vw, 74px) !important;
-  color: #fff !important;
-}
-
-.hero.hero-insights.hero-insights--force .hero-right{
-  display: flex !important;
-  justify-content: flex-start !important;
-}
-
-.hero.hero-insights.hero-insights--force .hero-desc--insights{
-  margin: 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  max-width: 440px !important;
-  font-size: 16px !important;
-  line-height: 1.7 !important;
-  color: rgba(255,255,255,0.88) !important;
-}
-
-/* Readability without panels */
-.hero.hero-insights.hero-insights--force .hero-title--insights,
-.hero.hero-insights.hero-insights--force .hero-desc--insights{
-  text-shadow: 0 10px 30px rgba(0,0,0,0.35) !important;
-}
-
-/* Mobile */
-@media (max-width: 900px){
-  .hero.hero-insights.hero-insights--force .hero-inner--insights{
-    padding-top: 88px !important;
-    padding-bottom: 44px !important;
-  }
-
-  .hero.hero-insights.hero-insights--force .hero-content--insights{
-    grid-template-columns: 1fr !important;
-    gap: 18px !important;
-  }
-
-  .hero.hero-insights.hero-insights--force .hero-desc--insights{
-    max-width: 560px !important;
-  }
-
-  .hero.hero-insights.hero-insights--force .hero-title--insights{
-    font-size: clamp(34px, 8vw, 52px) !important;
-  }
+.insights-hero__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.25);
+  max-width: 480px;
 }
 </style>
 
