@@ -13,58 +13,58 @@
       background: #f3f5f9 !important;
     }
 
-    /* Main editor panel */
-    .css-1f7nhiq,
-    .css-1uuwxtq-StyledAuthenticationPage,
-    .css-1v6n0f5 {
+    /* Force style inside CMS root */
+    #nc-root {
       background: #f3f5f9 !important;
+      padding: 30px !important;
     }
 
-    /* Field wrapper */
-    div[class*="FieldWrapper"] {
+    /* English / Slovenian big blocks */
+    #nc-root div[class*="ObjectControl"] {
       background: #ffffff !important;
-      padding: 20px !important;
-      border-radius: 14px !important;
+      padding: 30px !important;
+      border-radius: 18px !important;
+      margin-bottom: 40px !important;
+      border: 1px solid #e5e7eb !important;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05) !important;
+    }
+
+    /* Individual fields */
+    #nc-root div[class*="FieldWrapper"] {
+      background: #f9fafc !important;
+      padding: 18px !important;
+      border-radius: 12px !important;
       margin-bottom: 20px !important;
       border: 1px solid #e5e7eb !important;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
     }
 
-    /* Object blocks (English / Slovenian sections) */
-    div[class*="ObjectControl"] {
-      background: #f9fafc !important;
-      padding: 25px !important;
-      border-radius: 16px !important;
-      margin-bottom: 30px !important;
-      border: 1px solid #e3e8ef !important;
-    }
-
-    /* List items */
-    div[class*="ListControl"] {
+    /* Lists (Responsibilities / Requirements) */
+    #nc-root div[class*="ListControl"] {
       background: #ffffff !important;
       padding: 15px !important;
       border-radius: 12px !important;
       border: 1px solid #e5e7eb !important;
+      margin-top: 10px !important;
     }
 
     /* Inputs */
-    input,
-    textarea,
-    select {
+    #nc-root input,
+    #nc-root textarea,
+    #nc-root select {
       border-radius: 10px !important;
       border: 1px solid #d1d5db !important;
       padding: 10px !important;
     }
 
     /* Labels */
-    label {
+    #nc-root label {
       font-weight: 600 !important;
       margin-bottom: 6px !important;
     }
 
-    /* Buttons */
-    button {
-      border-radius: 8px !important;
+    /* Make left panel wider */
+    #nc-root div[class*="EditorContainer"] {
+      max-width: 900px !important;
     }
 
   </style>
@@ -72,10 +72,7 @@
 
 <body>
 
-  <!-- Netlify Identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-  <!-- Stable CMS -->
   <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
 
   <script>
