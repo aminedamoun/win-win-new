@@ -213,6 +213,42 @@ button{font-family:inherit}
 }
 .small{font-size: 14px}
 
+/* Partner bar */
+.partner-bar{
+  background: #000;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+}
+.partner-bar-inner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.partner-bar-label{
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--neutral-400);
+  white-space: nowrap;
+}
+.partner-logo-link{
+  display: flex;
+  align-items: center;
+  opacity: .75;
+  transition: opacity .2s;
+}
+.partner-logo-link:hover{opacity: 1}
+.partner-logo-img{
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 /* Sections / backgrounds */
 .section{padding: 86px 0}
 .section-gradient-a{
