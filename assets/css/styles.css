@@ -1605,11 +1605,10 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
 .glass-card-hover:hover,
 .glass:hover {
   transform: translateY(-2px) !important;
-  border-color: rgba(239, 68, 68, 0.30) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
   box-shadow:
     0 22px 75px rgba(0, 0, 0, 0.70),
-    0 0 0 1px rgba(239, 68, 68, 0.10),
-    0 0 40px rgba(239, 68, 68, 0.10) !important;
+    0 0 0 1px rgba(255, 255, 255, 0.08) !important;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease !important;
 }
 
