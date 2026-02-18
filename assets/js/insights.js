@@ -6,13 +6,12 @@ let ARTICLES = [];
 
 function $(id) { return document.getElementById(id); }
 
-function getLang() {
+export function getLang() {
   const htmlLang = document.documentElement.getAttribute("lang") || "";
   return htmlLang.toLowerCase().startsWith("sl") ? "sl" : "en";
 }
 
-async function loadContent() {
-  const lang = getLang();
+async function loadContent(lang) {
   const path = lang === "sl" ? "/content/sl/insights.json" : "/content/en/insights.json";
   try {
     const res = await fetch(path);
@@ -234,13 +233,13 @@ function markdownToHtml(md) {
   return html;
 }
 
-async function main() {
+export async function main(forceLang) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const lang = getLang();
+  const lang = forceLang || getLang();
 
-  [CONTENT, ARTICLES] = await Promise.all([loadContent(), loadArticles()]);
+  [CONTENT, ARTICLES] = await Promise.all([loadContent(lang), loadArticles()]);
 
   renderSeo();
 
@@ -252,5 +251,3 @@ async function main() {
   setupScrollReveal();
   initBurgerMenu();
 }
-
-main();
