@@ -4,13 +4,77 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Content Manager - Win Win</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f4f6f9;
+      }
+
+      /* Improve field wrapper spacing */
+      [data-testid="widget-wrapper"] {
+        background: #ffffff;
+        padding: 18px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      }
+
+      /* Object sections (English / Slovenian blocks) */
+      [data-testid="object-widget"] {
+        background: #f9fafb;
+        padding: 22px;
+        border-radius: 14px;
+        margin-bottom: 30px;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* List widgets */
+      [data-testid="list-widget"] {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+      }
+
+      /* Input styling */
+      input,
+      textarea,
+      select {
+        border-radius: 8px !important;
+        padding: 10px !important;
+        border: 1px solid #d1d5db !important;
+      }
+
+      /* Labels */
+      label {
+        font-weight: 600 !important;
+        margin-bottom: 6px !important;
+      }
+
+      /* Section titles */
+      h2, h3 {
+        font-weight: 700 !important;
+        margin-bottom: 14px !important;
+      }
+
+      /* Publish button improvement */
+      button {
+        border-radius: 8px !important;
+      }
+    </style>
   </head>
+
   <body>
 
     <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- ✅ Use STABLE Netlify CMS v2 (NOT Decap v3) -->
+    <!-- Stable Netlify CMS v2 -->
     <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
 
     <script>
