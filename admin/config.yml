@@ -593,3 +593,48 @@ collections:
           - { label: "Published", name: "published", widget: "boolean", default: true }
           - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
           - { label: "Posted Date", name: "posted", widget: "datetime", default: "" }
+
+  - name: "articles"
+    label: "Blog Articles"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    editor:
+      preview: false
+    summary: "{{en.title}}"
+    fields:
+      - label: "English Content"
+        name: "en"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Title (EN)", name: "title", widget: "string" }
+          - { label: "Slug (EN)", name: "slug", widget: "string", hint: "URL-friendly identifier, e.g., art-of-building-trust" }
+          - { label: "Category (EN)", name: "category", widget: "string", hint: "e.g., Insights, Career, Sales" }
+          - { label: "Read Time (EN)", name: "readTime", widget: "string", hint: "e.g., 7 min read" }
+          - { label: "Cover Image URL", name: "image", widget: "string", hint: "Paste a Pexels image URL" }
+          - { label: "Cover Image Alt (EN)", name: "imageAlt", widget: "string" }
+          - { label: "Short Description (EN)", name: "description", widget: "text" }
+          - { label: "Body (EN)", name: "body", widget: "markdown" }
+
+      - label: "Slovenian Content"
+        name: "sl"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Title (SL)", name: "title", widget: "string" }
+          - { label: "Slug (SL)", name: "slug", widget: "string", hint: "URL-friendly identifier, e.g., umetnost-gradnje-zaupanja" }
+          - { label: "Category (SL)", name: "category", widget: "string" }
+          - { label: "Read Time (SL)", name: "readTime", widget: "string" }
+          - { label: "Short Description (SL)", name: "description", widget: "text" }
+          - { label: "Body (SL)", name: "body", widget: "markdown" }
+
+      - label: "Settings"
+        name: "settings"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Published Date", name: "date", widget: "datetime" }
+          - { label: "Featured", name: "featured", widget: "boolean", default: false }
+          - { label: "Published", name: "published", widget: "boolean", default: true }

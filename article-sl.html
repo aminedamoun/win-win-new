@@ -1,97 +1,221 @@
 <!doctype html>
-<html lang="en">
+<html lang="sl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Article — Win Win</title>
-  <meta name="description" content="Read insights and stories from Win Win team members about sales strategies, career growth, and team culture." />
+  <title>Članek — Win Win</title>
+  <meta name="description" content="Preberite vpoglede in zgodbe ekipe Win Win o prodajnih strategijah, karierni rasti in kulturi ekipe." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-<header class="header">
-  <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="Win Win Home">
-      <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
-    </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="about.html">About Us</a>
-      <a class="nav-link" href="jobs.html">Careers</a>
-      <a class="nav-link is-active" href="insights.html">Insights</a>
-      <a class="nav-link" href="apply.html">Apply</a>
-    </nav>
-
-    <div class="header-actions">
-      <!-- Language switch (EN -> SL) -->
-      <a
-        class="lang-switch"
-        href="article-sl.html"
-        aria-label="Switch language to Slovenian"
-        title="Slovenščina"
-      >
-        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="index-sl.html" aria-label="Win Win Domov">
+        <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
       </a>
 
-      <a class="btn btn-outline" href="jobs.html">View Positions</a>
-      <a class="btn btn-primary" href="apply.html">Join the Team</a>
+      <nav class="nav" aria-label="Glavna navigacija">
+        <a class="nav-link" href="index-sl.html">Domov</a>
+        <a class="nav-link" href="about-sl.html">O nas</a>
+        <a class="nav-link" href="jobs-sl.html">Kariera</a>
+        <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
+        <a class="nav-link" href="apply-sl.html">Prijava</a>
+      </nav>
 
-      <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a data-nav href="index.html">Home</a>
-    <a data-nav href="about.html">About</a>
-    <a data-nav href="jobs.html">Jobs</a>
-    <a data-nav href="insights.html">Insights</a>
-    <a data-nav href="apply.html">Apply</a>
-    <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs.html">View Positions</a>
-      <a class="btn btn-primary" href="apply.html">Contact</a>
-    </div>
-  </div>
-
-  <main class="section">
-    <div class="container">
-      <a class="badge" href="insights.html">← Back</a>
-      <h1 class="section-title fade-up" id="articleTitle">Article</h1>
-      <div class="muted fade-up" id="articleMeta"></div>
-
-      <div class="glass-card glass-pad fade-up" style="margin-top:18px">
-        <div class="article-content" id="articleBody"></div>
+      <div class="header-actions">
+        <a class="lang-switch" href="article.html" aria-label="Switch language to English" title="English">
+          <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        </a>
+        <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+        <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="nav-link" href="index-sl.html">Domov</a>
+    <a class="nav-link" href="about-sl.html">O nas</a>
+    <a class="nav-link" href="jobs-sl.html">Kariera</a>
+    <a class="nav-link is-active" href="insights-sl.html">Vpogledi</a>
+    <a class="nav-link" href="apply-sl.html">Prijava</a>
+    <div class="mobile-actions">
+      <a class="btn btn-outline" href="jobs-sl.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply-sl.html">Pridruži se ekipi</a>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="art-hero" aria-label="Junak članka">
+      <div class="art-hero__bg" aria-hidden="true">
+        <img id="articleHeroImg" src="" alt="" fetchpriority="high" />
+        <div class="art-hero__overlay"></div>
+      </div>
+      <div class="container art-hero__inner">
+        <a class="art-back" href="insights-sl.html">&#8592; Nazaj na Vpoglede</a>
+        <span class="ib-cat-badge" id="articleHeroCat"></span>
+        <h1 class="art-hero__title" id="articleHeroTitle">Nalaganje&hellip;</h1>
+        <p class="art-hero__meta" id="articleHeroMeta"></p>
+      </div>
+    </section>
+
+    <section class="art-body-section">
+      <div class="container art-body-wrap">
+        <article class="art-content" id="articleBody"></article>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div>
-        <div class="brand"><span class="brand-dot"></span><span data-brand>Win Win</span></div>
-        <div class="small">© <span id="y"></span> <span data-brand>Win Win</span>.</div>
+      <div class="footer-col">
+        <div class="brand brand-footer" aria-label="Win Win">
+          <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
+        </div>
+        <p class="p-muted small">
+          Gradimo kariere v prodaji. Smo prodajno podjetje, ki se ukvarja z B2C terensko prodajo in telekomunikacijami.
+        </p>
+        <div class="socials" aria-label="Socialna omrežja">
+          <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
+          <a class="social" href="https://www.instagram.com/winwin.si/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">◎</a>
+        </div>
       </div>
-      <div data-footer-links></div>
-      <div data-footer-socials></div>
+      <div class="footer-col">
+        <div class="footer-title">Podjetje</div>
+        <a class="footer-link" href="about-sl.html">O nas</a>
+        <a class="footer-link" href="jobs-sl.html">Kariera</a>
+        <a class="footer-link" href="apply-sl.html">Kontakt</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Pravno</div>
+        <a class="footer-link" href="privacy-sl.html">Politika zasebnosti</a>
+        <a class="footer-link" href="cookies-sl.html">Politika piškotkov</a>
+        <a class="footer-link" href="terms-sl.html">Pogoji storitve</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Kontakt</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> <a href="tel:+38631678732">+386 31 678 732</a></div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> <a href="mailto:office@win-win.si">office@win-win.si</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
     </div>
   </footer>
 
-  <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Chat with us">
+  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
     <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
-    <span class="chat-fab-text">Chat with us</span>
+    <span class="chat-fab-text">Klepetajte z nami</span>
   </button>
 
-  <script type="module">
-    import { renderSiteChrome } from "./assets/js/common.js";
-    import { renderArticleDetail } from "./assets/js/insights.js";
+  <style>
+  .art-hero {
+    position: relative;
+    overflow: hidden;
+    height: 420px;
+  }
+  @media (max-width: 768px) {
+    .art-hero { height: 300px; }
+  }
+  .art-hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+  .art-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+  }
+  .art-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(5,10,20,0.88) 0%, rgba(5,10,20,0.65) 60%, rgba(5,10,20,0.5) 100%);
+  }
+  .art-hero__inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 48px;
+    padding-top: 80px;
+    gap: 12px;
+  }
+  .art-back {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    align-self: flex-start;
+    margin-bottom: 4px;
+  }
+  .art-back:hover { color: #fff; }
+  .art-hero__title {
+    margin: 0;
+    font-size: clamp(24px, 3.5vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    max-width: 720px;
+  }
+  .art-hero__meta {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.02em;
+  }
+  .art-body-section {
+    background: #0b0b0b;
+    padding: 64px 0 96px;
+  }
+  .art-body-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .art-content {
+    color: rgba(255,255,255,0.78);
+    font-size: 17px;
+    line-height: 1.78;
+  }
+  .art-content h1,
+  .art-content h2,
+  .art-content h3 {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 2.2em 0 0.65em;
+    line-height: 1.2;
+  }
+  .art-content h1 { font-size: clamp(22px, 3vw, 32px); }
+  .art-content h2 { font-size: clamp(19px, 2.5vw, 26px); }
+  .art-content h3 { font-size: clamp(16px, 2vw, 20px); }
+  .art-content h2:first-child,
+  .art-content h3:first-child { margin-top: 0; }
+  .art-content p { margin: 0 0 1.5em; }
+  .art-content strong { color: #fff; font-weight: 700; }
+  .art-content em { color: rgba(255,255,255,0.7); }
+  </style>
 
-    document.getElementById("y").textContent = new Date().getFullYear();
-    await renderSiteChrome({ currentPath:"article.html", langSwitchHref:"article-sl.html" });
+  <script type="module">
+    import { renderArticleDetail } from "./assets/js/insights.js";
+    import { initBurgerMenu } from "./assets/js/ui.js";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    initBurgerMenu();
     await renderArticleDetail();
   </script>
 </body>
