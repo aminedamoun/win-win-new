@@ -1,11 +1,12 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { CONFIG } from "./config.js";
 
-const SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
-const ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
-const ENVIRONMENT = import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || "master";
+const SPACE_ID = CONFIG.contentful.spaceId;
+const ACCESS_TOKEN = CONFIG.contentful.accessToken;
+const ENVIRONMENT = CONFIG.contentful.environment;
 
-console.log("[Contentful] SPACE_ID:", SPACE_ID ? SPACE_ID : "MISSING");
-console.log("[Contentful] ENVIRONMENT:", ENVIRONMENT ? ENVIRONMENT : "MISSING");
+console.log("[Contentful] SPACE_ID prefix:", SPACE_ID ? SPACE_ID.slice(0, 4) : "MISSING");
+console.log("[Contentful] ENVIRONMENT:", ENVIRONMENT || "MISSING");
 console.log("[Contentful] ACCESS_TOKEN length:", ACCESS_TOKEN ? ACCESS_TOKEN.length : "MISSING");
 
 const BASE_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT}`;
