@@ -1,4 +1,3 @@
-import { getJobs } from './contentful.js';
 import { getAllJobs } from './jobs-db.js';
 import { initPage } from './page-utils.js';
 
@@ -29,11 +28,6 @@ function uniq(arr) {
 }
 
 async function loadJobs() {
-  try {
-    const jobs = await getJobs();
-    if (jobs.length > 0) { JOBS = jobs; return; }
-  } catch {
-  }
   try {
     const dbJobs = await getAllJobs();
     JOBS = dbJobs.map((job) => ({

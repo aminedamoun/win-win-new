@@ -1,4 +1,3 @@
-import { getArticles, getArticleBySlug } from './contentful.js';
 import { initPage } from './page-utils.js';
 
 let ARTICLES = [];
@@ -27,7 +26,25 @@ function getArticleUrl(slug, lang) {
 
 async function loadArticles() {
   try {
-    ARTICLES = await getArticles();
+    const indexRes = await fetch("/content/articles-index.json");
+    if (!indexRes.ok) { ARTICLES = []; return; }
+    const slugs = await indexRes.json();
+
+    const results = await Promise.all(
+      slugs.map(async (slug) => {
+        try {
+          const res = await fetch(`/content/articles/${slug}.json`);
+          if (!res.ok) return null;
+          const data = await res.json();
+          if (!data.settings?.published) return null;
+          return { ...data, slug: data.en?.slug || slug };
+        } catch { return null; }
+      })
+    );
+
+    ARTICLES = results.filter(Boolean).sort((a, b) =>
+      new Date(b.settings.date) - new Date(a.settings.date)
+    );
   } catch {
     ARTICLES = [];
   }
@@ -130,7 +147,12 @@ export async function renderArticleDetail() {
   }
 
   try {
-    const article = await getArticleBySlug(slug);
+    await loadArticles();
+    const article = ARTICLES.find((a) => {
+      const enSlug = a.en?.slug || a.slug;
+      const slSlug = a.sl?.slug || a.slug;
+      return enSlug === slug || slSlug === slug || a.slug === slug;
+    });
     if (!article) throw new Error("Not found");
     const content = article[lang] || article.en;
     const date = formatDate(article.settings.date, lang);
