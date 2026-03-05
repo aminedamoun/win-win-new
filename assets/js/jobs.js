@@ -71,6 +71,7 @@ async function renderJobsList() {
 
   const lang = getLang();
   const locale = contentfulLocale(lang);
+  console.log("[Jobs] lang:", lang, "locale:", locale);
   const jobsLoading = $("jobsLoading");
   const jobsNoJobs = $("jobsNoJobs");
   const filterLocation = $("filterLocation");
@@ -80,7 +81,12 @@ async function renderJobsList() {
   let jobs = [];
   try {
     jobs = await getJobs(locale);
-  } catch {
+    console.log("[Jobs] fetched jobs count:", jobs.length);
+    if (jobs.length > 0) {
+      console.log("[Jobs] first job:", { slug: jobs[0].slug, title: jobs[0].title, published: jobs[0].published, postedDate: jobs[0].postedDate });
+    }
+  } catch (err) {
+    console.error("[Jobs] getJobs error:", err);
     jobs = [];
   }
 
@@ -127,6 +133,7 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   const lang = getLang();
   const locale = contentfulLocale(lang);
   const slug = qp("slug") || qp("id") || qp("job");
+  console.log("[Job Detail] lang:", lang, "locale:", locale, "slug:", slug);
 
   const titleEl = $("jobTitle");
   const metaEl = $("jobMeta");
@@ -151,7 +158,11 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   let job = null;
   try {
     job = await getJobBySlug(slug, locale);
-  } catch { job = null; }
+    console.log("[Job Detail] result:", job ? { slug: job.slug, title: job.title } : "null");
+  } catch (err) {
+    console.error("[Job Detail] getJobBySlug error:", err);
+    job = null;
+  }
 
   if (!job) {
     titleEl.textContent = lang === "sl" ? "Pozicija ni najdena" : "Position not found";

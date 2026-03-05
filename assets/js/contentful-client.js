@@ -2,9 +2,14 @@ const SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
 const ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
 const ENVIRONMENT = import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || "master";
 
+console.log("[Contentful] SPACE_ID:", SPACE_ID ? SPACE_ID : "MISSING");
+console.log("[Contentful] ENVIRONMENT:", ENVIRONMENT ? ENVIRONMENT : "MISSING");
+console.log("[Contentful] ACCESS_TOKEN length:", ACCESS_TOKEN ? ACCESS_TOKEN.length : "MISSING");
+
 const BASE_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT}`;
 
 async function fetchEntries(contentType, params = {}) {
+  console.log("[Contentful] fetchEntries content_type:", contentType, "params:", params);
   const url = new URL(`${BASE_URL}/entries`);
   url.searchParams.set("content_type", contentType);
   url.searchParams.set("access_token", ACCESS_TOKEN);
@@ -12,8 +17,18 @@ async function fetchEntries(contentType, params = {}) {
     url.searchParams.set(k, String(v));
   }
   const res = await fetch(url.toString());
-  if (!res.ok) throw new Error(`Contentful fetch failed: ${res.status}`);
-  return res.json();
+  if (!res.ok) {
+    const errText = await res.text().catch(() => "");
+    console.error("[Contentful] fetch failed:", res.status, errText);
+    throw new Error(`Contentful fetch failed: ${res.status}`);
+  }
+  const json = await res.json();
+  console.log("[Contentful] response total:", json.total, "items returned:", json.items?.length);
+  if (json.items?.length > 0) {
+    const first = json.items[0];
+    console.log("[Contentful] first entry — id:", first.sys.id, "slug:", first.fields.slug, "title:", first.fields.title, "published:", first.fields.published, "postedDate:", first.fields.postedDate);
+  }
+  return json;
 }
 
 export function contentfulImageUrl(asset, width = 1200) {
@@ -25,9 +40,10 @@ export function contentfulImageUrl(asset, width = 1200) {
 }
 
 export async function getJobs(locale = "en-US") {
-  const json = await fetchEntries("job", {
+  console.log("[Contentful] getJobs locale:", locale);
+  const json = await fetchEntries("jobListing", {
     locale,
-    "fields.published": true,
+    "fields.published[eq]": true,
     order: "-fields.postedDate",
     limit: 200,
   });
@@ -64,10 +80,11 @@ export async function getJobs(locale = "en-US") {
 }
 
 export async function getJobBySlug(slug, locale = "en-US") {
-  const json = await fetchEntries("job", {
+  console.log("[Contentful] getJobBySlug slug:", slug, "locale:", locale);
+  const json = await fetchEntries("jobListing", {
     locale,
-    "fields.slug": slug,
-    "fields.published": true,
+    "fields.slug[eq]": slug,
+    "fields.published[eq]": true,
     limit: 1,
   });
 
