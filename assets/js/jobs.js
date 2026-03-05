@@ -210,8 +210,13 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   renderCol(benefitsCol, benefitsList, job.benefits);
 
   if (jobColsWrapper) {
-    const anyVisible = [reqCol, respCol, benefitsCol].some((c) => c && c.style.display !== "none");
-    jobColsWrapper.style.display = anyVisible ? "" : "none";
+    const visibleCols = [reqCol, respCol, benefitsCol].filter((c) => c && c.style.display !== "none");
+    if (visibleCols.length === 0) {
+      jobColsWrapper.style.display = "none";
+    } else {
+      jobColsWrapper.style.display = "";
+      jobColsWrapper.className = `job-cols sections-${visibleCols.length}`;
+    }
   }
 
   if (job.image) {

@@ -2057,13 +2057,14 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
 .job-body p{ margin: 0 0 12px; }
 .job-body strong{ color:#fff; }
 
-/* 3 columns */
 .job-cols{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 18px;
 }
+.job-cols.sections-1{ grid-template-columns: 1fr; }
+.job-cols.sections-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.job-cols.sections-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .job-col{
   padding: 16px;
   border-radius: 16px;
@@ -2088,7 +2089,8 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
 
 /* responsive */
 @media (max-width: 900px){
-  .job-cols{ grid-template-columns: 1fr; }
+  .job-cols.sections-2,
+  .job-cols.sections-3{ grid-template-columns: 1fr; }
   .job-hero-head{ flex-direction: column; }
   .job-icon{ width: 50px; height: 50px; }
 }
