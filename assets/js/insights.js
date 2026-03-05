@@ -1,55 +1,36 @@
-import { initBurgerMenu } from './ui.js';
-import { formatDate, getArticleUrl } from './articles.js';
+import { getArticles, getArticleBySlug } from './contentful.js';
+import { initPage } from './page-utils.js';
 
-let CONTENT = null;
 let ARTICLES = [];
 
 function $(id) { return document.getElementById(id); }
 
 export function getLang() {
-  const htmlLang = document.documentElement.getAttribute("lang") || "";
-  return htmlLang.toLowerCase().startsWith("sl") ? "sl" : "en";
+  const lang = document.documentElement.getAttribute("lang") || "";
+  return lang.toLowerCase().startsWith("sl") ? "sl" : "en";
 }
 
-async function loadContent(lang) {
-  const path = lang === "sl" ? "/content/sl/insights.json" : "/content/en/insights.json";
+function formatDate(isoDate, lang) {
+  if (!isoDate) return "";
   try {
-    const res = await fetch(path);
-    return await res.json();
-  } catch {
-    return null;
-  }
+    return new Date(isoDate).toLocaleDateString(lang === "sl" ? "sl-SI" : "en-GB", {
+      year: "numeric", month: "long", day: "numeric",
+    });
+  } catch { return isoDate; }
+}
+
+function getArticleUrl(slug, lang) {
+  return lang === "sl"
+    ? `article-sl.html?slug=${encodeURIComponent(slug)}`
+    : `article.html?slug=${encodeURIComponent(slug)}`;
 }
 
 async function loadArticles() {
   try {
-    const indexRes = await fetch("/content/articles-index.json");
-    if (!indexRes.ok) return [];
-    const slugs = await indexRes.json();
-    const articles = await Promise.all(
-      slugs.map(async (slug) => {
-        try {
-          const res = await fetch(`/content/articles/${slug}.json`);
-          if (!res.ok) return null;
-          const data = await res.json();
-          return { slug, ...data };
-        } catch {
-          return null;
-        }
-      })
-    );
-    return articles.filter((a) => a && a.settings && a.settings.published);
+    ARTICLES = await getArticles();
   } catch {
-    return [];
+    ARTICLES = [];
   }
-}
-
-function renderSeo() {
-  if (!CONTENT || !CONTENT.seo) return;
-  const titleEl = $("seoSummaryTitle");
-  const htmlEl = $("seoHtml");
-  if (titleEl && CONTENT.seo.summaryTitle) titleEl.textContent = CONTENT.seo.summaryTitle;
-  if (htmlEl && CONTENT.seo.html) htmlEl.innerHTML = CONTENT.seo.html;
 }
 
 function renderFeatured(article, lang) {
@@ -133,17 +114,6 @@ function renderCards(articles, lang) {
   }).join("");
 }
 
-function setupScrollReveal() {
-  const nodes = Array.from(document.querySelectorAll("[data-animate]"));
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) if (e.isIntersecting) e.target.classList.add("in");
-    },
-    { threshold: 0.12 }
-  );
-  nodes.forEach((n) => io.observe(n));
-}
-
 export async function renderArticleDetail() {
   const lang = getLang();
   const params = new URLSearchParams(window.location.search);
@@ -155,13 +125,13 @@ export async function renderArticleDetail() {
 
   if (!slug) {
     if (titleEl) titleEl.textContent = lang === "sl" ? "Članek ni najden" : "Article not found";
+    initPage();
     return;
   }
 
   try {
-    const res = await fetch(`/content/articles/${slug}.json`);
-    if (!res.ok) throw new Error("Not found");
-    const article = await res.json();
+    const article = await getArticleBySlug(slug);
+    if (!article) throw new Error("Not found");
     const content = article[lang] || article.en;
     const date = formatDate(article.settings.date, lang);
 
@@ -171,7 +141,7 @@ export async function renderArticleDetail() {
 
     if (metaEl) {
       metaEl.innerHTML = `
-        <span>${content.category || 'Insights'}</span>
+        <span>${content.category || "Insights"}</span>
         <span style="margin:0 8px;opacity:0.4">·</span>
         <span>${content.readTime}</span>
         <span style="margin:0 8px;opacity:0.4">·</span>
@@ -183,25 +153,26 @@ export async function renderArticleDetail() {
       bodyEl.innerHTML = markdownToHtml(content.body);
     }
 
-    const heroImg = document.getElementById("articleHeroImg");
-    const heroImage = content.image || (article.en && article.en.image) || '';
-    if (heroImg && heroImage) {
-      heroImg.src = heroImage;
+    const heroImg = $("articleHeroImg");
+    if (heroImg && content.image) {
+      heroImg.src = content.image;
       heroImg.alt = content.imageAlt || content.title;
     }
 
-    const heroTitle = document.getElementById("articleHeroTitle");
+    const heroTitle = $("articleHeroTitle");
     if (heroTitle) heroTitle.textContent = content.title;
 
-    const heroCat = document.getElementById("articleHeroCat");
-    if (heroCat) heroCat.textContent = content.category || 'Insights';
+    const heroCat = $("articleHeroCat");
+    if (heroCat) heroCat.textContent = content.category || "Insights";
 
-    const heroMeta = document.getElementById("articleHeroMeta");
+    const heroMeta = $("articleHeroMeta");
     if (heroMeta) heroMeta.textContent = `${content.readTime} · ${date}`;
 
   } catch {
     if (titleEl) titleEl.textContent = lang === "sl" ? "Članek ni najden" : "Article not found";
   }
+
+  initPage();
 }
 
 function markdownToHtml(md) {
@@ -237,20 +208,11 @@ function markdownToHtml(md) {
 }
 
 export async function main(forceLang) {
-  const year = $("year");
-  if (year) year.textContent = String(new Date().getFullYear());
-
   const lang = forceLang || getLang();
-
-  [CONTENT, ARTICLES] = await Promise.all([loadContent(lang), loadArticles()]);
-
-  renderSeo();
+  await loadArticles();
 
   const featured = ARTICLES.find((a) => a.settings.featured);
   if (featured) renderFeatured(featured, lang);
-
   renderCards(ARTICLES, lang);
-
-  setupScrollReveal();
-  initBurgerMenu();
+  initPage();
 }
