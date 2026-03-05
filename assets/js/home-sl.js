@@ -144,7 +144,12 @@ function fillText(d) {
   const year = $("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // ✅ HERO (title is now hardcoded in HTML)
+  if ($("heroTitle")) {
+    const t1 = d.hero?.titleLine1 || "";
+    const t2 = d.hero?.titleLine2 || "";
+    const accent = d.hero?.accent || "Sales Team";
+    $("heroTitle").innerHTML = `${escapeHtml(t1)}<br />${escapeHtml(t2)}<br /><span class="hero-accent">${escapeHtml(accent)}</span>`;
+  }
   if ($("heroDescription")) $("heroDescription").textContent = d.hero?.description || "";
 
   // ✅ ABOUT
