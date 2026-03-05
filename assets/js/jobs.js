@@ -1,95 +1,66 @@
-import { getAllJobs } from './jobs-db.js';
+import { getJobs, getJobBySlug } from './contentful-client.js';
 import { initPage } from './page-utils.js';
 
-let JOBS = [];
-
 function $(id) { return document.getElementById(id); }
-
-function escapeHtml(s) {
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 function getLang() {
   const lang = document.documentElement.getAttribute("lang") || "";
   return lang.toLowerCase().startsWith("sl") ? "sl" : "en";
 }
 
+function contentfulLocale(lang) {
+  return lang === "sl" ? "sl" : "en-US";
+}
+
 function qp(name) {
-  return new URL(window.location.href).searchParams.get(name);
+  return new URLSearchParams(window.location.search).get(name);
 }
 
 function uniq(arr) {
   return Array.from(new Set(arr)).filter(Boolean);
 }
 
-async function loadJobs() {
-  try {
-    const dbJobs = await getAllJobs();
-    JOBS = dbJobs.map((job) => ({
-      id: job.slug,
-      slug: job.slug,
-      title: { en: job.title_en || "", sl: job.title_sl || "" },
-      location: { en: job.location_en || "", sl: job.location_sl || "" },
-      type: { en: job.type_en || "", sl: job.type_sl || "" },
-      salary: { en: job.salary_en || "", sl: job.salary_sl || "" },
-      summary: { en: job.summary_en || "", sl: job.summary_sl || "" },
-      bodyHtml: { en: job.description_en || "", sl: job.description_sl || "" },
-      requirements: { en: job.requirements_en || [], sl: job.requirements_sl || [] },
-      responsibilities: { en: job.responsibilities_en || [], sl: job.responsibilities_sl || [] },
-      benefits: { en: job.benefits_en || [], sl: job.benefits_sl || [] },
-    }));
-  } catch {
-    JOBS = [];
-  }
+function escapeHtml(s) {
+  return String(s || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
-function buildFilters(lang) {
-  const filterLocation = $("filterLocation");
-  const filterType = $("filterType");
-  if (!filterLocation || !filterType) return;
-
-  const allLocations = uniq(JOBS.map((j) => j.location[lang]));
-  const allTypes = uniq(JOBS.map((j) => j.type[lang]));
-  const allLabel = lang === "sl" ? "Vse" : "All";
-
-  filterLocation.innerHTML =
-    `<option value="">${allLabel} ${lang === "sl" ? "lokacije" : "locations"}</option>` +
-    allLocations.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
-
-  filterType.innerHTML =
-    `<option value="">${allLabel} ${lang === "sl" ? "tipi" : "types"}</option>` +
-    allTypes.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
+function formatDate(isoDate, lang) {
+  if (!isoDate) return "";
+  try {
+    return new Date(isoDate).toLocaleDateString(lang === "sl" ? "sl-SI" : "en-GB", {
+      year: "numeric", month: "long", day: "numeric",
+    });
+  } catch { return isoDate; }
 }
 
 function jobCardHtml(job, lang) {
   const detailPage = lang === "sl" ? "job-sl.html" : "job.html";
   const viewDetails = lang === "sl" ? "Poglej podrobnosti" : "View details";
   const applyNow = lang === "sl" ? "Prijavi se" : "Apply";
+  const applyPage = lang === "sl" ? "apply-sl.html" : "apply.html";
 
   return `
     <div class="glass card" style="padding:18px;">
       <div style="display:flex; gap:14px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;">
-        <div style="min-width: 240px;">
-          <div style="font-weight:900; font-size:18px; margin-bottom:6px;">${escapeHtml(job.title[lang])}</div>
+        <div style="min-width:240px;">
+          <div style="font-weight:900; font-size:18px; margin-bottom:6px;">${escapeHtml(job.title)}</div>
           <div class="p-muted" style="display:flex; gap:10px; flex-wrap:wrap;">
-            <span>📍 ${escapeHtml(job.location[lang])}</span>
+            <span>📍 ${escapeHtml(job.location)}</span>
             <span>•</span>
-            <span>${escapeHtml(job.type[lang])}</span>
-            <span>•</span>
-            <span>${escapeHtml(job.salary[lang])}</span>
+            <span>${escapeHtml(job.type)}</span>
+            ${job.salary ? `<span>•</span><span>${escapeHtml(job.salary)}</span>` : ""}
           </div>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <a class="btn btn-outline" href="${detailPage}?id=${encodeURIComponent(job.id)}">${viewDetails}</a>
-          <a class="btn btn-primary" href="apply${lang === "sl" ? "-sl" : ""}.html?job=${encodeURIComponent(job.id)}">${applyNow} <span aria-hidden="true">→</span></a>
+          <a class="btn btn-outline" href="${detailPage}?slug=${encodeURIComponent(job.slug)}">${viewDetails}</a>
+          <a class="btn btn-primary" href="${applyPage}?job=${encodeURIComponent(job.slug)}">${applyNow} <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <div class="p-muted" style="margin-top:10px;">${escapeHtml(job.summary[lang])}</div>
+      ${job.summary ? `<div class="p-muted" style="margin-top:10px;">${escapeHtml(job.summary)}</div>` : ""}
     </div>
   `;
 }
@@ -99,24 +70,43 @@ async function renderJobsList() {
   if (!jobsGrid) return false;
 
   const lang = getLang();
+  const locale = contentfulLocale(lang);
   const jobsLoading = $("jobsLoading");
   const jobsNoJobs = $("jobsNoJobs");
   const filterLocation = $("filterLocation");
   const filterType = $("filterType");
   const jobsSearch = $("jobsSearch");
 
-  await loadJobs();
-  buildFilters(lang);
+  let jobs = [];
+  try {
+    jobs = await getJobs(locale);
+  } catch {
+    jobs = [];
+  }
+
+  if (filterLocation && filterType) {
+    const allLabel = lang === "sl" ? "Vse" : "All";
+    const allLocations = uniq(jobs.map((j) => j.location));
+    const allTypes = uniq(jobs.map((j) => j.type));
+
+    filterLocation.innerHTML =
+      `<option value="">${allLabel} ${lang === "sl" ? "lokacije" : "locations"}</option>` +
+      allLocations.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
+
+    filterType.innerHTML =
+      `<option value="">${allLabel} ${lang === "sl" ? "tipi" : "types"}</option>` +
+      allTypes.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
+  }
 
   const applyFilters = () => {
     const loc = (filterLocation?.value || "").trim();
     const typ = (filterType?.value || "").trim();
     const q = (jobsSearch?.value || "").trim().toLowerCase();
 
-    const filtered = JOBS.filter((j) => {
-      const matchLoc = !loc || j.location[lang] === loc;
-      const matchType = !typ || j.type[lang] === typ;
-      const hay = [j.title[lang], j.location[lang], j.type[lang], j.salary[lang], j.summary[lang]].join(" ").toLowerCase();
+    const filtered = jobs.filter((j) => {
+      const matchLoc = !loc || j.location === loc;
+      const matchType = !typ || j.type === typ;
+      const hay = [j.title, j.location, j.type, j.salary, j.summary].join(" ").toLowerCase();
       return matchLoc && matchType && (!q || hay.includes(q));
     });
 
@@ -134,11 +124,9 @@ async function renderJobsList() {
 }
 
 export async function renderJobDetail({ applyPageHref } = {}) {
-  await loadJobs();
-
   const lang = getLang();
-  const id = qp("id") || qp("job") || qp("slug");
-  const job = JOBS.find((j) => j.id === id) || null;
+  const locale = contentfulLocale(lang);
+  const slug = qp("slug") || qp("id") || qp("job");
 
   const titleEl = $("jobTitle");
   const metaEl = $("jobMeta");
@@ -149,15 +137,27 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   const benefitsList = $("benefitsList");
   const applyBtn = $("applyForJob");
 
-  if (!titleEl || !metaEl || !salaryEl || !bodyEl) return;
+  if (!titleEl || !metaEl || !salaryEl || !bodyEl) { initPage(); return; }
+
+  if (!slug) {
+    titleEl.textContent = lang === "sl" ? "Pozicija ni najdena" : "Position not found";
+    metaEl.textContent = lang === "sl" ? "Prosimo, odprite pozicijo iz seznama." : "Please open a position from the list.";
+    salaryEl.textContent = "";
+    bodyEl.innerHTML = "";
+    initPage();
+    return;
+  }
+
+  let job = null;
+  try {
+    job = await getJobBySlug(slug, locale);
+  } catch { job = null; }
 
   if (!job) {
     titleEl.textContent = lang === "sl" ? "Pozicija ni najdena" : "Position not found";
     metaEl.textContent = lang === "sl" ? "Prosimo, odprite pozicijo iz seznama." : "Please open a position from the list.";
     salaryEl.textContent = "";
-    bodyEl.innerHTML = lang === "sl"
-      ? "<p>Manjka parameter v URL-ju.</p>"
-      : "<p>Missing URL parameter.</p>";
+    bodyEl.innerHTML = lang === "sl" ? "<p>Pozicija ne obstaja ali ni več aktivna.</p>" : "<p>This position does not exist or is no longer active.</p>";
     if (reqList) reqList.innerHTML = "";
     if (respList) respList.innerHTML = "";
     if (benefitsList) benefitsList.innerHTML = "";
@@ -166,18 +166,25 @@ export async function renderJobDetail({ applyPageHref } = {}) {
     return;
   }
 
-  titleEl.textContent = job.title[lang];
-  metaEl.textContent = `${job.location[lang]} • ${job.type[lang]}`;
-  salaryEl.textContent = job.salary[lang];
-  bodyEl.innerHTML = job.bodyHtml[lang] || "";
+  document.title = `${job.title} — Win Win`;
 
-  if (reqList) reqList.innerHTML = (job.requirements[lang] || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
-  if (respList) respList.innerHTML = (job.responsibilities[lang] || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
-  if (benefitsList) benefitsList.innerHTML = (job.benefits[lang] || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+  titleEl.textContent = job.title;
+  metaEl.textContent = [job.location, job.type, job.department].filter(Boolean).join(" • ");
+  salaryEl.textContent = job.salary || "";
+  bodyEl.innerHTML = job.description || "";
+
+  if (reqList) reqList.innerHTML = (job.requirements || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+  if (respList) respList.innerHTML = (job.responsibilities || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+  if (benefitsList) benefitsList.innerHTML = (job.benefits || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+
+  if (job.image) {
+    const heroImg = $("jobHeroImg");
+    if (heroImg) { heroImg.src = job.image; heroImg.alt = job.imageAlt || job.title; }
+  }
 
   if (applyBtn) {
     const base = applyPageHref || (lang === "sl" ? "apply-sl.html" : "apply.html");
-    applyBtn.href = `${base}?job=${encodeURIComponent(job.id)}`;
+    applyBtn.href = `${base}?job=${encodeURIComponent(job.slug)}`;
   }
 
   initPage();
