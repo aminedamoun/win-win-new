@@ -122,7 +122,7 @@ Deno.serve(async (req: Request) => {
 </html>`;
 
     const emailPayload: Record<string, unknown> = {
-      from: "Win-Win Prijave <noreply@win-win.si>",
+      from: "Win-Win Prijave <onboarding@resend.dev>",
       to: ["office@win-win.si"],
       subject: `Nova prijava: ${data.jobTitle} — ${fullName}`,
       html: emailHtml,
