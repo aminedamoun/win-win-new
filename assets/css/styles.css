@@ -1170,6 +1170,22 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
 .contact-row a{color: var(--gray-400); transition: color 0.2s ease}
 .contact-row a:hover{color: var(--white)}
 .dot-ic{color: var(--red-500)}
+.footer-admin{
+  display:flex; gap:12px; justify-content:flex-end; align-items:center;
+  margin-top:10px; flex-wrap:wrap;
+}
+.footer-admin-link{
+  font-size:11px; color: rgba(255,255,255,.28); text-decoration:none;
+  padding: 3px 8px; border-radius:4px;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.02em;
+}
+.footer-admin-link:hover{
+  color: rgba(255,255,255,.75);
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 0 6px rgba(255,255,255,.06);
+}
 
 /* Cookie bar */
 .cookie-bar{
