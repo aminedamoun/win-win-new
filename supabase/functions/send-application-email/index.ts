@@ -7,7 +7,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-interface ApplicationEmailData {
+interface ApplicationPayload {
   firstName: string;
   lastName: string;
   email: string;
@@ -16,6 +16,7 @@ interface ApplicationEmailData {
   country?: string;
   jobTitle: string;
   jobSlug?: string;
+  jobId?: string;
   preferredInterviewTime?: string;
   message?: string;
   cvPath?: string;
@@ -39,7 +40,7 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const data: ApplicationEmailData = await req.json();
+    const data: ApplicationPayload = await req.json();
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -48,6 +49,7 @@ Deno.serve(async (req: Request) => {
     console.log("[send-application-email] received:", {
       fullName: `${data.firstName} ${data.lastName}`,
       jobTitle: data.jobTitle,
+      jobId: data.jobId || "(none)",
       cvPath: data.cvPath || "(none)",
       supabaseUrl: SUPABASE_URL,
     });
@@ -58,6 +60,32 @@ Deno.serve(async (req: Request) => {
 
     const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
+    // --- 1. Insert application row using service role (bypasses RLS) ---
+    const insertPayload: Record<string, unknown> = {
+      first_name: data.firstName,
+      last_name: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      preferred_interview_time: data.preferredInterviewTime || "",
+      message: data.message || "",
+      cv_url: data.cvPath || "",
+      status: "new",
+    };
+    if (data.jobId) insertPayload.job_id = data.jobId;
+
+    const { data: insertedRow, error: insertError } = await supabaseAdmin
+      .from("applications")
+      .insert([insertPayload])
+      .select("id")
+      .maybeSingle();
+
+    if (insertError) {
+      console.error("[send-application-email] DB insert error:", JSON.stringify(insertError));
+    } else {
+      console.log("[send-application-email] DB insert success, id:", insertedRow?.id);
+    }
+
+    // --- 2. Download CV and build attachment ---
     const fullName = `${data.firstName} ${data.lastName}`;
     const submittedAt = data.submittedAt || new Date().toISOString();
     const formattedDate = new Date(submittedAt).toLocaleString("sl-SI", {
@@ -70,7 +98,7 @@ Deno.serve(async (req: Request) => {
     let cvFallbackNote = "";
 
     if (data.cvPath) {
-      console.log("[send-application-email] downloading CV from bucket cv-uploads, path:", data.cvPath);
+      console.log("[send-application-email] downloading CV, path:", data.cvPath);
 
       const { data: fileData, error: downloadError } = await supabaseAdmin.storage
         .from("cv-uploads")
@@ -96,27 +124,21 @@ Deno.serve(async (req: Request) => {
         const base64 = arrayBufferToBase64(buffer);
         const safeName = `${fullName.replace(/[^a-zA-Z0-9]/g, "-")}-${(data.jobSlug || "vloga").replace(/[^a-zA-Z0-9]/g, "-")}.pdf`;
 
-        cvAttachment = {
-          filename: safeName,
-          content: base64,
-          contentType: "application/pdf",
-        };
-
+        cvAttachment = { filename: safeName, content: base64, contentType: "application/pdf" };
         console.log("[send-application-email] CV attachment ready:", safeName, "base64 length:", base64.length);
       }
-    } else {
-      console.log("[send-application-email] no cvPath provided, skipping attachment");
     }
 
-    const rows = [
+    // --- 3. Build and send email ---
+    const rows: [string, string][] = [
       ["Delovno mesto", data.jobTitle + (data.jobSlug ? ` <span style="color:#999;">(${data.jobSlug})</span>` : "")],
       ["Ime in priimek", fullName],
       ["E-pošta", `<a href="mailto:${data.email}">${data.email}</a>`],
       ["Telefon", data.phone],
-      ...(data.city || data.country ? [["Lokacija", [data.city, data.country].filter(Boolean).join(", ")]] : []),
-      ...(data.preferredInterviewTime ? [["Želeni čas razgovora", data.preferredInterviewTime]] : []),
+      ...(data.city || data.country ? [["Lokacija", [data.city, data.country].filter(Boolean).join(", ")] as [string, string]] : []),
+      ...(data.preferredInterviewTime ? [["Želeni čas razgovora", data.preferredInterviewTime] as [string, string]] : []),
       ["Datum prijave", formattedDate],
-    ] as [string, string][];
+    ];
 
     const tableRows = rows.map(([label, value]) => `
       <tr>
@@ -138,10 +160,7 @@ Deno.serve(async (req: Request) => {
 
     const emailHtml = `<!DOCTYPE html>
 <html lang="sl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;">
   <div style="max-width:620px;margin:32px auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.10);">
     <div style="background:#e53e3e;padding:28px 32px;">
@@ -170,13 +189,11 @@ Deno.serve(async (req: Request) => {
     };
 
     if (cvAttachment) {
-      emailPayload.attachments = [
-        {
-          filename: cvAttachment.filename,
-          content: cvAttachment.content,
-          contentType: cvAttachment.contentType,
-        },
-      ];
+      emailPayload.attachments = [{
+        filename: cvAttachment.filename,
+        content: cvAttachment.content,
+        contentType: cvAttachment.contentType,
+      }];
     }
 
     console.log("[send-application-email] sending via Resend, hasAttachment:", !!cvAttachment);
@@ -204,7 +221,12 @@ Deno.serve(async (req: Request) => {
     const result = JSON.parse(resendBody);
 
     return new Response(
-      JSON.stringify({ success: true, emailId: result.id, cvAttached: !!cvAttachment }),
+      JSON.stringify({
+        success: true,
+        emailId: result.id,
+        cvAttached: !!cvAttachment,
+        applicationId: insertedRow?.id || null,
+      }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {

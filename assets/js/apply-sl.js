@@ -5,7 +5,7 @@
  * - Renders "Kaj sledi?" cards
  */
 
-import { submitApplication, sendApplicationEmail } from './jobs-db.js';
+import { uploadCVOnly, sendApplicationEmail } from './jobs-db.js';
 import { initBurgerMenu } from './ui.js';
 
 function $(id) { return document.getElementById(id); }
@@ -157,42 +157,35 @@ function setupForm() {
       const urlParams = new URLSearchParams(window.location.search);
       const jobSlug = urlParams.get('job');
 
-      const applicationData = {
-        first_name: firstName.value.trim(),
-        last_name: lastName.value.trim(),
-        email: email.value.trim(),
-        phone: phone.value.trim(),
-        preferred_interview_time: $("interviewTime")?.value?.trim() || '',
-        message: $("message")?.value?.trim() || '',
-        status: 'new'
-      };
-
       let jobTitle = 'Splošna prijava';
+      let jobId = null;
       if (jobSlug) {
         const { getJobBySlug } = await import('./jobs-db.js');
         const job = await getJobBySlug(jobSlug);
         if (job) {
-          applicationData.job_id = job.id;
+          jobId = job.id;
           jobTitle = job.title_sl || jobTitle;
         }
       }
 
       const cvFileInput = cvFile?.files?.[0] || null;
-      const result = await submitApplication(applicationData, cvFileInput);
+      let cvPath = '';
+      if (cvFileInput) {
+        cvPath = await uploadCVOnly(cvFileInput);
+      }
 
-      sendApplicationEmail({
+      await sendApplicationEmail({
         firstName: firstName.value.trim(),
         lastName: lastName.value.trim(),
         email: email.value.trim(),
         phone: phone.value.trim(),
         jobTitle: jobTitle,
         jobSlug: jobSlug || '',
+        jobId: jobId || '',
         preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
         message: $("message")?.value?.trim() || '',
-        cvPath: result.cvPath || '',
+        cvPath: cvPath,
         submittedAt: new Date().toISOString()
-      }).catch(emailError => {
-        console.error('Email notification failed:', emailError);
       });
 
       if (successBox) {

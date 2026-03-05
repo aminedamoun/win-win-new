@@ -52,30 +52,8 @@ export async function uploadCV(file) {
   return filePath;
 }
 
-export async function submitApplication(applicationData, cvFile) {
-  let cvPath = '';
-
-  if (cvFile) {
-    cvPath = await uploadCV(cvFile);
-  }
-
-  const dataToInsert = {
-    ...applicationData,
-    cv_url: cvPath
-  };
-
-  const { data, error } = await supabase
-    .from('applications')
-    .insert([dataToInsert])
-    .select()
-    .maybeSingle();
-
-  if (error) {
-    console.error('Error submitting application:', error);
-    throw error;
-  }
-
-  return { application: data, cvPath };
+export async function uploadCVOnly(cvFile) {
+  return await uploadCV(cvFile);
 }
 
 export async function sendApplicationEmail(emailData) {
