@@ -195,9 +195,14 @@ function fillText(d) {
   if ($("processDesc")) $("processDesc").textContent = d.process?.description || "";
   if ($("processBtn")) $("processBtn").childNodes[0].textContent = (d.process?.button || "") + " ";
 
+  // ✅ HERO BUTTONS
+  if ($("heroBtn1")) $("heroBtn1").childNodes[0].textContent = (d.hero?.primaryCta?.label || "") + " ";
+  if ($("heroBtn2")) $("heroBtn2").textContent = d.hero?.secondaryCta?.label || "";
+
   // ✅ APP
   if ($("appTitle")) $("appTitle").textContent = d.app?.title || "";
   if ($("appDesc")) $("appDesc").textContent = d.app?.description || "";
+  if ($("appBtnLabel")) $("appBtnLabel").textContent = d.app?.buttonLabel || "";
 
   // ✅ FAQ
   if ($("faqTitle")) $("faqTitle").innerHTML = d.faq?.titleHtml || "";
@@ -206,6 +211,9 @@ function fillText(d) {
   if ($("faqBtn")) $("faqBtn").childNodes[0].textContent = (d.faq?.button || "") + " ";
 
   // ✅ BLOG
+  if ($("blogPill")) $("blogPill").textContent = d.blog?.subtitle || "";
+  if ($("blogTitle")) $("blogTitle").textContent = d.blog?.title || "";
+  if ($("blogDesc")) $("blogDesc").textContent = d.blog?.description || "";
   if ($("blogEmpty")) $("blogEmpty").textContent = d.blog?.empty || "";
 }
 
