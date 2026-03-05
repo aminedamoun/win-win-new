@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^17.1.6"
   }
 }

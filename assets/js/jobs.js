@@ -139,9 +139,14 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   const metaEl = $("jobMeta");
   const salaryEl = $("jobSalary");
   const bodyEl = $("jobBody");
+  const introEl = $("jobIntro");
   const reqList = $("reqList");
+  const reqCol = $("reqCol");
   const respList = $("respList");
+  const respCol = $("respCol");
   const benefitsList = $("benefitsList");
+  const benefitsCol = $("benefitsCol");
+  const jobColsWrapper = $("jobColsWrapper");
   const applyBtn = $("applyForJob");
 
   if (!titleEl || !metaEl || !salaryEl || !bodyEl) { initPage(); return; }
@@ -182,11 +187,32 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   titleEl.textContent = job.title;
   metaEl.textContent = [job.location, job.type, job.department].filter(Boolean).join(" • ");
   salaryEl.textContent = job.salary || "";
+
+  if (introEl && job.summary) {
+    introEl.textContent = job.summary;
+  }
+
   bodyEl.innerHTML = job.description || "";
 
-  if (reqList) reqList.innerHTML = (job.requirements || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
-  if (respList) respList.innerHTML = (job.responsibilities || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
-  if (benefitsList) benefitsList.innerHTML = (job.benefits || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+  const renderCol = (col, list, items) => {
+    if (!col || !list) return;
+    const filled = Array.isArray(items) && items.length > 0;
+    if (filled) {
+      list.innerHTML = items.map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+      col.style.display = "";
+    } else {
+      col.style.display = "none";
+    }
+  };
+
+  renderCol(reqCol, reqList, job.requirements);
+  renderCol(respCol, respList, job.responsibilities);
+  renderCol(benefitsCol, benefitsList, job.benefits);
+
+  if (jobColsWrapper) {
+    const anyVisible = [reqCol, respCol, benefitsCol].some((c) => c && c.style.display !== "none");
+    jobColsWrapper.style.display = anyVisible ? "" : "none";
+  }
 
   if (job.image) {
     const heroImg = $("jobHeroImg");

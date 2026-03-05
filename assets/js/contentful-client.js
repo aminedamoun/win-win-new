@@ -1,3 +1,5 @@
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
 const SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
 const ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
 const ENVIRONMENT = import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || "master";
@@ -29,6 +31,15 @@ async function fetchEntries(contentType, params = {}) {
     console.log("[Contentful] first entry — id:", first.sys.id, "slug:", first.fields.slug, "title:", first.fields.title, "published:", first.fields.published, "postedDate:", first.fields.postedDate);
   }
   return json;
+}
+
+function richTextToHtml(doc) {
+  if (!doc || typeof doc !== "object" || doc.nodeType !== "document") return "";
+  try {
+    return documentToHtmlString(doc);
+  } catch {
+    return "";
+  }
 }
 
 export function contentfulImageUrl(asset, width = 1200) {
@@ -65,7 +76,7 @@ export async function getJobs(locale = "en-US") {
       department: f.department || "",
       salary: f.salary || "",
       summary: f.summary || "",
-      description: f.description || "",
+      description: richTextToHtml(f.description),
       responsibilities: f.responsibilities || [],
       requirements: f.requirements || [],
       benefits: f.benefits || [],
@@ -107,7 +118,7 @@ export async function getJobBySlug(slug, locale = "en-US") {
     department: f.department || "",
     salary: f.salary || "",
     summary: f.summary || "",
-    description: f.description || "",
+    description: richTextToHtml(f.description),
     responsibilities: f.responsibilities || [],
     requirements: f.requirements || [],
     benefits: f.benefits || [],
