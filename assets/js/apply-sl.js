@@ -186,11 +186,13 @@ function setupForm() {
         email: email.value.trim(),
         phone: phone.value.trim(),
         jobTitle: jobTitle,
+        jobSlug: jobSlug || '',
         preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
         message: $("message")?.value?.trim() || '',
-        cvUrl: result.cvUrl || 'Ni naložen CV'
+        cvPath: result.cvPath || '',
+        submittedAt: new Date().toISOString()
       }).catch(emailError => {
-        console.log('Email notification not sent (optional feature):', emailError);
+        console.error('Email notification failed:', emailError);
       });
 
       if (successBox) {

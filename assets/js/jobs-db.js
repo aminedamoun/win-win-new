@@ -49,23 +49,19 @@ export async function uploadCV(file) {
     throw error;
   }
 
-  const { data: { publicUrl } } = supabase.storage
-    .from('cv-uploads')
-    .getPublicUrl(filePath);
-
-  return publicUrl;
+  return filePath;
 }
 
 export async function submitApplication(applicationData, cvFile) {
-  let cvUrl = '';
+  let cvPath = '';
 
   if (cvFile) {
-    cvUrl = await uploadCV(cvFile);
+    cvPath = await uploadCV(cvFile);
   }
 
   const dataToInsert = {
     ...applicationData,
-    cv_url: cvUrl
+    cv_url: cvPath
   };
 
   const { data, error } = await supabase
@@ -79,7 +75,7 @@ export async function submitApplication(applicationData, cvFile) {
     throw error;
   }
 
-  return { application: data, cvUrl };
+  return { application: data, cvPath };
 }
 
 export async function sendApplicationEmail(emailData) {
