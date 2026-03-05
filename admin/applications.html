@@ -6,342 +6,409 @@
   <title>Applications Admin - Win-Win</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #f5f5f5;
-      padding: 20px;
     }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
+    /* ── Login ── */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .login-card {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .login-card h2 {
+      font-size: 22px;
       color: #333;
+      margin-bottom: 6px;
     }
 
-    .subtitle {
-      color: #666;
-      margin-bottom: 30px;
+    .login-card p {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 28px;
     }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .field input {
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .field input:focus { border-color: #ef4444; }
+
+    .login-btn {
+      width: 100%;
+      padding: 11px;
+      background: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s;
+    }
+
+    .login-btn:hover { background: #dc2626; }
+    .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .login-error {
+      color: #dc2626;
+      font-size: 13px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* ── App ── */
+    #appScreen { display: none; padding: 24px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .topbar h1 { font-size: 28px; color: #333; }
+
+    .logout-btn {
+      padding: 8px 16px;
+      background: #f3f4f6;
+      color: #555;
+      border: none;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .logout-btn:hover { background: #e5e7eb; }
+
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    .subtitle { color: #666; margin-bottom: 28px; font-size: 14px; }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
     }
 
     .stat-card {
       background: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
 
-    .stat-value {
-      font-size: 32px;
-      font-weight: bold;
-      color: #ef4444;
-    }
-
-    .stat-label {
-      color: #666;
-      margin-top: 5px;
-    }
+    .stat-value { font-size: 30px; font-weight: 800; color: #ef4444; }
+    .stat-label { color: #888; margin-top: 4px; font-size: 13px; }
 
     .filters {
       background: white;
-      padding: 20px;
+      padding: 18px 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
       margin-bottom: 20px;
       display: flex;
-      gap: 15px;
+      gap: 16px;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: flex-end;
     }
 
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    .filter-group { display: flex; flex-direction: column; gap: 5px; }
+    .filter-group label { font-size: 12px; color: #666; font-weight: 600; }
 
-    .filter-group label {
-      font-size: 12px;
-      color: #666;
-      font-weight: 600;
-    }
-
-    select, input {
+    select, input[type="text"] {
       padding: 8px 12px;
       border: 1px solid #ddd;
       border-radius: 6px;
       font-size: 14px;
+      outline: none;
     }
 
-    .applications-grid {
-      display: grid;
-      gap: 20px;
-    }
+    select:focus, input[type="text"]:focus { border-color: #ef4444; }
+
+    .applications-grid { display: grid; gap: 16px; }
 
     .application-card {
       background: white;
-      padding: 25px;
+      padding: 22px 24px;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      transition: box-shadow 0.2s;
     }
 
-    .application-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
+    .application-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
 
     .app-header {
       display: flex;
       justify-content: space-between;
-      align-items: start;
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #eee;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f0f0f0;
     }
 
-    .app-name {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    .app-job {
-      color: #ef4444;
-      font-weight: 600;
-      font-size: 14px;
-    }
+    .app-name { font-size: 18px; font-weight: 700; color: #222; margin-bottom: 3px; }
+    .app-job { color: #ef4444; font-weight: 600; font-size: 13px; }
 
     .app-status {
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
-    .status-new {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-
-    .status-reviewed {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .status-contacted {
-      background: #d1fae5;
-      color: #065f46;
-    }
-
-    .status-rejected {
-      background: #fee2e2;
-      color: #991b1b;
-    }
+    .status-new { background: #dbeafe; color: #1e40af; }
+    .status-reviewed { background: #fef3c7; color: #92400e; }
+    .status-contacted { background: #d1fae5; color: #065f46; }
+    .status-rejected { background: #fee2e2; color: #991b1b; }
+    .status-hired { background: #ede9fe; color: #5b21b6; }
 
     .app-details {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
     }
 
-    .detail-item {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .detail-label {
-      font-size: 12px;
-      color: #666;
-      font-weight: 600;
-    }
-
-    .detail-value {
-      color: #333;
-      font-size: 14px;
-    }
+    .detail-item { display: flex; flex-direction: column; gap: 3px; }
+    .detail-label { font-size: 11px; color: #999; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .detail-value { color: #333; font-size: 14px; }
 
     .app-message {
       background: #f9fafb;
-      padding: 15px;
+      padding: 12px 16px;
       border-radius: 6px;
-      margin-top: 15px;
+      margin-top: 12px;
+      border-left: 3px solid #e5e7eb;
     }
 
-    .message-label {
-      font-size: 12px;
-      color: #666;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .message-text {
-      color: #333;
-      line-height: 1.6;
-    }
+    .message-label { font-size: 11px; color: #999; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .message-text { color: #444; line-height: 1.6; font-size: 14px; }
 
     .app-actions {
       display: flex;
       gap: 10px;
-      margin-top: 15px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     .btn {
-      padding: 8px 16px;
+      padding: 7px 14px;
       border: none;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    .btn-primary {
-      background: #ef4444;
-      color: white;
-    }
+    .btn-primary { background: #ef4444; color: white; }
+    .btn-primary:hover { background: #dc2626; }
+    .btn-secondary { background: #f3f4f6; color: #333; }
+    .btn-secondary:hover { background: #e5e7eb; }
+    .btn-cv { background: #ecfdf5; color: #065f46; }
+    .btn-cv:hover { background: #d1fae5; }
 
-    .btn-primary:hover {
-      background: #dc2626;
-    }
-
-    .btn-secondary {
-      background: #f3f4f6;
-      color: #333;
-    }
-
-    .btn-secondary:hover {
-      background: #e5e7eb;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 40px;
-      color: #666;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 60px 20px;
+    .status-select {
+      padding: 7px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
       background: white;
-      border-radius: 10px;
-      color: #666;
+      color: #555;
     }
 
-    .error {
-      background: #fee2e2;
-      color: #991b1b;
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+    .loading { text-align: center; padding: 48px; color: #888; }
+    .empty { text-align: center; padding: 60px 20px; background: white; border-radius: 10px; color: #888; }
+    .error-banner { background: #fee2e2; color: #991b1b; padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Job Applications</h1>
-    <p class="subtitle">Manage and review all job applications</p>
 
-    <div class="stats" id="stats"></div>
-
-    <div class="filters">
-      <div class="filter-group">
-        <label>Status</label>
-        <select id="statusFilter">
-          <option value="all">All Status</option>
-          <option value="new">New</option>
-          <option value="reviewed">Reviewed</option>
-          <option value="contacted">Contacted</option>
-          <option value="rejected">Rejected</option>
-        </select>
+  <!-- Login Screen -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h2>Win-Win Admin</h2>
+      <p>Sign in to view job applications</p>
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="admin@win-win.si" autocomplete="username">
       </div>
-
-      <div class="filter-group">
-        <label>Job</label>
-        <select id="jobFilter">
-          <option value="all">All Jobs</option>
-        </select>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
       </div>
-
-      <div class="filter-group">
-        <label>Search</label>
-        <input type="text" id="searchInput" placeholder="Search name or email...">
-      </div>
+      <button class="login-btn" id="loginBtn">Sign In</button>
+      <div class="login-error" id="loginError"></div>
     </div>
+  </div>
 
-    <div id="error"></div>
-    <div id="applications" class="applications-grid"></div>
+  <!-- App Screen -->
+  <div id="appScreen">
+    <div class="topbar">
+      <h1>Job Applications</h1>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
+    </div>
+    <div class="container">
+      <p class="subtitle">Review and manage all incoming applications</p>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <label>Status</label>
+          <select id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="new">New</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="contacted">Contacted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Job</label>
+          <select id="jobFilter">
+            <option value="all">All Jobs</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Search</label>
+          <input type="text" id="searchInput" placeholder="Name or email...">
+        </div>
+      </div>
+
+      <div id="errorBanner"></div>
+      <div id="applications" class="applications-grid"></div>
+    </div>
   </div>
 
   <script type="module">
     import { CONFIG } from '../assets/js/config.js';
 
-    const SUPABASE_URL = CONFIG.supabase.url;
-    const SUPABASE_ANON_KEY = CONFIG.supabase.anonKey;
+    const supabase = window.supabase.createClient(CONFIG.supabase.url, CONFIG.supabase.anonKey);
 
-    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-      document.getElementById('error').innerHTML = '<div class="error">Supabase configuration missing. Please check your configuration.</div>';
-    }
-
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const loginScreen = document.getElementById('loginScreen');
+    const appScreen = document.getElementById('appScreen');
+    const loginError = document.getElementById('loginError');
 
     let allApplications = [];
-    let jobs = [];
+
+    // ── Auth ──────────────────────────────────────────────────────────
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      (async () => {
+        if (session) {
+          loginScreen.style.display = 'none';
+          appScreen.style.display = 'block';
+          await Promise.all([loadJobs(), loadApplications()]);
+        } else {
+          loginScreen.style.display = 'flex';
+          appScreen.style.display = 'none';
+        }
+      })();
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('loginBtn');
+
+      loginError.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Signing in...';
+
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        loginError.textContent = error.message;
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    });
+
+    document.getElementById('loginPassword').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('loginBtn').click();
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+    });
+
+    // ── Data ──────────────────────────────────────────────────────────
 
     async function loadJobs() {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('jobs')
         .select('id, title_en, title_sl')
         .order('created_at', { ascending: false });
 
-      if (!error && data) {
-        jobs = data;
-        const jobSelect = document.getElementById('jobFilter');
-        data.forEach(job => {
-          const option = document.createElement('option');
-          option.value = job.id;
-          option.textContent = job.title_en || job.title_sl;
-          jobSelect.appendChild(option);
-        });
-      }
+      if (!data) return;
+      const sel = document.getElementById('jobFilter');
+      data.forEach(job => {
+        const opt = document.createElement('option');
+        opt.value = job.id;
+        opt.textContent = job.title_en || job.title_sl;
+        sel.appendChild(opt);
+      });
     }
 
     async function loadApplications() {
-      document.getElementById('applications').innerHTML = '<div class="loading">Loading applications...</div>';
+      document.getElementById('applications').innerHTML = '<div class="loading">Loading...</div>';
 
       const { data, error } = await supabase
         .from('applications')
-        .select(`
-          *,
-          jobs (
-            title_en,
-            title_sl
-          )
-        `)
+        .select('*, jobs(title_en, title_sl)')
         .order('created_at', { ascending: false });
 
       if (error) {
-        document.getElementById('error').innerHTML = `<div class="error">Error loading applications: ${error.message}</div>`;
+        document.getElementById('errorBanner').innerHTML =
+          `<div class="error-banner">Error loading applications: ${error.message}</div>`;
         document.getElementById('applications').innerHTML = '';
         return;
       }
@@ -353,31 +420,27 @@
 
     function updateStats() {
       const total = allApplications.length;
-      const newCount = allApplications.filter(a => a.status === 'new').length;
-      const reviewedCount = allApplications.filter(a => a.status === 'reviewed').length;
-      const contactedCount = allApplications.filter(a => a.status === 'contacted').length;
+      const counts = { new: 0, reviewed: 0, contacted: 0 };
+      allApplications.forEach(a => { if (counts[a.status] !== undefined) counts[a.status]++; });
 
       document.getElementById('stats').innerHTML = `
-        <div class="stat-card">
-          <div class="stat-value">${total}</div>
-          <div class="stat-label">Total Applications</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${newCount}</div>
-          <div class="stat-label">New</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${reviewedCount}</div>
-          <div class="stat-label">Reviewed</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${contactedCount}</div>
-          <div class="stat-label">Contacted</div>
-        </div>
+        <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Total</div></div>
+        <div class="stat-card"><div class="stat-value">${counts.new}</div><div class="stat-label">New</div></div>
+        <div class="stat-card"><div class="stat-value">${counts.reviewed}</div><div class="stat-label">Reviewed</div></div>
+        <div class="stat-card"><div class="stat-value">${counts.contacted}</div><div class="stat-label">Contacted</div></div>
       `;
     }
 
-    function renderApplications(applications) {
+    async function getCVSignedUrl(cvPath) {
+      if (!cvPath) return null;
+      const { data, error } = await supabase.storage
+        .from('cv-uploads')
+        .createSignedUrl(cvPath, 3600);
+      if (error) return null;
+      return data.signedUrl;
+    }
+
+    async function renderApplications(applications) {
       const container = document.getElementById('applications');
 
       if (applications.length === 0) {
@@ -385,9 +448,19 @@
         return;
       }
 
-      container.innerHTML = applications.map(app => {
+      const cards = await Promise.all(applications.map(async app => {
         const jobTitle = app.jobs?.title_en || app.jobs?.title_sl || 'General Application';
-        const cvLink = app.cv_url ? `<a href="${app.cv_url}" target="_blank" class="btn btn-secondary">Download CV</a>` : '';
+        const statusClass = `status-${app.status || 'new'}`;
+        const statusLabel = (app.status || 'new').toUpperCase();
+
+        const cvUrl = await getCVSignedUrl(app.cv_url);
+        const cvBtn = cvUrl
+          ? `<a href="${cvUrl}" target="_blank" rel="noopener" class="btn btn-cv">Download CV</a>`
+          : '';
+
+        const date = new Date(app.created_at).toLocaleDateString('en-GB', {
+          day: 'numeric', month: 'short', year: 'numeric'
+        });
 
         return `
           <div class="application-card">
@@ -396,7 +469,7 @@
                 <div class="app-name">${app.first_name} ${app.last_name}</div>
                 <div class="app-job">${jobTitle}</div>
               </div>
-              <div class="app-status status-${app.status}">${app.status.toUpperCase()}</div>
+              <span class="app-status ${statusClass}">${statusLabel}</span>
             </div>
 
             <div class="app-details">
@@ -410,77 +483,62 @@
               </div>
               <div class="detail-item">
                 <div class="detail-label">Applied</div>
-                <div class="detail-value">${new Date(app.created_at).toLocaleDateString()}</div>
+                <div class="detail-value">${date}</div>
               </div>
               ${app.preferred_interview_time ? `
               <div class="detail-item">
-                <div class="detail-label">Preferred Interview Time</div>
+                <div class="detail-label">Interview Time</div>
                 <div class="detail-value">${app.preferred_interview_time}</div>
-              </div>
-              ` : ''}
+              </div>` : ''}
             </div>
 
             ${app.message ? `
             <div class="app-message">
               <div class="message-label">Message</div>
               <div class="message-text">${app.message}</div>
-            </div>
-            ` : ''}
+            </div>` : ''}
 
             <div class="app-actions">
-              ${cvLink}
-              <a href="mailto:${app.email}" class="btn btn-secondary">Send Email</a>
-              <select onchange="updateStatus('${app.id}', this.value)" class="btn btn-secondary">
-                <option value="">Change Status</option>
-                <option value="reviewed">Mark as Reviewed</option>
-                <option value="contacted">Mark as Contacted</option>
-                <option value="rejected">Mark as Rejected</option>
-                <option value="new">Mark as New</option>
+              ${cvBtn}
+              <a href="mailto:${app.email}" class="btn btn-secondary">Email</a>
+              <select class="status-select" onchange="updateStatus('${app.id}', this.value)">
+                <option value="">Change status</option>
+                <option value="new">New</option>
+                <option value="reviewed">Reviewed</option>
+                <option value="contacted">Contacted</option>
+                <option value="rejected">Rejected</option>
               </select>
             </div>
           </div>
         `;
-      }).join('');
+      }));
+
+      container.innerHTML = cards.join('');
     }
 
-    window.updateStatus = async function(applicationId, newStatus) {
-      if (!newStatus) return;
-
+    window.updateStatus = async function(id, status) {
+      if (!status) return;
       const { error } = await supabase
         .from('applications')
-        .update({ status: newStatus })
-        .eq('id', applicationId);
-
-      if (error) {
-        alert('Error updating status: ' + error.message);
-        return;
-      }
-
+        .update({ status })
+        .eq('id', id);
+      if (error) { alert('Error updating status: ' + error.message); return; }
       await loadApplications();
     };
+
+    // ── Filters ───────────────────────────────────────────────────────
 
     function filterApplications() {
       const statusFilter = document.getElementById('statusFilter').value;
       const jobFilter = document.getElementById('jobFilter').value;
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const search = document.getElementById('searchInput').value.toLowerCase();
 
       let filtered = allApplications;
-
-      if (statusFilter !== 'all') {
-        filtered = filtered.filter(a => a.status === statusFilter);
-      }
-
-      if (jobFilter !== 'all') {
-        filtered = filtered.filter(a => a.job_id === jobFilter);
-      }
-
-      if (searchTerm) {
-        filtered = filtered.filter(a =>
-          a.first_name.toLowerCase().includes(searchTerm) ||
-          a.last_name.toLowerCase().includes(searchTerm) ||
-          a.email.toLowerCase().includes(searchTerm)
-        );
-      }
+      if (statusFilter !== 'all') filtered = filtered.filter(a => a.status === statusFilter);
+      if (jobFilter !== 'all') filtered = filtered.filter(a => a.job_id === jobFilter);
+      if (search) filtered = filtered.filter(a =>
+        (a.first_name + ' ' + a.last_name + ' ' + a.email).toLowerCase().includes(search)
+      );
 
       renderApplications(filtered);
     }
@@ -488,9 +546,6 @@
     document.getElementById('statusFilter').addEventListener('change', filterApplications);
     document.getElementById('jobFilter').addEventListener('change', filterApplications);
     document.getElementById('searchInput').addEventListener('input', filterApplications);
-
-    loadJobs();
-    loadApplications();
   </script>
 </body>
 </html>
