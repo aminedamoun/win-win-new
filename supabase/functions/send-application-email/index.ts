@@ -22,6 +22,17 @@ interface ApplicationEmailData {
   submittedAt?: string;
 }
 
+function arrayBufferToBase64(buffer: ArrayBuffer): string {
+  const bytes = new Uint8Array(buffer);
+  let binary = "";
+  const chunkSize = 8192;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize);
+    binary += String.fromCharCode(...chunk);
+  }
+  return btoa(binary);
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
@@ -33,6 +44,13 @@ Deno.serve(async (req: Request) => {
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+    console.log("[send-application-email] received:", {
+      fullName: `${data.firstName} ${data.lastName}`,
+      jobTitle: data.jobTitle,
+      cvPath: data.cvPath || "(none)",
+      supabaseUrl: SUPABASE_URL,
+    });
 
     if (!RESEND_API_KEY) throw new Error("RESEND_API_KEY is not configured");
     if (!SUPABASE_URL) throw new Error("SUPABASE_URL is not configured");
@@ -48,27 +66,50 @@ Deno.serve(async (req: Request) => {
       timeStyle: "short",
     });
 
-    let cvAttachment: { filename: string; content: string } | null = null;
+    let cvAttachment: { filename: string; content: string; contentType: string } | null = null;
     let cvFallbackNote = "";
 
     if (data.cvPath) {
+      console.log("[send-application-email] downloading CV from bucket cv-uploads, path:", data.cvPath);
+
       const { data: fileData, error: downloadError } = await supabaseAdmin.storage
         .from("cv-uploads")
         .download(data.cvPath);
 
       if (downloadError) {
-        console.error("Failed to download CV:", downloadError.message);
-        cvFallbackNote = `<p><span class="label">CV:</span> <span class="value muted">Priložitev ni uspela — datoteka shranjena v sistemu (${data.cvPath})</span></p>`;
+        console.error("[send-application-email] CV download error:", JSON.stringify(downloadError));
+
+        const { data: signedUrlData, error: signedUrlError } = await supabaseAdmin.storage
+          .from("cv-uploads")
+          .createSignedUrl(data.cvPath, 60 * 60 * 24);
+
+        if (signedUrlError) {
+          console.error("[send-application-email] signed URL error:", JSON.stringify(signedUrlError));
+          cvFallbackNote = `<p style="margin-top:20px;color:#555;font-size:13px;">CV datoteka shranjena v sistemu (pot: <code>${data.cvPath}</code>). Priložitev ni uspela.</p>`;
+        } else {
+          cvFallbackNote = `<p style="margin-top:20px;color:#555;font-size:13px;">CV (priložitev ni uspela — odprite neposredno): <a href="${signedUrlData.signedUrl}">Prenesi CV</a> (veljavna 24 ur)</p>`;
+        }
       } else if (fileData) {
         const buffer = await fileData.arrayBuffer();
-        const base64 = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+        console.log("[send-application-email] CV downloaded, size bytes:", buffer.byteLength);
+
+        const base64 = arrayBufferToBase64(buffer);
         const safeName = `${fullName.replace(/[^a-zA-Z0-9]/g, "-")}-${(data.jobSlug || "vloga").replace(/[^a-zA-Z0-9]/g, "-")}.pdf`;
-        cvAttachment = { filename: safeName, content: base64 };
+
+        cvAttachment = {
+          filename: safeName,
+          content: base64,
+          contentType: "application/pdf",
+        };
+
+        console.log("[send-application-email] CV attachment ready:", safeName, "base64 length:", base64.length);
       }
+    } else {
+      console.log("[send-application-email] no cvPath provided, skipping attachment");
     }
 
     const rows = [
-      ["Delovno mesto", data.jobTitle + (data.jobSlug ? ` <span class="muted">(${data.jobSlug})</span>` : "")],
+      ["Delovno mesto", data.jobTitle + (data.jobSlug ? ` <span style="color:#999;">(${data.jobSlug})</span>` : "")],
       ["Ime in priimek", fullName],
       ["E-pošta", `<a href="mailto:${data.email}">${data.email}</a>`],
       ["Telefon", data.phone],
@@ -133,9 +174,12 @@ Deno.serve(async (req: Request) => {
         {
           filename: cvAttachment.filename,
           content: cvAttachment.content,
+          contentType: cvAttachment.contentType,
         },
       ];
     }
+
+    console.log("[send-application-email] sending via Resend, hasAttachment:", !!cvAttachment);
 
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -147,9 +191,10 @@ Deno.serve(async (req: Request) => {
     });
 
     const resendBody = await resendResponse.text();
+    console.log("[send-application-email] Resend status:", resendResponse.status, "body:", resendBody);
 
     if (!resendResponse.ok) {
-      console.error("Resend API error:", resendBody);
+      console.error("[send-application-email] Resend API error:", resendBody);
       return new Response(
         JSON.stringify({ success: false, error: `Resend API error: ${resendBody}` }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -163,7 +208,7 @@ Deno.serve(async (req: Request) => {
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Error in send-application-email:", error);
+    console.error("[send-application-email] uncaught error:", error instanceof Error ? error.message : error);
     return new Response(
       JSON.stringify({ success: false, error: error instanceof Error ? error.message : "Unknown error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
