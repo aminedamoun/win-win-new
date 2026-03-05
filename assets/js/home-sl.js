@@ -223,7 +223,7 @@ function renderSeo(seo) {
 }
 
 async function main() {
-  const data = await loadJson("content/sl/home.json");
+  const data = await loadJson("/content/sl/home.json");
   fillText(data);
 
   renderCards("servicesCore", data.services?.core);
