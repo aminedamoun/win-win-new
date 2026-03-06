@@ -13,11 +13,6 @@ to = "/index-sl.html"
 status = 301
 
 [[redirects]]
-from = "/"
-to = "/index-sl.html"
-status = 302
-
-[[redirects]]
 from = "/admin/*"
 to = "/admin/index.html"
 status = 200
