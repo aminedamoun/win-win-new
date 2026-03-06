@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         index: resolve(__dirname, 'index.html'),
         'index-sl': resolve(__dirname, 'index-sl.html'),
+        'index-en': resolve(__dirname, 'index-en.html'),
         about: resolve(__dirname, 'about.html'),
         'about-sl': resolve(__dirname, 'about-sl.html'),
         jobs: resolve(__dirname, 'jobs.html'),

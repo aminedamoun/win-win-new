@@ -3,13 +3,8 @@ publish = "dist"
 command = "npm run build"
 
 [[redirects]]
-from = "/"
-to = "/index-sl.html"
-status = 200
-
-[[redirects]]
-from = "/index.html"
-to = "/index-sl.html"
+from = "/index-sl.html"
+to = "/"
 status = 301
 
 [[redirects]]
