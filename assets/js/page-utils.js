@@ -6,8 +6,9 @@ const detailPageMap = {
 };
 
 const staticPageMap = {
-  'index.html': 'index-sl.html',
-  'index-sl.html': 'index.html',
+  'index.html': 'index-en.html',
+  'index-sl.html': 'index-en.html',
+  'index-en.html': 'index.html',
   'about.html': 'about-sl.html',
   'about-sl.html': 'about.html',
   'jobs.html': 'jobs-sl.html',
