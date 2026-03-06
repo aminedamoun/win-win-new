@@ -3,41 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Win Win — Vsebina</title>
-  <meta name="description" content="Prodajne strategije, kultura ekipe, karierna rast in zgodbe ekipe Win Win." />
+  <title>Win Win — Insights</title>
+  <meta name="description" content="Sales strategies, team culture, career growth, and real stories from the Win Win team." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <!-- HEADER -->
-<!-- FIXED SLOVENIAN HEADER HTML (desktop structure) -->
 <header class="header">
   <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="Win Win Domov">
+    <a class="brand" href="index-en.html" aria-label="Win Win Home">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a class="nav-link" href="index.html">Domov</a>
-      <a class="nav-link" href="about.html">O nas</a>
-      <a class="nav-link" href="jobs.html">Kariera</a>
-      <a class="nav-link is-active" href="insights.html">Vpogledi</a>
-      <a class="nav-link" href="apply.html">Prijava</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-link" href="index-en.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="jobs.html">Careers</a>
+      <a class="nav-link is-active" href="insights.html">Insights</a>
+      <a class="nav-link" href="apply.html">Apply</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (SL -> EN) -->
+      <!-- Language switch (EN -> SL) -->
       <a
         class="lang-switch"
         href="insights-sl.html"
-        aria-label="Switch language to English"
-        title="English"
+        aria-label="Switch language to Slovenian"
+        title="Slovenščina"
       >
-        <img class="lang-flag" src="assets/img/flags/gb.svg" alt="English" />
+        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
       </a>
 
-      <a class="btn btn-outline" href="jobs.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -46,50 +45,37 @@
   </div>
 </header>
 
-
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="nav-link" href="index.html">Domov</a>
-    <a class="nav-link" href="about.html">O nas</a>
-    <a class="nav-link" href="jobs.html">Kariera</a>
-    <a class="nav-link is-active" href="insights.html">Vpogledi</a>
-    <a class="nav-link" href="apply.html">Prijava</a>
+    <a class="nav-link" href="index-en.html">Home</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-link" href="jobs.html">Careers</a>
+    <a class="nav-link is-active" href="insights.html">Insights</a>
+    <a class="nav-link" href="apply.html">Apply</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs.html">Poglej pozicije</a>
-      <a class="btn btn-primary" href="apply.html">Pridruži se ekipi</a>
+      <a class="btn btn-outline" href="jobs.html">View Positions</a>
+      <a class="btn btn-primary" href="apply.html">Join the Team</a>
     </div>
   </div>
 
   <main>
     <!-- HERO -->
-    <!-- FILE: insights.html OR insights-sl.html -->
-<!-- Replace ONLY the HERO section with this -->
-
-<!-- FILE: insights-sl.html (or insights.html)
-     REPLACE your entire HERO section with this (full corrected section) -->
-
-<!-- FULL FIXED HERO SECTION (copy/paste as-is)
-     - Valid HTML (adds missing "<" on section)
-     - Overlay works (darkens image, NOT a black text panel)
-     - Text stays clean/organized
--->
-
 <section class="insights-hero" aria-label="Insights hero">
   <div class="insights-hero__bg" aria-hidden="true">
     <img
       id="insightsHeroImg"
       src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600&h=600&fit=crop"
-      alt="Ekipno sodelovanje in vpogledi"
+      alt="Team collaboration and insights"
       fetchpriority="high"
     />
     <div class="insights-hero__overlay" aria-hidden="true"></div>
   </div>
 
   <div class="container insights-hero__inner">
-    <div class="hero-badge" id="insightsBadge">Središče znanja</div>
-    <h1 class="insights-hero__title" id="insightsTitle">Vpogledi iz sveta prodaje</h1>
+    <div class="hero-badge" id="insightsBadge">Knowledge Hub</div>
+    <h1 class="insights-hero__title" id="insightsTitle">Insights from the world of sales</h1>
     <p class="insights-hero__desc" id="insightsDesc">
-      Prodajne strategije, kultura ekipe, karierna rast in resnične zgodbe ekipe Win Win.
+      Sales strategies, team culture, career growth, and real stories from the Win Win team.
     </p>
   </div>
 </section>
@@ -161,7 +147,6 @@
 }
 </style>
 
-
     <!-- FEATURED ARTICLE -->
     <section class="ib-featured" data-animate>
       <div class="ib-container">
@@ -169,7 +154,7 @@
           <div class="ib-featured__img-wrap">
             <img
               src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop"
-              alt="Umetnost gradnje zaupanja v prodaji"
+              alt="The Art of Building Trust in Sales"
               class="ib-featured__img"
               loading="lazy"
             />
@@ -177,16 +162,16 @@
           <div class="ib-featured__card">
             <div class="ib-featured__top">
               <span class="ib-cat-badge ib-cat-badge--red">Featured</span>
-              <span class="ib-cat-badge">Vpogledi</span>
+              <span class="ib-cat-badge">Insights</span>
             </div>
-            <h2 class="ib-featured__title">Umetnost gradnje zaupanja v prodaji</h2>
-            <p class="ib-featured__desc">Zaupanje je temelj vsake uspešne prodaje. Spoznajte preverjene tehnike, ki jih naši najboljši prodajniki uporabljajo za gradnjo pristnih odnosov s strankami.</p>
+            <h2 class="ib-featured__title">The Art of Building Trust in Sales</h2>
+            <p class="ib-featured__desc">Trust is the foundation of every successful sale. Discover the proven techniques our top salespeople use to build genuine relationships with customers.</p>
             <div class="ib-meta">
-              <span class="ib-meta__item">7 min branja</span>
+              <span class="ib-meta__item">7 min read</span>
               <span class="ib-meta__dot" aria-hidden="true"></span>
-              <span class="ib-meta__item">1. februarja 2026</span>
+              <span class="ib-meta__item">February 1, 2026</span>
             </div>
-            <a href="article.html" class="ib-btn-primary">Preberi članek <span aria-hidden="true">&#8594;</span></a>
+            <a href="article.html" class="ib-btn-primary">Read Article <span aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
       </div>
@@ -195,29 +180,29 @@
     <!-- LATEST INSIGHTS -->
     <section class="ib-latest" data-animate>
       <div class="ib-container">
-        <h2 class="ib-section-title">Najnovejši vpogledi</h2>
+        <h2 class="ib-section-title">Latest Insights</h2>
         <div class="ib-cards">
 
           <article class="ib-card">
             <div class="ib-card__img-wrap">
               <img
                 src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=700&h=420&fit=crop"
-                alt="Zakaj je prodaja najboljša karierna pot"
+                alt="Why Sales is the Best Career Path"
                 class="ib-card__img"
                 loading="lazy"
               />
             </div>
             <div class="ib-card__body">
-              <span class="ib-cat-badge">Vpogledi</span>
-              <h3 class="ib-card__title">Zakaj je prodaja najboljša karierna pot za ambiciozne ljudi</h3>
-              <p class="ib-card__desc">Odkrijte, zakaj lahko začetek v prodaji pospeši vašo kariero hitreje kot katera koli druga začetna pozicija.</p>
+              <span class="ib-cat-badge">Insights</span>
+              <h3 class="ib-card__title">Why Sales is the Best Career Path for Ambitious People</h3>
+              <p class="ib-card__desc">Discover why starting in sales can accelerate your career faster than almost any other entry-level position.</p>
               <div class="ib-card__footer">
                 <div class="ib-meta">
                   <span class="ib-meta__item">8 min</span>
                   <span class="ib-meta__dot" aria-hidden="true"></span>
-                  <span class="ib-meta__item">8. feb 2026</span>
+                  <span class="ib-meta__item">Feb 8, 2026</span>
                 </div>
-                <a href="article.html" class="ib-card__arrow" aria-label="Preberi članek">&#8594;</a>
+                <a href="article.html" class="ib-card__arrow" aria-label="Read article">&#8594;</a>
               </div>
             </div>
           </article>
@@ -226,22 +211,22 @@
             <div class="ib-card__img-wrap">
               <img
                 src="https://images.pexels.com/photos/8867482/pexels-photo-8867482.jpeg?auto=compress&cs=tinysrgb&w=700&h=420&fit=crop"
-                alt="5 Mitov o Prodaji od Vrat do Vrat"
+                alt="5 Myths About Door-to-Door Sales Debunked"
                 class="ib-card__img"
                 loading="lazy"
               />
             </div>
             <div class="ib-card__body">
-              <span class="ib-cat-badge">Vpogledi</span>
-              <h3 class="ib-card__title">5 Mitov o Prodaji od Vrat do Vrat Razkrito</h3>
-              <p class="ib-card__desc">Ločevanje resnice od fikcije v terenski prodaji. Spoznajte resnico o prodaji od vrat do vrat in zakaj ostaja eden najučinkovitejših prodajnih kanalov.</p>
+              <span class="ib-cat-badge">Insights</span>
+              <h3 class="ib-card__title">5 Myths About Door-to-Door Sales Debunked</h3>
+              <p class="ib-card__desc">Separating fact from fiction in field sales. Learn the truth about door-to-door sales and why it remains one of the most effective sales channels.</p>
               <div class="ib-card__footer">
                 <div class="ib-meta">
                   <span class="ib-meta__item">6 min</span>
                   <span class="ib-meta__dot" aria-hidden="true"></span>
-                  <span class="ib-meta__item">1. feb 2026</span>
+                  <span class="ib-meta__item">Feb 1, 2026</span>
                 </div>
-                <a href="article.html" class="ib-card__arrow" aria-label="Preberi članek">&#8594;</a>
+                <a href="article.html" class="ib-card__arrow" aria-label="Read article">&#8594;</a>
               </div>
             </div>
           </article>
@@ -520,7 +505,7 @@
       <div class="container">
         <details class="seo-details">
           <summary class="seo-summary">
-            <span id="seoSummaryTitle">Prodajni nasveti, strategije in vpogledi za uspeh v prodaji</span>
+            <span id="seoSummaryTitle">Sales Tips, Strategies and Insights for Sales Success</span>
             <span class="chev" aria-hidden="true">⌄</span>
           </summary>
           <div class="seo-body">
@@ -539,7 +524,7 @@
           <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
         </div>
         <p class="p-muted small" id="footerDesc">
-          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
+          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
         </p>
         <div class="socials" aria-label="Social links">
           <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
@@ -548,29 +533,29 @@
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Podjetje</div>
-        <a class="footer-link" href="about-sl.html">O nas</a>
-        <a class="footer-link" href="jobs-sl.html">Zaposlitve</a>
-        <a class="footer-link" href="apply-sl.html">Kontakt</a>
+        <div class="footer-title">Company</div>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="jobs.html">Careers</a>
+        <a class="footer-link" href="apply.html">Contact</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Pravno</div>
-        <a class="footer-link" href="privacy-sl.html">Politika zasebnosti</a>
-        <a class="footer-link" href="cookies-sl.html">Politika piškotkov</a>
-        <a class="footer-link" href="terms-sl.html">Pogoji uporabe</a>
+        <div class="footer-title">Legal</div>
+        <a class="footer-link" href="privacy.html">Privacy Policy</a>
+        <a class="footer-link" href="cookies.html">Cookie Policy</a>
+        <a class="footer-link" href="terms.html">Terms of Service</a>
       </div>
 
       <div class="footer-col">
-        <div class="footer-title">Kontakt</div>
-        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
+        <div class="footer-title">Contact</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenia</div>
         <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> <a href="tel:+38631678732">+386 31 678 732</a></div>
         <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> <a href="mailto:office@win-win.si">office@win-win.si</a></div>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
       <div class="footer-admin">
         <a class="footer-admin-link" href="/admin/applications.html">Applications</a>
         <a class="footer-admin-link" href="https://app.contentful.com/spaces/ci4qfwsnd4hi" target="_blank" rel="noopener">Contentful</a>
