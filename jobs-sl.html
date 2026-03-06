@@ -177,12 +177,67 @@
     </div>
   </footer>
 
-  <!-- Floating chat button -->
-  <button class="chat-fab" type="button" aria-label="Klepetajte z nami">
-    <span aria-hidden="true">💬</span>
+  <button class="chat-fab" type="button" aria-label="Klepetajte z nami" id="chatFab">
+    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
     <span class="chat-fab-text">Klepetajte z nami</span>
   </button>
 
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M8 10h.01M12 10h.01M16 10h.01" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="chat-header-info">
+          <div class="chat-header-title">Win Win Asistent</div>
+          <div class="chat-status">
+            <span class="chat-status-dot"></span>
+            <span>Na voljo</span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="chat-expand" type="button" aria-label="Razširi klepet" id="chatExpand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+          </svg>
+        </button>
+        <button class="chat-close" type="button" aria-label="Zapri klepet" id="chatClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="chat-message">
+        <div class="chat-bubble">
+          Pozdravljeni! Tu sem, da vam pomagam z informacijami o Win Win programih, kariernih priložnostih in razporejanju sestankov. Kako vam lahko pomagam?
+        </div>
+        <div class="chat-message-time">08:29 PM</div>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <div class="chat-input-wrapper">
+        <input type="text" class="chat-input" placeholder="Napišite sporočilo..." id="chatInput">
+        <button class="chat-send-btn" type="button" aria-label="Pošlji sporočilo" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"/>
+            <path d="M22 2L15 22l-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="chat-powered">Powered by Win Win AI</div>
+    </div>
+  </div>
+
   <script type="module" src="assets/js/jobs.js"></script>
+  <script type="module">
+    import { initChat } from './assets/js/chat.js';
+    initChat();
+  </script>
 </body>
 </html>
