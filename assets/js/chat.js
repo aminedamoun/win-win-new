@@ -9,8 +9,26 @@ export function initChat() {
 
   if (!chatFab || !chatWidget || !chatClose) return;
 
+  let welcomeShown = false;
+
   chatFab.addEventListener('click', () => {
     chatWidget.classList.add('active');
+    if (!welcomeShown) {
+      welcomeShown = true;
+      const time = new Date().toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+      const welcomeHtml = `
+        <div class="chat-message">
+          <div class="chat-bubble">Pozdravljeni! Tu sem, da vam pomagam z informacijami o Win Win kariernih priložnostih in razporejanju sestankov. Kako vam lahko pomagam?</div>
+          <div class="chat-message-time">${time}</div>
+        </div>
+      `;
+      chatBody.insertAdjacentHTML('beforeend', welcomeHtml);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
   });
 
   chatClose.addEventListener('click', () => {
