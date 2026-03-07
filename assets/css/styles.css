@@ -2353,17 +2353,20 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
 }
 /* assets/css/styles.css */
 
-/* 1) Remove the dark overlay ONLY on the About hero */
+/* About hero overlay – dark background */
 .hero.hero-about::before,
 .hero-about::before {
-  content: none !important;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.70) 50%, rgba(0,0,0,0.82) 100%);
+  z-index: 1;
 }
 
-/* If your overlay is implemented via background on the hero itself */
 .hero.hero-about,
 .hero-about {
   background-color: transparent !important;
-  background-image: inherit; /* keeps your inline background-image */
+  background-image: inherit;
 }
 
 /* 2) Ensure the glass card is the only readable layer */
@@ -2381,10 +2384,17 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
   padding: 48px 56px;
 }
 
-/* Optional: if text is too dim without the big overlay */
-.hero-title,
-.hero-desc {
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+.hero-about .hero-title,
+.hero-about .hero-desc {
+  font-weight: 800;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.hero-about .hero-desc {
+  font-weight: 700;
+  font-size: 1.2rem;
+  opacity: 1;
 }
 .hero.hero-about .hero-inner,
 .hero-about .hero-inner {
