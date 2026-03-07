@@ -1,8 +1,23 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { cpSync, existsSync } from 'fs';
+
+function copyContentPlugin() {
+  return {
+    name: 'copy-content',
+    closeBundle() {
+      const src = resolve(__dirname, 'content');
+      const dest = resolve(__dirname, 'dist/content');
+      if (existsSync(src)) {
+        cpSync(src, dest, { recursive: true });
+      }
+    },
+  };
+}
 
 export default defineConfig({
   root: '.',
+  plugins: [copyContentPlugin()],
   build: {
     outDir: 'dist',
     target: 'es2022',
