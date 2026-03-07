@@ -34,7 +34,7 @@ async function fetchEntries(contentType, params = {}) {
   return json;
 }
 
-function richTextToHtml(doc) {
+export function richTextToHtml(doc) {
   if (!doc || typeof doc !== "object" || doc.nodeType !== "document") return "";
   try {
     return documentToHtmlString(doc);

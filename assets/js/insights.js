@@ -1,4 +1,4 @@
-import { getArticles, getArticleBySlug } from './contentful-client.js';
+import { getArticles, getArticleBySlug, richTextToHtml } from './contentful-client.js';
 import { initPage } from './page-utils.js';
 
 function $(id) { return document.getElementById(id); }
@@ -149,7 +149,7 @@ export async function renderArticleDetail() {
     ].join("");
   }
 
-  if (bodyEl) bodyEl.innerHTML = markdownToHtml(article.body || "");
+  if (bodyEl) bodyEl.innerHTML = richTextToHtml(article.body) || markdownToHtml(article.body || "");
 
   initPage();
 }
