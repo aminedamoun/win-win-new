@@ -43,6 +43,11 @@
       <circle cx="12" cy="11" r="0.9" fill="currentColor"/>
       <circle cx="16" cy="11" r="0.9" fill="currentColor"/>
     </symbol>
+    <symbol id="i-help-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="12" cy="17" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+    </symbol>
   </svg>
 <header class="header">
   <div class="container header-row">
@@ -174,29 +179,31 @@ https://6949b72b30e1aa8ca4b7eef2.imgix.net/image-gen%20(4)%20(1).webp?auto=compr
     <section class="section section-gradient-a" data-animate>
       <div class="container">
         <div class="center">
-          <div class="faq-bubble" aria-hidden="true">?</div>
+          <div class="faq-bubble" aria-hidden="true">
+            <svg class="icon icon-22"><use href="#i-help-circle"></use></svg>
+          </div>
           <h2 class="h2" id="faqTitle">Pogosto zastavljena <span class="text-red">vprašanja</span></h2>
           <p class="p-muted" id="faqDesc">Vse, kar moraš vedeti o pridružitvi Win Win</p>
         </div>
 
         <div class="faq-wrap" id="faqList">
-          <details class="faq-item glass"><summary class="faq-q">Ali potrebujem prejšnje prodajne izkušnje?</summary><div class="faq-a p-muted">Ne. Prejšnje prodajne izkušnje so prednost, vendar niso obvezne. Zagotavljamo strukturirano uvajanje, skripte in nenehni coaching. Najpomembnejši sta motivacija, disciplina in pripravljenost za učenje.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kakšne vrste prodaje bom opravljal?</summary><div class="faq-a p-muted">Delal boš v B2C prodaji, bodisi terenski prodaji od vrat do vrat ali prodaji v klicnem centru. Prodajal boš telekomunikacijske storitve, vključno s pogodbami za internet, TV in mobilne storitve za končne stranke.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Ali gre za redno zaposlitev ali delo preko avtorske pogodbe?</summary><div class="faq-a p-muted">Možni sta obe možnosti. Odvisno od tvojega profila in dogovora lahko delaš kot redno zaposlen ali kot samostojni podjetnik (s.p. / sodelovanje s podjetjem).</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kakšni so delovni časi?</summary><div class="faq-a p-muted">Delovni časi so strukturirani in jasno določeni. Urniki za teren in klicni center so organizirani tako, da podpirajo produktivnost in ravnovesje med delom in zasebnim življenjem. Specifični urniki se razpravljajo med razgovorom.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kako deluje plačilo?</summary><div class="faq-a p-muted">Prejmeš osnovno plačo ali urno postavko plus provizijo, odvisno od uspešnosti. Tvoj zaslužek je neposredno odvisen od tvojih rezultatov. Visoko uspešni posamezniki lahko dosežejo nadpovprečen mesečni dohodek.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kako hitro lahko napredujem znotraj podjetja?</summary><div class="faq-a p-muted">Napredovanje v karieri je odvisno od uspešnosti. Uspešni prodajni svetovalci lahko napredujejo v višje prodajne svetovalce, voditelje prodajnih ekip ali prodajne managerje. Aktivno promovuramo od znotraj.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kaj naredi Win Win drugačen od drugih prodajnih podjetij?</summary><div class="faq-a p-muted">Združujemo jasno strukturo, pošteno komunikacijo, močno coaching kulturo, dolgoročne karierne priložnosti in rezultatom usmerjeno, a podporno okolje. Pri Win Win uspeh ni sreča — je sistem.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kakšne ljudi iščete?</summary><div class="faq-a p-muted">Iščemo ljudi, ki so po naravi konkurenčni, usmerjeni k ciljem, pozitivni in disciplinirani, motivirani za profesionalno in finančno rast ter pripravljeni prevzeti odgovornost za svoj uspeh.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kakšen je selekcijski proces?</summary><div class="faq-a p-muted">Proces vključuje: online prijavo, osebni razgovor in prodajno simulacijo, 14-dnevni selekcijski in uvajalni program ter podpis pogodbe in dolgoročno sodelovanje.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Ali je možno delo od doma?</summary><div class="faq-a p-muted">Za izkušene kandidate in vodstvene pozicije je lahko delo od doma ali hibridno delo možno. To se ocenjuje individualno.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Kje so vaše pisarne?</summary><div class="faq-a p-muted">Delujemo iz pisarn v Trzinu in Kranju. Terenska prodaja pokriva vso Slovenijo.</div></details>
-          <details class="faq-item glass"><summary class="faq-q">Ali zagotavljate usposabljanje in podporo?</summary><div class="faq-a p-muted">Da. Prejmeš strukturirano uvajanje, prodajne skripte in CRM orodja, mesečno coaching in mentorstvo ter redna prodajna usposabljanja in povratne informacije. Nikoli nisi prepuščen sam sebi.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">01</span>Ali potrebujem prejšnje prodajne izkušnje?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Ne. Prejšnje prodajne izkušnje so prednost, vendar niso obvezne. Zagotavljamo strukturirano uvajanje, skripte in nenehni coaching. Najpomembnejši sta motivacija, disciplina in pripravljenost za učenje.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">02</span>Kakšne vrste prodaje bom opravljal?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Vaše delo bo direktna prodaja v enem od dveh kanalov: terenska prodaja od vrat do vrat ali prodaja v klicnem centru. Strankam boste predstavljali in sklepali Telemach pakete za internet, TV in mobilne storitve.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">03</span>Ali gre za redno zaposlitev ali delo preko avtorske pogodbe?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Možni sta obe možnosti. Odvisno od tvojega profila in dogovora lahko delaš kot redno zaposlen ali kot samostojni podjetnik (s.p. / sodelovanje s podjetjem).</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">04</span>Kakšni so delovni časi?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Delovni časi so strukturirani in jasno določeni. Urniki za teren in klicni center so organizirani tako, da podpirajo produktivnost in ravnovesje med delom in zasebnim življenjem. Specifični urniki se razpravljajo med razgovorom.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">05</span>Kako deluje plačilo?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Plačilo je 100% provizijsko in je neposredno vezano na rezultate. Več prodaje pomeni višji zaslužek. Najbolj uspešni posamezniki dosegajo nadpovprečne mesečne prihodke.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">06</span>Kako hitro lahko napredujem znotraj podjetja?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Napredovanje v karieri je odvisno od uspešnosti. Uspešni prodajni svetovalci lahko napredujejo v višje prodajne svetovalce, voditelje prodajnih ekip ali prodajne managerje. Aktivno promoviramo iz obstoječe ekipe.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">07</span>Ali zagotavljate usposabljanje in podporo?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Da. Prejmeš strukturirano uvajanje, prodajne skripte in CRM orodja, mesečno coaching in mentorstvo ter redna prodajna usposabljanja in povratne informacije. Nikoli nisi prepuščen sam sebi.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">08</span>Kje so vaše pisarne?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Delujemo iz pisarn v Trzinu in Kranju. Terenska prodaja pokriva vso Slovenijo.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">09</span>Ali je možno delo od doma?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Za izkušene kandidate in vodstvene pozicije je lahko delo od doma ali hibridno delo možno. To se ocenjuje individualno.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">10</span>Kakšen je selekcijski proces?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Proces vključuje: online prijavo, osebni razgovor in prodajno simulacijo, 14-dnevni selekcijski in uvajalni program ter podpis pogodbe in dolgoročno sodelovanje.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">11</span>Kakšne ljudi iščete?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Iščemo ljudi, ki so po naravi konkurenčni, usmerjeni k ciljem, pozitivni in disciplinirani, motivirani za profesionalno in finančno rast ter pripravljeni prevzeti odgovornost za svoj uspeh.</div></details>
+          <details class="faq-item"><summary class="faq-q"><span class="faq-q-text"><span class="faq-num">12</span>Kaj naredi Win Win drugačen od drugih prodajnih podjetij?</span><svg class="icon icon-18 faq-chev" aria-hidden="true"><use href="#i-chevron-down"></use></svg></summary><div class="faq-a">Združujemo jasno strukturo, pošteno komunikacijo, močno coaching kulturo, dolgoročne karierne priložnosti in rezultatno usmerjeno, a podporno okolje. Pri Win Win uspeh ni sreča — je sistem.</div></details>
         </div>
 
         <div class="center mt-24">
-          <div class="p-muted" id="faqStill">Imaš še vprašanje?</div>
-          <a class="btn btn-primary btn-lg mt-12" href="/prijava/" id="faqBtn">Kontakt <span aria-hidden="true">→</span></a>
+          <div class="p-muted" id="faqStill">Še vedno imaš vprašanja?</div>
+          <a class="btn btn-primary btn-lg mt-12" href="/prijava/" id="faqBtn">Kontaktiraj nas <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
