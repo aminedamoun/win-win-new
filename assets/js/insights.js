@@ -135,7 +135,10 @@ export async function renderArticleDetail() {
     ].join("");
   }
 
-  if (bodyEl) bodyEl.innerHTML = richTextToHtml(article.body) || markdownToHtml(article.body || "");
+  if (bodyEl) {
+    const richResult = richTextToHtml(article.body);
+    bodyEl.innerHTML = (typeof richResult === "string" && richResult) ? richResult : markdownToHtml(article.body || "");
+  }
 
   initPage();
 }
