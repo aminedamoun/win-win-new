@@ -232,6 +232,25 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   initPage();
 }
 
+async function renderSeoContent() {
+  const seoHtml = $("seoHtml");
+  const seoSummaryTitle = $("seoSummaryTitle");
+  if (!seoHtml) return;
+  try {
+    const res = await fetch("/content/sl/jobs.json");
+    const data = await res.json();
+    if (data?.seo?.html) {
+      seoHtml.innerHTML = data.seo.html;
+    }
+    if (seoSummaryTitle && data?.seo?.summaryTitle) {
+      seoSummaryTitle.textContent = data.seo.summaryTitle;
+    }
+  } catch (err) {
+    console.error("[Jobs] SEO content load error:", err);
+  }
+}
+
 (async function () {
   await renderJobsList();
+  await renderSeoContent();
 })();
