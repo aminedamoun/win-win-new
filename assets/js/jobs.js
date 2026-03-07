@@ -9,7 +9,7 @@ function getLang() {
 }
 
 function contentfulLocale(lang) {
-  return lang === "sl" ? "sl" : "en-US";
+  return lang === "sl" ? "sl-SI" : "en-US";
 }
 
 function qp(name) {
