@@ -2395,6 +2395,9 @@ details.seo-accordion .rich p, details.seo-accordion .rich li { line-height: 1.7
   font-weight: 700;
   font-size: 1.2rem;
   opacity: 1;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 .hero.hero-about .hero-inner,
 .hero-about .hero-inner {
