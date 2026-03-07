@@ -8,6 +8,16 @@ to = "/"
 status = 301
 
 [[redirects]]
-from = "/admin/*"
+from = "/admin/applications"
+to = "/admin/applications.html"
+status = 200
+
+[[redirects]]
+from = "/admin"
+to = "/admin/index.html"
+status = 200
+
+[[redirects]]
+from = "/admin/"
 to = "/admin/index.html"
 status = 200
