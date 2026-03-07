@@ -212,28 +212,23 @@ export async function renderHomeBlog(forceLang) {
   grid.innerHTML = featured.map((article) => {
     const date = formatDate(article.date, lang);
     const url = getArticleUrl(article.slug, lang);
-    const readLabel = lang === "sl" ? "Preberi" : "Read";
+    const description = typeof article.description === "string" ? article.description : "";
     return `
-      <article class="ib-card">
-        <div class="ib-card__img-wrap">
-          ${article.image
-            ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="ib-card__img" loading="lazy" />`
-            : `<div class="ib-card__img ib-card__img--empty"></div>`
-          }
-        </div>
-        <div class="ib-card__body">
-          ${article.category ? `<span class="ib-cat-badge">${article.category}</span>` : ""}
-          <h3 class="ib-card__title">${article.title}</h3>
-          <p class="ib-card__desc">${article.description}</p>
-          <div class="ib-card__footer">
-            <div class="ib-meta">
-              ${article.readTime ? `<span class="ib-meta__item">${article.readTime}</span><span class="ib-meta__dot" aria-hidden="true"></span>` : ""}
-              <span class="ib-meta__item">${date}</span>
-            </div>
-            <a href="${url}" class="ib-card__arrow" aria-label="${readLabel} article">&#8594;</a>
+      <a href="${url}" class="blog-card">
+        ${article.image
+          ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="blog-card-image" loading="lazy" />`
+          : `<div class="blog-card-image blog-card-image--empty"></div>`
+        }
+        <div class="blog-card-content">
+          ${article.category ? `<span class="blog-card-cat">${article.category}</span>` : ""}
+          <h3 class="blog-card-title">${article.title}</h3>
+          <p class="blog-card-description">${description}</p>
+          <div class="blog-card-meta">
+            <span class="blog-card-date">${date}</span>
+            <span class="blog-card-arrow" aria-hidden="true">&#8594;</span>
           </div>
         </div>
-      </article>
+      </a>
     `;
   }).join("");
 }
