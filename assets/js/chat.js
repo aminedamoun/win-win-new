@@ -72,7 +72,7 @@ export function initChat() {
       setTimeout(() => {
         const responseHtml = `
           <div class="chat-message">
-            <div class="chat-bubble">Thank you for your message! Our team will get back to you shortly. You can also reach us at office@win-win.si or call +386 31 678 732.</div>
+            <div class="chat-bubble">Hvala za vaše sporočilo! Naša ekipa se vam bo kmalu oglasila. Pišete nam lahko tudi na office@win-win.si ali pokličite +386 31 678 732.</div>
             <div class="chat-message-time">${time}</div>
           </div>
         `;
