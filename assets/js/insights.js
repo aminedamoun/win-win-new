@@ -186,6 +186,58 @@ function markdownToHtml(md) {
   return html;
 }
 
+export async function renderHomeBlog(forceLang) {
+  const lang = forceLang || getLang();
+  const locale = contentfulLocale(lang);
+
+  const grid = document.getElementById("blogGrid");
+  const empty = document.getElementById("blogEmpty");
+  if (!grid) return;
+
+  let articles = [];
+  try {
+    articles = await getArticles(locale);
+  } catch { articles = []; }
+
+  const featured = articles
+    .filter((a) => a.featured && a.published)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+
+  if (featured.length === 0) {
+    if (empty) empty.textContent = lang === "sl" ? "Kmalu bo več člankov." : "More articles coming soon.";
+    return;
+  }
+
+  grid.innerHTML = featured.map((article) => {
+    const date = formatDate(article.date, lang);
+    const url = getArticleUrl(article.slug, lang);
+    const readLabel = lang === "sl" ? "Preberi" : "Read";
+    return `
+      <article class="ib-card">
+        <div class="ib-card__img-wrap">
+          ${article.image
+            ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="ib-card__img" loading="lazy" />`
+            : `<div class="ib-card__img ib-card__img--empty"></div>`
+          }
+        </div>
+        <div class="ib-card__body">
+          ${article.category ? `<span class="ib-cat-badge">${article.category}</span>` : ""}
+          <h3 class="ib-card__title">${article.title}</h3>
+          <p class="ib-card__desc">${article.description}</p>
+          <div class="ib-card__footer">
+            <div class="ib-meta">
+              ${article.readTime ? `<span class="ib-meta__item">${article.readTime}</span><span class="ib-meta__dot" aria-hidden="true"></span>` : ""}
+              <span class="ib-meta__item">${date}</span>
+            </div>
+            <a href="${url}" class="ib-card__arrow" aria-label="${readLabel} article">&#8594;</a>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
 export async function main(forceLang) {
   const lang = forceLang || getLang();
   const locale = contentfulLocale(lang);

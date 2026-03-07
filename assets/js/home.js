@@ -1,5 +1,7 @@
+import { renderHomeBlog } from './insights.js';
 import { initPage } from './page-utils.js';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await renderHomeBlog("en");
   initPage();
 });
