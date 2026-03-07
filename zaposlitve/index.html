@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zaposlitev v prodaji | Prosta delovna mesta – Win Win</title>
+  <meta name="description" content="Prosta delovna mesta v prodaji pri Win Win. Pridruži se naši ekipi in začni kariero v prodaji v Sloveniji." />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M2 12h20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24">
+      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-message-circle" viewBox="0 0 24 24">
+      <path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7l-4 4V6a2 2 0 0 1 2-2z"
+        fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="8" cy="11" r="0.9" fill="currentColor"/>
+      <circle cx="12" cy="11" r="0.9" fill="currentColor"/>
+      <circle cx="16" cy="11" r="0.9" fill="currentColor"/>
+    </symbol>
+  </svg>
+  <!-- HEADER -->
+<header class="header">
+  <div class="container header-row">
+    <a class="brand" href="/" aria-label="Win Win Domov">
+      <img class="brand-logo" src="/assets/img/win-win-logo.webp" alt="Win Win" />
+    </a>
+
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a class="nav-link" href="/">Domov</a>
+      <a class="nav-link" href="/o-nas/">O nas</a>
+      <a class="nav-link is-active" href="/zaposlitve/">Kariera</a>
+      <a class="nav-link" href="/vpogledi/">Vpogledi</a>
+      <a class="nav-link" href="/prijava/">Prijava</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-outline" href="/zaposlitve/">Poglej pozicije</a>
+      <a class="btn btn-primary" href="/prijava/">Pridruži se ekipi</a>
+
+      <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="nav-link" href="/">Domov</a>
+    <a class="nav-link" href="/o-nas/">O nas</a>
+    <a class="nav-link is-active" href="/zaposlitve/">Kariera</a>
+    <a class="nav-link" href="/vpogledi/">Vpogledi</a>
+    <a class="nav-link" href="/prijava/">Prijava</a>
+    <div class="mobile-actions">
+      <a class="btn btn-outline" href="/zaposlitve/">Poglej pozicije</a>
+      <a class="btn btn-primary" href="/prijava/">Pridruži se ekipi</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="section section-gradient-a">
+      <div class="container">
+        <div class="center" style="padding-top: 28px;">
+          <h1 class="h1" id="jobsTitle">Odprta delovna mesta</h1>
+          <p class="p-muted" id="jobsDesc">
+            Pridruži se ekipi vrhunskih prodajnih profesionalcev. Ponujamo konkurenčno plačilo,
+            celovito usposabljanje in jasen karierni napredek.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTERS + LIST -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <div class="jobs-toolbar glass">
+          <div class="jobs-filters">
+            <label class="sr-only" for="filterLocation">Lokacija</label>
+            <select class="select" id="filterLocation" aria-label="Filter by location"></select>
+
+            <label class="sr-only" for="filterType">Tip</label>
+            <select class="select" id="filterType" aria-label="Filter by type"></select>
+          </div>
+
+          <div class="jobs-search">
+            <label class="sr-only" for="jobsSearch">Iskanje</label>
+            <input class="input" id="jobsSearch" type="search" placeholder="Išči delovna mesta..." autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="mt-24">
+          <div class="p-muted" id="jobsLoading">Nalaganje delovnih mest...</div>
+          <div class="p-muted" id="jobsNoJobs" style="display:none;">Trenutno ni odprtih delovnih mest. Preveri ponovno kmalu!</div>
+
+          <div class="grid grid-1" id="jobsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GENERAL APPLICATION CTA -->
+    <section class="section section-gradient-b" data-animate>
+      <div class="container">
+        <div class="glass center jobs-cta">
+          <h2 class="h2" id="jobsNoPositionTitle">Ne najdeš prave pozicije?</h2>
+          <p class="p-muted" id="jobsNoPositionDesc">
+            Vedno iščemo talentirane prodajne sodelavce. Pošlji prijavo in te bomo upoštevali za prihodnje priložnosti.
+          </p>
+          <a class="btn btn-primary btn-lg mt-12" href="/prijava/" id="jobsGeneralBtn">
+            Oddaj splošno prijavo <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO ACCORDION -->
+    <section class="section section-gradient-a" data-animate>
+      <div class="container">
+        <details class="seo-accordion glass" id="seoDetails">
+          <summary class="seo-summary">
+            <span id="seoSummaryTitle">Odprta prodajna delovna mesta po Sloveniji</span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="seo-body">
+            <div class="rich" id="seoHtml"></div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand brand-footer" aria-label="Win Win">
+          <img class="brand-logo" src="/assets/img/win-win-logo.webp" alt="Win Win" />
+        </div>
+        <p class="p-muted small" id="footerDesc">
+          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
+        </p>
+        <div class="socials" aria-label="Povezave do družbenih omrežij">
+          <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
+          <a class="social" href="https://www.instagram.com/winwin.si/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Podjetje</div>
+        <a class="footer-link" href="/o-nas/">O nas</a>
+        <a class="footer-link" href="/zaposlitve/">Zaposlitve</a>
+        <a class="footer-link" href="/prijava/">Kontakt</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Pravno</div>
+        <a class="footer-link" href="/zasebnost/">Politika zasebnosti</a>
+        <a class="footer-link" href="/piskotki/">Politika piškotkov</a>
+        <a class="footer-link" href="/pogoji/">Pogoji uporabe</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Kontakt</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> <a href="tel:+38631678732">+386 31 678 732</a></div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> <a href="mailto:office@win-win.si">office@win-win.si</a></div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
+      <div class="footer-admin">
+        <a class="footer-admin-link" href="/admin/applications.html">Applications</a>
+        <a class="footer-admin-link" href="https://app.contentful.com/spaces/ci4qfwsnd4hi" target="_blank" rel="noopener">Contentful</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="chat-fab" type="button" aria-label="Klepetajte z nami" id="chatFab">
+    <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
+    <span class="chat-fab-text">Klepetajte z nami</span>
+  </button>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M8 10h.01M12 10h.01M16 10h.01" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="chat-header-info">
+          <div class="chat-header-title">Win Win Asistent</div>
+          <div class="chat-status">
+            <span class="chat-status-dot"></span>
+            <span>Na voljo</span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="chat-expand" type="button" aria-label="Razširi klepet" id="chatExpand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+          </svg>
+        </button>
+        <button class="chat-close" type="button" aria-label="Zapri klepet" id="chatClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="chat-body"></div>
+    <div class="chat-footer">
+      <div class="chat-input-wrapper">
+        <input type="text" class="chat-input" placeholder="Napišite sporočilo..." id="chatInput">
+        <button class="chat-send-btn" type="button" aria-label="Pošlji sporočilo" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"/>
+            <path d="M22 2L15 22l-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="chat-powered">Powered by Win Win AI</div>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/jobs.js"></script>
+  <script type="module">
+    import { initChat } from '/assets/js/chat.js';
+    initChat();
+  </script>
+</body>
+</html>

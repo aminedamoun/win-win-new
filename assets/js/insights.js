@@ -16,7 +16,7 @@ function formatDate(isoDate) {
 }
 
 function getArticleUrl(slug) {
-  return `article.html?slug=${encodeURIComponent(slug)}`;
+  return `/clanek/?slug=${encodeURIComponent(slug)}`;
 }
 
 function renderFeatured(article) {

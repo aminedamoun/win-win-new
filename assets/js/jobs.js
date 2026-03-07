@@ -38,10 +38,10 @@ function formatDate(isoDate, lang) {
 }
 
 function jobCardHtml(job, lang) {
-  const detailPage = lang === "sl" ? "job-sl.html" : "job.html";
-  const viewDetails = lang === "sl" ? "Poglej podrobnosti" : "View details";
-  const applyNow = lang === "sl" ? "Prijavi se" : "Apply";
-  const applyPage = lang === "sl" ? "apply-sl.html" : "apply.html";
+  const detailPage = "/pozicija/";
+  const viewDetails = "Poglej podrobnosti";
+  const applyNow = "Prijavi se";
+  const applyPage = "/prijava/";
 
   return `
     <div class="glass card" style="padding:18px;">
@@ -177,7 +177,7 @@ export async function renderJobDetail({ applyPageHref } = {}) {
     if (reqList) reqList.innerHTML = "";
     if (respList) respList.innerHTML = "";
     if (benefitsList) benefitsList.innerHTML = "";
-    if (applyBtn) applyBtn.href = applyPageHref || (lang === "sl" ? "apply-sl.html" : "apply.html");
+    if (applyBtn) applyBtn.href = applyPageHref || "/prijava/";
     initPage();
     return;
   }
@@ -225,7 +225,7 @@ export async function renderJobDetail({ applyPageHref } = {}) {
   }
 
   if (applyBtn) {
-    const base = applyPageHref || (lang === "sl" ? "apply-sl.html" : "apply.html");
+    const base = applyPageHref || "/prijava/";
     applyBtn.href = `${base}?job=${encodeURIComponent(job.slug)}`;
   }
 

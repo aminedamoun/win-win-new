@@ -2,11 +2,105 @@
 publish = "dist"
 command = "npm run build"
 
+# Old flat .html file redirects → new SL subdirectory URLs
+[[redirects]]
+from = "/jobs.html"
+to = "/zaposlitve/"
+status = 301
+
+[[redirects]]
+from = "/about.html"
+to = "/o-nas/"
+status = 301
+
+[[redirects]]
+from = "/insights.html"
+to = "/vpogledi/"
+status = 301
+
+[[redirects]]
+from = "/article.html"
+to = "/clanek/"
+status = 301
+
+[[redirects]]
+from = "/apply.html"
+to = "/prijava/"
+status = 301
+
+[[redirects]]
+from = "/job.html"
+to = "/pozicija/"
+status = 301
+
+[[redirects]]
+from = "/privacy.html"
+to = "/zasebnost/"
+status = 301
+
+[[redirects]]
+from = "/cookies.html"
+to = "/piskotki/"
+status = 301
+
+[[redirects]]
+from = "/terms.html"
+to = "/pogoji/"
+status = 301
+
+# Legacy English slug redirects
+[[redirects]]
+from = "/jobs"
+to = "/zaposlitve/"
+status = 301
+
+[[redirects]]
+from = "/careers"
+to = "/zaposlitve/"
+status = 301
+
+[[redirects]]
+from = "/blog"
+to = "/vpogledi/"
+status = 301
+
+[[redirects]]
+from = "/article"
+to = "/clanek/"
+status = 301
+
+[[redirects]]
+from = "/about"
+to = "/o-nas/"
+status = 301
+
+[[redirects]]
+from = "/contact"
+to = "/prijava/"
+status = 301
+
+[[redirects]]
+from = "/apply"
+to = "/prijava/"
+status = 301
+
+# Old index variants
 [[redirects]]
 from = "/index-sl.html"
 to = "/"
 status = 301
 
+[[redirects]]
+from = "/index-en.html"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/index.html"
+to = "/"
+status = 301
+
+# Admin routes
 [[redirects]]
 from = "/admin/applications"
 to = "/admin/applications.html"

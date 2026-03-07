@@ -24,5 +24,5 @@ export function formatDate(isoDate) {
 }
 
 export function getArticleUrl(slug) {
-  return `article.html?slug=${encodeURIComponent(slug)}`;
+  return `/clanek/?slug=${encodeURIComponent(slug)}`;
 }
