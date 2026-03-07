@@ -65,7 +65,7 @@ export async function getJobs(locale = "en-US") {
     assets[a.sys.id] = a;
   }
 
-  return (json.items || []).map((item) => {
+  const jobs = (json.items || []).map((item) => {
     const f = item.fields;
     const imageAsset = f.image?.sys?.id ? assets[f.image.sys.id] : null;
     return {
@@ -85,9 +85,19 @@ export async function getJobs(locale = "en-US") {
       published: f.published || false,
       postedDate: f.postedDate || null,
       deadline: f.deadline || null,
+      position: typeof f.position === "number" ? f.position : null,
       image: contentfulImageUrl(imageAsset),
       imageAlt: imageAsset?.fields?.description || f.title || "",
     };
+  });
+
+  return jobs.sort((a, b) => {
+    const aPos = a.position;
+    const bPos = b.position;
+    if (aPos !== null && bPos !== null) return aPos - bPos;
+    if (aPos !== null) return -1;
+    if (bPos !== null) return 1;
+    return 0;
   });
 }
 
