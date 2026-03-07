@@ -4,7 +4,7 @@ import { initPage } from './page-utils.js';
 function $(id) { return document.getElementById(id); }
 
 const lang = "sl";
-const locale = "sl-SI";
+const locale = "sl";
 
 function formatDate(isoDate) {
   if (!isoDate) return "";
