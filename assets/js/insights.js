@@ -3,38 +3,28 @@ import { initPage } from './page-utils.js';
 
 function $(id) { return document.getElementById(id); }
 
-export function getLang() {
-  const lang = document.documentElement.getAttribute("lang") || "";
-  return lang.toLowerCase().startsWith("sl") ? "sl" : "en";
-}
+const lang = "sl";
+const locale = "sl";
 
-function contentfulLocale(lang) {
-  return lang === "sl" ? "sl" : "en-US";
-}
-
-function formatDate(isoDate, lang) {
+function formatDate(isoDate) {
   if (!isoDate) return "";
   try {
-    return new Date(isoDate).toLocaleDateString(lang === "sl" ? "sl-SI" : "en-GB", {
+    return new Date(isoDate).toLocaleDateString("sl-SI", {
       year: "numeric", month: "long", day: "numeric",
     });
   } catch { return isoDate; }
 }
 
-function getArticleUrl(slug, lang) {
-  return lang === "sl"
-    ? `article-sl.html?slug=${encodeURIComponent(slug)}`
-    : `article.html?slug=${encodeURIComponent(slug)}`;
+function getArticleUrl(slug) {
+  return `article.html?slug=${encodeURIComponent(slug)}`;
 }
 
-function renderFeatured(article, lang) {
+function renderFeatured(article) {
   const wrap = document.querySelector(".ib-featured__grid");
   if (!wrap || !article) return;
 
-  const date = formatDate(article.date, lang);
-  const url = getArticleUrl(article.slug, lang);
-  const featuredLabel = lang === "sl" ? "Izpostavljeno" : "Featured";
-  const readLabel = lang === "sl" ? "Preberi članek" : "Read Article";
+  const date = formatDate(article.date);
+  const url = getArticleUrl(article.slug);
 
   wrap.innerHTML = `
     <div class="ib-featured__img-wrap">
@@ -45,7 +35,7 @@ function renderFeatured(article, lang) {
     </div>
     <div class="ib-featured__card">
       <div class="ib-featured__top">
-        <span class="ib-cat-badge ib-cat-badge--red">${featuredLabel}</span>
+        <span class="ib-cat-badge ib-cat-badge--red">Izpostavljeno</span>
         ${article.category ? `<span class="ib-cat-badge">${article.category}</span>` : ""}
       </div>
       <h2 class="ib-featured__title">${article.title}</h2>
@@ -54,25 +44,25 @@ function renderFeatured(article, lang) {
         ${article.readTime ? `<span class="ib-meta__item">${article.readTime}</span><span class="ib-meta__dot" aria-hidden="true"></span>` : ""}
         <span class="ib-meta__item">${date}</span>
       </div>
-      <a href="${url}" class="ib-btn-primary">${readLabel} <span aria-hidden="true">&#8594;</span></a>
+      <a href="${url}" class="ib-btn-primary">Preberi članek <span aria-hidden="true">&#8594;</span></a>
     </div>
   `;
 }
 
-function renderCards(articles, lang) {
+function renderCards(articles) {
   const grid = document.querySelector(".ib-cards");
   if (!grid) return;
 
   const nonFeatured = articles.filter((a) => !a.featured);
 
   if (nonFeatured.length === 0) {
-    grid.innerHTML = `<p class="ib-empty">${lang === "sl" ? "Kmalu bo več člankov." : "More articles coming soon."}</p>`;
+    grid.innerHTML = `<p class="ib-empty">Kmalu bo več člankov.</p>`;
     return;
   }
 
   grid.innerHTML = nonFeatured.map((article) => {
-    const date = formatDate(article.date, lang);
-    const url = getArticleUrl(article.slug, lang);
+    const date = formatDate(article.date);
+    const url = getArticleUrl(article.slug);
     return `
       <article class="ib-card">
         <div class="ib-card__img-wrap">
@@ -90,7 +80,7 @@ function renderCards(articles, lang) {
               ${article.readTime ? `<span class="ib-meta__item">${article.readTime}</span><span class="ib-meta__dot" aria-hidden="true"></span>` : ""}
               <span class="ib-meta__item">${date}</span>
             </div>
-            <a href="${url}" class="ib-card__arrow" aria-label="Read article">&#8594;</a>
+            <a href="${url}" class="ib-card__arrow" aria-label="Preberi članek">&#8594;</a>
           </div>
         </div>
       </article>
@@ -99,8 +89,6 @@ function renderCards(articles, lang) {
 }
 
 export async function renderArticleDetail() {
-  const lang = getLang();
-  const locale = contentfulLocale(lang);
   const slug = new URLSearchParams(window.location.search).get("slug");
 
   const titleEl = $("articleTitle");
@@ -111,11 +99,9 @@ export async function renderArticleDetail() {
   const heroCat = $("articleHeroCat");
   const heroMeta = $("articleHeroMeta");
 
-  const notFound = lang === "sl" ? "Članek ni najden" : "Article not found";
-
   if (!slug) {
-    if (heroTitle) heroTitle.textContent = notFound;
-    if (titleEl) titleEl.textContent = notFound;
+    if (heroTitle) heroTitle.textContent = "Članek ni najden";
+    if (titleEl) titleEl.textContent = "Članek ni najden";
     initPage();
     return;
   }
@@ -126,13 +112,13 @@ export async function renderArticleDetail() {
   } catch { article = null; }
 
   if (!article) {
-    if (heroTitle) heroTitle.textContent = notFound;
-    if (titleEl) titleEl.textContent = notFound;
+    if (heroTitle) heroTitle.textContent = "Članek ni najden";
+    if (titleEl) titleEl.textContent = "Članek ni najden";
     initPage();
     return;
   }
 
-  const date = formatDate(article.date, lang);
+  const date = formatDate(article.date);
   document.title = `${article.title} — Win Win`;
 
   if (heroImg && article.image) { heroImg.src = article.image; heroImg.alt = article.imageAlt || article.title; }
@@ -186,10 +172,7 @@ function markdownToHtml(md) {
   return html;
 }
 
-export async function renderHomeBlog(forceLang) {
-  const lang = forceLang || getLang();
-  const locale = contentfulLocale(lang);
-
+export async function renderHomeBlog() {
   const grid = document.getElementById("blogGrid");
   const empty = document.getElementById("blogEmpty");
   if (!grid) return;
@@ -205,13 +188,13 @@ export async function renderHomeBlog(forceLang) {
     .slice(0, 3);
 
   if (featured.length === 0) {
-    if (empty) empty.textContent = lang === "sl" ? "Kmalu bo več člankov." : "More articles coming soon.";
+    if (empty) empty.textContent = "Kmalu bo več člankov.";
     return;
   }
 
   grid.innerHTML = featured.map((article) => {
-    const date = formatDate(article.date, lang);
-    const url = getArticleUrl(article.slug, lang);
+    const date = formatDate(article.date);
+    const url = getArticleUrl(article.slug);
     const description = typeof article.description === "string" ? article.description : "";
     return `
       <a href="${url}" class="blog-card">
@@ -233,17 +216,14 @@ export async function renderHomeBlog(forceLang) {
   }).join("");
 }
 
-export async function main(forceLang) {
-  const lang = forceLang || getLang();
-  const locale = contentfulLocale(lang);
-
+export async function main() {
   let articles = [];
   try {
     articles = await getArticles(locale);
   } catch { articles = []; }
 
   const featured = articles.find((a) => a.featured);
-  if (featured) renderFeatured(featured, lang);
-  renderCards(articles, lang);
+  if (featured) renderFeatured(featured);
+  renderCards(articles);
   initPage();
 }

@@ -10,10 +10,10 @@ export async function loadArticles() {
   }
 }
 
-export function formatDate(isoDate, lang) {
+export function formatDate(isoDate) {
   try {
     const d = new Date(isoDate);
-    return d.toLocaleDateString(lang === "sl" ? "sl-SI" : "en-GB", {
+    return d.toLocaleDateString("sl-SI", {
       day: "numeric",
       month: "short",
       year: "numeric",
@@ -23,8 +23,6 @@ export function formatDate(isoDate, lang) {
   }
 }
 
-export function getArticleUrl(slug, lang) {
-  return lang === "sl"
-    ? `article-sl.html?slug=${encodeURIComponent(slug)}`
-    : `article.html?slug=${encodeURIComponent(slug)}`;
+export function getArticleUrl(slug) {
+  return `article.html?slug=${encodeURIComponent(slug)}`;
 }

@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="sl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Position — Win Win</title>
-  <meta name="description" content="Job details at Win Win." />
+  <title>Pozicija — Win Win</title>
+  <meta name="description" content="Podrobnosti delovnega mesta pri Win Win." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
@@ -31,33 +31,23 @@
     </symbol>
   </svg>
   <!-- HEADER -->
- <header class="header">
+<header class="header">
   <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="Win Win Home">
+    <a class="brand" href="index.html" aria-label="Win Win Domov">
       <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
     </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="about.html">About Us</a>
-      <a class="nav-link is-active" href="jobs.html">Careers</a>
-      <a class="nav-link" href="insights.html">Insights</a>
-      <a class="nav-link" href="apply.html">Apply</a>
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a class="nav-link" href="index.html">Domov</a>
+      <a class="nav-link" href="about.html">O nas</a>
+      <a class="nav-link is-active" href="jobs.html">Kariera</a>
+      <a class="nav-link" href="insights.html">Vpogledi</a>
+      <a class="nav-link" href="apply.html">Prijava</a>
     </nav>
 
     <div class="header-actions">
-      <!-- Language switch (EN -> SL) -->
-      <a
-        class="lang-switch"
-        href="job-sl.html"
-        aria-label="Switch language to Slovenian"
-        title="Slovenščina"
-      >
-        <img class="lang-flag" src="assets/img/flags/si.svg" alt="Slovenščina" />
-      </a>
-
-      <a class="btn btn-outline" href="jobs.html">View Positions</a>
-      <a class="btn btn-primary" href="apply.html">Join the Team</a>
+      <a class="btn btn-outline" href="jobs.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply.html">Pridruži se ekipi</a>
 
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -68,14 +58,14 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="about.html">About Us</a>
-    <a class="nav-link is-active" href="jobs.html">Careers</a>
-    <a class="nav-link" href="insights.html">Insights</a>
-    <a class="nav-link" href="apply.html">Apply</a>
+    <a class="nav-link" href="index.html">Domov</a>
+    <a class="nav-link" href="about.html">O nas</a>
+    <a class="nav-link is-active" href="jobs.html">Kariera</a>
+    <a class="nav-link" href="insights.html">Vpogledi</a>
+    <a class="nav-link" href="apply.html">Prijava</a>
     <div class="mobile-actions">
-      <a class="btn btn-outline" href="jobs.html">View Positions</a>
-      <a class="btn btn-primary" href="apply.html">Join the Team</a>
+      <a class="btn btn-outline" href="jobs.html">Poglej pozicije</a>
+      <a class="btn btn-primary" href="apply.html">Pridruži se ekipi</a>
     </div>
   </div>
 
@@ -83,15 +73,15 @@
   <main class="section section-gradient-a job-page">
     <div class="container">
       <!-- back -->
-      <a class="job-back" id="backToJobs" href="jobs.html">← Back to All Positions</a>
+      <a class="job-back" id="backToJobs" href="jobs.html">← Nazaj na vse pozicije</a>
 
       <!-- top card -->
       <div class="job-hero">
         <div class="job-hero-head">
-          <div class="job-icon" aria-hidden="true"></div>
+          <div class="job-icon" aria-hidden="true">🧳</div>
 
           <div style="min-width:0;">
-            <h1 class="job-title" id="jobTitle">Position</h1>
+            <h1 class="job-title" id="jobTitle">Pozicija</h1>
 
             <!-- jobs.js fills this -->
             <div class="job-meta" id="jobMeta"></div>
@@ -105,15 +95,15 @@
       <!-- apply button -->
       <div class="job-actions">
         <a class="job-apply" id="applyForJob" href="apply.html">
-          Apply for This Position <span aria-hidden="true">→</span>
+          Prijava na pozicijo <span aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- full details -->
       <section class="job-card">
-        <h2>Full Description</h2>
+        <h2>Celoten opis</h2>
 
-        <div class="job-comp-label">Compensation</div>
+        <div class="job-comp-label">Plačilo</div>
         <div class="job-comp-value" id="jobSalary"></div>
 
         <hr class="job-divider" />
@@ -122,17 +112,17 @@
 
         <div class="job-cols" id="jobColsWrapper">
           <div class="job-col" id="reqCol">
-            <div class="job-col-title">Requirements</div>
+            <div class="job-col-title">Zahteve</div>
             <ul class="job-list" id="reqList"></ul>
           </div>
 
           <div class="job-col" id="respCol">
-            <div class="job-col-title">Responsibilities</div>
+            <div class="job-col-title">Naloge</div>
             <ul class="job-list" id="respList"></ul>
           </div>
 
           <div class="job-col" id="benefitsCol">
-            <div class="job-col-title">Benefits</div>
+            <div class="job-col-title">Ugodnosti</div>
             <ul class="job-list" id="benefitsList"></ul>
           </div>
         </div>
@@ -148,13 +138,13 @@
           <img class="brand-logo" src="assets/img/win-win-logo.webp" alt="Win Win" />
         </div>
         <p class="p-muted small">
-          Building careers in sales. We are a performance-driven sales company specializing in B2C field sales and telecommunications.
+          Gradimo kariere v prodaji. Smo prodajno usmerjeno podjetje, specializirano za B2C terensko prodajo in telekomunikacije.
         </p>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <div class="p-muted small">© <span id="year"></span> Win Win. All rights reserved.</div>
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane.</div>
       <div class="footer-admin">
         <a class="footer-admin-link" href="/admin/applications.html">Applications</a>
         <a class="footer-admin-link" href="https://app.contentful.com/spaces/ci4qfwsnd4hi" target="_blank" rel="noopener">Contentful</a>
@@ -162,9 +152,9 @@
     </div>
   </footer>
 
-  <button class="chat-fab" type="button" aria-label="Chat with us" id="chatFab">
+  <button class="chat-fab" type="button" aria-label="Klepetajte z nami" id="chatFab">
     <svg class="icon icon-22" aria-hidden="true"><use href="#i-message-circle"></use></svg>
-    <span class="chat-fab-text">Chat with us</span>
+    <span class="chat-fab-text">Klepetajte z nami</span>
   </button>
 
   <div class="chat-widget" id="chatWidget">
@@ -177,20 +167,20 @@
           </svg>
         </div>
         <div class="chat-header-info">
-          <div class="chat-header-title">Win Win Assistant</div>
+          <div class="chat-header-title">Win Win Asistent</div>
           <div class="chat-status">
             <span class="chat-status-dot"></span>
-            <span>Online</span>
+            <span>Na voljo</span>
           </div>
         </div>
       </div>
       <div class="chat-header-actions">
-        <button class="chat-expand" type="button" aria-label="Expand chat" id="chatExpand">
+        <button class="chat-expand" type="button" aria-label="Razširi klepet" id="chatExpand">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
           </svg>
         </button>
-        <button class="chat-close" type="button" aria-label="Close chat" id="chatClose">
+        <button class="chat-close" type="button" aria-label="Zapri klepet" id="chatClose">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
             <path d="M18 6L6 18M6 6l12 12"/>
           </svg>
@@ -200,8 +190,8 @@
     <div class="chat-body"></div>
     <div class="chat-footer">
       <div class="chat-input-wrapper">
-        <input type="text" class="chat-input" placeholder="Type a message..." id="chatInput">
-        <button class="chat-send-btn" type="button" aria-label="Send message" id="chatSend">
+        <input type="text" class="chat-input" placeholder="Napišite sporočilo..." id="chatInput">
+        <button class="chat-send-btn" type="button" aria-label="Pošlji sporočilo" id="chatSend">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 2L11 13"/>
             <path d="M22 2L15 22l-4-9-9-4 20-7z"/>
