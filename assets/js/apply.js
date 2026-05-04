@@ -174,7 +174,7 @@ function setupForm() {
         cvPath = await uploadCVOnly(cvFileInput);
       }
 
-      await sendApplicationEmail({
+      const submission = {
         firstName: firstName.value.trim(),
         lastName: lastName.value.trim(),
         email: email.value.trim(),
@@ -186,7 +186,19 @@ function setupForm() {
         message: $("message")?.value?.trim() || '',
         cvPath: cvPath,
         submittedAt: new Date().toISOString()
-      });
+      };
+
+      fetch('https://n8n.dkrivec.com/webhook/05a9733c-c702-4ceb-8f52-5fa7e92b3e81', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...submission,
+          source: window.location.href,
+          page: window.location.pathname
+        })
+      }).catch(err => console.warn('Webhook notify failed:', err));
+
+      await sendApplicationEmail(submission);
 
       if (successBox) {
         successBox.style.display = "block";
