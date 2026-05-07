@@ -329,8 +329,17 @@
   </div>
 
   <script type="module">
-    const SUPABASE_URL = 'https://owvufovfnngqdhbscoci.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93dnVmb3Zmbm5ncWRoYnNjb2NpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY0MTEwOTQsImV4cCI6MjA4MTk4NzA5NH0.sDDk9dKx_jHCEArBsyFzOrEMbSfHHnmZmcMD8znP2_I';
+    const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+    const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+      document.body.innerHTML =
+        '<div style="padding:40px;font-family:system-ui;color:#b00;">' +
+        '<h2>Admin not configured</h2>' +
+        '<p>VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY missing at build time. ' +
+        'Set them on the deploy host and rebuild.</p></div>';
+      throw new Error('Supabase env vars missing');
+    }
 
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
