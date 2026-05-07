@@ -150,7 +150,7 @@ function setupForm() {
 
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting...";
+      submitBtn.textContent = "Pošiljanje...";
     }
 
     try {
@@ -210,7 +210,7 @@ function setupForm() {
         clearAllErrs();
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = "Submit Application";
+          submitBtn.textContent = "Oddaj prijavo →";
         }
         if (successBox) successBox.style.display = "none";
 
@@ -219,14 +219,14 @@ function setupForm() {
           name.style.display = "none";
           name.textContent = "";
         }
-      }, 3000);
+      }, 10000);
     } catch (error) {
       console.error('Error submitting application:', error);
-      const errorMsg = error?.message || 'Unknown error';
-      alert(`There was an error submitting your application: ${errorMsg}\n\nPlease check the console for more details.`);
+      const errorMsg = error?.message || 'Neznana napaka';
+      alert(`Pri oddaji prijave je prišlo do napake: ${errorMsg}\n\nProsimo, poskusite znova ali nas kontaktirajte na office@win-win.si.`);
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Submit Application";
+        submitBtn.textContent = "Oddaj prijavo →";
       }
     }
   });
