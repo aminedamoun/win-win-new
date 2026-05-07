@@ -166,16 +166,40 @@
               <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Oddaj prijavo →</button>
             </div>
 
-            <div class="glass" id="successBox" style="display:none; margin-top: 20px; padding: 24px; border-radius: 16px; background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7;">
-              <div style="font-weight:900; font-size: 22px; margin-bottom: 10px;" id="successTitle">✓ Hvala za prijavo!</div>
-              <div style="line-height: 1.65; margin-bottom: 12px;" id="successDesc">
-                Vaša prijava je <strong>uspešno oddana</strong>. Naša kadrovska ekipa jo bo skrbno pregledala in vas <strong>kontaktirala v 24 urah</strong>.
+          </form>
+
+          <!-- Success modal (popup) -->
+          <div id="successBox" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-hidden="true"
+               style="display:none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; padding: 20px; background: rgba(15, 15, 20, 0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); animation: ww-fade-in 200ms ease-out;">
+            <div id="successDialog" style="position: relative; max-width: 520px; width: 100%; background: #ffffff; color: #1a1a1a; border-radius: 18px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(229, 57, 53, 0.08); overflow: hidden; animation: ww-pop-in 240ms cubic-bezier(0.34, 1.56, 0.64, 1);">
+              <button type="button" id="successClose" aria-label="Zapri"
+                      style="position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(0, 0, 0, 0.06); color: #4b5563; font-size: 20px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 150ms;">×</button>
+              <div style="background: linear-gradient(135deg, #E53935 0%, #9b1515 100%); padding: 28px 32px; color: #fff;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); margin-bottom: 12px;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h3 id="successTitle" style="margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.01em;">Hvala za prijavo!</h3>
               </div>
-              <div class="small" style="line-height: 1.6; opacity: 0.9;">
-                Prepričajte se, da je vaš telefon vklopljen — pogosto kličemo še isti dan. Veselimo se srečanja z vami.
+              <div style="padding: 24px 32px 28px;">
+                <p id="successDesc" style="margin: 0 0 14px; font-size: 16px; line-height: 1.6; color: #1f2937;">
+                  Vaša prijava je <strong>uspešno oddana</strong>. Naša kadrovska ekipa jo bo skrbno pregledala in vas <strong>kontaktirala v 24 urah</strong>.
+                </p>
+                <p style="margin: 0 0 22px; font-size: 14px; line-height: 1.6; color: #4b5563;">
+                  Prepričajte se, da je vaš telefon vklopljen — pogosto kličemo še isti dan. Veselimo se srečanja z vami.
+                </p>
+                <button type="button" id="successOk" class="btn btn-primary" style="width: 100%;">U redu</button>
               </div>
             </div>
-          </form>
+          </div>
+          <style>
+            @keyframes ww-fade-in { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes ww-pop-in {
+              from { opacity: 0; transform: translateY(12px) scale(0.96); }
+              to   { opacity: 1; transform: translateY(0)    scale(1);    }
+            }
+            #successBox.is-open { display: flex !important; }
+            #successClose:hover { background: rgba(0, 0, 0, 0.12) !important; }
+          </style>
         </div>
       </div>
     </section>

@@ -116,6 +116,35 @@ function setupForm() {
   const successBox = $("successBox");
   const submitBtn = $("submitBtn");
 
+  const openSuccessModal = () => {
+    if (!successBox) return;
+    successBox.style.display = "flex";
+    successBox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeSuccessModal = () => {
+    if (!successBox) return;
+    successBox.style.display = "none";
+    successBox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  const closeBtn = $("successClose");
+  const okBtn = $("successOk");
+  if (closeBtn) closeBtn.addEventListener("click", closeSuccessModal);
+  if (okBtn) okBtn.addEventListener("click", closeSuccessModal);
+  if (successBox) {
+    successBox.addEventListener("click", (e) => {
+      if (e.target === successBox) closeSuccessModal();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && successBox && successBox.style.display === "flex") {
+      closeSuccessModal();
+    }
+  });
+
   const clearAllErrs = () => {
     ["firstName", "lastName", "email", "phone", "agree", "cvFile"].forEach(clearErr);
   };
@@ -200,26 +229,19 @@ function setupForm() {
 
       await sendApplicationEmail(submission);
 
-      if (successBox) {
-        successBox.style.display = "block";
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      openSuccessModal();
+
+      form.reset();
+      clearAllErrs();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Oddaj prijavo →";
       }
-
-      setTimeout(() => {
-        form.reset();
-        clearAllErrs();
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Oddaj prijavo →";
-        }
-        if (successBox) successBox.style.display = "none";
-
-        const name = $("cvFileName");
-        if (name) {
-          name.style.display = "none";
-          name.textContent = "";
-        }
-      }, 10000);
+      const cvNameEl = $("cvFileName");
+      if (cvNameEl) {
+        cvNameEl.style.display = "none";
+        cvNameEl.textContent = "";
+      }
     } catch (error) {
       console.error('Error submitting application:', error);
       const errorMsg = error?.message || 'Neznana napaka';
