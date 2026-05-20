@@ -1,6 +1,9 @@
 # Supabase cutover — Win Win
 
-The old project (`owvufovfnngqdhbscoci`) is fully deleted; nothing to migrate. This is a clean rebuild on a new free Supabase project.
+**Current active project: `nfapdjhnapszqksyqmvm`** (switched 2026-05-20).
+Previous projects (`owvufovfnngqdhbscoci`, `xvotcsaiizgsosfwdcfo`) are no longer in use.
+
+This doc describes the clean-rebuild procedure used on each cutover.
 
 ## What's already prepared in this repo
 
