@@ -7,6 +7,9 @@
  */
 
 import { CONFIG } from "./config.js";
+import tvImg from "../img/giveaway/tv-philips-65pus8560.jpg";
+import vacuumImg from "../img/giveaway/vacuum-xiaomi-g20-lite.jpg";
+import airfryerImg from "../img/giveaway/airfryer-philips-na120.jpg";
 
 const ENDPOINT = `${CONFIG.supabase.url}/functions/v1/send-giveaway-email`;
 const SUPABASE_ANON_KEY = CONFIG.supabase.anonKey;
@@ -226,7 +229,7 @@ const PRIZES = {
     brand: "PHILIPS",
     name: "Philips 65PUS8560/12",
     price: "~ 499,99 €",
-    image: "/assets/img/giveaway/tv-philips-65pus8560.jpg",
+    image: tvImg,
     desc:
       "65-palčni 4K Ultra HD LED televizor z Ambilight tehnologijo in Smart TV platformo. Vrhunska slika in elegantna izvedba za vašo dnevno sobo.",
     specs: [
@@ -247,7 +250,7 @@ const PRIZES = {
     brand: "XIAOMI",
     name: "Xiaomi G20 Lite",
     price: "~ 109,99 €",
-    image: "/assets/img/giveaway/vacuum-xiaomi-g20-lite.jpg",
+    image: vacuumImg,
     desc:
       "Lahek in zmogljiv pokončni brezžični sesalnik z močnim sesanjem in HEPA filtracijo. Vse, kar potrebujete za hitro čiščenje doma.",
     specs: [
@@ -267,7 +270,7 @@ const PRIZES = {
     brand: "PHILIPS",
     name: "Philips NA120/00 Airfryer L",
     price: "~ 79,99 €",
-    image: "/assets/img/giveaway/airfryer-philips-na120.jpg",
+    image: airfryerImg,
     desc:
       "Cvrtnik na vroč zrak za zdravo pripravo hrane brez olja. 12 programov za vse — od krompirčka do mesa, rib in pekovskih izdelkov.",
     specs: [
