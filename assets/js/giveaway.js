@@ -11,6 +11,12 @@ import { CONFIG } from "./config.js";
 const ENDPOINT = `${CONFIG.supabase.url}/functions/v1/send-giveaway-email`;
 const SUPABASE_ANON_KEY = CONFIG.supabase.anonKey;
 
+// CRM hook — leave empty to keep email-only. Drop a webhook URL here
+// (e.g. "https://n8n.dkrivec.com/webhook/<uuid>") to fire-and-forget
+// each submission to n8n in addition to the email. Payload schema
+// is the full object built in submitForm() with `formType: "giveaway"`.
+const N8N_WEBHOOK_URL = "";
+
 const FIELDS = ["ime", "priimek", "naslov", "telefon", "email"];
 
 function $(id) { return document.getElementById(id); }
@@ -160,6 +166,7 @@ async function submitForm(e) {
   const locationLabel = getLocationLabel();
 
   const payload = {
+    formType: "giveaway",
     ime: $("ime").value.trim(),
     priimek: $("priimek").value.trim(),
     naslov: $("naslov").value.trim(),
@@ -172,6 +179,16 @@ async function submitForm(e) {
     source: window.location.href,
     userAgent: navigator.userAgent,
   };
+
+  // Fire-and-forget to n8n if a webhook URL is configured. Failures
+  // must never block the user, so we don't await this.
+  if (N8N_WEBHOOK_URL) {
+    fetch(N8N_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch((err) => console.warn("n8n webhook failed:", err));
+  }
 
   try {
     const res = await fetch(ENDPOINT, {
