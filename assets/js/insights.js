@@ -175,6 +175,43 @@ function markdownToHtml(md) {
   return html;
 }
 
+// Static demo posts shown on the homepage when Contentful has fewer than
+// 3 featured published articles. These point at the blog index since they
+// don't exist as Contentful entries yet — replace with real article slugs
+// once content is published.
+const HOME_BLOG_FALLBACKS = [
+  {
+    slug: "vpogledi-prodajne-lastnosti",
+    image: "/assets/img/blog-1.jpg",
+    imageAlt: "Prodajni svetovalec v pogovoru s stranko",
+    category: "Karierni nasveti",
+    title: "5 ključnih lastnosti uspešnega prodajnega svetovalca",
+    description: "Kaj loči top prodajalce od povprečja? Razložimo, katere lastnosti najbolj cenimo pri Win-Win in kako jih razviješ.",
+    date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+    readTime: "5 min branja",
+  },
+  {
+    slug: "kako-dosegati-visoke-provizije",
+    image: "/assets/img/blog-2.jpg",
+    imageAlt: "Sodelavka pregleduje prodajne rezultate",
+    category: "Provizije & rast",
+    title: "Kako dosegati visoke provizije v prodaji telekomunikacij",
+    description: "Praktičen vodnik skozi prodajni proces Win-Win — od prvega kontakta do podpisane pogodbe in stabilne mesečne provizije.",
+    date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+    readTime: "7 min branja",
+  },
+  {
+    slug: "od-svetovalca-do-vodje",
+    image: "/assets/img/blog-3.jpg",
+    imageAlt: "Vodja prodajne ekipe na sestanku",
+    category: "Karierna pot",
+    title: "Od svetovalca do vodje ekipe v 18 mesecih",
+    description: "Zgodbe iz Win-Win ekipe: pot od prvega prodajnega dne do vodenja lastne ekipe. Kaj je potrebno in kako sistem podpira napredovanje.",
+    date: new Date(Date.now() - 21 * 24 * 60 * 60 * 1000).toISOString(),
+    readTime: "6 min branja",
+  },
+];
+
 export async function renderHomeBlog() {
   const grid = document.getElementById("blogGrid");
   const empty = document.getElementById("blogEmpty");
@@ -185,19 +222,26 @@ export async function renderHomeBlog() {
     articles = await getArticles(locale);
   } catch { articles = []; }
 
-  const featured = articles
+  let featured = articles
     .filter((a) => a.featured && a.published)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
 
-  if (featured.length === 0) {
-    if (empty) empty.textContent = "Kmalu bo več člankov.";
-    return;
+  // Backfill with static demo posts to always show 3 cards on the homepage.
+  if (featured.length < 3) {
+    const existingSlugs = new Set(featured.map((a) => a.slug));
+    const filler = HOME_BLOG_FALLBACKS.filter((f) => !existingSlugs.has(f.slug));
+    featured = featured.concat(filler).slice(0, 3);
   }
 
+  if (empty) empty.textContent = "";
+
+  const fallbackSlugs = new Set(HOME_BLOG_FALLBACKS.map((f) => f.slug));
   grid.innerHTML = featured.map((article) => {
     const date = formatDate(article.date);
-    const url = getArticleUrl(article.slug);
+    // Fallback articles don't exist in Contentful — link to the blog index
+    // instead of a dead /clanek/?slug=... URL.
+    const url = fallbackSlugs.has(article.slug) ? "/vpogledi/" : getArticleUrl(article.slug);
     const description = typeof article.description === "string" ? article.description : "";
     return `
       <a href="${url}" class="blog-card">

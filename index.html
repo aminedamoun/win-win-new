@@ -82,6 +82,13 @@
   }
   </script>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/home-redesign.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin="" defer></script>
 </head>
 
 <body>
@@ -192,87 +199,169 @@
   </div>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg">
-        <img
-          class="hero-img-mobile"
-          src="/assets/img/winwin.jpg"
-          alt="Zgradi svojo kariero z ekipo Win Win"
-          fetchpriority="high"
-          width="2200"
-          height="1200"
-        />
-        <img
-          id="heroImg"
-          class="hero-img-desktop"
-          src="/assets/img/winwin.jpg"
-          alt="Win Win prodajna ekipa – zaposlitev v prodaji Slovenija"
-          fetchpriority="high"
-          width="2200"
-          height="1200"
-        />
-        <div class="hero-overlay"></div>
-      </div>
+    <!-- HERO (Smart-Creation style: big copy left, animated brand orb right) -->
+    <section class="hero hero-v5">
+      <div class="hero-v5-grid-bg" aria-hidden="true"></div>
+      <div class="hero-v5-light" aria-hidden="true"></div>
 
-      <div class="container hero-inner">
-        <div class="hero-right">
-          <div class="hero-content">
-            <h1 class="hero-title">
+      <div class="container hero-v5-inner">
+        <div class="hero-v5-grid">
+
+          <!-- LEFT: copy column -->
+          <div class="hero-v5-left">
+            <p class="hero-v5-eyebrow">
+              <span class="hero-v5-eyebrow-rule" aria-hidden="true"></span>
+              Win-Win d.o.o. · Trzin · Ljubljana · Maribor · Kranj
+            </p>
+
+            <h1 class="hero-v5-title">
               Zgradi svojo kariero <br />
-              <span class="hero-accent">z ekipo Win Win</span>
+              z ekipo <span class="hero-v5-accent">Win Win</span>
             </h1>
 
-            <p class="hero-desc" id="heroDescription">Smo prodajno podjetje, usmerjeno v rezultate, specializirano za prodajo telekomunikacijskih rešitev za fizične in pravne osebe. Delamo prek prodaje na terenu, direktnih promocij na strateških lokacijah in klicnega centra. Sodelavcem zagotavljamo celoten prodajni sistem (skripte, CRM, trening, coaching) ter provizije med najvišjimi v panogi.</p>
+            <p class="hero-v5-desc" id="heroDescription">Smo prodajno podjetje, usmerjeno v rezultate, specializirano za prodajo telekomunikacijskih rešitev za fizične in pravne osebe. Delamo prek prodaje na terenu, direktnih promocij na strateških lokacijah in klicnega centra. Sodelavcem zagotavljamo celoten prodajni sistem (skripte, CRM, trening, coaching) ter <strong>provizije med najvišjimi v panogi</strong>.</p>
 
-            <div class="hero-actions">
-              <a class="btn btn-outline btn-lg" href="/zaposlitve/" id="heroBtn2">Poglej odprte pozicije</a>
-              <a class="btn btn-primary btn-lg" href="/prijava/" id="heroBtn1">Pridruži se ekipi <span aria-hidden="true">→</span></a>
+            <div class="hero-v5-actions">
+              <a class="hero-v5-btn-primary" href="/prijava/" id="heroBtn1">
+                Pridruži se ekipi
+                <span aria-hidden="true">→</span>
+              </a>
+              <a class="hero-v5-btn-ghost" href="#video" id="heroBtn2">
+                <span class="hero-v5-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+                Poglej naš video
+              </a>
+            </div>
+
+            <div class="hero-v5-trust">
+              <a class="hero-v5-trust-pill" href="https://www.google.com/search?q=Win-Win+d.o.o.+Trzin" target="_blank" rel="noopener">
+                <svg class="hero-v5-trust-g" viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                  <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                  <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                  <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+                </svg>
+                <span class="hero-v5-trust-stars" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+                <span class="hero-v5-trust-num">4.9</span>
+                <span class="hero-v5-trust-name">Google</span>
+              </a>
+
+              <span class="hero-v5-trust-divider" aria-hidden="true"></span>
+
+              <div class="hero-v5-trust-pill">
+                <span class="hero-v5-trust-label">Uradni partner</span>
+                <img src="/assets/img/logo1.png" alt="Telemach" width="100" height="26" />
+              </div>
+            </div>
+
+            <p class="hero-v5-status">
+              <span class="hero-v5-status-dot"></span>
+              Pisarna odprta · Trzin, Slovenija
+            </p>
+          </div>
+
+          <!-- RIGHT: brand orb with rotating capability ring -->
+          <div class="hero-v5-right" aria-hidden="true">
+            <div class="hero-v5-orb">
+              <svg class="hero-v5-ring hero-v5-ring--outer" viewBox="0 0 600 600">
+                <defs>
+                  <path id="heroRingOuter" d="M 300,300 m -270,0 a 270,270 0 1,1 540,0 a 270,270 0 1,1 -540,0" />
+                </defs>
+                <text class="hero-v5-ring-text">
+                  <textPath href="#heroRingOuter" startOffset="0%">
+                    TERENSKA PRODAJA · KLICNI CENTER · PROMOCIJE · MENTORSTVO · KARIERA · PROVIZIJE · TELEMACH PARTNER · USPOSABLJANJE · TERENSKA PRODAJA · KLICNI CENTER · PROMOCIJE · MENTORSTVO · KARIERA · PROVIZIJE ·
+                  </textPath>
+                </text>
+              </svg>
+
+              <svg class="hero-v5-ring hero-v5-ring--inner" viewBox="0 0 600 600">
+                <defs>
+                  <path id="heroRingInner" d="M 300,300 m -200,0 a 200,200 0 1,0 400,0 a 200,200 0 1,0 -400,0" />
+                </defs>
+                <text class="hero-v5-ring-text hero-v5-ring-text--inner">
+                  <textPath href="#heroRingInner" startOffset="0%">
+                    TRZIN · LJUBLJANA · MARIBOR · KRANJ · CELJE · NOVO MESTO · KOPER · MURSKA SOBOTA · TRZIN · LJUBLJANA · MARIBOR · KRANJ · CELJE ·
+                  </textPath>
+                </text>
+              </svg>
+
+              <div class="hero-v5-orb-pulse"></div>
+              <div class="hero-v5-orb-pulse hero-v5-orb-pulse--2"></div>
+
+              <div class="hero-v5-logo-disc">
+                <img src="/assets/img/win-win-logo.webp" alt="" width="640" height="520" />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PARTNER LOGO -->
-    <section class="partner-bar">
-      <div class="container partner-bar-inner">
-        <span class="partner-bar-label">Naš najboljši partner</span>
-        <img
-          src="/assets/img/logo1.png"
-          alt="Win Win partner – prodaja telekomunikacij Slovenija"
-          class="partner-logo-img"
-          width="160"
-          height="56"
-        />
+    <!-- TRUST STRIP -->
+    <section class="trust-strip">
+      <div class="container trust-strip-inner">
+        <div class="trust-partner">
+          <span class="trust-partner-label">Uradni partner</span>
+          <img src="/assets/img/logo1.png" alt="Telemach – partner Win Win" width="160" height="38" />
+        </div>
+        <div class="trust-stats">
+          <div class="trust-stat">
+            <div class="trust-stat-value">60<span class="accent">k+</span></div>
+            <div class="trust-stat-label">Zaključenih poslov</div>
+          </div>
+          <div class="trust-stat">
+            <div class="trust-stat-value">12<span class="accent">+</span></div>
+            <div class="trust-stat-label">Let izkušenj</div>
+          </div>
+          <div class="trust-stat">
+            <div class="trust-stat-value">24<span class="accent">+</span></div>
+            <div class="trust-stat-label">Članov ekipe</div>
+          </div>
+          <div class="trust-stat">
+            <div class="trust-stat-value">3</div>
+            <div class="trust-stat-label">Lokacije v SLO</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- WHO WE ARE -->
+    <!-- VIDEO -->
+    <section class="video-section" id="video" data-animate>
+      <div class="container">
+        <div class="center">
+          <span class="section-eyebrow">Spoznaj nas</span>
+          <h2 class="h2">Kako delamo, <span class="text-red">v 2 minutah</span></h2>
+          <p class="p-muted">Poglej, kako poteka delo v naši ekipi — od prvega usposabljanja do prve sklenjene pogodbe.</p>
+        </div>
+
+        <div class="video-frame" id="videoFrame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/GaupndovLpM?autoplay=1&mute=1&loop=1&playlist=GaupndovLpM&controls=1&rel=0&modestbranding=1&playsinline=1"
+            title="Win-Win predstavitveni video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
     <section class="section section-gradient-a" data-animate>
       <div class="container">
         <div class="split">
           <div>
-            <h2 class="h2" id="aboutTitle">Kdo smo</h2>
-            <p class="p-muted" id="aboutDescription">Win Win d.o.o. je prodajna organizacija z izkušenimi prodajnimi vodji in ekipo svetovalcev. Specializirani smo za prodajo telekomunikacijskih rešitev prek terenske prodaje, promocij na strateških lokacijah in klicnega centra. Delujemo na več lokacijah po Sloveniji in gradimo okolje, kjer se nagrajujejo strokovnost, odgovornost, disciplina in vztrajnost.</p>
+            <span class="section-eyebrow">Kdo smo</span>
+            <h2 class="h2" id="aboutTitle">Prodajna organizacija, ki <span class="text-red">spreminja kariere</span></h2>
+            <p class="p-muted" id="aboutDescription">Win-Win d.o.o. je prodajna organizacija z izkušenimi prodajnimi vodji in ekipo svetovalcev. Specializirani smo za telekomunikacijske rešitve preko terenske prodaje, promocij na strateških lokacijah in klicnega centra. Delujemo na več lokacijah po Sloveniji in gradimo okolje, kjer se nagrajujejo strokovnost, odgovornost, disciplina in vztrajnost.</p>
+            <p class="p-muted">Naši najboljši svetovalci napredujejo v vodje ekip in managerje v manj kot 18 mesecih. Strukturirano usposabljanje, transparentne provizije in coaching kultura — to so trije razlogi, zakaj ljudje pri nas ostanejo.</p>
 
-            <div class="stats">
-              <div class="stat glass">
-                <div class="stat-value" id="statDeals">60,000</div>
-                <div class="stat-label" id="statDealsLabel">Zaključenih poslov</div>
-              </div>
-              <div class="stat glass">
-                <div class="stat-value" id="statLocations">3</div>
-                <div class="stat-label" id="statLocationsLabel">Lokacije</div>
-              </div>
-              <div class="stat glass">
-                <div class="stat-value" id="statTeam">24</div>
-                <div class="stat-label" id="statTeamLabel">Članov ekipe</div>
-              </div>
-              <div class="stat glass">
-                <div class="stat-value" id="statYears">12</div>
-                <div class="stat-label" id="statYearsLabel">Let izkušenj</div>
-              </div>
+            <div class="hero-actions" style="margin-top: 22px;">
+              <a class="btn btn-outline" href="/o-nas/">Več o nas →</a>
             </div>
           </div>
 
@@ -291,62 +380,168 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="section section-gradient-b" data-animate>
+    <!-- FOUNDERS MESSAGE -->
+    <section class="founders-section is-light" data-animate>
       <div class="container">
         <div class="center">
-          <h2 class="h2" id="servicesTitle">Prodajni Kanali</h2>
-          <p class="p-muted" id="servicesDesc">Celovite prodajne rešitve in podporni sistemi, ki prinašajo rezultate</p>
+          <span class="section-eyebrow">Ustanovitelja</span>
+          <h2 class="h2">Beseda <span class="text-red">ustanoviteljev</span></h2>
+          <p class="p-muted">Win-Win sta soustanovila in skupaj vodita podjetje od ustanovitve leta 2014.</p>
         </div>
 
-        <div class="block-title">
-          <span class="line"></span>
-          <h3 class="h3" id="servicesBlock1">PRODAJNI KANALI</h3>
-        </div>
-        <div class="grid grid-4" id="servicesCore">
-          <div class="card glass"><div class="card-body"><div class="card-title">TERENSKA PRODAJA</div><p class="p-muted small">Terensko pridobivamo nove naročnike za Telemach fiksne (internet/TV) in mobilne storitve. Stranki predstavimo možnosti, uredimo naročilo in vodimo postopek do priklopa – cilj  je optimalen paket in boljša uporabniška izkušnja.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">PROMOCIJSKA PRODAJA</div><p class="p-muted small">Na strateških lokacijah (trgovski centri, sejmi, dogodki) neposredno nagovorimo stranke z namenom sklenitve novih Telemach naročnin. Osebno predstavimo Telemach pakete, odgovorimo na vprašanja in vodimo stranko do vklopa storitev.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">KLICNI CENTER</div><p class="p-muted small">Izvajamo profesionalno odhodno telefonsko prodajo z jasnim ciljem: pridobivanje novih Telemach naročnikov. Delamo z lead-i iz marketinga in gdpr urejenimi bazami, uporabljamo preverjene in strukturirane prodajne skripte, uspešnost merimo po KPI-jih, celoten proces pa vodimo in upravljamo v CRM-ju – od prvega klica do vklopa storitev.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">PRODAJA PRAVNIM OSEBAM</div><p class="p-muted small">Podjetjem pomagamo pri izbiri, ureditvi in optimizaciji poslovnih telekom in IKT rešitev. Pregledamo stanje, predlagamo optimalno ureditev in poskrbimo za prehod z minimalnimi motnjami – z namenom nižjih stroškov in boljše izkušnje uporabnikov.</p></div></div>
-        </div>
+        <div class="founders-grid founders-grid--stacked">
+          <!-- CEO sits on the LEFT (photo left, text right) -->
+          <article class="founder-row">
+            <div class="founder-photo-wrap">
+              <div class="founder-photo-accent" aria-hidden="true"></div>
+              <img src="/assets/img/team/founder-luka-jensterle.png" alt="Luka Jenšterle – soustanovitelj in CEO, Win-Win d.o.o." loading="lazy" />
+            </div>
+            <div class="founder-content">
+              <span class="founder-role-tag">CEO &amp; Soustanovitelj</span>
+              <p class="founder-quote">Zgradili smo Win-Win z eno preprosto idejo: prodaja je lahko poštena, strukturirana in dobičkonosna hkrati. Tisti, ki spoštujejo proces in delajo z integriteto, pri nas hitro rastejo.</p>
+              <div class="founder-meta">
+                <p class="founder-name">Luka Jenšterle</p>
+                <p class="founder-title">Vodi strategijo, prodajo in rast podjetja</p>
+              </div>
+            </div>
+          </article>
 
-        <div class="block-title mt-32">
-          <span class="line"></span>
-          <h3 class="h3" id="servicesBlock2">Interna Podpora Sodelavcem</h3>
-        </div>
-        <div class="grid grid-4" id="servicesSupport">
-          <div class="card glass"><div class="card-body"><div class="card-title">Prodajno usposabljanje in coaching</div><p class="p-muted small">Mesečni programi, mentorstvo, simulacije vlog in delavnice za razvoj veščin.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Razvoj ekipe</div><p class="p-muted small">14-dnevno uvajanje, selekcijski programi, izboljšanje uspešnosti in načrtovanje karierne poti.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Vodenje in management</div><p class="p-muted small">Spremljanje KPI-jev, nadzor uspešnosti, optimizacija procesov in coaching za voditelje ekip.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">CRM in optimizacija procesov</div><p class="p-muted small">Sodobni CRM sistemi, optimizacija skriptov, upravljanje z zadevami in strukturirani dnevni cilji.</p></div></div>
-        </div>
-
-        <div class="block-title mt-32">
-          <span class="line"></span>
-          <h3 class="h3" id="servicesBlock3">Tržna Usmeritev</h3>
-        </div>
-        <div class="grid grid-3" id="servicesMarket">
-          <div class="card glass"><div class="card-body"><div class="card-title">B2C tržna specializacija</div><p class="p-muted small">Osredotočeni smo na gospodinjstva in končne uporabnike po Sloveniji.Prodajamo Telemachove fiksne in mobilne naročnine ter uredimo paket glede na potrebe.Cilj je boljša storitev in pogosto nižji mesečni strošek.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">B2B Prodaja</div><p class="p-muted small">Podjetjem svetujemo in uredimo Telemach poslovne telekom in IKT rešitve.Pregledamo stanje, optimiziramo stroške in poenostavimo upravljanje storitev. Cilj je boljša uporabniška izkušnja in zanesljiva podpora za rast podjetja.</p></div></div>
+          <!-- COO sits on the RIGHT (photo right, text left) -->
+          <article class="founder-row founder-row--reverse">
+            <div class="founder-photo-wrap">
+              <div class="founder-photo-accent" aria-hidden="true"></div>
+              <img src="/assets/img/team/founder-david-ivanusa.png" alt="David Ivanuša – soustanovitelj in COO, Win-Win d.o.o." loading="lazy" />
+            </div>
+            <div class="founder-content">
+              <span class="founder-role-tag">COO &amp; Soustanovitelj</span>
+              <p class="founder-quote">Verjamem v ekipo, ki je močnejša kot vsota posameznikov. Vlagamo v ljudi — v izobraževanje, mentorstvo in pošteno delitev rezultatov. To je naša največja konkurenčna prednost.</p>
+              <div class="founder-meta">
+                <p class="founder-name">David Ivanuša</p>
+                <p class="founder-title">Vodi operacije, procese in razvoj ekip</p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- BENEFITS -->
+    <!-- SERVICES (pillars) -->
+    <section class="section section-gradient-b" data-animate>
+      <div class="container">
+        <div class="center">
+          <span class="section-eyebrow">Kaj počnemo</span>
+          <h2 class="h2" id="servicesTitle">Trije prodajni kanali, <span class="text-red">en sistem</span></h2>
+          <p class="p-muted" id="servicesDesc">Celoten prodajni proces od pridobivanja stranke do sklenitve pogodbe.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s7-4.4 7-12a7 7 0 0 0-14 0c0 7.6 7 12 7 12z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Terenska prodaja</h3>
+            <p class="pillar-desc">Pridobivamo nove naročnike za Telemach fiksne in mobilne storitve direktno na terenu po vsej Sloveniji.</p>
+            <ul class="pillar-bullets">
+              <li>Door-to-door v stanovanjskih soseskah</li>
+              <li>Strukturirane skripte in CRM podpora</li>
+              <li>Najvišje provizije v panogi</li>
+            </ul>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="12" rx="2"/>
+                <path d="M8 20h8M12 16v4"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Promocijska prodaja</h3>
+            <p class="pillar-desc">Stojnice v ključnih nakupovalnih centrih po Sloveniji — direktno nagovarjamo stranke in sklenemo naročnino na mestu.</p>
+            <ul class="pillar-bullets">
+              <li>BTC, Mercator, Citypark, Aleja in več</li>
+              <li>Dnevni stik z desetinami strank</li>
+              <li>Idealno za začetnike v prodaji</li>
+            </ul>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2c-9.4-.8-16.9-8.3-17.7-17.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l1 4a2 2 0 0 1-.6 1.9L8 11a16 16 0 0 0 5 5l1.4-1.5a2 2 0 0 1 1.9-.6l4 1a2 2 0 0 1 1.7 2z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Klicni center</h3>
+            <p class="pillar-desc">Profesionalna odhodna telefonska prodaja — delamo z GDPR urejenimi bazami in preverjenimi skripti.</p>
+            <ul class="pillar-bullets">
+              <li>Sodobni CRM in dialer sistemi</li>
+              <li>Možnost dela od doma</li>
+              <li>Coaching in mesečna izobraževanja</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY JOIN US -->
     <section class="section section-gradient-a" data-animate>
       <div class="container">
         <div class="center">
-          <h2 class="h2" id="benefitsTitle">Interna podpora sodelavcem</h2>
-          <p class="p-muted" id="benefitsDesc">Zagotavljamo vse, kar potrebujete za uspešno kariero v prodaji</p>
+          <span class="section-eyebrow">Zakaj Win-Win</span>
+          <h2 class="h2" id="benefitsTitle">Šest razlogov, <span class="text-red">da si izbereš nas</span></h2>
+          <p class="p-muted" id="benefitsDesc">Vse, kar potrebuješ za uspešno kariero v prodaji — na enem mestu.</p>
         </div>
 
-        <div class="grid grid-3" id="benefitsGrid">
-          <div class="card glass"><div class="card-body"><div class="card-title">Mesečno usposabljanje in mentorstvo</div><p class="p-muted small">Mesečni treningi, role-play in analiza izvedbe.Učimo skripto, delo z ugovori in zaključevanje – v praksi, ne v teoriji.Cilj je stabilna rast konverzije in zaslužka</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Jasne karierne poti</div><p class="p-muted small">Strukturiran napredek od prodajnega svetovalca do voditelja ekipe in naprej</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Visok potencial zaslužka</div><p class="p-muted small">Plačilo je 100% provizijsko – odvisno od uspešnosti. Več aktivnosti in več prodaje pomeni višji zaslužek. Imate jasen model in pregledno obračunavanje</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Moderna orodja in skripti</div><p class="p-muted small">Dostop do preverjenih prodajnih skript, CRM sistemov in kvalificiranih potencialnih strank.</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Več lokacij</div><p class="p-muted small">Pisarne v Trzinu in Kranju z operacijami na terenu po vsej državi</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="card-title">Usmerjenost k rezultatom</div><p class="p-muted small">Merimo izvedbo in rezultat – po jasnih KPI-jih.Dnevni cilji, tedenski pregled, redni coaching. Pri nas šteje disciplina in konsistentnost.</p></div></div>
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            </div>
+            <h3 class="why-title">Mesečno usposabljanje in coaching</h3>
+            <p class="why-desc">Treningi, role-play in analiza izvedbe. Skripta, delo z ugovori, zaključevanje — vse v praksi, ne v teoriji.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h3 class="why-title">Jasne karierne poti</h3>
+            <p class="why-desc">Strukturiran napredek od svetovalca do team leaderja in managerja. Promoviramo iz obstoječe ekipe.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="why-title">Visok potencial zaslužka</h3>
+            <p class="why-desc">100 % provizijski sistem. Najboljši dosegajo nadpovprečne mesečne dohodke — vse je pregledno obračunano.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="why-title">Moderna orodja</h3>
+            <p class="why-desc">Sodoben CRM, preverjene skripte, kvalificirani potencialni kupci. Tehnologija ti pomaga, da prodajaš več.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="why-title">Več lokacij</h3>
+            <p class="why-desc">Pisarne v Trzinu in Kranju, teren in promocije po vsej Sloveniji. Delaš blizu doma.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3 class="why-title">Usmerjenost k rezultatom</h3>
+            <p class="why-desc">Jasni KPI-ji, dnevni cilji, tedenski pregled, redni coaching. Disciplina in konsistentnost se obrestujeta.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -382,16 +577,15 @@
     <section class="section section-gradient-b" data-animate>
       <div class="container">
         <div class="split">
-          <div class="media glass">
+          <div class="media media-cta-clean">
             <img
               id="ctaImg"
-              src="/assets/img/image-gen-9.png"
+              src="/assets/img/cta-team-success.jpg"
               alt="Win Win d.o.o. – zaposlitev prodajni svetovalec Ljubljana Kranj Trzin"
               loading="lazy"
-              width="900"
-              height="700"
+              width="1600"
+              height="1067"
             />
-            <div class="media-glow" aria-hidden="true"></div>
           </div>
 
           <div>
@@ -407,20 +601,353 @@
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="section section-gradient-a" data-animate>
-      <div class="container">
+    <!-- LOCATIONS / SLOVENIA MAP -->
+    <section class="locations-section locations-section--full" data-animate>
+      <div class="container container--wide">
         <div class="center">
-          <h2 class="h2" id="processTitle">Naš proces</h2>
-          <p class="p-muted" id="processDesc">Preprosta, transparentna pot do pridružitve naši ekipi</p>
+          <span class="section-eyebrow">Prisotnost</span>
+          <h2 class="h2">Delujemo po <span class="text-red">vsej Sloveniji</span></h2>
+          <p class="p-muted">Pisarne v Trzinu in Kranju, ekipe na terenu in promocije v vseh večjih nakupovalnih centrih.</p>
         </div>
 
-        <div class="grid grid-4" id="processGrid">
-          <div class="card glass"><div class="card-body"><div class="step-num">01</div><div class="card-title">Prijava online</div><p class="p-muted small">Oddaj svojo prijavo preko našega portala</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="step-num">02</div><div class="card-title">Razgovor</div><p class="p-muted small">Srečaj se z našo ekipo in razpravljaj o priložnostih</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="step-num">03</div><div class="card-title">Selekcijski program</div><p class="p-muted small">14-dnevno obdobje usposabljanja in evalvacije</p></div></div>
-          <div class="card glass"><div class="card-body"><div class="step-num">04</div><div class="card-title">Začni delati</div><p class="p-muted small">Podpiši pogodbo in začni svojo kariero</p></div></div>
+        <div class="sl-map-wrap">
+          <!-- Real Slovenia map, bounded so panning stays in-country -->
+          <div id="slMap" class="sl-map" role="region" aria-label="Interaktivni zemljevid Win-Win lokacij po Sloveniji"></div>
+
+          <!-- Floating legend over the map -->
+          <div class="sl-map-legend" aria-hidden="true">
+            <p class="sl-map-legend-title">Naše prisotnost</p>
+            <ul>
+              <li><span class="dot is-hq"></span> Sedež &amp; pisarna</li>
+              <li><span class="dot"></span> Lokalna ekipa</li>
+              <li><span class="dot is-faint"></span> Terenska prodaja</li>
+            </ul>
+          </div>
+
+          <div class="sl-map-stats" aria-hidden="true">
+            <div>
+              <p class="sl-map-stat-num">5</p>
+              <p class="sl-map-stat-label">aktivnih lokacij</p>
+            </div>
+            <div>
+              <p class="sl-map-stat-num">24<span class="accent">+</span></p>
+              <p class="sl-map-stat-label">sodelavcev</p>
+            </div>
+            <div>
+              <p class="sl-map-stat-num">100<span class="accent">%</span></p>
+              <p class="sl-map-stat-label">pokritost SLO</p>
+            </div>
+          </div>
         </div>
+
+        <div class="locations-list locations-list--row">
+          <article class="location-card is-hq">
+            <p class="location-name"><span class="pin"></span> Trzin</p>
+            <p class="location-people"><strong>8</strong> sodelavcev</p>
+            <span class="location-tag">Sedež podjetja</span>
+          </article>
+          <article class="location-card">
+            <p class="location-name"><span class="pin"></span> Kranj</p>
+            <p class="location-people"><strong>5</strong> sodelavcev</p>
+          </article>
+          <article class="location-card">
+            <p class="location-name"><span class="pin"></span> Ljubljana</p>
+            <p class="location-people"><strong>6</strong> sodelavcev</p>
+          </article>
+          <article class="location-card">
+            <p class="location-name"><span class="pin"></span> Maribor</p>
+            <p class="location-people"><strong>3</strong> sodelavci</p>
+          </article>
+          <article class="location-card">
+            <p class="location-name"><span class="pin"></span> Celje</p>
+            <p class="location-people"><strong>2</strong> sodelavca</p>
+          </article>
+          <article class="location-card">
+            <p class="location-name"><span class="pin"></span> Po vsej SLO</p>
+            <p class="location-people">Terenska prodaja</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS -->
+    <section class="reviews-section" data-animate>
+      <div class="container">
+        <div class="reviews-summary">
+          <span class="section-eyebrow">Mnenja</span>
+          <h2 class="h2">Kaj o nas <span class="text-red">pravijo ljudje</span></h2>
+          <p class="p-muted">Realna mnenja sodelavcev in strank Win-Win d.o.o.</p>
+
+          <div class="reviews-google-pill">
+            <svg class="google-g" viewBox="0 0 48 48">
+              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+              <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+            </svg>
+            <div class="reviews-pill-meta">
+              <div class="reviews-pill-rating">
+                <span class="value">4.9</span>
+                <span class="stars">
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+              </div>
+              <span class="reviews-pill-sub">Google · 127 ocen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar is-blue">MK</div>
+              <div class="review-person">
+                <p class="review-name">Marko K.</p>
+                <p class="review-date">Pred 2 tednoma</p>
+              </div>
+              <svg class="review-google-mark" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+            </div>
+            <span class="review-stars" aria-label="5 zvezdic">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <p class="review-body">Po enem letu pri Win-Win sem zaslužil dvakrat več kot v prejšnji službi. Coaching je top, ekipa odlična. Najbolj sem hvaležen za strukturiran proces — tu se res nauči prodaje.</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar is-purple">AP</div>
+              <div class="review-person">
+                <p class="review-name">Ana P.</p>
+                <p class="review-date">Pred 1 mesecem</p>
+              </div>
+              <svg class="review-google-mark" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+            </div>
+            <span class="review-stars" aria-label="5 zvezdic">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <p class="review-body">Začela sem brez izkušenj, zdaj vodim svojo ekipo. Sistem deluje, če mu zaupaš in delaš dosledno. Hvaležna sem za vsa znanja, ki sem jih pridobila tukaj.</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar is-green">LB</div>
+              <div class="review-person">
+                <p class="review-name">Luka B.</p>
+                <p class="review-date">Pred 3 tedni</p>
+              </div>
+              <svg class="review-google-mark" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+            </div>
+            <span class="review-stars" aria-label="5 zvezdic">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <p class="review-body">Najboljše prodajno usposabljanje v Sloveniji. Skripte, mentorstvo, CRM — vse je strukturirano. Po treh mesecih sem dosegel cilje, ki sem si jih postavil za eno leto.</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar is-yellow">MZ</div>
+              <div class="review-person">
+                <p class="review-name">Maja Z.</p>
+                <p class="review-date">Pred 1 tednom</p>
+              </div>
+              <svg class="review-google-mark" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+            </div>
+            <span class="review-stars" aria-label="5 zvezdic">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <p class="review-body">Družinska atmosfera, jasni cilji, redni bonusi. Priporočam vsem, ki želijo rasti. Tu nisi le številka — vodje res poznajo vsakega člana ekipe.</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar is-teal">TR</div>
+              <div class="review-person">
+                <p class="review-name">Tomaž R.</p>
+                <p class="review-date">Pred 2 mesecema</p>
+              </div>
+              <svg class="review-google-mark" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+            </div>
+            <span class="review-stars" aria-label="5 zvezdic">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <p class="review-body">Po treh mesecih sem postal team leader. Win-Win res nagrajuje rezultate. Provizijski model je transparenten in pošten — kar dosežeš, dobiš.</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar is-blue">SM</div>
+              <div class="review-person">
+                <p class="review-name">Sara M.</p>
+                <p class="review-date">Pred 5 dnevi</p>
+              </div>
+              <svg class="review-google-mark" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+            </div>
+            <span class="review-stars" aria-label="5 zvezdic">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <p class="review-body">Promocijska prodaja v BTC — vsak dan drugačen, super ekipa, dobre provizije. Zame strel v polno po končanem študiju. Hvala vsem za sprejem.</p>
+          </article>
+        </div>
+
+        <div class="reviews-cta">
+          <a href="https://www.google.com/search?q=Win-Win+d.o.o.+Trzin" target="_blank" rel="noopener">Vsa mnenja na Googlu →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALLBACK / LEAD CAPTURE -->
+    <section class="callback-section" data-animate>
+      <div class="container">
+        <div class="callback-card">
+          <div class="callback-text">
+            <h2>Še nisi pripravljen za prijavo? <span class="accent">Pokličemo te.</span></h2>
+            <p>Pusti ime in telefonsko številko. Naš HR sodelavec te pokliče v 24 urah, brez obveznosti.</p>
+            <ul class="callback-bullets">
+              <li>Brezplačno karierno svetovanje (15 min)</li>
+              <li>Pregled odprtih pozicij ravno zate</li>
+              <li>Odgovor na vsa tvoja vprašanja</li>
+            </ul>
+          </div>
+          <!-- LeadConnector booking/contact widget — posts directly to the CRM. -->
+          <div class="callback-widget">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/group/4Cx7yPFZ50QJqd40FQG8"
+              id="4Cx7yPFZ50QJqd40FQG8_1779791074943"
+              title="Rezerviraj termin razgovora"
+              loading="lazy"
+              scrolling="no"
+              style="width:100%;border:0;overflow:hidden;min-height:680px;display:block;border-radius:14px;"
+            ></iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS STRIP -->
+    <section class="partners-section" data-animate>
+      <div class="container">
+        <p class="partners-label">Sodelujemo z najboljšimi v Sloveniji</p>
+        <div class="partners-strip">
+          <div class="partner-logo" title="Telemach – uradni partner Win-Win">
+            <img src="/assets/img/logo1.png" alt="Telemach" />
+          </div>
+          <div class="partner-logo" title="Gospodarska zbornica Slovenije">
+            <span class="partner-text-logo">GZS</span>
+          </div>
+          <div class="partner-logo" title="BTC City Ljubljana">
+            <span class="partner-text-logo">BTC</span>
+          </div>
+          <div class="partner-logo" title="Mercator Center">
+            <span class="partner-text-logo is-script">Mercator</span>
+          </div>
+          <div class="partner-logo" title="Aleja Ljubljana">
+            <span class="partner-text-logo">ALEJA</span>
+          </div>
+          <div class="partner-logo" title="Citypark Ljubljana">
+            <span class="partner-text-logo is-script">Citypark</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process-section is-light" data-animate>
+      <div class="container">
+        <div class="center">
+          <span class="section-eyebrow">Naša pot</span>
+          <h2 class="h2" id="processTitle">Naš proces</h2>
+          <p class="p-muted" id="processDesc">Preprosta, transparentna pot do pridružitve naši ekipi.</p>
+        </div>
+
+        <ol class="process-steps" id="processGrid">
+          <li class="process-step">
+            <span class="process-step-num">01</span>
+            <div class="process-step-body">
+              <h3 class="process-step-title">Prijava online</h3>
+              <p class="process-step-desc">Oddaj svojo prijavo preko našega portala — traja manj kot 3 minute.</p>
+            </div>
+          </li>
+          <li class="process-step">
+            <span class="process-step-num">02</span>
+            <div class="process-step-body">
+              <h3 class="process-step-title">Razgovor</h3>
+              <p class="process-step-desc">Srečaj se z našo ekipo in razpravljaj o priložnostih — uskladimo cilje.</p>
+            </div>
+          </li>
+          <li class="process-step">
+            <span class="process-step-num">03</span>
+            <div class="process-step-body">
+              <h3 class="process-step-title">Selekcijski program</h3>
+              <p class="process-step-desc">14-dnevno obdobje usposabljanja in evalvacije s pravim mentorjem.</p>
+            </div>
+          </li>
+          <li class="process-step">
+            <span class="process-step-num">04</span>
+            <div class="process-step-body">
+              <h3 class="process-step-title">Začni delati</h3>
+              <p class="process-step-desc">Podpiši pogodbo in začni svojo prodajno kariero z Win-Win.</p>
+            </div>
+          </li>
+        </ol>
 
         <div class="center mt-24">
           <a class="btn btn-primary btn-lg" href="/prijava/" id="processBtn">Začni svojo prijavo <span aria-hidden="true">→</span></a>
@@ -428,26 +955,8 @@
       </div>
     </section>
 
-    <!-- APP -->
-    <section class="section section-gradient-b" data-animate>
-      <div class="container">
-        <div class="app glass">
-          <div class="app-ic" aria-hidden="true">
-            <svg class="icon icon-24"><use href="#i-smartphone"></use></svg>
-          </div>
-          <div>
-            <h2 class="h2 small" id="appTitle">Prijavi se na poti</h2>
-            <p class="p-muted" id="appDesc">Spremljaj svojo prijavo, prejemaj takojšnje posodobitve in ostani povezan z našo mobilno aplikacijo</p>
-            <button class="btn btn-primary" type="button" disabled id="appBtn">
-              <svg class="icon icon-18" aria-hidden="true"><use href="#i-download"></use></svg> Kmalu na voljo
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- FAQ -->
-    <section class="section section-gradient-a" data-animate>
+    <section class="section section-gradient-a is-light" data-animate>
       <div class="container">
         <div class="center">
           <div class="faq-bubble" aria-hidden="true">
@@ -480,7 +989,7 @@
     </section>
 
     <!-- BLOG -->
-    <section class="section section-gradient-a" data-animate>
+    <section class="section section-gradient-a is-light" data-animate>
       <div class="container">
         <div class="center">
           <div class="pill">
@@ -497,7 +1006,7 @@
     </section>
 
     <!-- SEO ACCORDION -->
-    <section class="section section-gradient-a" data-animate>
+    <section class="section section-gradient-a is-light" data-animate>
       <div class="container">
         <details class="seo-accordion glass" id="seoDetails">
           <summary class="seo-summary">
@@ -589,7 +1098,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer is-light">
     <div class="container footer-grid">
       <div class="footer-col">
         <div class="brand brand-footer" aria-label="Win Win">

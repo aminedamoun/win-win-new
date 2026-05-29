@@ -14,11 +14,18 @@ import airfryerImg from "../img/giveaway/airfryer-philips-na120.jpg";
 const ENDPOINT = `${CONFIG.supabase.url}/functions/v1/send-giveaway-email`;
 const SUPABASE_ANON_KEY = CONFIG.supabase.anonKey;
 
+// Human-readable name attached to every payload so n8n / the CRM can
+// identify which form sent the submission. Rename here when the
+// workflow node in n8n is renamed; do NOT change without updating
+// the matching workflow.
+const WEBHOOK_NAME = "Webhook for the WinWin Giveaway promotion - submit form";
+
 // CRM hook — leave empty to keep email-only. Drop a webhook URL here
 // (e.g. "https://n8n.dkrivec.com/webhook/<uuid>") to fire-and-forget
 // each submission to n8n in addition to the email. Payload schema
-// is the full object built in submitForm() with `formType: "giveaway"`.
-const N8N_WEBHOOK_URL = "";
+// is the full object built in submitForm() with `formType: "giveaway"`
+// and `webhookName: WEBHOOK_NAME`.
+const N8N_WEBHOOK_URL = "https://n8n.dkrivec.com/webhook/39d461c4-d029-4cfd-b965-060de8749187";
 
 const FIELDS = ["ime", "priimek", "naslov", "telefon", "email"];
 
@@ -61,6 +68,7 @@ function getLocationLabel() {
   }
   return val;
 }
+
 
 function formatStampSl(date) {
   // 18.06 at 12:44 → format requested in spec
@@ -140,6 +148,7 @@ function toggleDrugo() {
   }
 }
 
+
 function openSuccess() {
   $("successOverlay").classList.add("is-open");
 }
@@ -170,6 +179,7 @@ async function submitForm(e) {
 
   const payload = {
     formType: "giveaway",
+    webhookName: WEBHOOK_NAME,
     ime: $("ime").value.trim(),
     priimek: $("priimek").value.trim(),
     naslov: $("naslov").value.trim(),
@@ -297,7 +307,6 @@ function openPrizeModal(key) {
   $("prizeModalRank").classList.toggle("is-featured", !!p.featured);
   $("prizeModalBrand").textContent = p.brand;
   $("prizeModalName").textContent = p.name;
-  $("prizeModalPrice").textContent = p.price;
   $("prizeModalDesc").textContent = p.desc;
   $("prizeModalLink").href = p.link;
   const specs = $("prizeModalSpecs");
