@@ -23,10 +23,10 @@
   position: relative;
   display: block !important;
   flex-direction: initial !important;
-  min-height: 100vh;
+  min-height: auto;
   background: linear-gradient(180deg, #050505 0%, #0a0a0a 50%, #050505 100%);
   overflow: hidden;
-  padding: clamp(96px, 12vh, 140px) 0 clamp(60px, 8vh, 100px);
+  padding: clamp(72px, 8vh, 104px) 0 clamp(40px, 5vh, 68px);
   isolation: isolate;
 }
 
@@ -74,7 +74,7 @@
   gap: clamp(32px, 4vw, 64px);
   align-items: center;
   width: 100%;
-  min-height: 70vh;
+  min-height: auto;
   padding-left: 0;
   margin: 0 auto;
 }
@@ -87,7 +87,7 @@
 .hero-v5-left {
   display: flex;
   flex-direction: column;
-  gap: clamp(22px, 2.4vw, 36px);
+  gap: clamp(16px, 1.7vw, 24px);
   max-width: 760px;
 }
 
@@ -3014,4 +3014,72 @@
   .partners-strip { gap: 24px; }
   .partner-logo { height: 52px; padding: 10px 16px; }
   .partner-logo img { height: 26px; }
+}
+
+/* ========================================================================
+   MOBILE OPTIMIZATIONS (home)
+   - hero leads with the animated logo orb, copy below
+   - reviews + blog become swipeable sliders
+   - founders: smaller photo + text
+   ===================================================================== */
+@media (max-width: 1024px) {
+  /* Lead with the animated logo/SVG orb, then the text */
+  .hero-v5-grid { gap: 34px; }
+  .hero-v5-right { order: 1; }
+  .hero-v5-left  { order: 2; }
+}
+
+@media (max-width: 768px) {
+  .hero-v5-orb { width: min(340px, 74vw); }
+
+  /* --- Mnenja (reviews) → horizontal slider --- */
+  .reviews-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin-top: 28px;
+    padding-bottom: 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .reviews-grid > .review-card {
+    flex: 0 0 85%;
+    max-width: 360px;
+    scroll-snap-align: start;
+  }
+
+  /* --- Blog (Z našega bloga) → horizontal slider --- */
+  #blogGrid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  #blogGrid::-webkit-scrollbar { display: none; }
+  #blogGrid > .blog-card {
+    flex: 0 0 85%;
+    max-width: 340px;
+    scroll-snap-align: start;
+  }
+
+  /* --- Ustanovitelja (founders): smaller photo + text --- */
+  .founders-grid--stacked { gap: 44px; }
+  .founder-row .founder-photo-wrap,
+  .founder-row--reverse .founder-photo-wrap {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .founder-content { gap: 12px; }
+  .founder-quote { font-size: 16px; line-height: 1.5; padding-left: 20px; }
+  .founder-quote::before { font-size: 44px; top: -10px; }
+  .founder-name { font-size: 1.02rem; }
+  .founder-title { font-size: 0.86rem; }
+  .founder-role-tag { font-size: 10px; padding: 6px 12px; }
+  .founder-meta { padding-top: 14px; }
 }

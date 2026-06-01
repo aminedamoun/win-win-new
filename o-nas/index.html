@@ -90,23 +90,103 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero hero-about" style="background-image: url('/assets/img/slomap.webp');">
-      <div class="container hero-inner">
-        <div class="hero-card glass">
-          <h1 class="hero-title center" id="aboutHeroTitle">O Win Win</h1>
-          <p class="hero-desc center" id="aboutHeroDesc">
-            Smo ekipa, ki živi prodajo. Win Win d.o.o. je bil zgrajen na prepričanju, da se lahko prodaja izvaja drugače — pošteno, etično in z dolgoročnim razmišljanjem.
-          </p>
+    <section class="about-hero">
+      <div class="container about-hero-inner">
+        <div class="about-hero-copy">
+        <span class="about-hero-eyebrow">
+          <span class="about-hero-eyebrow-rule" aria-hidden="true"></span>
+          O podjetju · Win-Win d.o.o. · od 2014
+        </span>
+        <h1 class="about-hero-title" id="aboutHeroTitle">O <span class="text-red">Win Win</span></h1>
+        <p class="about-hero-desc" id="aboutHeroDesc">
+          Smo ekipa, ki živi prodajo. Win Win d.o.o. je bil zgrajen na prepričanju, da se lahko prodaja izvaja drugače — pošteno, etično in z dolgoročnim razmišljanjem.
+        </p>
+
+        <div class="about-hero-actions">
+          <a class="btn btn-primary" href="/prijava/">Pridruži se ekipi <span aria-hidden="true">→</span></a>
+          <a class="btn btn-outline" href="/zaposlitve/">Odprte pozicije</a>
+        </div>
+
+        <div class="about-hero-trust">
+          <a class="ah-trust-pill" href="https://www.google.com/search?q=Win-Win+d.o.o.+Trzin" target="_blank" rel="noopener" aria-label="Win Win na Googlu – ocena 4.9 od 5">
+            <svg class="ah-trust-g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+              <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+            </svg>
+            <span class="ah-trust-stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <span class="ah-trust-num">4.9</span>
+            <span class="ah-trust-name">Google ocene</span>
+          </a>
+
+          <span class="ah-trust-divider" aria-hidden="true"></span>
+
+          <div class="ah-trust-pill ah-trust-partner">
+            <span class="ah-trust-label">Uradni partner</span>
+            <span class="ah-partner-wordmark">tele<b>mach</b></span>
+          </div>
+        </div>
+        </div>
+
+        <div class="about-hero-visual" aria-hidden="true">
+          <div class="about-hero-disc">
+            <img src="/assets/img/win-win-logo.webp" alt="Win Win logotip" width="640" height="520" />
+          </div>
         </div>
       </div>
     </section>
 
     <!-- VISION / MISSION -->
-    <section class="section section-gradient-a" data-animate>
+    <section class="section section--light" data-animate>
       <div class="container">
-        <div class="grid grid-2 grid-2-wide" id="aboutVM">
-          <div class="card glass"><div class="card-body" style="text-align:center;"><div class="card-title" style="font-size:1.75rem;font-weight:800;margin-bottom:0.75rem;">Naša vizija</div><p style="font-weight:700;font-size:1.05rem;line-height:1.65;">Postati najbolj učinkovito in spoštovano prodajno podjetje v Sloveniji, znano po naši integriteti, rezultatih in zavezanosti tako strankam kot članom ekipe.</p></div></div>
-          <div class="card glass"><div class="card-body" style="text-align:center;"><div class="card-title" style="font-size:1.75rem;font-weight:800;margin-bottom:0.75rem;">Naša misija</div><p style="font-weight:700;font-size:1.05rem;line-height:1.65;">Zagotavljati več vrednosti strankam, kot pričakujejo, skozi zaupanje, strukturo in vrhunsko prodajno strokovnost. Gradimo dolgoročne odnose, ki koristijo vsem vključenim.</p></div></div>
+        <div class="vm-head">
+          <span class="vm-eyebrow">Naša usmeritev</span>
+          <h2 class="h2">Kam gremo in <span class="text-red">zakaj</span></h2>
+          <p class="vm-lead">Dve načeli poganjata vse, kar počnemo — jasna vizija prihodnosti in misija, ki ji sledimo vsak dan na terenu, v klicnem centru in v odnosih s strankami.</p>
+        </div>
+
+        <div class="vm-grid">
+          <article class="vm-card">
+            <div class="vm-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <span class="vm-tag">Vizija</span>
+            <h3 class="vm-title">Naša vizija</h3>
+            <p class="vm-text">Postati najbolj učinkovito in spoštovano prodajno podjetje v Sloveniji, znano po naši integriteti, rezultatih in zavezanosti tako strankam kot članom ekipe.</p>
+            <ul class="vm-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12l2.5 2.5L16 9"/></svg>Vodilno prodajno podjetje, prepoznavno po rezultatih</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12l2.5 2.5L16 9"/></svg>Spoštovani po integriteti in poštenem pristopu</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12l2.5 2.5L16 9"/></svg>Najboljše okolje za razvoj prodajnih talentov</li>
+            </ul>
+          </article>
+
+          <article class="vm-card">
+            <div class="vm-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5 16 8"/></svg>
+            </div>
+            <span class="vm-tag">Misija</span>
+            <h3 class="vm-title">Naša misija</h3>
+            <p class="vm-text">Zagotavljati več vrednosti strankam, kot pričakujejo, skozi zaupanje, strukturo in vrhunsko prodajno strokovnost. Gradimo dolgoročne odnose, ki koristijo vsem vključenim.</p>
+            <ul class="vm-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12l2.5 2.5L16 9"/></svg>Pošten in transparenten prodajni pristop</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12l2.5 2.5L16 9"/></svg>Strukturiran sistem: skripte, CRM, trening, coaching</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12l2.5 2.5L16 9"/></svg>Dolgoročni odnosi pred kratkoročnim dobičkom</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="vm-stats">
+          <div class="vm-stat"><div class="vm-stat-value">2014</div><div class="vm-stat-label">Leto ustanovitve</div></div>
+          <div class="vm-stat"><div class="vm-stat-value">25<span class="accent">+</span></div><div class="vm-stat-label">Članov ekipe</div></div>
+          <div class="vm-stat"><div class="vm-stat-value">60<span class="accent">k+</span></div><div class="vm-stat-label">Zaključenih poslov</div></div>
+          <div class="vm-stat"><div class="vm-stat-value">12<span class="accent">+</span></div><div class="vm-stat-label">Let izkušenj</div></div>
         </div>
       </div>
     </section>
@@ -121,36 +201,167 @@
           </p>
         </div>
 
-        <div class="grid grid-3" id="aboutValuesGrid">
-          <div class="card glass card-img-top"><img src="/assets/img/image-gen-4.webp" alt="Win Win prodajna ekipa – integriteta in poštenost v prodaji" class="card-cover-img" loading="lazy"><div class="card-body"><div class="card-title" style="font-size:1.2rem;font-weight:800;">Integriteta in poštenost</div><p class="p-muted small">Gradimo zaupanje skozi transparentno komunikacijo in etične poslovne prakse</p></div></div>
-          <div class="card glass card-img-top"><img src="/assets/img/image-gen-8.webp" alt="Win Win d.o.o. – odgovornost v prodajni ekipi" class="card-cover-img" loading="lazy"><div class="card-body"><div class="card-title" style="font-size:1.2rem;font-weight:800;">Odgovornost</div><p class="p-muted small">Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez</p></div></div>
-          <div class="card glass card-img-top"><img src="/assets/img/image-gen-9.webp" alt="Profesionalna komunikacija – prodajni svetovalec Win Win" class="card-cover-img" loading="lazy"><div class="card-body"><div class="card-title" style="font-size:1.2rem;font-weight:800;">Profesionalna komunikacija</div><p class="p-muted small">Jasna, spoštljiva in učinkovita komunikacija v vsaki interakciji</p></div></div>
-          <div class="card glass card-img-top"><img src="/assets/img/pexels/pexels-handshake-600.jpg" alt="Uspešnost in rast – kariera v prodaji Win Win Slovenija" class="card-cover-img" loading="lazy"><div class="card-body"><div class="card-title" style="font-size:1.2rem;font-weight:800;">Uspešnost in rast</div><p class="p-muted small">Nenehno izboljševanje in merljivi rezultati poganjajo naš uspeh</p></div></div>
-          <div class="card glass card-img-top"><img src="/assets/img/pexels/pexels-team-600.jpg" alt="Ekipna podpora – prodajna ekipa Win Win d.o.o." class="card-cover-img" loading="lazy"><div class="card-body"><div class="card-title" style="font-size:1.2rem;font-weight:800;">Ekipna podpora</div><p class="p-muted small">Skupaj uspemo skozi sodelovanje in medsebojno podporo</p></div></div>
-          <div class="card glass card-img-top"><img src="/assets/img/winwin.jpg" alt="Odličnost – win-win.si prodajno podjetje Slovenija" class="card-cover-img" loading="lazy"><div class="card-body"><div class="card-title" style="font-size:1.2rem;font-weight:800;">Odličnost</div><p class="p-muted small">Stremimo k najvišjim standardom v vsem, kar počnemo</p></div></div>
+        <div class="values-grid" id="aboutValuesGrid">
+          <article class="value-card">
+            <span class="value-index" aria-hidden="true">01</span>
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3 class="value-title">Integriteta in poštenost</h3>
+            <p class="value-text p-muted">Gradimo zaupanje skozi transparentno komunikacijo in etične poslovne prakse</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-index" aria-hidden="true">02</span>
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.2 2.2L15.5 9.5"/></svg>
+            </div>
+            <h3 class="value-title">Odgovornost</h3>
+            <p class="value-text p-muted">Naše stranke in člani ekipe se lahko zanašajo na nas pri izpolnjevanju naših zavez</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-index" aria-hidden="true">03</span>
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="value-title">Profesionalna komunikacija</h3>
+            <p class="value-text p-muted">Jasna, spoštljiva in učinkovita komunikacija v vsaki interakciji</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-index" aria-hidden="true">04</span>
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
+            </div>
+            <h3 class="value-title">Uspešnost in rast</h3>
+            <p class="value-text p-muted">Nenehno izboljševanje in merljivi rezultati poganjajo naš uspeh</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-index" aria-hidden="true">05</span>
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="value-title">Ekipna podpora</h3>
+            <p class="value-text p-muted">Skupaj uspemo skozi sodelovanje in medsebojno podporo</p>
+          </article>
+
+          <article class="value-card">
+            <span class="value-index" aria-hidden="true">06</span>
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>
+            </div>
+            <h3 class="value-title">Odličnost</h3>
+            <p class="value-text p-muted">Stremimo k najvišjim standardom v vsem, kar počnemo</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- CULTURE -->
-    <section class="section section-gradient-a" data-animate>
+    <section class="section section--light" data-animate>
       <div class="container">
-        <div class="center">
-          <h2 class="h2" id="aboutCultureTitle">Podjetniška kultura</h2>
-          <p class="p-muted" id="aboutCultureDesc">Gradimo okolje, kjer uspevajo ljudje, ki hočejo rezultat.</p>
+        <div class="vm-head">
+          <span class="vm-eyebrow">Naša kultura</span>
+          <h2 class="h2" id="aboutCultureTitle">Podjetniška <span class="text-red">kultura</span></h2>
+          <p class="vm-lead" id="aboutCultureDesc">Gradimo okolje, kjer uspevajo ljudje, ki hočejo rezultat — s strukturo, podporo in jasno potjo napredovanja.</p>
         </div>
 
-        <div class="grid grid-2 grid-2-wide" id="aboutCultureGrid">
-          <div class="card glass"><div class="card-body"><ul class="p-muted">
-            <li>Rezultatno usmerjen način razmišljanja z jasnimi KPI-ji</li>
-            <li>Ekipno sodelovanje in deljenje znanja</li>
-            <li>Nenehno učenje in razvoj veščin</li>
-          </ul></div></div>
-          <div class="card glass"><div class="card-body"><ul class="p-muted">
-            <li>Programi coachinga in mentorstva</li>
-            <li>Priznanje in nagrade za odličnost</li>
-            <li>Ravnovesje med delom in zasebnim življenjem ter fleksibilnost</li>
-          </ul></div></div>
+        <div class="culture-grid">
+          <article class="culture-card">
+            <div class="culture-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
+            </div>
+            <h3 class="culture-title">Usmerjenost k rezultatom</h3>
+            <p class="culture-text">Rezultatno usmerjen način razmišljanja z jasnimi KPI-ji, kjer vsak korak vodi k merljivemu cilju.</p>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="culture-title">Ekipno sodelovanje</h3>
+            <p class="culture-text">Ekipno sodelovanje in odprto deljenje znanja — najboljše prakse krožijo med vsemi člani ekipe.</p>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+            </div>
+            <h3 class="culture-title">Nenehno učenje</h3>
+            <p class="culture-text">Nenehno učenje in razvoj veščin skozi redna usposabljanja, delavnice in prodajne treninge.</p>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.2 1 2.5h6c0-1.3.3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+            </div>
+            <h3 class="culture-title">Coaching in mentorstvo</h3>
+            <p class="culture-text">Strukturirani programi coachinga in mentorstva, kjer izkušeni vodje vlagajo v rast vsakega posameznika.</p>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>
+            </div>
+            <h3 class="culture-title">Priznanje in nagrade</h3>
+            <p class="culture-text">Priznanje in nagrade za odličnost — trud in rezultati so vedno opaženi in pošteno nagrajeni.</p>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <h3 class="culture-title">Ravnovesje in fleksibilnost</h3>
+            <p class="culture-text">Ravnovesje med delom in zasebnim življenjem ter fleksibilnost, ki omogoča dolgoročno uspešnost.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section section-gradient-a leaders" data-animate>
+      <div class="container">
+        <div class="center">
+          <span class="section-eyebrow">Vodstvo</span>
+          <h2 class="h2">Ljudje, ki vodijo <span class="text-red">Win-Win</span></h2>
+          <p class="p-muted">Izkušena vodstvena ekipa, ki podjetje gradi od ustanovitve leta 2014 in vsak dan stoji ob strani prodajni ekipi.</p>
+        </div>
+
+        <div class="leaders-grid">
+          <article class="leader-card glass">
+            <div class="leader-photo">
+              <img src="/assets/img/team/founder-luka-jensterle.png" alt="Luka Jenšterle – soustanovitelj in CEO, Win-Win d.o.o." loading="lazy" />
+            </div>
+            <div class="leader-body">
+              <span class="leader-role">CEO &amp; Soustanovitelj</span>
+              <h3 class="leader-name">Luka Jenšterle</h3>
+              <p class="leader-title p-muted">Vodi strategijo, prodajo in rast podjetja</p>
+            </div>
+          </article>
+
+          <article class="leader-card glass">
+            <div class="leader-photo">
+              <img src="/assets/img/team/founder-david-ivanusa.png" alt="David Ivanuša – soustanovitelj in COO, Win-Win d.o.o." loading="lazy" />
+            </div>
+            <div class="leader-body">
+              <span class="leader-role">COO &amp; Soustanovitelj</span>
+              <h3 class="leader-name">David Ivanuša</h3>
+              <p class="leader-title p-muted">Vodi operacije, procese in razvoj ekip</p>
+            </div>
+          </article>
+
+          <article class="leader-card glass">
+            <div class="leader-photo">
+              <img src="/assets/img/team/leader-3.png" alt="Vodja prodaje – Win-Win d.o.o." loading="lazy" />
+            </div>
+            <div class="leader-body">
+              <span class="leader-role">Vodja prodaje</span>
+              <h3 class="leader-name">[ Ime in priimek ]</h3>
+              <p class="leader-title p-muted">Vodi prodajne ekipe na terenu in v klicnem centru</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>

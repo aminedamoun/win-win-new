@@ -1,10 +1,28 @@
 import { getArticles, getArticleBySlug, richTextToHtml } from './contentful-client.js';
 import { initPage } from './page-utils.js';
+import { LOCAL_ARTICLES } from './local-articles.js';
 
 function $(id) { return document.getElementById(id); }
 
 const lang = "sl";
 const locale = "sl";
+
+// Merge locally-authored articles with whatever Contentful returns. Local and
+// Contentful posts are deduped by slug (local wins), then sorted newest-first.
+// Contentful failures are swallowed so the local articles always render.
+async function getAllArticles(loc = locale) {
+  let remote = [];
+  try { remote = await getArticles(loc); } catch { remote = []; }
+  const bySlug = new Map();
+  for (const a of remote) if (a && a.slug) bySlug.set(a.slug, a);
+  for (const a of LOCAL_ARTICLES) bySlug.set(a.slug, a); // local overrides
+  return Array.from(bySlug.values())
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function findLocalArticle(slug) {
+  return LOCAL_ARTICLES.find((a) => a.slug === slug) || null;
+}
 
 function formatDate(isoDate) {
   if (!isoDate) return "";
@@ -111,6 +129,9 @@ export async function renderArticleDetail() {
     article = await getArticleBySlug(slug, locale);
   } catch { article = null; }
 
+  // Fall back to a locally-authored article when Contentful has no match.
+  if (!article) article = findLocalArticle(slug);
+
   if (!article) {
     if (heroTitle) heroTitle.textContent = "Članek ni najden";
     if (titleEl) titleEl.textContent = "Članek ni najden";
@@ -147,6 +168,10 @@ function markdownToHtml(md) {
   const lines = md.split("\n");
   let html = "";
   let inParagraph = false;
+  let inList = false;
+
+  const closeParagraph = () => { if (inParagraph) { html += "</p>"; inParagraph = false; } };
+  const closeList = () => { if (inList) { html += "</ul>"; inList = false; } };
 
   for (const raw of lines) {
     const line = raw
@@ -154,94 +179,49 @@ function markdownToHtml(md) {
       .replace(/\*(.+?)\*/g, "<em>$1</em>");
 
     if (line.startsWith("### ")) {
-      if (inParagraph) { html += "</p>"; inParagraph = false; }
+      closeParagraph(); closeList();
       html += `<h3>${line.slice(4)}</h3>`;
     } else if (line.startsWith("## ")) {
-      if (inParagraph) { html += "</p>"; inParagraph = false; }
+      closeParagraph(); closeList();
       html += `<h2>${line.slice(3)}</h2>`;
     } else if (line.startsWith("# ")) {
-      if (inParagraph) { html += "</p>"; inParagraph = false; }
+      closeParagraph(); closeList();
       html += `<h1>${line.slice(2)}</h1>`;
+    } else if (line.startsWith("- ")) {
+      closeParagraph();
+      if (!inList) { html += "<ul>"; inList = true; }
+      html += `<li>${line.slice(2)}</li>`;
     } else if (line.trim() === "") {
-      if (inParagraph) { html += "</p>"; inParagraph = false; }
+      closeParagraph(); closeList();
     } else {
+      closeList();
       if (!inParagraph) { html += "<p>"; inParagraph = true; }
       else html += " ";
       html += line;
     }
   }
 
-  if (inParagraph) html += "</p>";
+  closeParagraph();
+  closeList();
   return html;
 }
-
-// Static demo posts shown on the homepage when Contentful has fewer than
-// 3 featured published articles. These point at the blog index since they
-// don't exist as Contentful entries yet — replace with real article slugs
-// once content is published.
-const HOME_BLOG_FALLBACKS = [
-  {
-    slug: "vpogledi-prodajne-lastnosti",
-    image: "/assets/img/blog-1.jpg",
-    imageAlt: "Prodajni svetovalec v pogovoru s stranko",
-    category: "Karierni nasveti",
-    title: "5 ključnih lastnosti uspešnega prodajnega svetovalca",
-    description: "Kaj loči top prodajalce od povprečja? Razložimo, katere lastnosti najbolj cenimo pri Win-Win in kako jih razviješ.",
-    date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-    readTime: "5 min branja",
-  },
-  {
-    slug: "kako-dosegati-visoke-provizije",
-    image: "/assets/img/blog-2.jpg",
-    imageAlt: "Sodelavka pregleduje prodajne rezultate",
-    category: "Provizije & rast",
-    title: "Kako dosegati visoke provizije v prodaji telekomunikacij",
-    description: "Praktičen vodnik skozi prodajni proces Win-Win — od prvega kontakta do podpisane pogodbe in stabilne mesečne provizije.",
-    date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
-    readTime: "7 min branja",
-  },
-  {
-    slug: "od-svetovalca-do-vodje",
-    image: "/assets/img/blog-3.jpg",
-    imageAlt: "Vodja prodajne ekipe na sestanku",
-    category: "Karierna pot",
-    title: "Od svetovalca do vodje ekipe v 18 mesecih",
-    description: "Zgodbe iz Win-Win ekipe: pot od prvega prodajnega dne do vodenja lastne ekipe. Kaj je potrebno in kako sistem podpira napredovanje.",
-    date: new Date(Date.now() - 21 * 24 * 60 * 60 * 1000).toISOString(),
-    readTime: "6 min branja",
-  },
-];
 
 export async function renderHomeBlog() {
   const grid = document.getElementById("blogGrid");
   const empty = document.getElementById("blogEmpty");
   if (!grid) return;
 
-  let articles = [];
-  try {
-    articles = await getArticles(locale);
-  } catch { articles = []; }
-
-  let featured = articles
-    .filter((a) => a.featured && a.published)
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+  // Newest 3 published articles (Contentful + local), each linking to its
+  // real /clanek/?slug=... detail page.
+  const articles = (await getAllArticles())
+    .filter((a) => a.published)
     .slice(0, 3);
-
-  // Backfill with static demo posts to always show 3 cards on the homepage.
-  if (featured.length < 3) {
-    const existingSlugs = new Set(featured.map((a) => a.slug));
-    const filler = HOME_BLOG_FALLBACKS.filter((f) => !existingSlugs.has(f.slug));
-    featured = featured.concat(filler).slice(0, 3);
-  }
 
   if (empty) empty.textContent = "";
 
-  const fallbackSlugs = new Set(HOME_BLOG_FALLBACKS.map((f) => f.slug));
-  grid.innerHTML = featured.map((article) => {
+  grid.innerHTML = articles.map((article) => {
     const date = formatDate(article.date);
-    // Fallback articles don't exist in Contentful — link to the blog index
-    // instead of a dead /clanek/?slug=... URL.
-    const url = fallbackSlugs.has(article.slug) ? "/vpogledi/" : getArticleUrl(article.slug);
+    const url = getArticleUrl(article.slug);
     const description = typeof article.description === "string" ? article.description : "";
     return `
       <a href="${url}" class="blog-card">
@@ -264,10 +244,7 @@ export async function renderHomeBlog() {
 }
 
 export async function main() {
-  let articles = [];
-  try {
-    articles = await getArticles(locale);
-  } catch { articles = []; }
+  const articles = await getAllArticles();
 
   const featured = articles.find((a) => a.featured);
   if (featured) renderFeatured(featured);
