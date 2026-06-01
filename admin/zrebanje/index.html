@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Žrebanje – Nagradna igra | Win-Win Admin</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #07070a;
+      --bg-2: #0e0e14;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.22);
+      --muted: #9aa0aa;
+      --red: #dc2626;
+      --red-bright: #ef4444;
+      --gold: #f59e0b;
+      --green: #10b981;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(700px 500px at 18% 25%, rgba(220,38,38,0.18), transparent 60%),
+        radial-gradient(600px 500px at 85% 75%, rgba(245,158,11,0.10), transparent 60%),
+        linear-gradient(180deg, #050507 0%, #0a0a0d 100%);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---------------- LOGIN ---------------- */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-card {
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    }
+    .login-card h2 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.01em; }
+    .login-card p  { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .field label { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .field input {
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .field input:focus { border-color: var(--red-bright); background: rgba(255,255,255,0.06); }
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--red);
+      color: #fff;
+      border: 0;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 6px;
+      letter-spacing: 0.02em;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .login-btn:hover:not(:disabled) { background: var(--red-bright); transform: translateY(-1px); }
+    .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .login-error { color: #fca5a5; font-size: 13px; margin-top: 10px; min-height: 18px; }
+
+    /* ---------------- APP ---------------- */
+    #appScreen { display: none; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; }
+    .brand img { height: 28px; width: auto; display: block; opacity: 0.92; }
+    .brand-name { font-size: 14px; color: var(--muted); font-weight: 600; }
+    .brand-name strong { color: #fff; }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .icon-btn:hover { background: rgba(255,255,255,0.08); border-color: var(--border-strong); }
+    .icon-btn--red { background: var(--red); border-color: transparent; }
+    .icon-btn--red:hover { background: var(--red-bright); }
+
+    .shell { max-width: 1280px; margin: 0 auto; padding: 32px; }
+
+    /* Stat strip */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 800px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .stat-value { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+    .stat-value .accent { color: var(--red-bright); }
+    .stat-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* Slot panel */
+    .slot-wrap {
+      background:
+        radial-gradient(800px 400px at 50% 0%, rgba(220,38,38,0.20), transparent 60%),
+        linear-gradient(180deg, #0d0d12 0%, #08080b 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 44px clamp(20px, 4vw, 60px);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .slot-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(220,38,38,0.05) 0 1px, transparent 1px 80px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .slot-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(245,158,11,0.10);
+      border: 1px solid rgba(245,158,11,0.32);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .slot-eyebrow .pulse {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(245,158,11,0.8);
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.7); opacity: 0.6; }
+    }
+
+    .slot-title {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      position: relative;
+      z-index: 1;
+    }
+    .slot-title em { color: var(--red-bright); font-style: normal; }
+    .slot-desc { margin: 0 0 26px; color: var(--muted); font-size: 14.5px; position: relative; z-index: 1; }
+
+    .slot-display {
+      position: relative;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(220,38,38,0.15), transparent 70%),
+        linear-gradient(180deg, #050507 0%, #0a0a0e 100%);
+      border: 2px solid rgba(220,38,38,0.30);
+      border-radius: 22px;
+      padding: 28px 24px;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        inset 0 -10px 60px rgba(220,38,38,0.10),
+        0 0 80px rgba(220,38,38,0.20);
+      overflow: hidden;
+    }
+    .slot-display.is-spinning {
+      animation: shake 0.06s linear infinite;
+    }
+    @keyframes shake {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-1px, 1px); }
+      50%  { transform: translate(1px, -1px); }
+      75%  { transform: translate(-1px, -1px); }
+      100% { transform: translate(0, 0); }
+    }
+    .slot-display.is-winner {
+      border-color: var(--gold);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        inset 0 -10px 60px rgba(245,158,11,0.18),
+        0 0 120px rgba(245,158,11,0.45);
+      animation: winnerPulse 1.6s ease-out;
+    }
+    @keyframes winnerPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(245,158,11,0.85); }
+      80%  { box-shadow: 0 0 0 60px rgba(245,158,11,0); }
+      100% { box-shadow: 0 0 80px rgba(245,158,11,0.30); }
+    }
+
+    .slot-position {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .slot-name {
+      font-size: clamp(32px, 5.4vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: #fff;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      text-shadow: 0 0 30px rgba(220,38,38,0.45);
+      transition: filter 0.05s;
+    }
+    .slot-display.is-spinning .slot-name {
+      filter: blur(0.6px);
+    }
+    .slot-display.is-winner .slot-name {
+      color: #fff;
+      text-shadow:
+        0 0 24px rgba(245,158,11,0.85),
+        0 0 60px rgba(245,158,11,0.40);
+    }
+    .slot-email {
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+      max-width: 100%;
+    }
+    .slot-display.is-winner .slot-email { color: rgba(255,255,255,0.85); }
+    .slot-meta { font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* Prize reveal — pops in on winner state */
+    .slot-prize {
+      width: 100%;
+      margin-top: 14px;
+      padding-top: 22px;
+      border-top: 1px dashed rgba(245,158,11,0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .slot-prize.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .slot-prize-label {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .slot-prize-img {
+      width: 180px;
+      height: 130px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.94);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow:
+        0 16px 40px rgba(0,0,0,0.5),
+        0 0 60px rgba(245,158,11,0.30);
+      transform: rotate(-2deg);
+      animation: prizeFloat 3s ease-in-out infinite;
+    }
+    @keyframes prizeFloat {
+      0%, 100% { transform: rotate(-2deg) translateY(0); }
+      50%      { transform: rotate(2deg) translateY(-4px); }
+    }
+    .slot-prize-name {
+      margin: 4px 0 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.005em;
+    }
+    .slot-prize-desc {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Winner podium prize chip */
+    .winner-prize {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 8px 10px;
+      background: rgba(0,0,0,0.30);
+      border: 1px solid rgba(245,158,11,0.30);
+      border-radius: 10px;
+    }
+    .winner-prize-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .winner-prize-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+    }
+    .winner-prize-name .small {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0;
+      margin-top: 2px;
+    }
+
+    .slot-empty {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+    /* Action button */
+    .draw-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .draw-btn {
+      padding: 18px 38px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-bright));
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow:
+        0 14px 40px rgba(220,38,38,0.50),
+        inset 0 1px 0 rgba(255,255,255,0.20);
+      transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .draw-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 50px rgba(220,38,38,0.65);
+    }
+    .draw-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .draw-btn.is-loading { animation: btnPulse 1s ease-in-out infinite; }
+    @keyframes btnPulse {
+      0%, 100% { box-shadow: 0 14px 40px rgba(220,38,38,0.50); }
+      50% { box-shadow: 0 14px 50px rgba(245,158,11,0.50); }
+    }
+    .draw-btn-secondary {
+      padding: 16px 26px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .draw-btn-secondary:hover { background: rgba(255,255,255,0.10); }
+
+    /* Winners podium */
+    .winners {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 760px) { .winners { grid-template-columns: 1fr; } }
+    .winner-slot {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 130px;
+      transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .winner-slot.is-filled {
+      background: linear-gradient(160deg, rgba(245,158,11,0.18), rgba(220,38,38,0.10));
+      border-color: rgba(245,158,11,0.40);
+      box-shadow: 0 20px 50px rgba(245,158,11,0.18);
+    }
+    .winner-rank {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .winner-rank .num {
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .winner-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }
+    .winner-email {
+      font-size: 12.5px;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+    .winner-phone {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .winner-empty {
+      color: var(--muted);
+      font-size: 14px;
+      align-self: center;
+      margin: auto;
+    }
+
+    /* Entries list */
+    .entries-panel {
+      margin-top: 40px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+    .entries-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .entries-head h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .entries-search {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 13px;
+      min-width: 220px;
+    }
+    .entries-search:focus { outline: none; border-color: var(--red-bright); }
+    .entries-list {
+      max-height: 420px;
+      overflow-y: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .entries-list table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .entries-list th {
+      position: sticky;
+      top: 0;
+      background: #0c0c10;
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+    .entries-list td {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: #e5e7eb;
+    }
+    .entries-list tr:last-child td { border-bottom: 0; }
+    .entries-list tr.is-winner td { background: rgba(245,158,11,0.10); color: #fef3c7; }
+    .entries-list tr.is-eliminated td { color: #6b7280; text-decoration: line-through; opacity: 0.55; }
+
+    .source-tag {
+      display: inline-block;
+      font-size: 10.5px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+    .source-tag--demo { background: rgba(99,102,241,0.18); color: #c7d2fe; }
+    .source-tag--live { background: rgba(16,185,129,0.18); color: #a7f3d0; }
+
+    .empty-state {
+      text-align: center;
+      color: var(--muted);
+      padding: 60px 20px;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .toggle-row input { accent-color: var(--red); }
+  </style>
+</head>
+
+<body>
+  <!-- ============================== LOGIN ============================== -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h2>Win-Win · Žrebanje</h2>
+      <p>Prijavi se s skrbniškim računom.</p>
+      <div class="field">
+        <label for="loginEmail">E-naslov</label>
+        <input id="loginEmail" type="email" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Geslo</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" />
+      </div>
+      <button id="loginBtn" class="login-btn">Prijava</button>
+      <div id="loginError" class="login-error"></div>
+    </div>
+  </div>
+
+  <!-- ============================== APP ============================== -->
+  <div id="appScreen">
+    <div class="topbar">
+      <div class="brand">
+        <img src="/assets/img/win-win-logo.webp" alt="Win-Win" />
+        <span class="brand-name"><strong>Win-Win</strong> · Žrebanje nagradne igre</span>
+      </div>
+      <div class="top-actions">
+        <label class="toggle-row" title="Vstavi 30 lažnih sodelujočih za testiranje animacije">
+          <input type="checkbox" id="demoToggle" />
+          Demo (lažni podatki)
+        </label>
+        <button id="reloadBtn" class="icon-btn">↻ Osveži</button>
+        <button id="logoutBtn" class="icon-btn">Odjava</button>
+      </div>
+    </div>
+
+    <div class="shell">
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-label">Sodelujočih</span>
+          <span class="stat-value" id="statEntries">—</span>
+          <span class="stat-sub" id="statEntriesSub">v žrebanju</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Lokacij stojnic</span>
+          <span class="stat-value" id="statLocations">—</span>
+          <span class="stat-sub">unikatnih lokacij</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Zadnja prijava</span>
+          <span class="stat-value" style="font-size:22px;" id="statLast">—</span>
+          <span class="stat-sub" id="statLastSub">&nbsp;</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Izžrebanih nagrajencev</span>
+          <span class="stat-value"><span class="accent" id="statWinners">0</span> / 3</span>
+          <span class="stat-sub">v tem žrebanju</span>
+        </div>
+      </div>
+
+      <!-- Slot panel -->
+      <section class="slot-wrap">
+        <span class="slot-eyebrow"><span class="pulse"></span>Žrebanje nagradne igre</span>
+        <h1 class="slot-title">Naključno izberi <em>3 nagrajence</em>.</h1>
+        <p class="slot-desc">Pritisni gumb spodaj. Slot bo zavrtel skozi vse prijave in se zaustavil na trenutnem srečnem zmagovalcu — eden za eno mesto.</p>
+
+        <div class="slot-display" id="slotDisplay">
+          <div id="slotEmpty" class="slot-empty">Nalagam sodelujoče … nato pritisni <strong>Začni žrebanje</strong>.</div>
+          <div id="slotContent" class="slot-content" style="display:none;">
+            <div class="slot-position" id="slotPosition">1. nagrada</div>
+            <div class="slot-name" id="slotName">—</div>
+            <div class="slot-email" id="slotEmail">&nbsp;</div>
+            <div class="slot-meta" id="slotMeta">&nbsp;</div>
+          </div>
+          <!-- Prize reveal — only shown once a winner is locked in -->
+          <div class="slot-prize" id="slotPrize" style="display:none;">
+            <span class="slot-prize-label" id="slotPrizeLabel">Osvojiš</span>
+            <img class="slot-prize-img" id="slotPrizeImg" src="" alt="" />
+            <p class="slot-prize-name" id="slotPrizeName"></p>
+            <p class="slot-prize-desc" id="slotPrizeDesc"></p>
+          </div>
+        </div>
+
+        <div class="draw-btn-row">
+          <button id="drawBtn" class="draw-btn" disabled>
+            🎰 Začni žrebanje
+          </button>
+          <button id="resetBtn" class="draw-btn-secondary" style="display:none;">Ponastavi žrebanje</button>
+        </div>
+
+        <!-- Winner podium -->
+        <div class="winners">
+          <div class="winner-slot" id="winner1">
+            <span class="winner-rank"><span class="num">1</span>nagrada</span>
+            <span class="winner-empty">— čaka na žrebanje —</span>
+          </div>
+          <div class="winner-slot" id="winner2">
+            <span class="winner-rank"><span class="num">2</span>nagrada</span>
+            <span class="winner-empty">— čaka na žrebanje —</span>
+          </div>
+          <div class="winner-slot" id="winner3">
+            <span class="winner-rank"><span class="num">3</span>nagrada</span>
+            <span class="winner-empty">— čaka na žrebanje —</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Entries list -->
+      <section class="entries-panel">
+        <div class="entries-head">
+          <h2>Vsi sodelujoči</h2>
+          <input id="entriesSearch" class="entries-search" type="search" placeholder="Išči po imenu, e-pošti, lokaciji…" />
+        </div>
+        <div class="entries-list">
+          <table id="entriesTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Ime &amp; priimek</th>
+                <th>E-pošta</th>
+                <th>Telefon</th>
+                <th>Lokacija</th>
+                <th>Datum</th>
+                <th>Vir</th>
+              </tr>
+            </thead>
+            <tbody id="entriesBody">
+              <tr><td colspan="7" class="empty-state">Brez vnosov.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="./zrebanje.js"></script>
+</body>
+</html>

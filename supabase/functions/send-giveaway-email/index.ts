@@ -1,4 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "jsr:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -35,6 +36,36 @@ Deno.serve(async (req: Request) => {
 
   try {
     const data: GiveawayPayload = await req.json();
+
+    // Persist the entry to public.giveaway_entries so the admin draw page
+    // (/admin/zrebanje/) has the canonical pool of participants.
+    // Failures here must not block the email — we just log and continue.
+    try {
+      const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+      const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+      if (SUPABASE_URL && SERVICE_ROLE) {
+        const db = createClient(SUPABASE_URL, SERVICE_ROLE);
+        const { error: insertErr } = await db.from("giveaway_entries").insert({
+          ime: data.ime ?? "",
+          priimek: data.priimek ?? "",
+          naslov: data.naslov ?? "",
+          telefon: data.telefon ?? "",
+          email: data.email ?? "",
+          consent: !!data.consent,
+          consent_timestamp: data.consentTimestampIso || null,
+          consent_location_label: data.consentLocationLabel ?? "",
+          source: data.source ?? "",
+          user_agent: data.userAgent ?? "",
+        });
+        if (insertErr) {
+          console.warn("[send-giveaway-email] DB insert failed:", insertErr.message);
+        }
+      } else {
+        console.warn("[send-giveaway-email] SUPABASE_URL / SERVICE_ROLE_KEY missing — skipping DB insert");
+      }
+    } catch (dbErr) {
+      console.warn("[send-giveaway-email] DB insert threw:", dbErr);
+    }
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) throw new Error("RESEND_API_KEY is not configured");
