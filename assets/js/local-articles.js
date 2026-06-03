@@ -22,7 +22,7 @@ export const LOCAL_ARTICLES = [
     featured: true,
     published: true,
     date: "2026-05-22",
-    image: new URL("../img/blog-1.jpg", import.meta.url).href,
+    image: new URL("../img/blog-1.webp", import.meta.url).href,
     imageAlt: "Prodajni svetovalec v pogovoru s stranko",
     body: `Kaj loči vrhunske prodajne svetovalce od povprečja? Po več kot desetletju gradnje prodajnih ekip pri Win-Win smo opazili, da uspeh skoraj nikoli ni stvar sreče ali "prirojenega talenta". Gre za skupek lastnosti, ki se jih da razviti — če veš, na kaj se osredotočiti.
 
@@ -65,7 +65,7 @@ Nobene od teh lastnosti ni treba imeti že prvi dan. Naš sistem — strukturira
     featured: false,
     published: true,
     date: "2026-05-15",
-    image: new URL("../img/blog-2.jpg", import.meta.url).href,
+    image: new URL("../img/blog-2.webp", import.meta.url).href,
     imageAlt: "Sodelavka pregleduje prodajne rezultate",
     body: `Provizijski model je za marsikoga strašljiv — a prav on je razlog, da najboljši prodajni svetovalci pri Win-Win zaslužijo bistveno več od povprečja. Razlika ni v sreči, ampak v procesu. Poglejmo, kako izgleda pot od prvega kontakta do stabilne mesečne provizije.
 
@@ -108,7 +108,7 @@ Rezultat? Predvidljiv, merljiv in rastoč zaslužek, ki je neposredno odvisen od
     featured: false,
     published: true,
     date: "2026-05-08",
-    image: new URL("../img/blog-3.jpg", import.meta.url).href,
+    image: new URL("../img/blog-3.webp", import.meta.url).href,
     imageAlt: "Vodja prodajne ekipe na sestanku",
     body: `Pri Win-Win napredovanje ni obljuba — je sistem. Naši najboljši svetovalci v povprečju prevzamejo vodenje lastne ekipe v manj kot 18 mesecih. Kako izgleda ta pot in kaj je za njo potrebno?
 

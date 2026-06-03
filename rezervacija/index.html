@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rezervirajte termin | Win Win – Kranj in Trzin</title>
+  <meta name="description" content="Rezervirajte osebni termin v poslovalnici Win Win v Kranju (Ljubljanska cesta 24a) ali Trzinu (Brodišče 28). Izberite datum in uro – potrditev prejmete po e-pošti." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="i-chevron-down" viewBox="0 0 24 24">
+      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-message-circle" viewBox="0 0 24 24">
+      <path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7l-4 4V6a2 2 0 0 1 2-2z"
+        fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="8" cy="11" r="0.9" fill="currentColor"/>
+      <circle cx="12" cy="11" r="0.9" fill="currentColor"/>
+      <circle cx="16" cy="11" r="0.9" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container header-row">
+      <a class="brand" href="/" aria-label="Win Win Domov">
+        <img class="brand-logo" src="/assets/img/win-win-logo.webp" alt="Win Win d.o.o. – prodajno podjetje Slovenija" />
+      </a>
+
+      <nav class="nav" aria-label="Glavna navigacija">
+        <a class="nav-link" href="/">Domov</a>
+        <a class="nav-link" href="/o-nas/">O nas</a>
+        <a class="nav-link" href="/zaposlitve/">Kariera</a>
+        <a class="nav-link" href="/vpogledi/">Vpogledi</a>
+        <a class="nav-link" href="/prijava/">Prijava</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-outline" href="/prijava/">Pridruži se ekipi</a>
+        <a class="btn btn-primary" href="/rezervacija/">Rezerviraj termin</a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="nav-link" href="/">Domov</a>
+    <a class="nav-link" href="/o-nas/">O nas</a>
+    <a class="nav-link" href="/zaposlitve/">Kariera</a>
+    <a class="nav-link" href="/vpogledi/">Vpogledi</a>
+    <a class="nav-link" href="/prijava/">Prijava</a>
+
+    <div class="mobile-actions">
+      <a class="btn btn-outline" href="/prijava/">Pridruži se ekipi</a>
+      <a class="btn btn-primary" href="/rezervacija/">Rezerviraj termin</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="about-hero">
+      <div class="container about-hero-inner">
+        <div class="about-hero-copy">
+          <span class="about-hero-eyebrow">
+            <span class="about-hero-eyebrow-rule" aria-hidden="true"></span>
+            Rezervacija termina · osebno svetovanje
+          </span>
+          <h1 class="about-hero-title">Rezervirajte <span class="text-red">termin</span></h1>
+          <p class="about-hero-desc">
+            Izberite poslovalnico, datum in uro — in se osebno oglasite pri nas. Po rezervaciji prejmete potrditev po e-pošti, naša ekipa pa vas pričaka ob dogovorjenem terminu. Svetovanje je brezplačno in brez obveznosti.
+          </p>
+
+          <div class="about-hero-actions">
+            <a class="btn btn-primary" href="#booking">Izberi termin <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-outline" href="tel:+38631678732">Pokliči nas</a>
+          </div>
+
+          <div class="about-hero-trust">
+            <a class="ah-trust-pill" href="https://www.google.com/search?q=Win-Win+d.o.o.+Trzin" target="_blank" rel="noopener" aria-label="Win Win na Googlu – ocena 4.9 od 5">
+              <svg class="ah-trust-g" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 35 26.8 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 35.5 44 30.2 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+              </svg>
+              <span class="ah-trust-stars" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </span>
+              <span class="ah-trust-num">4.9</span>
+              <span class="ah-trust-name">Google ocene</span>
+            </a>
+
+            <span class="ah-trust-divider" aria-hidden="true"></span>
+
+            <div class="ah-trust-pill">
+              <span class="ah-trust-label">Brezplačno</span>
+              <span class="ah-partner-wordmark">svetovanje</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-hero-visual" aria-hidden="true">
+          <div class="about-hero-disc">
+            <img src="/assets/img/win-win-logo.webp" alt="Win Win logotip" width="640" height="520" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section class="section section--light" data-animate>
+      <div class="container">
+        <div class="vm-head">
+          <span class="vm-eyebrow">Naši poslovalnici</span>
+          <h2 class="h2">Kje se <span class="text-red">vidimo</span></h2>
+          <p class="vm-lead">Termin lahko rezervirate v eni od naših dveh poslovalnic — ob rezervaciji izberete lokacijo, ki vam najbolj ustreza.</p>
+        </div>
+
+        <div class="loc-grid">
+          <article class="loc-card">
+            <div class="loc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-4.4 7-12a7 7 0 0 0-14 0c0 7.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <h3 class="loc-title">Kranj</h3>
+            <p class="loc-addr">Ljubljanska cesta 24a<br />4000 Kranj</p>
+            <p class="loc-hours"><strong>Termini:</strong> torek &amp; petek · 10.15 · 11.15 · 14.00</p>
+            <a class="loc-link" href="https://www.google.com/maps/search/?api=1&query=Ljubljanska+cesta+24a,+4000+Kranj" target="_blank" rel="noopener">Odpri v Zemljevidih <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="loc-card">
+            <div class="loc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-4.4 7-12a7 7 0 0 0-14 0c0 7.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <h3 class="loc-title">Trzin</h3>
+            <p class="loc-addr">Brodišče 28<br />1236 Trzin</p>
+            <p class="loc-hours"><strong>Termini:</strong> pon, sre &amp; čet · 10.30 · 11.15 · 14.00 · 15.00</p>
+            <a class="loc-link" href="https://www.google.com/maps/search/?api=1&query=Brodišče+28,+1236+Trzin" target="_blank" rel="noopener">Odpri v Zemljevidih <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING WIDGET -->
+    <section class="section section-gradient-b" id="booking" data-animate style="scroll-margin-top:90px;">
+      <div class="container">
+        <div class="vm-head">
+          <span class="vm-eyebrow" style="color:var(--red-500)">Rezervacija</span>
+          <h2 class="h2">Izberite datum in <span class="text-red">uro</span></h2>
+          <p class="p-muted">Spodaj izberite poslovalnico in prosti termin ter pustite svoje podatke. Potrditev rezervacije prejmete po e-pošti, naša ekipa pa vas obvesti o vseh podrobnostih.</p>
+        </div>
+
+        <div class="booking-steps">
+          <div class="booking-step">
+            <span class="booking-step-num">1</span>
+            <div>
+              <p class="booking-step-t">Izberite poslovalnico</p>
+              <p class="booking-step-d">Kranj ali Trzin — kar vam je bližje.</p>
+            </div>
+          </div>
+          <div class="booking-step">
+            <span class="booking-step-num">2</span>
+            <div>
+              <p class="booking-step-t">Izberite datum in uro</p>
+              <p class="booking-step-d">Na voljo so samo prosti termini.</p>
+            </div>
+          </div>
+          <div class="booking-step">
+            <span class="booking-step-num">3</span>
+            <div>
+              <p class="booking-step-t">Potrditev po e-pošti</p>
+              <p class="booking-step-d">Prejmete potrdilo z vsemi podatki.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-embed">
+          <iframe src="https://api.leadconnectorhq.com/widget/group/4Cx7yPFZ50QJqd40FQG8" style="width:100%;border:none;overflow:hidden;" scrolling="no" id="4Cx7yPFZ50QJqd40FQG8_1779791074943" title="Rezervacija termina – Win Win"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand brand-footer" aria-label="Win Win">
+          <img class="brand-logo" src="/assets/img/win-win-logo.webp" alt="Win Win d.o.o. – prodajno podjetje Slovenija" />
+        </div>
+        <p class="p-muted small">
+          Gradimo kariere v prodaji. Smo prodajno podjetje, usmerjeno v rezultate, specializirano za B2C terensko prodajo in telekomunikacije.
+        </p>
+        <div class="socials" aria-label="Družabna omrežja">
+          <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
+          <a class="social" href="https://www.instagram.com/winwin.si/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Podjetje</div>
+        <a class="footer-link" href="/o-nas/">O nas</a>
+        <a class="footer-link" href="/zaposlitve/">Kariera</a>
+        <a class="footer-link" href="/rezervacija/">Rezerviraj termin</a>
+        <a class="footer-link" href="/prijava/">Kontakt</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Pravno</div>
+        <a class="footer-link" href="/zasebnost/">Politika zasebnosti</a>
+        <a class="footer-link" href="/piskotki/">Politika piškotkov</a>
+        <a class="footer-link" href="/pogoji/">Pogoji uporabe</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Kontakt</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">⦿</span> Trzin, Kranj, Slovenija</div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">☎</span> <a href="tel:+38631678732">+386 31 678 732</a></div>
+        <div class="contact-row"><span class="dot-ic" aria-hidden="true">✉</span> <a href="mailto:office@win-win.si">office@win-win.si</a></div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="p-muted small">© <span id="year"></span> Win Win. Vse pravice pridržane. | <a href="https://www.dubaiprod.com" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">DubaiProd</a></div>
+      <div class="footer-admin">
+        <a class="footer-admin-link" href="/admin/applications.html">Applications</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/about.js"></script>
+  <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+</body>
+</html>
