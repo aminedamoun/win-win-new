@@ -34,7 +34,7 @@ export default defineConfig({
         pogoji: resolve(__dirname, 'pogoji/index.html'),
         piskotki: resolve(__dirname, 'piskotki/index.html'),
         'admin-applications': resolve(__dirname, 'admin/applications.html'),
-        rezervacija: resolve(__dirname, 'rezervacija/index.html'),
+        booking: resolve(__dirname, 'booking/index.html'),
         'admin-zrebanje': resolve(__dirname, 'admin/zrebanje/index.html'),
         'nagradna-igra': resolve(__dirname, 'nagradna-igra/index.html'),
         'nagradna-igra-pravila': resolve(__dirname, 'nagradna-igra/pravila/index.html'),
