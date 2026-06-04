@@ -99,12 +99,6 @@ function validate() {
     ok = false;
   }
 
-  const loc = getLocationLabel();
-  if (!loc) {
-    showErr("lokacija", "Izberite lokacijo stojnice.");
-    ok = false;
-  }
-
   const consent = $("consent");
   if (!consent.checked) {
     showErr("consent", "Za sodelovanje morate sprejeti pravila.");
@@ -116,11 +110,12 @@ function validate() {
 }
 
 function initLocationFromUrl() {
+  const sel = $("lokacija");
+  if (!sel) return;
   const params = new URLSearchParams(window.location.search);
   const raw = params.get("lokacija") || params.get("location");
   if (!raw) return;
 
-  const sel = $("lokacija");
   const target = String(raw).trim();
   const matchOpt = Array.from(sel.options).find(
     (o) =>
@@ -188,7 +183,7 @@ async function submitForm(e) {
     consent: true,
     consentTimestampIso: now.toISOString(),
     consentLocationLabel: locationLabel,
-    consentDisplay: `${locationLabel} – ${formatStampSl(now)}`,
+    consentDisplay: locationLabel ? `${locationLabel} – ${formatStampSl(now)}` : formatStampSl(now),
     source: window.location.href,
     userAgent: navigator.userAgent,
   };
@@ -224,7 +219,7 @@ async function submitForm(e) {
     console.error("Giveaway submit failed:", err);
     alert(
       "Pri pošiljanju je prišlo do napake. Prosimo, poskusite znova.\n\n" +
-      "Če težava ostane, obvestite osebje na stojnici."
+      "Če težava ostane, nas kontaktirajte na office@win-win.si."
     );
   } finally {
     cta.disabled = false;
