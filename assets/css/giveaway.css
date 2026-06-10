@@ -618,3 +618,24 @@ body.gw-body {
 }
 .gw-cta { position: relative; }
 @keyframes gw-spin { to { transform: rotate(360deg); } }
+
+/* ---- Address autocomplete (Slovenija) ---- */
+.gw-ac { position: relative; }
+.gw-hint { display: block; margin-top: 6px; font-size: 12px; color: var(--gw-muted); opacity: 0.75; }
+.gw-ac-list {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 60;
+  margin: 0; padding: 6px; list-style: none;
+  background: #15151c; border: 1px solid var(--gw-border-strong);
+  border-radius: 12px; box-shadow: var(--gw-shadow);
+  max-height: 300px; overflow-y: auto;
+}
+.gw-ac-list[hidden] { display: none; }
+.gw-ac-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; border-radius: 9px; cursor: pointer;
+  color: var(--gw-text); font-size: 0.92rem; line-height: 1.35;
+}
+.gw-ac-item svg { width: 16px; height: 16px; margin-top: 2px; flex: 0 0 auto; color: var(--gw-red-bright); }
+.gw-ac-item:hover, .gw-ac-item.is-active { background: rgba(255,255,255,0.08); }
+.gw-ac-item .sub { display: block; font-size: 0.8rem; color: var(--gw-muted); }
+.gw-ac-empty { padding: 12px; font-size: 0.88rem; color: var(--gw-muted); text-align: center; }

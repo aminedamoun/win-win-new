@@ -111,7 +111,11 @@
 
           <div class="gw-field">
             <label for="naslov">Naslov prebivališča <span class="req">*</span></label>
-            <input class="gw-input" id="naslov" name="naslov" type="text" autocomplete="street-address" placeholder="Ulica, hišna št., poštna št. in kraj" required />
+            <div class="gw-ac" id="naslovAc">
+              <input class="gw-input" id="naslov" name="naslov" type="text" autocomplete="off" placeholder="Začni tipkati naslov (ulica, kraj)…" required role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="naslovSuggest" />
+              <ul class="gw-ac-list" id="naslovSuggest" role="listbox" hidden></ul>
+            </div>
+            <span class="gw-hint">Izberi naslov iz seznama — pokrivamo vso Slovenijo.</span>
             <span class="gw-err" data-err-for="naslov"></span>
           </div>
 

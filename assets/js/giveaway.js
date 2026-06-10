@@ -319,8 +319,110 @@ function closePrizeModal() {
   document.body.style.overflow = "";
 }
 
+/* ---------- Address autocomplete (vsa Slovenija, Photon / OSM) ---------- */
+function initAddressAutocomplete() {
+  const input = $("naslov");
+  const list = $("naslovSuggest");
+  if (!input || !list) return;
+  let timer = null, items = [], active = -1, lastQuery = "";
+
+  const hide = () => {
+    list.hidden = true; list.innerHTML = ""; items = []; active = -1;
+    input.setAttribute("aria-expanded", "false");
+  };
+
+  // Build a full street address line: "Ulica 12, 1000 Ljubljana"
+  function format(p) {
+    const street = p.street || p.name || "";
+    const line1 = [street, p.housenumber].filter(Boolean).join(" ");
+    const line2 = [p.postcode, p.city || p.county || p.district].filter(Boolean).join(" ");
+    return { line1: line1 || line2, line2: line1 ? line2 : "", full: [line1, line2].filter(Boolean).join(", ") };
+  }
+
+  // Keep only concrete locations: house addresses, streets, cities, towns,
+  // villages, hamlets, suburbs — NOT regions, counties, states or municipalities.
+  const ALLOW_PLACE = new Set(["city", "town", "village", "hamlet", "suburb", "quarter", "neighbourhood", "borough", "locality", "isolated_dwelling", "allotments"]);
+  const DROP_TYPE = new Set(["state", "region", "county", "country"]);
+  function keepResult(p) {
+    if (DROP_TYPE.has(p.type)) return false;            // drop Gorenjska & co.
+    if (p.osm_key === "boundary") return false;          // drop administrative areas (e.g. Občina Bled)
+    if (p.housenumber) return true;                      // full street address
+    if (p.osm_key === "highway" || p.type === "street") return true; // street
+    if (p.osm_key === "place") return ALLOW_PLACE.has(p.osm_value);   // city/town/village...
+    return false;
+  }
+
+  async function search(q) {
+    try {
+      // bias to centre of Slovenia; filter to SI client-side
+      const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q)}&lang=default&limit=15&lat=46.15&lon=14.99`;
+      const res = await fetch(url);
+      if (!res.ok) return [];
+      const data = await res.json();
+      const seen = new Set();
+      return (data.features || [])
+        .map((f) => f.properties)
+        .filter((p) => p && p.countrycode === "SI")
+        .filter(keepResult)
+        .map((p) => ({ ...format(p), hasNum: !!p.housenumber, hasZip: !!p.postcode }))
+        .filter((x) => x.full && !seen.has(x.full) && seen.add(x.full))
+        // real street addresses (house number + postcode) first
+        .sort((a, b) => (b.hasNum - a.hasNum) || (b.hasZip - a.hasZip))
+        .slice(0, 7);
+    } catch { return []; }
+  }
+
+  function render() {
+    if (!items.length) { hide(); return; }
+    list.innerHTML = items.map((it, i) => `
+      <li class="gw-ac-item${i === active ? " is-active" : ""}" role="option" data-i="${i}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-4.4 7-12a7 7 0 0 0-14 0c0 7.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>${it.line1}${it.line2 ? `<span class="sub">${it.line2}</span>` : ""}</span>
+      </li>`).join("");
+    list.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+    Array.from(list.querySelectorAll(".gw-ac-item")).forEach((el) => {
+      el.addEventListener("mousedown", (e) => { e.preventDefault(); select(Number(el.dataset.i)); });
+    });
+  }
+
+  function select(i) {
+    const it = items[i];
+    if (!it) return;
+    input.value = it.full;
+    hide();
+    clearErr("naslov");
+  }
+
+  input.addEventListener("input", () => {
+    const q = input.value.trim();
+    clearTimeout(timer);
+    if (q.length < 3) { hide(); return; }
+    timer = setTimeout(async () => {
+      if (q === lastQuery) return;
+      lastQuery = q;
+      items = await search(q);
+      active = -1;
+      render();
+    }, 280);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (list.hidden) return;
+    if (e.key === "ArrowDown") { e.preventDefault(); active = Math.min(active + 1, items.length - 1); render(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); active = Math.max(active - 1, 0); render(); }
+    else if (e.key === "Enter" && active >= 0) { e.preventDefault(); select(active); }
+    else if (e.key === "Escape") { hide(); }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!$("naslovAc")?.contains(e.target)) hide();
+  });
+}
+
 function init() {
   document.body.classList.add("gw-body");
+  initAddressAutocomplete();
 
   // prize cards
   document.querySelectorAll(".gw-prize[data-prize]").forEach((btn) => {
