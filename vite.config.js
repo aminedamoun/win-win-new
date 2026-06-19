@@ -35,6 +35,7 @@ export default defineConfig({
         piskotki: resolve(__dirname, 'piskotki/index.html'),
         'admin-applications': resolve(__dirname, 'admin/applications.html'),
         booking: resolve(__dirname, 'booking/index.html'),
+        akademija: resolve(__dirname, 'akademija/index.html'),
         'admin-zrebanje': resolve(__dirname, 'admin/zrebanje/index.html'),
         'nagradna-igra': resolve(__dirname, 'nagradna-igra/index.html'),
         'nagradna-igra-pravila': resolve(__dirname, 'nagradna-igra/pravila/index.html'),

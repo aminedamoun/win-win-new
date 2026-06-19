@@ -9,4 +9,14 @@ export const CONFIG = {
     accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN || "Fh2uedm8rQ5RnOGFQ1yz0m0IClJH0ZjV_x0Q477-gWU",
     environment: import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || "master",
   },
+  // GoHighLevel — paste the Inbound Webhook URL from your GHL workflow trigger.
+  // GHL: Automation → Workflows → Add Trigger → "Inbound Webhook" → copy the URL.
+  ghl: {
+    inboundWebhookUrl: import.meta.env.VITE_GHL_WEBHOOK_URL || "",
+  },
+  // Meta (Facebook) Pixel — paste your Pixel ID for conversion tracking.
+  // Meta Events Manager → Data sources → your pixel → copy the numeric ID.
+  meta: {
+    pixelId: import.meta.env.VITE_META_PIXEL_ID || "",
+  },
 };

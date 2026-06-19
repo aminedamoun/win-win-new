@@ -7,6 +7,7 @@
 
 import { uploadCVOnly, sendApplicationEmail } from './jobs-db.js';
 import { initBurgerMenu } from './ui.js';
+import { CONFIG } from './config.js';
 
 function $(id) { return document.getElementById(id); }
 
@@ -110,6 +111,7 @@ function setupForm() {
   const lastName = $("lastName");
   const email = $("email");
   const phone = $("phone");
+  const lokacija = $("lokacija");
   const agree = $("agree");
   const cvFile = $("cvFile");
 
@@ -146,7 +148,7 @@ function setupForm() {
   });
 
   const clearAllErrs = () => {
-    ["firstName", "lastName", "email", "phone", "agree", "cvFile"].forEach(clearErr);
+    ["firstName", "lastName", "email", "phone", "lokacija", "agree", "cvFile"].forEach(clearErr);
   };
 
   const validate = () => {
@@ -161,6 +163,8 @@ function setupForm() {
     else if (!validateEmail(ev)) { showErr("email", "Enter a valid email address."); ok = false; }
 
     if (!String(phone?.value || "").trim()) { showErr("phone", "Phone number is required."); ok = false; }
+
+    if (!String(lokacija?.value || "").trim()) { showErr("lokacija", "Izberite lokacijo razgovora."); ok = false; }
 
     if (!agree?.checked) { showErr("agree", "You must agree before submitting."); ok = false; }
 
@@ -203,6 +207,14 @@ function setupForm() {
         cvPath = await uploadCVOnly(cvFileInput);
       }
 
+      // Traffic source: captured on landing by pixel.js, fall back to current URL or "spletna stran".
+      let vir = 'spletna stran';
+      try {
+        const stored = sessionStorage.getItem('vir_prijave');
+        const here = new URLSearchParams(window.location.search);
+        vir = stored || here.get('vir') || here.get('utm_source') || vir;
+      } catch (_) { /* sessionStorage unavailable */ }
+
       const submission = {
         firstName: firstName.value.trim(),
         lastName: lastName.value.trim(),
@@ -211,6 +223,8 @@ function setupForm() {
         jobTitle: jobTitle,
         jobSlug: jobSlug || '',
         jobId: jobId || '',
+        lokacija: lokacija?.value?.trim() || '',
+        vir: vir,
         preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
         message: $("message")?.value?.trim() || '',
         cvPath: cvPath,
@@ -227,7 +241,37 @@ function setupForm() {
         })
       }).catch(err => console.warn('Webhook notify failed:', err));
 
+      // Push the lead into GoHighLevel (fire-and-forget — must never block the user flow).
+      // Field keys match the GHL custom fields: izbrano_delovno_mesto / lokacija_interesa / vir_prijave.
+      if (CONFIG.ghl?.inboundWebhookUrl) {
+        fetch(CONFIG.ghl.inboundWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            first_name: submission.firstName,
+            last_name: submission.lastName,
+            email: submission.email,
+            phone: submission.phone,
+            izbrano_delovno_mesto: submission.jobTitle,
+            izbrano_delovno_mesto_slug: submission.jobSlug,
+            lokacija_interesa: submission.lokacija,
+            vir_prijave: submission.vir,
+            preferred_interview_time: submission.preferredInterviewTime,
+            message: submission.message,
+            source_url: window.location.href,
+            submitted_at: submission.submittedAt,
+            tags: ['obrazec_izpolnjen']
+          })
+        }).catch(err => console.warn('GHL webhook failed:', err));
+      }
+
       await sendApplicationEmail(submission);
+
+      // Meta Pixel conversion: online application submitted.
+      if (window.fbq) {
+        window.fbq('track', 'Lead', { content_name: submission.jobTitle, content_category: submission.lokacija });
+        window.fbq('trackCustom', 'SubmitApplication', { job: submission.jobTitle, lokacija: submission.lokacija, vir: submission.vir });
+      }
 
       openSuccessModal();
 

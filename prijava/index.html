@@ -21,6 +21,7 @@
   }
   </script>
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script type="module" src="/assets/js/pixel.js"></script>
 </head>
 
 <body>
@@ -63,6 +64,7 @@
       <a class="nav-link" href="/zaposlitve/">Kariera</a>
       <a class="nav-link" href="/vpogledi/">Vpogledi</a>
       <a class="nav-link is-active" href="/prijava/">Prijava</a>
+      <a class="nav-link" href="/akademija/">Akademija</a>
     </nav>
 
     <div class="header-actions">
@@ -83,6 +85,7 @@
     <a class="nav-link" href="/zaposlitve/">Kariera</a>
     <a class="nav-link" href="/vpogledi/">Vpogledi</a>
     <a class="nav-link is-active" href="/prijava/">Prijava</a>
+    <a class="nav-link" href="/akademija/">Akademija</a>
     <div class="mobile-actions">
       <a class="btn btn-outline" href="/prijava/">Pridruži se ekipi</a>
       <a class="btn btn-primary" href="/booking/">Rezerviraj termin</a>
@@ -129,6 +132,17 @@
               <label class="apply-label">Telefonska številka *</label>
               <input class="apply-input" type="tel" id="phone" required>
               <div class="err" data-err-for="phone"></div>
+            </div>
+
+            <div class="apply-field full">
+              <label class="apply-label">Lokacija razgovora *</label>
+              <select class="apply-input" id="lokacija" required>
+                <option value="">Izberite najbližjo lokacijo …</option>
+                <option value="Kranj">Kranj – Ljubljanska cesta 24</option>
+                <option value="Trzin">Trzin – Brodišče 28, 2. nadstropje</option>
+                <option value="Vseeno">Vseeno / nimam preference</option>
+              </select>
+              <div class="err" data-err-for="lokacija"></div>
             </div>
 
             <div class="apply-field full">
