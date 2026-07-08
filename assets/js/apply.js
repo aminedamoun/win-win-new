@@ -5,9 +5,27 @@
  * - Renders "What happens next" cards
  */
 
-import { uploadCVOnly, sendApplicationEmail } from './jobs-db.js';
+import { getJobBySlug } from './contentful-client.js';
 import { initBurgerMenu } from './ui.js';
 import { CONFIG } from './config.js';
+
+// Max CV size. Vercel caps a serverless request body at ~4.5MB and base64
+// inflates by ~33%, so keep the raw PDF at 3MB (base64 ≈ 4MB).
+const MAX_CV_MB = 3;
+
+// Read a File as a bare base64 string (no data: prefix) for the /api/apply payload.
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || '');
+      const comma = result.indexOf(',');
+      resolve(comma >= 0 ? result.slice(comma + 1) : result);
+    };
+    reader.onerror = () => reject(new Error('Napaka pri branju datoteke.'));
+    reader.readAsDataURL(file);
+  });
+}
 
 function $(id) { return document.getElementById(id); }
 
@@ -73,8 +91,8 @@ function setupUpload() {
       input.value = "";
       return updateName();
     }
-    if (bytesToMB(f.size) > 5) {
-      showErr("cvFile", "File is too large. Max 5MB.");
+    if (bytesToMB(f.size) > MAX_CV_MB) {
+      showErr("cvFile", `File is too large. Max ${MAX_CV_MB}MB.`);
       input.value = "";
       return updateName();
     }
@@ -171,7 +189,7 @@ function setupForm() {
     const f = cvFile?.files && cvFile.files[0];
     if (f) {
       if (f.type !== "application/pdf") { showErr("cvFile", "Please upload a PDF file."); ok = false; }
-      if (bytesToMB(f.size) > 5) { showErr("cvFile", "File is too large. Max 5MB."); ok = false; }
+      if (bytesToMB(f.size) > MAX_CV_MB) { showErr("cvFile", `File is too large. Max ${MAX_CV_MB}MB.`); ok = false; }
     }
 
     return ok;
@@ -193,18 +211,23 @@ function setupForm() {
       let jobTitle = 'General Application';
       let jobId = null;
       if (jobSlug) {
-        const { getJobBySlug } = await import('./jobs-db.js');
-        const job = await getJobBySlug(jobSlug);
-        if (job) {
-          jobId = job.id;
-          jobTitle = job.title_en || jobTitle;
+        try {
+          const job = await getJobBySlug(jobSlug);
+          if (job) {
+            jobId = job.id;
+            jobTitle = job.title || jobTitle;
+          }
+        } catch (err) {
+          console.warn('Job lookup failed, using generic title:', err);
         }
       }
 
       const cvFileInput = cvFile?.files?.[0] || null;
-      let cvPath = '';
+      let cvBase64 = '';
+      let cvName = '';
       if (cvFileInput) {
-        cvPath = await uploadCVOnly(cvFileInput);
+        cvBase64 = await fileToBase64(cvFileInput);
+        cvName = cvFileInput.name;
       }
 
       // Traffic source: captured on landing by pixel.js, fall back to current URL or "spletna stran".
@@ -227,7 +250,7 @@ function setupForm() {
         vir: vir,
         preferredInterviewTime: $("interviewTime")?.value?.trim() || '',
         message: $("message")?.value?.trim() || '',
-        cvPath: cvPath,
+        cvName: cvName,
         submittedAt: new Date().toISOString()
       };
 
@@ -265,7 +288,18 @@ function setupForm() {
         }).catch(err => console.warn('GHL webhook failed:', err));
       }
 
-      await sendApplicationEmail(submission);
+      // Email the application + CV via our Vercel function (replaces the retired
+      // Supabase edge function/storage). This is the one call that must succeed.
+      const emailResp = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...submission, cvBase64 })
+      });
+      if (!emailResp.ok) {
+        let serverMsg = '';
+        try { serverMsg = (await emailResp.json())?.error || ''; } catch (_) { /* ignore */ }
+        throw new Error(serverMsg || `Napaka strežnika (${emailResp.status}).`);
+      }
 
       // Meta Pixel conversion: online application submitted.
       if (window.fbq) {
